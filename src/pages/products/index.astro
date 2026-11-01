@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { getAllProducts, getCategories } from '../../services/products';
+
+const products = getAllProducts();
+const categories = getCategories();
+const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
+---
+<BaseLayout
+  title="المنتجات"
+  description="تصفح جميع منتجاتنا الإلكترونية، ابحث وصفّ حسب القسم، واطلب مباشرة عبر واتساب."
+>
+  <section class="section">
+    <div class="container">
+      <h1>المنتجات</h1>
+
+      <div class="tools card">
+        <label class="field grow">
+          <span>بحث</span>
+          <input id="q" type="search" placeholder="ابحث عن منتج..." autocomplete="off" />
+        </label>
+        <label class="field">
+          <span>الترتيب</span>
+          <select id="sort">
+            <option value="default">الافتراضي</option>
+            <option value="price-asc">السعر: من الأقل</option>
+            <option value="price-desc">السعر: من الأعلى</option>
+            <option value="name">الاسم</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="chips" id="chips" role="group" aria-label="الأقسام">
+        <button type="button" class="chip" data-cat="" aria-pressed="true">الكل</button>
+        {categories.map((c) => (
+          <button type="button" class="chip" data-cat={c.slug} aria-pressed="false">{c.name}</button>
+        ))}
+      </div>
+
+      <p class="count" id="count" aria-live="polite"></p>
+
+      <ul class="grid grid-4 list" id="list">
+        {products.map((p) => (
+          <li
+            data-name={p.name}
+            data-text={`${p.name} ${p.shortDescription} ${p.id}`}
+            data-cat={catById[p.category]?.slug ?? ''}
+            data-price={p.price ?? ''}
+          >
+            <ProductCard product={p} categoryName={catById[p.category]?.name} />
+          </li>
+        ))}
+      </ul>
+
+      <div class="empty card" id="empty" hidden>
+        <h2>لا توجد نتائج</h2>
+        <p>جرّب كلمة بحث أخرى أو اختر قسمًا مختلفًا.</p>
+        <button type="button" class="btn btn-outline" id="reset">إعادة الضبط</button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  h1 { margin-bottom: 16px; }
+  .tools { display: flex; flex-wrap: wrap; gap: 12px; padding: 12px; margin-bottom: 14px; }
+  .field { display: grid; gap: 4px; font-size: 0.85rem; color: var(--c-muted); min-width: 150px; }
+  .field.grow { flex: 1 1 220px; }
+  input, select {
+    font: inherit; padding: 10px 12px; border: 1px solid var(--c-border);
+    border-radius: 8px; background: #fff; color: var(--c-text); width: 100%;
+  }
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 8px; }
+  .chip {
+    font: inherit; font-weight: 600; white-space: nowrap; cursor: pointer;
+    padding: 8px 16px; border-radius: 999px; border: 1px solid var(--c-border);
+    background: #fff; color: var(--c-primary);
+  }
+  .chip[aria-pressed='true'] { background: var(--c-accent); border-color: var(--c-accent); color: #fff; }
+  .count { color: var(--c-muted); font-size: 0.9rem; margin: 8px 0 12px; }
+  .list { list-style: none; padding: 0; margin: 0; }
+  .list > li[hidden] { display: none; }
+  .empty { text-align: center; padding: 32px 16px; }
+</style>
+
+<script>
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+  const q = $<HTMLInputElement>('q');
+  const sortEl = $<HTMLSelectElement>('sort');
+  const list = $<HTMLUListElement>('list');
+  const empty = $('empty');
+  const count = $('count');
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.chip'));
+  const items = Array.from(list.children) as HTMLLIElement[];
+  const original = [...items];
+
+  // توحيد النص العربي للبحث (إزالة التشكيل وتوحيد الألف)
+  const norm = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/[\u064B-\u0652\u0640]/g, '')
+      .replace(/[أإآ]/g, 'ا')
+      .replace(/ى/g, 'ي')
+      .replace(/ة/g, 'ه')
+      .trim();
+
+  let cat = '';
+
+  function apply() {
+    const term = norm(q.value);
+    let visible = original.filter((li) => {
+      const okCat = !cat || li.dataset.cat === cat;
+      const okText = !term || norm(li.dataset.text ?? '').includes(term);
+      return okCat && okText;
+    });
+
+    const price = (li: HTMLLIElement) =>
+      li.dataset.price === '' ? null : Number(li.dataset.price);
+    const mode = sortEl.value;
+    if (mode === 'price-asc' || mode === 'price-desc') {
+      const dir = mode === 'price-asc' ? 1 : -1;
+      visible = [...visible].sort((a, b) => {
+        const pa = price(a), pb = price(b);
+        if (pa === null && pb === null) return 0;
+        if (pa === null) return 1; // بدون سعر في النهاية
+        if (pb === null) return -1;
+        return (pa - pb) * dir;
+      });
+    } else if (mode === 'name') {
+      visible = [...visible].sort((a, b) =>
+        (a.dataset.name ?? '').localeCompare(b.dataset.name ?? '', 'ar')
+      );
+    }
+
+    original.forEach((li) => (li.hidden = !visible.includes(li)));
+    visible.forEach((li) => list.appendChild(li));
+    empty.hidden = visible.length > 0;
+    list.hidden = visible.length === 0;
+    count.textContent = `${visible.length} منتج`;
+
+    const params = new URLSearchParams();
+    if (cat) params.set('category', cat);
+    if (q.value.trim()) params.set('q', q.value.trim());
+    if (mode !== 'default') params.set('sort', mode);
+    const qs = params.toString();
+    history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : ''));
+  }
+
+  function setCat(slug: string) {
+    cat = slug;
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.cat === slug)));
+  }
+
+  chips.forEach((c) =>
+    c.addEventListener('click', () => {
+      setCat(c.dataset.cat ?? '');
+      apply();
+    })
+  );
+  q.addEventListener('input', apply);
+  sortEl.addEventListener('change', apply);
+  $('reset').addEventListener('click', () => {
+    q.value = '';
+    sortEl.value = 'default';
+    setCat('');
+    apply();
+  });
+
+  // قراءة الحالة من الرابط
+  const params = new URLSearchParams(location.search);
+  const urlCat = params.get('category') ?? '';
+  setCat(chips.some((c) => c.dataset.cat === urlCat) ? urlCat : '');
+  q.value = params.get('q') ?? '';
+  const urlSort = params.get('sort');
+  if (urlSort && Array.from(sortEl.options).some((o) => o.value === urlSort)) sortEl.value = urlSort;
+  apply();
+</script>

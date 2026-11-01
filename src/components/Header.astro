@@ -6,17 +6,20 @@ const links = [
   { href: '/about', label: 'من نحن' },
   { href: '/contact', label: 'اتصل بنا' },
 ];
-const current = Astro.url.pathname;
+const norm = (p: string) => (p.length > 1 ? p.replace(/\/$/, '') : p);
+const current = norm(Astro.url.pathname);
+const isActive = (href: string) =>
+  href === '/' ? current === '/' : current === href || current.startsWith(href + '/');
 ---
 <header class="header">
   <div class="container bar">
     <a href="/" class="brand" aria-label={site.name}>
-      <img src={site.logo.store} alt={site.name} height="52" />
+      <img src={site.logo.store} alt={site.name} width="150" height="58" />
     </a>
     <nav aria-label="التنقل الرئيسي">
       <ul>
         {links.map((l) => (
-          <li><a href={l.href} aria-current={current === l.href ? 'page' : undefined}>{l.label}</a></li>
+          <li><a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a></li>
         ))}
       </ul>
     </nav>

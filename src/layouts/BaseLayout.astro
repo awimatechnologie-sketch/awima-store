@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import { site } from '../config/site';
 
 interface Props { title?: string; description?: string; image?: string }
-const { title, description = site.tagline, image = site.logo.store } = Astro.props;
+const { title, description = site.tagline, image = site.logo.og } = Astro.props;
 const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | ${site.tagline}`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const ogImage = new URL(image, site.url).href;
@@ -18,12 +18,15 @@ const ogImage = new URL(image, site.url).href;
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/png" href={site.logo.main} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/png" href={site.logo.icon} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content={site.colors.primary} />
   </head>
   <body>

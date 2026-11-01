@@ -9,8 +9,9 @@ export const site = {
   currency: 'MAD',
   currencyLabel: 'د.م.',
   logo: {
-    store: '/images/logo-store.png',
-    main: '/images/logo.png',
+    store: '/images/logo-store.png', // الشعار الكامل (الهيدر والفوتر)
+    icon: '/images/logo-icon.png', // رمز الشعار فقط
+    og: '/images/og-image.png', // صورة المشاركة على السوشيال
   },
   colors: {
     primary: '#0B2A6F',
