@@ -1,16 +1,46 @@
 ---
+import { site } from '../config/site';
+import { buildContactLink } from '../lib/whatsapp';
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html lang={site.lang} dir={site.dir}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{site.name}</title>
+    <style define:vars={{ primary: site.colors.primary, accent: site.colors.accent }}>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        font-family: system-ui, 'Segoe UI', Tahoma, sans-serif;
+        background: #f5f7fa;
+        color: var(--primary);
+      }
+      main { padding: 24px; }
+      img { max-width: 280px; width: 100%; height: auto; }
+      a.btn {
+        display: inline-block;
+        margin-top: 16px;
+        padding: 12px 24px;
+        border-radius: 8px;
+        background: var(--accent);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <img src={site.logo.store} alt={site.name} />
+      <h1>{site.tagline}</h1>
+      <p>الموقع قيد الإنشاء</p>
+      <a class="btn" href={buildContactLink()} target="_blank" rel="noopener">
+        تواصل عبر واتساب
+      </a>
+    </main>
+  </body>
 </html>
