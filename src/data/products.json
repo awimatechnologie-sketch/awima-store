@@ -1,0 +1,30 @@
+[
+  {
+    "id": "P-0001", "name": "منتج تجريبي 1", "slug": "sample-product-1",
+    "shortDescription": "وصف قصير تجريبي.", "description": "وصف كامل تجريبي يُستبدل لاحقًا.",
+    "price": null, "currency": "MAD", "category": "cat-1",
+    "images": ["/images/placeholder.svg"], "availability": "in_stock",
+    "featured": true, "specs": { "الخاصية": "قيمة" }, "whatsappOrder": true
+  },
+  {
+    "id": "P-0002", "name": "منتج تجريبي 2", "slug": "sample-product-2",
+    "shortDescription": "وصف قصير تجريبي.", "description": "وصف كامل تجريبي يُستبدل لاحقًا.",
+    "price": null, "currency": "MAD", "category": "cat-2",
+    "images": ["/images/placeholder.svg"], "availability": "in_stock",
+    "featured": true, "specs": { "الخاصية": "قيمة" }, "whatsappOrder": true
+  },
+  {
+    "id": "P-0003", "name": "منتج تجريبي 3", "slug": "sample-product-3",
+    "shortDescription": "وصف قصير تجريبي.", "description": "وصف كامل تجريبي يُستبدل لاحقًا.",
+    "price": null, "currency": "MAD", "category": "cat-3",
+    "images": ["/images/placeholder.svg"], "availability": "on_request",
+    "featured": true, "specs": { "الخاصية": "قيمة" }, "whatsappOrder": true
+  },
+  {
+    "id": "P-0004", "name": "منتج تجريبي 4", "slug": "sample-product-4",
+    "shortDescription": "وصف قصير تجريبي.", "description": "وصف كامل تجريبي يُستبدل لاحقًا.",
+    "price": null, "currency": "MAD", "category": "cat-4",
+    "images": ["/images/placeholder.svg"], "availability": "out_of_stock",
+    "featured": true, "specs": { "الخاصية": "قيمة" }, "whatsappOrder": true
+  }
+]

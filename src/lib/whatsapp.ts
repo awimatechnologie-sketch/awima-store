@@ -1,4 +1,5 @@
 import { site } from '../config/site';
+import { formatPrice } from './format';
 import type { Product } from '../types/product';
 
 const base = (number: string, text: string) =>
@@ -10,7 +11,7 @@ export function buildProductLink(product: Product, pageUrl: string): string {
     'مرحبا، أرغب في طلب هذا المنتج:',
     `الاسم: ${product.name}`,
     `المرجع: ${product.id}`,
-    `السعر: ${product.price} ${site.currencyLabel}`,
+    `السعر: ${formatPrice(product.price)}`,
     `الرابط: ${pageUrl}`,
   ].join('\n');
   return base(site.contact.whatsapp, text);

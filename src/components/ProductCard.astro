@@ -1,0 +1,25 @@
+---
+import type { Product } from '../types/product';
+import { formatPrice, availabilityLabel } from '../lib/format';
+interface Props { product: Product; categoryName?: string }
+const { product, categoryName } = Astro.props;
+const av = availabilityLabel[product.availability];
+---
+<a class="card pc" href={`/products/${product.slug}`}>
+  <img src={product.images[0] ?? '/images/placeholder.svg'} alt={product.name} width="400" height="400" loading="lazy" decoding="async" />
+  <div class="body">
+    {categoryName ? <span class="cat">{categoryName}</span> : null}
+    <h3>{product.name}</h3>
+    <p class="price">{formatPrice(product.price)}</p>
+    <span class={`badge ${av.cls}`}>{av.text}</span>
+  </div>
+</a>
+<style>
+  .pc { display: block; text-decoration: none; overflow: hidden; transition: box-shadow 0.15s; }
+  .pc:hover { box-shadow: 0 6px 20px rgba(11, 42, 111, 0.15); }
+  .pc img { width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--c-surface); }
+  .body { padding: 12px; }
+  .cat { font-size: 0.8rem; color: var(--c-muted); }
+  h3 { font-size: 1rem; margin: 2px 0 4px; }
+  .price { font-weight: 700; color: var(--c-accent); margin: 0 0 8px; }
+</style>

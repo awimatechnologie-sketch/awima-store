@@ -1,46 +1,114 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
 import { site } from '../config/site';
 import { buildContactLink } from '../lib/whatsapp';
+import { getCategories, getFeaturedProducts } from '../services/products';
+
+const categories = getCategories();
+const featured = getFeaturedProducts(4);
+const categoryName = Object.fromEntries(categories.map((c) => [c.id, c.name]));
+const waLink = buildContactLink();
+const reasons = [
+  { t: 'طلب سهل عبر واتساب', d: 'اختر المنتج واطلبه بضغطة زر برسالة جاهزة.' },
+  { t: 'أسعار بالدرهم المغربي', d: 'عرض واضح للأسعار بالعملة المحلية.' },
+  { t: 'عرض واضح للمنتجات', d: 'صور ومواصفات تساعدك على الاختيار.' },
+  { t: 'تواصل مباشر', d: 'تكلّم معنا مباشرة لأي استفسار قبل الشراء.' },
+];
 ---
-<!doctype html>
-<html lang={site.lang} dir={site.dir}>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{site.name}</title>
-    <style define:vars={{ primary: site.colors.primary, accent: site.colors.accent }}>
-      body {
-        margin: 0;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        text-align: center;
-        font-family: system-ui, 'Segoe UI', Tahoma, sans-serif;
-        background: #f5f7fa;
-        color: var(--primary);
-      }
-      main { padding: 24px; }
-      img { max-width: 280px; width: 100%; height: auto; }
-      a.btn {
-        display: inline-block;
-        margin-top: 16px;
-        padding: 12px 24px;
-        border-radius: 8px;
-        background: var(--accent);
-        color: #fff;
-        text-decoration: none;
-        font-weight: 600;
-      }
-    </style>
-  </head>
-  <body>
-    <main>
-      <img src={site.logo.store} alt={site.name} />
-      <h1>{site.tagline}</h1>
-      <p>الموقع قيد الإنشاء</p>
-      <a class="btn" href={buildContactLink()} target="_blank" rel="noopener">
-        تواصل عبر واتساب
-      </a>
-    </main>
-  </body>
-</html>
+<BaseLayout description="تصفح منتجاتنا الإلكترونية واطلبها مباشرة عبر واتساب.">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <h1>{site.tagline}</h1>
+        <p class="lead">تصفح منتجاتنا الإلكترونية، واختر ما يناسبك، ثم اطلبه مباشرة عبر واتساب.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/products">تصفح المنتجات</a>
+          <a class="btn btn-wa" href={waLink} target="_blank" rel="noopener">اطلب عبر واتساب</a>
+        </div>
+      </div>
+      <div class="hero-logo card">
+        <img src={site.logo.main} alt="AWIMA" width="320" height="320" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="cats">
+    <div class="container">
+      <h2 id="cats">تسوّق حسب القسم</h2>
+      <div class="grid grid-4">
+        {categories.map((c) => (
+          <a class="card cat" href={`/products?category=${c.slug}`}>{c.name}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" aria-labelledby="feat">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="feat">منتجات مميزة</h2>
+        <a class="link-more" href="/products">عرض الكل</a>
+      </div>
+      <div class="grid grid-4">
+        {featured.map((p) => (
+          <ProductCard product={p} categoryName={categoryName[p.category]} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="promo">
+    <div class="container">
+      <h2>اطلب منتجك مباشرة عبر واتساب</h2>
+      <p>اختر المنتج من الموقع وستصلنا رسالة جاهزة بالاسم والمرجع والرابط.</p>
+      <a class="btn btn-wa" href={waLink} target="_blank" rel="noopener">ابدأ المحادثة</a>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="why">
+    <div class="container">
+      <h2 id="why">لماذا تختارنا؟</h2>
+      <div class="grid grid-4">
+        {reasons.map((r) => (
+          <div class="card why">
+            <h3>{r.t}</h3>
+            <p>{r.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" aria-labelledby="talk">
+    <div class="container talk">
+      <h2 id="talk">تحدّث معنا</h2>
+      <p>لأي استفسار أو طلب خاص، راسلنا على واتساب.</p>
+      <div class="actions">
+        <a class="btn btn-wa" href={`https://wa.me/${site.contact.whatsapp}`} target="_blank" rel="noopener">{site.contact.phoneDisplay}</a>
+        <a class="btn btn-outline" href={`https://wa.me/${site.contact.whatsappSecondary}`} target="_blank" rel="noopener">{site.contact.phoneSecondaryDisplay}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { background: linear-gradient(180deg, var(--c-surface), #fff); padding-block: 32px; }
+  .hero-grid { display: grid; gap: 24px; align-items: center; }
+  .lead { color: var(--c-muted); font-size: 1.1rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero-logo { padding: 16px; max-width: 320px; justify-self: center; }
+  .cat { display: grid; place-items: center; min-height: 90px; font-weight: 700; color: var(--c-primary); text-decoration: none; text-align: center; padding: 12px; }
+  .cat:hover { border-color: var(--c-accent); }
+  .promo { background: var(--c-primary); color: #fff; padding-block: 40px; text-align: center; }
+  .promo h2 { color: #fff; }
+  .why { padding: 18px; }
+  .why h3 { font-size: 1.05rem; }
+  .why p { margin: 0; color: var(--c-muted); font-size: 0.95rem; }
+  .talk { text-align: center; }
+  .talk .actions { justify-content: center; }
+  @media (min-width: 860px) {
+    .hero { padding-block: 64px; }
+    .hero-grid { grid-template-columns: 1.3fr 1fr; }
+  }
+</style>

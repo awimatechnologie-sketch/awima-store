@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="صورة مؤقتة">
+  <rect width="400" height="400" fill="#EEF2F7"/>
+  <rect x="130" y="120" width="140" height="160" rx="16" fill="none" stroke="#9AA7BC" stroke-width="10"/>
+  <circle cx="200" cy="250" r="9" fill="#9AA7BC"/>
+</svg>

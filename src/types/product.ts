@@ -4,7 +4,7 @@ export interface Product {
   slug: string;
   shortDescription: string;
   description: string;
-  price: number;
+  price: number | null; // null = اتصل لمعرفة السعر
   currency: string;
   category: string; // معرّف القسم
   images: string[];

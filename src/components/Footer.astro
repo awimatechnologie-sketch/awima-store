@@ -1,0 +1,41 @@
+---
+import { site } from '../config/site';
+const socials = Object.entries(site.social).filter(([, url]) => url);
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="container cols">
+    <div>
+      <img src={site.logo.main} alt="AWIMA" height="64" loading="lazy" />
+      <p>{site.tagline}</p>
+    </div>
+    <div>
+      <h3>تواصل معنا</h3>
+      <p><a href={`https://wa.me/${site.contact.whatsapp}`}>واتساب: {site.contact.phoneDisplay}</a></p>
+      <p><a href={`https://wa.me/${site.contact.whatsappSecondary}`}>واتساب: {site.contact.phoneSecondaryDisplay}</a></p>
+      {site.contact.email ? <p>{site.contact.email}</p> : null}
+      {site.contact.address ? <p>{site.contact.address}</p> : null}
+    </div>
+    <div>
+      <h3>روابط</h3>
+      <p><a href="/products">المنتجات</a></p>
+      <p><a href="/about">من نحن</a></p>
+      <p><a href="/contact">اتصل بنا</a></p>
+      {socials.map(([name, url]) => (
+        <p><a href={url} rel="noopener" target="_blank">{name}</a></p>
+      ))}
+    </div>
+  </div>
+  <div class="copy container">© {year} {site.name}</div>
+</footer>
+<style>
+  .footer { background: var(--c-primary); color: #fff; padding-top: 40px; }
+  .cols { display: grid; gap: 24px; }
+  .footer h3 { color: #fff; }
+  .footer a { color: #cfe0ff; text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+  .footer img { height: 64px; width: auto; background: #fff; border-radius: 8px; padding: 4px; margin-bottom: 8px; }
+  .footer p { margin: 0 0 6px; }
+  .copy { text-align: center; padding-block: 20px; margin-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.9rem; }
+  @media (min-width: 720px) { .cols { grid-template-columns: 2fr 1.5fr 1fr; } }
+</style>
