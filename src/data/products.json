@@ -1,30 +1,304 @@
 [
   {
-    "id": "P-0001", "name": "منتج تجريبي 1", "slug": "sample-product-1",
-    "shortDescription": "وصف قصير تجريبي.", "description": "وصف كامل تجريبي يُستبدل لاحقًا.",
-    "price": null, "currency": "MAD", "category": "cat-1",
-    "images": ["/images/placeholder.svg"], "availability": "in_stock",
-    "featured": true, "specs": { "الخاصية": "قيمة" }, "whatsappOrder": true
+    "id": "P-0001",
+    "name": "فلاش USB",
+    "slug": "usb-flash-drive",
+    "shortDescription": "ذاكرة فلاش بموصل USB-A.",
+    "description": "ذاكرة فلاش بموصل USB-A. هذا منتج تجريبي بصور توضيحية، يُستبدل بالوصف والصور الحقيقية.",
+    "price": null,
+    "currency": "MAD",
+    "category": "cat-storage",
+    "images": [
+      "/images/products/usb-flash-drive-1.svg",
+      "/images/products/usb-flash-drive-2.svg",
+      "/images/products/usb-flash-drive-3.svg"
+    ],
+    "availability": "in_stock",
+    "featured": true,
+    "specs": {
+      "النوع": "ذاكرة فلاش",
+      "الموصل": "USB-A"
+    },
+    "whatsappOrder": true
   },
   {
-    "id": "P-0002", "name": "منتج تجريبي 2", "slug": "sample-product-2",
-    "shortDescription": "وصف قصير تجريبي.", "description": "وصف كامل تجريبي يُستبدل لاحقًا.",
-    "price": null, "currency": "MAD", "category": "cat-2",
-    "images": ["/images/placeholder.svg"], "availability": "in_stock",
-    "featured": true, "specs": { "الخاصية": "قيمة" }, "whatsappOrder": true
+    "id": "P-0002",
+    "name": "بطاقة ذاكرة SD",
+    "slug": "sd-card",
+    "shortDescription": "بطاقة SD للكاميرات والأجهزة.",
+    "description": "بطاقة SD للكاميرات والأجهزة. هذا منتج تجريبي بصور توضيحية، يُستبدل بالوصف والصور الحقيقية.",
+    "price": null,
+    "currency": "MAD",
+    "category": "cat-storage",
+    "images": [
+      "/images/products/sd-card-1.svg",
+      "/images/products/sd-card-2.svg",
+      "/images/products/sd-card-3.svg"
+    ],
+    "availability": "on_request",
+    "featured": false,
+    "specs": {
+      "النوع": "بطاقة SD"
+    },
+    "whatsappOrder": true
   },
   {
-    "id": "P-0003", "name": "منتج تجريبي 3", "slug": "sample-product-3",
-    "shortDescription": "وصف قصير تجريبي.", "description": "وصف كامل تجريبي يُستبدل لاحقًا.",
-    "price": null, "currency": "MAD", "category": "cat-3",
-    "images": ["/images/placeholder.svg"], "availability": "on_request",
-    "featured": true, "specs": { "الخاصية": "قيمة" }, "whatsappOrder": true
+    "id": "P-0003",
+    "name": "بطاقة ذاكرة microSD",
+    "slug": "microsd-card",
+    "shortDescription": "بطاقة microSD للهواتف.",
+    "description": "بطاقة microSD للهواتف. هذا منتج تجريبي بصور توضيحية، يُستبدل بالوصف والصور الحقيقية.",
+    "price": null,
+    "currency": "MAD",
+    "category": "cat-storage",
+    "images": [
+      "/images/products/microsd-card-1.svg",
+      "/images/products/microsd-card-2.svg",
+      "/images/products/microsd-card-3.svg"
+    ],
+    "availability": "on_request",
+    "featured": false,
+    "specs": {
+      "النوع": "بطاقة microSD"
+    },
+    "whatsappOrder": true
   },
   {
-    "id": "P-0004", "name": "منتج تجريبي 4", "slug": "sample-product-4",
-    "shortDescription": "وصف قصير تجريبي.", "description": "وصف كامل تجريبي يُستبدل لاحقًا.",
-    "price": null, "currency": "MAD", "category": "cat-4",
-    "images": ["/images/placeholder.svg"], "availability": "out_of_stock",
-    "featured": true, "specs": { "الخاصية": "قيمة" }, "whatsappOrder": true
+    "id": "P-0004",
+    "name": "قارئ بطاقات SD و microSD",
+    "slug": "usb-card-reader",
+    "shortDescription": "قارئ بطاقات بموصل USB-A.",
+    "description": "قارئ بطاقات بموصل USB-A. هذا منتج تجريبي بصور توضيحية، يُستبدل بالوصف والصور الحقيقية.",
+    "price": null,
+    "currency": "MAD",
+    "category": "cat-storage",
+    "images": [
+      "/images/products/usb-card-reader-1.svg",
+      "/images/products/usb-card-reader-2.svg",
+      "/images/products/usb-card-reader-3.svg"
+    ],
+    "availability": "on_request",
+    "featured": false,
+    "specs": {
+      "الفتحات": "SD و microSD",
+      "الموصل": "USB-A"
+    },
+    "whatsappOrder": true
+  },
+  {
+    "id": "P-0005",
+    "name": "كابل USB-A إلى USB-C",
+    "slug": "usb-a-to-usb-c-cable",
+    "shortDescription": "كابل شحن ونقل بيانات.",
+    "description": "كابل شحن ونقل بيانات. هذا منتج تجريبي بصور توضيحية، يُستبدل بالوصف والصور الحقيقية.",
+    "price": null,
+    "currency": "MAD",
+    "category": "cat-cables",
+    "images": [
+      "/images/products/usb-a-to-usb-c-cable-1.svg",
+      "/images/products/usb-a-to-usb-c-cable-2.svg",
+      "/images/products/usb-a-to-usb-c-cable-3.svg"
+    ],
+    "availability": "on_request",
+    "featured": true,
+    "specs": {
+      "الموصلان": "USB-A إلى USB-C"
+    },
+    "whatsappOrder": true
+  },
+  {
+    "id": "P-0006",
+    "name": "كابل USB-A إلى Lightning",
+    "slug": "lightning-cable",
+    "shortDescription": "كابل شحن ونقل بيانات للآيفون.",
+    "description": "كابل شحن ونقل بيانات للآيفون. هذا منتج تجريبي بصور توضيحية، يُستبدل بالوصف والصور الحقيقية.",
+    "price": null,
+    "currency": "MAD",
+    "category": "cat-cables",
+    "images": [
+      "/images/products/lightning-cable-1.svg",
+      "/images/products/lightning-cable-2.svg",
+      "/images/products/lightning-cable-3.svg"
+    ],
+    "availability": "on_request",
+    "featured": false,
+    "specs": {
+      "الموصلان": "USB-A إلى Lightning"
+    },
+    "whatsappOrder": true
+  },
+  {
+    "id": "P-0007",
+    "name": "كابل USB-A إلى Micro USB",
+    "slug": "micro-usb-cable",
+    "shortDescription": "كابل شحن ونقل بيانات.",
+    "description": "كابل شحن ونقل بيانات. هذا منتج تجريبي بصور توضيحية، يُستبدل بالوصف والصور الحقيقية.",
+    "price": null,
+    "currency": "MAD",
+    "category": "cat-cables",
+    "images": [
+      "/images/products/micro-usb-cable-1.svg",
+      "/images/products/micro-usb-cable-2.svg",
+      "/images/products/micro-usb-cable-3.svg"
+    ],
+    "availability": "on_request",
+    "featured": false,
+    "specs": {
+      "الموصلان": "USB-A إلى Micro USB"
+    },
+    "whatsappOrder": true
+  },
+  {
+    "id": "P-0008",
+    "name": "كابل 3 في 1",
+    "slug": "cable-3-in-1",
+    "shortDescription": "كابل واحد بثلاثة رؤوس: USB-C وLightning وMicro USB.",
+    "description": "كابل واحد بثلاثة رؤوس: USB-C وLightning وMicro USB. هذا منتج تجريبي بصور توضيحية، يُستبدل بالوصف والصور الحقيقية.",
+    "price": null,
+    "currency": "MAD",
+    "category": "cat-cables",
+    "images": [
+      "/images/products/cable-3-in-1-1.svg",
+      "/images/products/cable-3-in-1-2.svg",
+      "/images/products/cable-3-in-1-3.svg"
+    ],
+    "availability": "on_request",
+    "featured": false,
+    "specs": {
+      "الرؤوس": "USB-C وLightning وMicro USB"
+    },
+    "whatsappOrder": true
+  },
+  {
+    "id": "P-0009",
+    "name": "محول OTG من USB-C إلى USB-A",
+    "slug": "otg-usb-c-adapter",
+    "shortDescription": "يتيح توصيل فلاش أو ماوس أو قارئ بطاقات بالهاتف.",
+    "description": "يتيح توصيل فلاش أو ماوس أو قارئ بطاقات بالهاتف. هذا منتج تجريبي بصور توضيحية، يُستبدل بالوصف والصور الحقيقية.",
+    "price": null,
+    "currency": "MAD",
+    "category": "cat-adapters",
+    "images": [
+      "/images/products/otg-usb-c-adapter-1.svg",
+      "/images/products/otg-usb-c-adapter-2.svg",
+      "/images/products/otg-usb-c-adapter-3.svg"
+    ],
+    "availability": "on_request",
+    "featured": true,
+    "specs": {
+      "الدخل": "USB-C (ذكر)",
+      "الخرج": "USB-A (أنثى)"
+    },
+    "whatsappOrder": true
+  },
+  {
+    "id": "P-0010",
+    "name": "محول OTG من Micro USB إلى USB-A",
+    "slug": "otg-micro-usb-adapter",
+    "shortDescription": "يتيح توصيل ملحقات USB بالهواتف ذات منفذ Micro USB.",
+    "description": "يتيح توصيل ملحقات USB بالهواتف ذات منفذ Micro USB. هذا منتج تجريبي بصور توضيحية، يُستبدل بالوصف والصور الحقيقية.",
+    "price": null,
+    "currency": "MAD",
+    "category": "cat-adapters",
+    "images": [
+      "/images/products/otg-micro-usb-adapter-1.svg",
+      "/images/products/otg-micro-usb-adapter-2.svg",
+      "/images/products/otg-micro-usb-adapter-3.svg"
+    ],
+    "availability": "on_request",
+    "featured": false,
+    "specs": {
+      "الدخل": "Micro USB (ذكر)",
+      "الخرج": "USB-A (أنثى)"
+    },
+    "whatsappOrder": true
+  },
+  {
+    "id": "P-0011",
+    "name": "محول USB-C إلى HDMI",
+    "slug": "usbc-to-hdmi-adapter",
+    "shortDescription": "لعرض شاشة الجهاز على التلفاز أو الشاشة.",
+    "description": "لعرض شاشة الجهاز على التلفاز أو الشاشة. هذا منتج تجريبي بصور توضيحية، يُستبدل بالوصف والصور الحقيقية.",
+    "price": null,
+    "currency": "MAD",
+    "category": "cat-adapters",
+    "images": [
+      "/images/products/usbc-to-hdmi-adapter-1.svg",
+      "/images/products/usbc-to-hdmi-adapter-2.svg",
+      "/images/products/usbc-to-hdmi-adapter-3.svg"
+    ],
+    "availability": "on_request",
+    "featured": false,
+    "specs": {
+      "الدخل": "USB-C (ذكر)",
+      "الخرج": "HDMI (أنثى)"
+    },
+    "whatsappOrder": true
+  },
+  {
+    "id": "P-0012",
+    "name": "محول SATA إلى USB لربط القرص بالحاسوب",
+    "slug": "sata-to-usb-adapter",
+    "shortDescription": "يربط قرصًا صلبًا SATA بالحاسوب كقرص خارجي.",
+    "description": "يربط قرصًا صلبًا SATA بالحاسوب كقرص خارجي. هذا منتج تجريبي بصور توضيحية، يُستبدل بالوصف والصور الحقيقية.",
+    "price": null,
+    "currency": "MAD",
+    "category": "cat-disk",
+    "images": [
+      "/images/products/sata-to-usb-adapter-1.svg",
+      "/images/products/sata-to-usb-adapter-2.svg",
+      "/images/products/sata-to-usb-adapter-3.svg"
+    ],
+    "availability": "on_request",
+    "featured": true,
+    "specs": {
+      "الموصل الأول": "SATA",
+      "الموصل الثاني": "USB-A"
+    },
+    "whatsappOrder": true
+  },
+  {
+    "id": "P-0013",
+    "name": "علبة قرص صلب خارجي 2.5 بوصة",
+    "slug": "hdd-enclosure-2-5",
+    "shortDescription": "علبة لتحويل قرص 2.5 بوصة إلى قرص خارجي.",
+    "description": "علبة لتحويل قرص 2.5 بوصة إلى قرص خارجي. هذا منتج تجريبي بصور توضيحية، يُستبدل بالوصف والصور الحقيقية.",
+    "price": null,
+    "currency": "MAD",
+    "category": "cat-disk",
+    "images": [
+      "/images/products/hdd-enclosure-2-5-1.svg",
+      "/images/products/hdd-enclosure-2-5-2.svg",
+      "/images/products/hdd-enclosure-2-5-3.svg"
+    ],
+    "availability": "on_request",
+    "featured": false,
+    "specs": {
+      "حجم القرص": "2.5 بوصة",
+      "المنفذ": "USB-C"
+    },
+    "whatsappOrder": true
+  },
+  {
+    "id": "P-0014",
+    "name": "موزع USB بأربعة منافذ",
+    "slug": "usb-hub-4-port",
+    "shortDescription": "يوسّع عدد منافذ USB في الحاسوب.",
+    "description": "يوسّع عدد منافذ USB في الحاسوب. هذا منتج تجريبي بصور توضيحية، يُستبدل بالوصف والصور الحقيقية.",
+    "price": null,
+    "currency": "MAD",
+    "category": "cat-disk",
+    "images": [
+      "/images/products/usb-hub-4-port-1.svg",
+      "/images/products/usb-hub-4-port-2.svg",
+      "/images/products/usb-hub-4-port-3.svg"
+    ],
+    "availability": "on_request",
+    "featured": false,
+    "specs": {
+      "عدد المنافذ": "4",
+      "الموصل": "USB-C"
+    },
+    "whatsappOrder": true
   }
 ]

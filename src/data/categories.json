@@ -1,6 +1,22 @@
 [
-  { "id": "cat-1", "name": "هواتف", "slug": "phones" },
-  { "id": "cat-2", "name": "إكسسوارات", "slug": "accessories" },
-  { "id": "cat-3", "name": "شواحن وكوابل", "slug": "chargers-cables" },
-  { "id": "cat-4", "name": "سماعات", "slug": "audio" }
+  {
+    "id": "cat-storage",
+    "name": "ذاكرة وتخزين",
+    "slug": "storage"
+  },
+  {
+    "id": "cat-cables",
+    "name": "كوابل",
+    "slug": "cables"
+  },
+  {
+    "id": "cat-adapters",
+    "name": "محولات و OTG",
+    "slug": "adapters"
+  },
+  {
+    "id": "cat-disk",
+    "name": "ربط الأقراص بالحاسوب",
+    "slug": "disk-connect"
+  }
 ]
