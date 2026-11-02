@@ -49,6 +49,7 @@ function normalizeProduct(file: string, r: any): Product {
     featured: Boolean(r.featured),
     specs: normalizeSpecs(r.specs),
     whatsappOrder: r.whatsappOrder !== false,
+    hidden: Boolean(r.hidden),
   };
 }
 
@@ -61,7 +62,7 @@ const categories: Category[] = Object.entries(categoryFiles)
   .sort((a, b) => a.order - b.order || a.name.localeCompare(b.name, 'ar'))
   .map(({ id, name, slug }) => ({ id, name, slug }));
 
-const products: Product[] = Object.entries(productFiles)
+const allProducts: Product[] = Object.entries(productFiles)
   .map(([file, r]) => normalizeProduct(file, r))
   .sort((a, b) => a.id.localeCompare(b.id));
 
@@ -73,7 +74,7 @@ for (const c of categories) {
   if (catSlugs.has(c.slug)) throw new Error(`slug قسم مكرر: ${c.slug}`);
   catSlugs.add(c.slug);
 }
-for (const p of products) {
+for (const p of allProducts) {
   if (ids.has(p.id)) throw new Error(`معرّف مكرر: ${p.id}`);
   if (slugs.has(p.slug)) throw new Error(`slug مكرر: ${p.slug}`);
   if (!categories.some((c) => c.id === p.category))
@@ -82,8 +83,15 @@ for (const p of products) {
   slugs.add(p.slug);
 }
 
+// المنتجات المخفية (مسودات) لا تظهر في الموقع
+const products: Product[] = allProducts.filter((p) => !p.hidden);
+
+// الأقسام الفارغة لا تظهر في التنقل (الرئيسية وصفحة المنتجات)
+const usedCategories = categories.filter((c) => products.some((p) => p.category === c.id));
+
 export const getAllProducts = (): Product[] => products;
-export const getCategories = (): Category[] => categories;
+export const getCategories = (): Category[] => usedCategories;
+export const getAllCategories = (): Category[] => categories;
 export const getFeaturedProducts = (limit = 4): Product[] =>
   products.filter((p) => p.featured).slice(0, limit);
 export const getProductBySlug = (slug: string): Product | undefined =>

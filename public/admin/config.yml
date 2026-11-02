@@ -63,10 +63,12 @@ collections:
         name: specs
         widget: list
         required: false
+        hint: 'أمثلة للعلب: عدد الخانات، الأبعاد، المادة، الاستعمال. وللإكسسوارات: التوافق، اللون.'
         fields:
           - { label: الاسم (مثل السعة), name: key, widget: string }
           - { label: القيمة (مثل 64 جيجابايت), name: value, widget: string }
       - { label: الطلب عبر واتساب, name: whatsappOrder, widget: boolean, default: true }
+      - { label: إخفاء المنتج من الموقع (مسودة), name: hidden, widget: boolean, default: false, required: false, hint: 'فعّله لتجهيز منتج دون نشره، أو لإخفائه مؤقتاً دون حذفه' }
 
   # ---------------- الأقسام ----------------
   - name: categories
@@ -107,6 +109,31 @@ collections:
             field: { label: هدف, name: goal, widget: string }
           - { label: الفلسفة, name: philosophy, widget: text, required: false }
           - { label: صورة (اختيارية), name: image, widget: image, required: false }
+      - label: صفحة Awima Box
+        name: awima_box_page
+        file: src/data/pages/awima-box.json
+        format: json
+        fields:
+          - { label: العنوان, name: title, widget: string }
+          - { label: العبارة تحت العنوان, name: tagline, widget: string, required: false }
+          - { label: مقدمة, name: intro, widget: text }
+          - label: خطوات العمل
+            name: steps
+            widget: list
+            required: false
+            fields:
+              - { label: عنوان الخطوة, name: title, widget: string }
+              - { label: الشرح, name: text, widget: text, required: false }
+          - label: المزايا (واحدة في كل سطر)
+            name: benefits
+            widget: list
+            required: false
+            field: { label: ميزة, name: benefit, widget: string }
+          - { label: عنوان قسم المنتجات, name: productsTitle, widget: string, required: false }
+          - { label: نص يظهر عند عدم وجود منتجات, name: emptyText, widget: text, required: false }
+          - { label: عنوان قسم التطبيق, name: appTitle, widget: string, required: false }
+          - { label: نص قسم التطبيق (اتركه فارغاً لإخفائه), name: appText, widget: text, required: false }
+          - { label: رسالة واتساب الجاهزة, name: ctaText, widget: string }
       - label: صفحة اتصل بنا
         name: contact_page
         file: src/data/pages/contact.json

@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { getProductsByCategory } from '../services/products';
+import { buildContactLink } from '../lib/whatsapp';
+import box from '../data/pages/awima-box.json';
+
+const products = getProductsByCategory('cat-awima-box');
+const steps = (box.steps ?? []).filter((s) => s?.title);
+const benefits = (box.benefits ?? []).filter(Boolean);
+---
+<BaseLayout title={box.title} description={box.intro}>
+  <section class="hero">
+    <div class="container">
+      <h1>{box.title}</h1>
+      {box.tagline && <p class="tag">{box.tagline}</p>}
+      {box.intro && <p class="intro">{box.intro}</p>}
+      <div class="actions">
+        <a class="btn btn-wa" href={buildContactLink(box.ctaText)} target="_blank" rel="noopener">اسأل عبر واتساب</a>
+        {products.length > 0 && <a class="btn btn-light" href="#boxes">شاهد العلب</a>}
+      </div>
+    </div>
+  </section>
+
+  {steps.length > 0 && (
+    <section class="section">
+      <div class="container">
+        <h2>كيف تعمل؟</h2>
+        <ol class="steps">
+          {steps.map((s, i) => (
+            <li class="card">
+              <span class="num">{i + 1}</span>
+              <h3>{s.title}</h3>
+              {s.text && <p>{s.text}</p>}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  )}
+
+  <section class="section section-alt" id="boxes">
+    <div class="container">
+      <h2>{box.productsTitle || 'علب التخزين'}</h2>
+      {products.length > 0 ? (
+        <ul class="grid grid-4 list">
+          {products.map((p) => (
+            <li><ProductCard product={p} categoryName="Awima Box" /></li>
+          ))}
+        </ul>
+      ) : (
+        <div class="card empty">
+          <p>{box.emptyText}</p>
+          <a class="btn btn-wa" href={buildContactLink(box.ctaText)} target="_blank" rel="noopener">تواصل عبر واتساب</a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  {(benefits.length > 0 || box.appText) && (
+    <section class="section">
+      <div class="container two">
+        {benefits.length > 0 && (
+          <div>
+            <h2>لماذا Awima Box؟</h2>
+            <ul class="benefits">{benefits.map((b) => <li>{b}</li>)}</ul>
+          </div>
+        )}
+        {box.appText && (
+          <div class="card app">
+            <h2>{box.appTitle}</h2>
+            <p>{box.appText}</p>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+</BaseLayout>
+<style>
+  .hero { background: var(--c-primary); color: #fff; padding-block: 48px; }
+  .hero h1 { margin: 0 0 8px; color: #fff; font-size: 2rem; }
+  .tag { margin: 0 0 12px; color: #cfe0ff; font-weight: 600; font-size: 1.1rem; }
+  .intro { max-width: 640px; line-height: 1.9; margin: 0 0 20px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn-light { background: #fff; color: var(--c-primary); }
+  h2 { margin: 0 0 16px; color: var(--c-primary); }
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+  .steps .card { padding: 20px; }
+  .steps h3 { margin: 8px 0 4px; }
+  .steps p { margin: 0; color: var(--c-muted); line-height: 1.8; }
+  .num { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--c-accent); color: #fff; font-weight: 700; }
+  .list { list-style: none; padding: 0; margin: 0; }
+  .empty { text-align: center; padding: 32px 16px; }
+  .empty p { color: var(--c-muted); margin: 0 0 16px; }
+  .two { display: grid; gap: 24px; }
+  .benefits { padding-inline-start: 20px; line-height: 2.1; color: var(--c-muted); margin: 0; }
+  .app { padding: 20px; }
+  .app p { margin: 0; line-height: 1.9; color: var(--c-muted); }
+  @media (min-width: 720px) {
+    .steps { grid-template-columns: repeat(3, 1fr); }
+    .two { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 2.6rem; }
+  }
+</style>

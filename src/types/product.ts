@@ -13,6 +13,7 @@ export interface Product {
   featured: boolean;
   specs: Record<string, string>;
   whatsappOrder: boolean;
+  hidden?: boolean; // مخفي من الموقع (مسودة) دون حذفه
 }
 
 export interface Category {
