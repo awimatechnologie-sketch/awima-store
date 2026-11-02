@@ -48,6 +48,7 @@ collections:
         name: images
         widget: list
         required: false
+        hint: 'ارفع JPG أو PNG أو WebP بأي حجم؛ تُصغَّر إلى عرض 1200px وتُضغط تلقائياً عند البناء. يُفضّل صورة مربعة تقريباً بخلفية نظيفة.'
         field: { label: صورة, name: image, widget: image }
       - label: حالة التوفر
         name: availability
