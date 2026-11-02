@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { site } from '../../config/site';
+import { buildProductLink } from '../../lib/whatsapp';
+import { formatPrice, getSaving, availabilityLabel } from '../../lib/format';
+import { getAllProducts, getCategories, getProductBySlug } from '../../services/products';
+
+export function getStaticPaths() {
+  return getAllProducts().map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const product = getProductBySlug(slug as string)!;
+const categories = getCategories();
+const category = categories.find((c) => c.id === product.category);
+const catName = Object.fromEntries(categories.map((c) => [c.id, c.name]));
+
+const pageUrl = new URL(`/products/${product.slug}`, site.url).href;
+const waLink = buildProductLink(product, pageUrl);
+const av = availabilityLabel[product.availability];
+const saving = getSaving(product.price, product.oldPrice);
+const images = product.images.length ? product.images : ['/images/placeholder.svg'];
+const specs = Object.entries(product.specs ?? {});
+const phoneHref = `tel:+${site.contact.whatsapp}`;
+
+const others = getAllProducts().filter((p) => p.id !== product.id);
+const related = [
+  ...others.filter((p) => p.category === product.category),
+  ...others.filter((p) => p.category !== product.category),
+].slice(0, 4);
+
+const ld: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: product.name,
+  image: images.map((i) => new URL(i, site.url).href),
+  description: product.description,
+  sku: product.id,
+};
+if (product.price !== null) {
+  ld.offers = {
+    '@type': 'Offer',
+    price: String(product.price),
+    priceCurrency: site.currency,
+    url: pageUrl,
+    ...(product.availability === 'in_stock' ? { availability: 'https://schema.org/InStock' } : {}),
+    ...(product.availability === 'out_of_stock' ? { availability: 'https://schema.org/OutOfStock' } : {}),
+  };
+}
+---
+<BaseLayout
+  title={product.name}
+  description={product.shortDescription}
+  image={images[0]}
+  ogType="product"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(ld)} />
+
+  <section class="section">
+    <div class="container">
+      <nav class="crumbs" aria-label="مسار التنقل">
+        <a href="/">الرئيسية</a> ‹ <a href="/products">المنتجات</a>
+        {category ? <> ‹ <a href={`/products?category=${category.slug}`}>{category.name}</a></> : null}
+      </nav>
+
+      <div class="layout">
+        <div class="gallery">
+          <div class="main card">
+            <img id="main-img" src={images[0]} alt={product.name} width="800" height="800" fetchpriority="high" />
+          </div>
+          {images.length > 1 ? (
+            <div class="thumbs" role="group" aria-label="صور المنتج">
+              {images.map((src, i) => (
+                <button type="button" class="thumb" data-src={src} aria-current={i === 0 ? 'true' : undefined} aria-label={`صورة ${i + 1}`}>
+                  <img src={src} alt="" width="120" height="120" loading="lazy" />
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
+
+        <div class="info">
+          {category ? <span class="cat">{category.name}</span> : null}
+          <h1>{product.name}</h1>
+          <p class="ref">المرجع: {product.id}</p>
+
+          <p class="prices">
+            <span class="price">{formatPrice(product.price)}</span>
+            {saving ? <del class="old">{formatPrice(product.oldPrice)}</del> : null}
+            {saving ? <span class="save">وفّر {formatPrice(saving)}</span> : null}
+          </p>
+          <span class={`badge ${av.cls}`}>{av.text}</span>
+
+          <p class="short">{product.shortDescription}</p>
+
+          <div class="actions">
+            {product.whatsappOrder ? (
+              <a class="btn btn-wa" href={waLink} target="_blank" rel="noopener">
+                {product.availability === 'out_of_stock' ? 'اسأل عن التوفر عبر واتساب' : 'اطلب عبر واتساب'}
+              </a>
+            ) : null}
+            <a class="btn btn-outline" href={phoneHref}>اتصل بنا</a>
+          </div>
+          <p class="note">عند الضغط على الزر تُفتح محادثة واتساب برسالة جاهزة تحمل اسم المنتج ومرجعه وسعره ورابطه.</p>
+        </div>
+      </div>
+
+      <div class="details">
+        <section>
+          <h2>الوصف</h2>
+          <p>{product.description}</p>
+        </section>
+        {specs.length ? (
+          <section>
+            <h2>المواصفات</h2>
+            <table class="specs">
+              <tbody>
+                {specs.map(([k, v]) => (
+                  <tr><th scope="row">{k}</th><td>{v}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+        ) : null}
+      </div>
+    </div>
+  </section>
+
+  {related.length ? (
+    <section class="section section-alt" aria-labelledby="rel">
+      <div class="container">
+        <h2 id="rel">منتجات مشابهة</h2>
+        <div class="grid grid-4">
+          {related.map((p) => <ProductCard product={p} categoryName={catName[p.category]} />)}
+        </div>
+      </div>
+    </section>
+  ) : null}
+</BaseLayout>
+
+<style>
+  .crumbs { font-size: 0.9rem; color: var(--c-muted); margin-bottom: 16px; }
+  .crumbs a { color: var(--c-accent); text-decoration: none; }
+  .layout { display: grid; gap: 24px; }
+  .main { overflow: hidden; }
+  .main img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #fff; }
+  .thumbs { display: flex; gap: 8px; margin-top: 10px; overflow-x: auto; }
+  .thumb { border: 2px solid var(--c-border); border-radius: 10px; padding: 0; background: #fff; cursor: pointer; width: 76px; height: 76px; flex: none; overflow: hidden; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb[aria-current='true'] { border-color: var(--c-accent); }
+  .cat { font-size: 0.9rem; color: var(--c-muted); }
+  h1 { margin: 4px 0; }
+  .ref { color: var(--c-muted); font-size: 0.9rem; margin-bottom: 12px; }
+  .prices { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin: 0 0 8px; }
+  .price { font-size: 1.8rem; font-weight: 800; color: var(--c-accent); }
+  .old { color: var(--c-muted); font-size: 1.05rem; }
+  .save { background: var(--c-alert); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 3px 12px; border-radius: 999px; }
+  .short { margin-top: 14px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+  .note { color: var(--c-muted); font-size: 0.85rem; margin-top: 10px; }
+  .details { display: grid; gap: 24px; margin-top: 32px; }
+  .specs { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--c-border); border-radius: 10px; overflow: hidden; }
+  .specs th, .specs td { text-align: start; padding: 10px 14px; border-bottom: 1px solid var(--c-border); }
+  .specs th { width: 38%; background: var(--c-surface); color: var(--c-primary); font-weight: 600; }
+  @media (min-width: 860px) {
+    .layout { grid-template-columns: 1fr 1fr; align-items: start; gap: 40px; }
+    .details { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+
+<script>
+  const main = document.getElementById('main-img') as HTMLImageElement | null;
+  const thumbs = document.querySelectorAll<HTMLButtonElement>('.thumb');
+  thumbs.forEach((b) =>
+    b.addEventListener('click', () => {
+      if (!main || !b.dataset.src) return;
+      main.src = b.dataset.src;
+      thumbs.forEach((t) => t.removeAttribute('aria-current'));
+      b.setAttribute('aria-current', 'true');
+    })
+  );
+</script>

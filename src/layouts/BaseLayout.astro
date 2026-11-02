@@ -4,8 +4,8 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../config/site';
 
-interface Props { title?: string; description?: string; image?: string }
-const { title, description = site.tagline, image = site.logo.og } = Astro.props;
+interface Props { title?: string; description?: string; image?: string; ogType?: string }
+const { title, description = site.tagline, image = site.logo.og, ogType = 'website' } = Astro.props;
 const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | ${site.tagline}`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const ogImage = new URL(image, site.url).href;
@@ -20,7 +20,7 @@ const ogImage = new URL(image, site.url).href;
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" href={site.logo.icon} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
@@ -28,6 +28,7 @@ const ogImage = new URL(image, site.url).href;
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content={site.colors.primary} />
+    <slot name="head" />
   </head>
   <body>
     <Header />
