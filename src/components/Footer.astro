@@ -1,5 +1,6 @@
 ---
 import { site } from '../config/site';
+import HoursBadge from './HoursBadge.astro';
 const socials = Object.entries(site.social).filter(([, url]) => url);
 const year = new Date().getFullYear();
 ---
@@ -11,14 +12,16 @@ const year = new Date().getFullYear();
     </div>
     <div>
       <h3>تواصل معنا</h3>
-      <p><a href={`https://wa.me/${site.contact.whatsapp}`}>واتساب: {site.contact.phoneDisplay}</a></p>
-      <p><a href={`https://wa.me/${site.contact.whatsappSecondary}`}>واتساب: {site.contact.phoneSecondaryDisplay}</a></p>
+      {site.contact.whatsapp ? <p><a href={`https://wa.me/${site.contact.whatsapp}`}>واتساب: {site.contact.phoneDisplay}</a></p> : null}
+      {site.contact.whatsappSecondary ? <p><a href={`https://wa.me/${site.contact.whatsappSecondary}`}>واتساب: {site.contact.phoneSecondaryDisplay}</a></p> : null}
       {site.contact.email ? <p>{site.contact.email}</p> : null}
       {site.contact.address ? <p>{site.contact.address}</p> : null}
+      <p><HoursBadge light /></p>
     </div>
     <div>
       <h3>روابط</h3>
       <p><a href="/products">المنتجات</a></p>
+      <p><a href="/cart">السلة</a></p>
       <p><a href="/awima-box">Awima Box</a></p>
       <p><a href="/about">من نحن</a></p>
       <p><a href="/contact">اتصل بنا</a></p>

@@ -7,8 +7,10 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "check": "node scripts/check-data.mjs",
+    "test": "node --test",
     "optimize": "node scripts/optimize-images.mjs",
-    "build": "node scripts/optimize-images.mjs && astro build",
+    "build": "node scripts/check-data.mjs && node scripts/optimize-images.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

@@ -1,0 +1,18 @@
+---
+import { site } from '../config/site';
+---
+<ul class="cities">
+  {site.cities.map((c) => (
+    <li class:list={['city', { locked: !c.open }]}>
+      <span>{c.name}</span>
+      {c.open ? <small class="ok">متاح</small> : <small>🔒 قريباً</small>}
+    </li>
+  ))}
+</ul>
+<style>
+  .cities { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .city { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--c-border); border-radius: 999px; background: #fff; font-weight: 600; }
+  .city small { font-weight: 600; color: var(--c-muted); }
+  .city .ok { color: #0e6e3c; }
+  .locked { background: var(--c-surface); color: var(--c-muted); }
+</style>

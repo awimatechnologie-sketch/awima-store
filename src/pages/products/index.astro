@@ -20,6 +20,10 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
           <span>بحث</span>
           <input id="q" type="search" placeholder="ابحث عن منتج..." autocomplete="off" />
         </label>
+        <label class="field check">
+          <input id="instock" type="checkbox" />
+          <span>المتوفر فقط</span>
+        </label>
         <label class="field">
           <span>الترتيب</span>
           <select id="sort">
@@ -44,7 +48,8 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
         {products.map((p) => (
           <li
             data-name={p.name}
-            data-text={`${p.name} ${p.shortDescription} ${p.id}`}
+            data-text={[p.name, p.shortDescription, p.description, p.id, catById[p.category]?.name ?? '', ...Object.entries(p.specs).flat()].join(' ')}
+            data-av={p.availability}
             data-cat={catById[p.category]?.slug ?? ''}
             data-price={p.price ?? ''}
           >
@@ -67,6 +72,8 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
   .tools { display: flex; flex-wrap: wrap; gap: 12px; padding: 12px; margin-bottom: 14px; }
   .field { display: grid; gap: 4px; font-size: 0.85rem; color: var(--c-muted); min-width: 150px; }
   .field.grow { flex: 1 1 220px; }
+  .field.check { display: flex; align-items: center; gap: 8px; min-width: 0; align-self: end; padding-bottom: 10px; font-size: 0.95rem; color: var(--c-text); cursor: pointer; }
+  .field.check input { width: 18px; height: 18px; padding: 0; }
   input, select {
     font: inherit; padding: 10px 12px; border: 1px solid var(--c-border);
     border-radius: 8px; background: #fff; color: var(--c-text); width: 100%;
@@ -85,6 +92,8 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
 </style>
 
 <script>
+  import { normalize, matches } from '../../lib/search';
+
   const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
   const q = $<HTMLInputElement>('q');
   const sortEl = $<HTMLSelectElement>('sort');
@@ -95,24 +104,18 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
   const items = Array.from(list.children) as HTMLLIElement[];
   const original = [...items];
 
-  // توحيد النص العربي للبحث (إزالة التشكيل وتوحيد الألف)
-  const norm = (s: string) =>
-    s
-      .toLowerCase()
-      .replace(/[\u064B-\u0652\u0640]/g, '')
-      .replace(/[أإآ]/g, 'ا')
-      .replace(/ى/g, 'ي')
-      .replace(/ة/g, 'ه')
-      .trim();
+  // نص كل منتج بعد التوحيد (يُحسب مرة واحدة): العربية والفرنسية والتشكيل والأرقام الهندية
+  const haystack = new Map(original.map((li) => [li, normalize(li.dataset.text ?? '')]));
+  const instock = $<HTMLInputElement>('instock');
 
   let cat = '';
 
   function apply() {
-    const term = norm(q.value);
     let visible = original.filter((li) => {
       const okCat = !cat || li.dataset.cat === cat;
-      const okText = !term || norm(li.dataset.text ?? '').includes(term);
-      return okCat && okText;
+      const okText = matches(q.value, haystack.get(li) ?? '');
+      const okStock = !instock.checked || li.dataset.av !== 'out_of_stock';
+      return okCat && okText && okStock;
     });
 
     const price = (li: HTMLLIElement) =>
@@ -142,6 +145,7 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
     const params = new URLSearchParams();
     if (cat) params.set('category', cat);
     if (q.value.trim()) params.set('q', q.value.trim());
+    if (instock.checked) params.set('instock', '1');
     if (mode !== 'default') params.set('sort', mode);
     const qs = params.toString();
     history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : ''));
@@ -160,9 +164,11 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
   );
   q.addEventListener('input', apply);
   sortEl.addEventListener('change', apply);
+  instock.addEventListener('change', apply);
   $('reset').addEventListener('click', () => {
     q.value = '';
     sortEl.value = 'default';
+    instock.checked = false;
     setCat('');
     apply();
   });
@@ -172,7 +178,11 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
   const urlCat = params.get('category') ?? '';
   setCat(chips.some((c) => c.dataset.cat === urlCat) ? urlCat : '');
   q.value = params.get('q') ?? '';
+  instock.checked = params.get('instock') === '1';
   const urlSort = params.get('sort');
   if (urlSort && Array.from(sortEl.options).some((o) => o.value === urlSort)) sortEl.value = urlSort;
   apply();
+
+  // الرابط /products#q (من أيقونة البحث في الهيدر) يضع المؤشر في خانة البحث
+  if (location.hash === '#q') q.focus();
 </script>

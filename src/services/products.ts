@@ -49,6 +49,7 @@ function normalizeProduct(file: string, r: any): Product {
     featured: Boolean(r.featured),
     specs: normalizeSpecs(r.specs),
     whatsappOrder: r.whatsappOrder !== false,
+    related: Array.isArray(r.related) ? r.related.map(String).filter(Boolean) : [],
     hidden: Boolean(r.hidden),
   };
 }

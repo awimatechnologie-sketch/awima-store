@@ -1,6 +1,7 @@
 // الإعدادات تُقرأ الآن من src/data/settings.json (تُعدَّل من لوحة /admin).
 // حافظنا على نفس شكل الكائن `site` حتى لا تتغير بقية الملفات.
 import settings from '../data/settings.json';
+import { isValidTime } from '../lib/hours';
 
 type Settings = {
   name: string;
@@ -17,6 +18,10 @@ type Settings = {
     address?: string;
   };
   social?: { facebook?: string; instagram?: string; tiktok?: string };
+  announcements?: { text?: string; link?: string; enabled?: boolean }[];
+  hours?: { open?: string; close?: string };
+  fastDelivery?: { minItems?: number; hours?: number };
+  cities?: { name?: string; open?: boolean }[];
   customCss?: string;
 };
 const s = settings as Settings;
@@ -24,6 +29,14 @@ const s = settings as Settings;
 // لون HEX صالح فقط، وإلا نستعمل القيمة الافتراضية
 const hex = (v: string | undefined, fallback: string) =>
   v && /^#[0-9a-fA-F]{3,8}$/.test(v.trim()) ? v.trim() : fallback;
+
+// رابط آمن فقط: مسار داخلي أو https
+const safeLink = (v?: string) => {
+  const x = (v ?? '').trim();
+  return x.startsWith('/') && !x.startsWith('//') ? x : /^https:\/\//.test(x) ? x : '';
+};
+const posInt = (v: unknown, fallback: number) =>
+  typeof v === 'number' && Number.isInteger(v) && v > 0 ? v : fallback;
 
 export const site = {
   name: s.name || 'AWIMA Store',
@@ -58,6 +71,24 @@ export const site = {
     instagram: s.social?.instagram ?? '',
     tiktok: s.social?.tiktok ?? '',
   },
+  // شريط العروض: تُعرض العروض المفعّلة فقط
+  announcements: (s.announcements ?? [])
+    .filter((a) => a?.text && a.enabled !== false)
+    .map((a) => ({ text: String(a.text), link: safeLink(a.link) })),
+  // أوقات العمل (توقيت المغرب). 24:00 = منتصف الليل
+  hours: {
+    open: isValidTime(s.hours?.open) ? s.hours!.open!.trim() : '10:00',
+    close: isValidTime(s.hours?.close) ? s.hours!.close!.trim() : '24:00',
+  },
+  // عرض التوصيل السريع: عدد المنتجات الأدنى والمدة بالساعات
+  fastDelivery: {
+    minItems: posInt(s.fastDelivery?.minItems, 4),
+    hours: posInt(s.fastDelivery?.hours, 5),
+  },
+  // المدن: المفتوحة فقط يمكن الطلب منها، والبقية تظهر مقفلة
+  cities: (s.cities ?? [])
+    .filter((c) => c?.name)
+    .map((c) => ({ name: String(c.name), open: c.open === true })),
   // CSS مخصص (قسم متقدم): نحذف أي "<" لمنع الخروج من وسم style
   customCss: (s.customCss ?? '').replace(/</g, ''),
 };

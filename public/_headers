@@ -1,0 +1,21 @@
+# ترويسات Cloudflare Pages — https://developers.cloudflare.com/pages/configuration/headers/
+# ملاحظة: لم نضف Content-Security-Policy عمداً (انظر ROADMAP.md، بند P1-3b).
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+
+# ملفات Astro المبنية: أسماؤها تتضمن بصمة المحتوى فيمكن تخزينها سنة
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# الصور: يوم واحد ثم إعادة تحقق (قد تُستبدل بنفس الاسم من لوحة الإدارة)
+/images/*
+  Cache-Control: public, max-age=86400, must-revalidate
+
+# لوحة الإدارة: لا تُخزَّن ولا تُفهرَس
+/admin/*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex, nofollow

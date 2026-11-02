@@ -1,0 +1,3 @@
+احذف هذه الملفات من المستودع (لم تعد مستعملة):
+src/data/products.json
+src/data/categories.json

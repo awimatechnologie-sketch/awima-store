@@ -67,6 +67,16 @@ collections:
         fields:
           - { label: الاسم (مثل السعة), name: key, widget: string }
           - { label: القيمة (مثل 64 جيجابايت), name: value, widget: string }
+      - label: منتجات مقترحة (يُشترى معه)
+        name: related
+        widget: relation
+        collection: products
+        value_field: id
+        search_fields: [name, id]
+        display_fields: [name]
+        multiple: true
+        required: false
+        hint: 'اختياري. تظهر أسفل صفحة المنتج بترتيبك، ويُكمَل العدد تلقائياً من نفس القسم حتى 4 منتجات.'
       - { label: الطلب عبر واتساب, name: whatsappOrder, widget: boolean, default: true }
       - { label: إخفاء المنتج من الموقع (مسودة), name: hidden, widget: boolean, default: false, required: false, hint: 'فعّله لتجهيز منتج دون نشره، أو لإخفائه مؤقتاً دون حذفه' }
 
@@ -141,7 +151,6 @@ collections:
         fields:
           - { label: العنوان, name: title, widget: string }
           - { label: مقدمة, name: intro, widget: text }
-          - { label: أوقات العمل (اختياري), name: hours, widget: string, required: false }
           - { label: ملاحظة (اختيارية), name: note, widget: text, required: false }
 
   # ---------------- إعدادات الموقع ----------------
@@ -189,6 +198,35 @@ collections:
               - { label: فيسبوك (رابط كامل), name: facebook, widget: string, required: false }
               - { label: إنستغرام (رابط كامل), name: instagram, widget: string, required: false }
               - { label: تيك توك (رابط كامل), name: tiktok, widget: string, required: false }
+          - label: شريط العروض أعلى الموقع
+            name: announcements
+            widget: list
+            required: false
+            hint: 'تظهر العروض المفعّلة فقط، وإن وُجد أكثر من عرض تتناوب كل 5 ثوانٍ'
+            fields:
+              - { label: نص العرض, name: text, widget: string }
+              - { label: رابط عند الضغط (اختياري، مثل /products), name: link, widget: string, required: false }
+              - { label: مفعّل, name: enabled, widget: boolean, default: true }
+          - label: أوقات العمل (بتوقيت المغرب)
+            name: hours
+            widget: object
+            fields:
+              - { label: وقت الفتح (مثل 10:00), name: open, widget: string, pattern: ['^([01]?\d|2[0-4]):[0-5]\d$', 'الصيغة HH:MM مثل 10:00'] }
+              - { label: وقت الإغلاق (24:00 = منتصف الليل), name: close, widget: string, pattern: ['^([01]?\d|2[0-4]):[0-5]\d$', 'الصيغة HH:MM مثل 24:00'] }
+          - label: التوصيل السريع (يظهر في السلة)
+            name: fastDelivery
+            widget: object
+            fields:
+              - { label: الحد الأدنى لعدد المنتجات, name: minItems, widget: number, value_type: int, min: 1, default: 4 }
+              - { label: مدة التوصيل بالساعات (أقل من), name: hours, widget: number, value_type: int, min: 1, default: 5 }
+          - label: المدن
+            name: cities
+            widget: list
+            required: false
+            hint: 'المدن غير المفعّلة تظهر مقفلة 🔒 ولا يمكن الطلب منها. فعّل المدينة عند بدء العمل فيها.'
+            fields:
+              - { label: اسم المدينة, name: name, widget: string }
+              - { label: مفتوحة للطلب, name: open, widget: boolean, default: false }
           - label: متقدم — CSS مخصص
             name: customCss
             widget: text

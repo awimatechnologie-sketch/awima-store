@@ -1,0 +1,303 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HoursBadge from '../components/HoursBadge.astro';
+import { site } from '../config/site';
+import { getAllProducts } from '../services/products';
+
+const products = getAllProducts().map((p) => ({
+  id: p.id,
+  name: p.name,
+  slug: p.slug,
+  price: p.price,
+  image: p.images[0] ?? '/images/placeholder.svg',
+  availability: p.availability,
+}));
+const data = {
+  products,
+  currencyLabel: site.currencyLabel,
+  whatsapp: site.contact.whatsapp,
+  fast: site.fastDelivery,
+  siteName: site.name,
+};
+const firstOpen = site.cities.find((c) => c.open)?.name;
+// "<" داخل JSON يُهرَّب حتى لا يُغلق وسم script
+const json = JSON.stringify(data).replace(/</g, '\\u003c');
+---
+<BaseLayout title="السلة" description="راجع منتجاتك وأرسل طلبك عبر واتساب.">
+  <meta name="robots" content="noindex" slot="head" />
+  <script type="application/json" id="cart-data" set:html={json} />
+
+  <section class="section">
+    <div class="container">
+      <h1>سلة المشتريات</h1>
+
+      <p id="stale" class="notice" role="status" hidden></p>
+
+      <div id="empty" class="card empty" hidden>
+        <h2>سلتك فارغة</h2>
+        <p>أضف منتجات من الكتالوج ثم عد لإرسال طلبك.</p>
+        <a class="btn btn-primary" href="/products">تصفح المنتجات</a>
+      </div>
+
+      <div id="content" class="layout" hidden>
+        <ul id="lines" class="cart-lines"></ul>
+
+        <aside class="card summary">
+          <h2>ملخص الطلب</h2>
+
+          <p class="row"><span>عدد المنتجات</span><b id="qty">0</b></p>
+          <p class="row"><span>المجموع</span><b id="total">0</b></p>
+          <p id="unpriced" class="hint" hidden></p>
+          <p id="offer" class="offer"></p>
+          <div id="suggest" class="suggest" hidden>
+            <h3>أكمل طلبك بمنتج صغير</h3>
+            <ul id="suggest-list"></ul>
+          </div>
+
+          <fieldset class="field-group">
+            <legend>مدينة التوصيل</legend>
+            {site.cities.length === 0 && <p class="hint">لا توجد مدن مفعّلة حالياً.</p>}
+            <div class="city-opts">
+              {site.cities.map((c) => (
+                <label class:list={['city-opt', { off: !c.open }]}>
+                  <input type="radio" name="city" value={c.name} checked={c.name === firstOpen} disabled={!c.open} />
+                  <span>{c.name}</span>
+                  {!c.open && <small>🔒 قريباً</small>}
+                </label>
+              ))}
+            </div>
+          </fieldset>
+
+          <fieldset class="field-group">
+            <legend>بيانات التواصل <small>(اختيارية)</small></legend>
+            <label>الاسم<input id="f-name" type="text" maxlength="60" autocomplete="name" /></label>
+            <label>الهاتف<input id="f-phone" type="tel" maxlength="20" autocomplete="tel" inputmode="tel" dir="ltr" /></label>
+            <label>العنوان<input id="f-address" type="text" maxlength="160" autocomplete="street-address" /></label>
+            <label>ملاحظة<textarea id="f-note" rows="2" maxlength="300"></textarea></label>
+            <label class="check"><input id="f-remember" type="checkbox" /> احفظ بياناتي في هذا الجهاز فقط</label>
+            <p class="hint">إن تركتها فارغة سنتواصل معك عبر واتساب مباشرة.</p>
+          </fieldset>
+
+          <p class="hint"><HoursBadge /></p>
+          <p id="closed-note" class="hint" hidden>المتجر مغلق الآن؛ يمكنك إرسال الطلب وسنرد عند الفتح.</p>
+
+          <button id="send" type="button" class="btn btn-wa block">أرسل الطلب عبر واتساب</button>
+          <button id="clear" type="button" class="btn btn-outline block">إفراغ السلة</button>
+          <p class="hint">لا يتم أي دفع في الموقع. نؤكد الطلب والسعر معك عبر واتساب.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style is:global>
+  .cart-lines { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; align-content: start; }
+  .cart-line { display: grid; grid-template-columns: 72px 1fr; gap: 12px; padding: 12px; }
+  .cart-line img { width: 72px; height: 72px; object-fit: cover; border-radius: 8px; background: var(--c-surface); }
+  .cart-line .name { font-weight: 700; color: var(--c-primary); text-decoration: none; }
+  .cart-line .meta { color: var(--c-muted); font-size: 0.9rem; margin: 2px 0 8px; }
+  .cart-line .ctrl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .cart-line .qtybox { display: inline-flex; align-items: center; border: 1px solid var(--c-border); border-radius: 8px; overflow: hidden; }
+  .cart-line .qtybox button { font: inherit; font-size: 1.1rem; width: 36px; height: 36px; border: 0; background: var(--c-surface); cursor: pointer; }
+  .cart-line .qtybox span { min-width: 36px; text-align: center; font-weight: 700; }
+  .cart-line .sub { font-weight: 800; color: var(--c-accent); margin-inline-start: auto; }
+  .cart-line .rm { font: inherit; border: 0; background: none; color: var(--c-alert); cursor: pointer; text-decoration: underline; }
+  .cart-line.unavailable { opacity: 0.6; }
+  .suggest h3 { margin: 0 0 6px; font-size: 0.95rem; color: var(--c-primary); }
+  .suggest ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .suggest li { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--c-border); }
+  .suggest .sg-name { color: var(--c-text); text-decoration: none; font-weight: 600; font-size: 0.92rem; }
+  .suggest .sg-price { color: var(--c-accent); font-weight: 700; font-size: 0.9rem; }
+  .suggest .sg-add { padding: 4px 14px; }
+</style>
+<style>
+  .empty { text-align: center; padding: 40px 16px; }
+  .layout { display: grid; gap: 20px; margin-top: 16px; }
+  .summary { padding: 18px; display: grid; gap: 10px; align-content: start; }
+  .summary h2 { margin: 0; }
+  .row { display: flex; justify-content: space-between; margin: 0; }
+  .hint { color: var(--c-muted); font-size: 0.88rem; margin: 0; }
+  .notice { margin: 12px 0 0; padding: 10px 14px; border-radius: 10px; background: #fff4e0; color: #8a4b00; font-weight: 600; }
+  .offer { margin: 0; padding: 10px 12px; border-radius: 10px; background: #e8f0ff; color: var(--c-primary); font-weight: 600; }
+  .offer.ok { background: #e6f6ec; color: #0e6e3c; }
+  .field-group { border: 1px solid var(--c-border); border-radius: 10px; padding: 12px; display: grid; gap: 10px; margin: 0; }
+  legend { font-weight: 700; color: var(--c-primary); padding-inline: 6px; }
+  legend small { color: var(--c-muted); font-weight: 400; }
+  label { display: grid; gap: 4px; font-size: 0.9rem; color: var(--c-muted); }
+  input[type='text'], input[type='tel'], textarea { font: inherit; padding: 10px 12px; border: 1px solid var(--c-border); border-radius: 8px; width: 100%; color: var(--c-text); }
+  .city-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+  .city-opt { display: inline-flex; grid-auto-flow: column; align-items: center; gap: 6px; padding: 8px 14px; border: 1px solid var(--c-border); border-radius: 999px; color: var(--c-text); font-weight: 600; cursor: pointer; }
+  .city-opt.off { background: var(--c-surface); color: var(--c-muted); cursor: not-allowed; }
+  .city-opt small { color: var(--c-muted); font-weight: 600; }
+  .check { display: flex; align-items: center; gap: 8px; }
+  .block { width: 100%; }
+  @media (min-width: 900px) { .layout { grid-template-columns: 1.4fr 1fr; align-items: start; } .summary { position: sticky; top: 90px; } }
+</style>
+
+<script>
+  import { readCart, setQty, removeFromCart, clearCart, takePruned } from '../lib/cart';
+  import { orderRef } from '../lib/order';
+  import { pickSuggestions } from '../lib/suggest';
+  import { isOpenNow } from '../lib/hours';
+
+  type P = { id: string; name: string; slug: string; price: number | null; image: string; availability: string };
+  const data = JSON.parse(document.getElementById('cart-data')!.textContent || '{}');
+  const products = new Map<string, P>((data.products as P[]).map((p) => [p.id, p]));
+  const nf = new Intl.NumberFormat('fr-FR');
+  const money = (n: number) => `${nf.format(n)} ${data.currencyLabel}`;
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+
+  const LKEY = 'awima_contact_v1';
+  const nameEl = $<HTMLInputElement>('f-name');
+  const phoneEl = $<HTMLInputElement>('f-phone');
+  const addrEl = $<HTMLInputElement>('f-address');
+  const noteEl = $<HTMLTextAreaElement>('f-note');
+  const remember = $<HTMLInputElement>('f-remember');
+
+  try {
+    const saved = JSON.parse(localStorage.getItem(LKEY) || 'null');
+    if (saved) {
+      nameEl.value = saved.name ?? '';
+      phoneEl.value = saved.phone ?? '';
+      addrEl.value = saved.address ?? '';
+      remember.checked = true;
+    }
+  } catch {}
+
+  function el<K extends keyof HTMLElementTagNameMap>(tag: K, cls?: string, text?: string) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+
+  let staleCount = 0;
+  const plural = (n: number) => (n === 1 ? 'منتج واحد' : n === 2 ? 'منتجان' : `${n} منتجات`);
+
+  function selectedCity(): string {
+    return (document.querySelector<HTMLInputElement>('input[name="city"]:checked')?.value ?? '').trim();
+  }
+
+  function compute() {
+    const lines = readCart()
+      .map((l) => ({ ...l, p: products.get(l.id) }))
+      .filter((l): l is { id: string; qty: number; p: P } => !!l.p);
+    const avail = lines.filter((l) => l.p.availability !== 'out_of_stock');
+    const qty = avail.reduce((n, l) => n + l.qty, 0);
+    const total = avail.reduce((n, l) => n + (l.p.price ?? 0) * l.qty, 0);
+    const unpriced = avail.filter((l) => l.p.price === null).length;
+    return { lines, avail, qty, total, unpriced };
+  }
+
+  function render() {
+    const { lines, avail, qty, total, unpriced } = compute();
+    $('empty').hidden = lines.length > 0;
+    $('content').hidden = lines.length === 0;
+    if (lines.length === 0) return;
+
+    const ul = $('lines');
+    ul.replaceChildren();
+    for (const l of lines) {
+      const out = l.p.availability === 'out_of_stock';
+      const li = el('li', 'card cart-line' + (out ? ' unavailable' : ''));
+      const img = document.createElement('img');
+      img.src = l.p.image; img.alt = l.p.name; img.width = 72; img.height = 72; img.loading = 'lazy';
+      const body = el('div');
+      const a = el('a', 'name', l.p.name); a.href = `/products/${l.p.slug}`;
+      const meta = el('p', 'meta', out ? 'غير متوفر حالياً — لن يُضاف للطلب' : (l.p.price === null ? 'اتصل لمعرفة السعر' : money(l.p.price)));
+      const ctrl = el('div', 'ctrl');
+      const box = el('div', 'qtybox');
+      const minus = el('button', undefined, '−'); minus.type = 'button'; minus.setAttribute('aria-label', 'إنقاص');
+      const q = el('span', undefined, String(l.qty));
+      const plus = el('button', undefined, '+'); plus.type = 'button'; plus.setAttribute('aria-label', 'زيادة');
+      minus.onclick = () => setQty(l.id, l.qty - 1);
+      plus.onclick = () => setQty(l.id, l.qty + 1);
+      box.append(minus, q, plus);
+      ctrl.append(box);
+      if (!out && l.p.price !== null) ctrl.append(el('span', 'sub', money(l.p.price * l.qty)));
+      const rm = el('button', 'rm', 'حذف'); rm.type = 'button'; rm.onclick = () => removeFromCart(l.id);
+      ctrl.append(rm);
+      body.append(a, meta, ctrl);
+      li.append(img, body);
+      ul.append(li);
+    }
+
+    // تنبيه: منتجات حُذفت من المتجر فأُزيلت من السلة تلقائياً
+    const pruned = takePruned();
+    if (pruned > 0) staleCount += pruned;
+    const stale = $('stale');
+    stale.hidden = staleCount === 0;
+    stale.textContent = staleCount
+      ? `تمت إزالة ${plural(staleCount)} من سلتك لأنه لم يعد متوفراً في المتجر.`
+      : '';
+
+    $('qty').textContent = String(qty);
+    $('total').textContent = money(total);
+    const un = $('unpriced');
+    un.hidden = unpriced === 0;
+    un.textContent = unpriced ? `${plural(unpriced)} بدون سعر محدد — يُؤكَّد سعرها عبر واتساب ولا يدخل في المجموع.` : '';
+
+    const { minItems, hours } = data.fast;
+    const offer = $('offer');
+    if (qty >= minItems) {
+      offer.textContent = `✓ طلبيتك مؤهلة للتوصيل في أقل من ${hours} ساعات`;
+      offer.className = 'offer ok';
+    } else {
+      offer.textContent = `أضف ${plural(minItems - qty)} إضافية لتصلك طلبيتك في أقل من ${hours} ساعات`;
+      offer.className = 'offer';
+    }
+
+    // اقتراحات لإكمال العدد المطلوب للتوصيل السريع (أرخص المنتجات المتوفرة غير الموجودة في السلة)
+    const sBox = $('suggest');
+    const sList = $('suggest-list');
+    sList.replaceChildren();
+    const inCart = new Set(lines.map((l) => l.id));
+    const picks = qty > 0 && qty < minItems ? pickSuggestions(Array.from(products.values()), inCart, 3) : [];
+    sBox.hidden = picks.length === 0;
+    for (const p of picks) {
+      const li = el('li');
+      const a = el('a', 'sg-name', p.name); a.href = `/products/${p.slug}`;
+      const price = el('span', 'sg-price', money(p.price as number));
+      const add = el('button', 'btn btn-outline sg-add', 'أضف'); add.type = 'button';
+      add.dataset.addToCart = p.id; add.dataset.name = p.name;
+      li.append(a, price, add);
+      sList.append(li);
+    }
+
+    const st = isOpenNow(document.querySelector<HTMLElement>('[data-hours]')?.dataset.open ?? '', document.querySelector<HTMLElement>('[data-hours]')?.dataset.close ?? '');
+    $('closed-note').hidden = st !== false;
+    ($('send') as HTMLButtonElement).disabled = avail.length === 0 || !selectedCity();
+  }
+
+  function buildMessage(ref: string): string {
+    const { avail, total, unpriced } = compute();
+    const out: string[] = [`مرحباً ${data.siteName}، أرغب في طلب المنتجات التالية:`, `رقم الطلب: ${ref}`, ''];
+    avail.forEach((l, i) => {
+      const price = l.p.price === null ? 'السعر عند التأكيد' : `${money(l.p.price)} × ${l.qty} = ${money(l.p.price * l.qty)}`;
+      out.push(`${i + 1}) ${l.p.name} (${l.p.id})`);
+      out.push(l.p.price === null ? `   الكمية: ${l.qty} — ${price}` : `   ${price}`);
+    });
+    out.push('', `المجموع: ${money(total)}${unpriced ? ` (+ ${plural(unpriced)} بسعر يُحدَّد)` : ''}`);
+    out.push(`المدينة: ${selectedCity()}`);
+    const extras: [string, string][] = [
+      ['الاسم', nameEl.value], ['الهاتف', phoneEl.value], ['العنوان', addrEl.value], ['ملاحظة', noteEl.value],
+    ];
+    for (const [k, v] of extras) if (v.trim()) out.push(`${k}: ${v.trim()}`);
+    return out.join('\n');
+  }
+
+  $('send').addEventListener('click', () => {
+    if (remember.checked) {
+      try { localStorage.setItem(LKEY, JSON.stringify({ name: nameEl.value, phone: phoneEl.value, address: addrEl.value })); } catch {}
+    } else {
+      try { localStorage.removeItem(LKEY); } catch {}
+    }
+    const url = `https://wa.me/${data.whatsapp}?text=${encodeURIComponent(buildMessage(orderRef()))}`;
+    window.open(url, '_blank', 'noopener');
+  });
+  $('clear').addEventListener('click', () => { if (confirm('إفراغ السلة؟')) clearCart(); });
+  document.querySelectorAll('input[name="city"]').forEach((r) => r.addEventListener('change', render));
+  window.addEventListener('cart:change', render);
+  window.addEventListener('storage', render);
+  render();
+</script>

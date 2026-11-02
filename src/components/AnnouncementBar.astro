@@ -1,0 +1,30 @@
+---
+import { site } from '../config/site';
+import HoursBadge from './HoursBadge.astro';
+const items = site.announcements;
+---
+{items.length > 0 && (
+  <div class="ann" role="region" aria-label="العروض">
+    <div class="container row">
+      <div class="msgs">
+        {items.map((a, i) =>
+          a.link ? (
+            <a class:list={['msg', { active: i === 0 }]} href={a.link} data-ann>{a.text}</a>
+          ) : (
+            <span class:list={['msg', { active: i === 0 }]} data-ann>{a.text}</span>
+          )
+        )}
+      </div>
+      <HoursBadge light hideOnMobile />
+    </div>
+  </div>
+)}
+<style>
+  .ann { background: var(--c-primary); color: #fff; font-size: 0.92rem; }
+  .row { display: flex; align-items: center; justify-content: center; gap: 12px 24px; padding-block: 8px; }
+  .msgs { text-align: center; }
+  .msg { display: none; color: #fff; font-weight: 600; text-decoration: none; }
+  a.msg:hover { text-decoration: underline; }
+  .msg.active { display: block; }
+  @media (min-width: 720px) { .row { justify-content: space-between; } .msgs { text-align: start; } }
+</style>

@@ -4,6 +4,7 @@ import ProductCard from '../../components/ProductCard.astro';
 import { site } from '../../config/site';
 import { buildProductLink } from '../../lib/whatsapp';
 import { formatPrice, getSaving, availabilityLabel } from '../../lib/format';
+import { pickRelated } from '../../lib/related';
 import { getAllProducts, getCategories, getProductBySlug } from '../../services/products';
 
 export function getStaticPaths() {
@@ -24,11 +25,7 @@ const images = product.images.length ? product.images : ['/images/placeholder.sv
 const specs = Object.entries(product.specs ?? {});
 const phoneHref = `tel:+${site.contact.whatsapp}`;
 
-const others = getAllProducts().filter((p) => p.id !== product.id);
-const related = [
-  ...others.filter((p) => p.category === product.category),
-  ...others.filter((p) => p.category !== product.category),
-].slice(0, 4);
+const related = pickRelated(product, getAllProducts(), 4);
 
 const ld: Record<string, unknown> = {
   '@context': 'https://schema.org',
@@ -95,6 +92,9 @@ if (product.price !== null) {
           <p class="short">{product.shortDescription}</p>
 
           <div class="actions">
+            {product.availability !== 'out_of_stock' ? (
+              <button type="button" class="btn btn-cart" data-add-to-cart={product.id} data-name={product.name}>أضف إلى السلة</button>
+            ) : null}
             {product.whatsappOrder ? (
               <a class="btn btn-wa" href={waLink} target="_blank" rel="noopener">
                 {product.availability === 'out_of_stock' ? 'اسأل عن التوفر عبر واتساب' : 'اطلب عبر واتساب'}
@@ -130,7 +130,7 @@ if (product.price !== null) {
   {related.length ? (
     <section class="section section-alt" aria-labelledby="rel">
       <div class="container">
-        <h2 id="rel">منتجات مشابهة</h2>
+        <h2 id="rel">منتجات مقترحة لك</h2>
         <div class="grid grid-4">
           {related.map((p) => <ProductCard product={p} categoryName={catName[p.category]} />)}
         </div>

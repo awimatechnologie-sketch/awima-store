@@ -5,25 +5,34 @@ interface Props { product: Product; categoryName?: string }
 const { product, categoryName } = Astro.props;
 const av = availabilityLabel[product.availability];
 const saving = getSaving(product.price, product.oldPrice);
+const canAdd = product.availability !== 'out_of_stock';
 ---
-<a class="card pc" href={`/products/${product.slug}`}>
-  <div class="media">
-    <img src={product.images[0] ?? '/images/placeholder.svg'} alt={product.name} width="400" height="400" loading="lazy" decoding="async" />
-    {saving ? <span class="save">وفّر {formatPrice(saving)}</span> : null}
-  </div>
-  <div class="body">
-    {categoryName ? <span class="cat">{categoryName}</span> : null}
-    <h3>{product.name}</h3>
-    <p class="prices">
-      <span class="price">{formatPrice(product.price)}</span>
-      {saving ? <del class="old">{formatPrice(product.oldPrice)}</del> : null}
-    </p>
-    <span class={`badge ${av.cls}`}>{av.text}</span>
-  </div>
-</a>
+<article class="card pc">
+  <a class="link" href={`/products/${product.slug}`}>
+    <div class="media">
+      <img src={product.images[0] ?? '/images/placeholder.svg'} alt={product.name} width="400" height="400" loading="lazy" decoding="async" />
+      {saving ? <span class="save">وفّر {formatPrice(saving)}</span> : null}
+    </div>
+    <div class="body">
+      {categoryName ? <span class="cat">{categoryName}</span> : null}
+      <h3>{product.name}</h3>
+      <p class="prices">
+        <span class="price">{formatPrice(product.price)}</span>
+        {saving ? <del class="old">{formatPrice(product.oldPrice)}</del> : null}
+      </p>
+      <span class={`badge ${av.cls}`}>{av.text}</span>
+    </div>
+  </a>
+  {canAdd && (
+    <div class="foot">
+      <button type="button" class="btn btn-cart add" data-add-to-cart={product.id} data-name={product.name}>أضف إلى السلة</button>
+    </div>
+  )}
+</article>
 <style>
-  .pc { display: block; text-decoration: none; overflow: hidden; transition: box-shadow 0.15s; }
+  .pc { display: flex; flex-direction: column; overflow: hidden; transition: box-shadow 0.15s; height: 100%; }
   .pc:hover { box-shadow: 0 6px 20px rgba(11, 42, 111, 0.15); }
+  .link { display: block; text-decoration: none; flex: 1; }
   .media { position: relative; }
   .pc img { width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--c-surface); }
   .save { position: absolute; top: 8px; inset-inline-start: 8px; background: var(--c-alert); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
@@ -33,4 +42,6 @@ const saving = getSaving(product.price, product.oldPrice);
   .prices { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; margin: 0 0 8px; }
   .price { font-weight: 800; color: var(--c-accent); font-size: 1.05rem; }
   .old { color: var(--c-muted); font-size: 0.88rem; }
+  .foot { padding: 0 12px 12px; }
+  .add { width: 100%; padding: 10px 12px; font-size: 0.95rem; }
 </style>

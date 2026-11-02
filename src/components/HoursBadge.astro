@@ -1,0 +1,18 @@
+---
+import { site } from '../config/site';
+import { hoursLabel } from '../lib/hours';
+interface Props { light?: boolean; hideOnMobile?: boolean }
+const { light = false, hideOnMobile = false } = Astro.props;
+---
+<span class:list={['hours', { light, hm: hideOnMobile }]} data-hours data-open={site.hours.open} data-close={site.hours.close}>
+  <span>ساعات العمل: {hoursLabel(site.hours.open, site.hours.close)}</span>
+  <b data-hours-status></b>
+</span>
+<style>
+  .hours { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 0.9rem; }
+  .light { color: #fff; }
+  b { padding: 1px 10px; border-radius: 999px; font-size: 0.8rem; background: #e6f6ec; color: #0e6e3c; }
+  b:empty { display: none; }
+  b[data-state='closed'] { background: #fde8e8; color: #b01217; }
+  @media (max-width: 719px) { .hm { display: none; } }
+</style>

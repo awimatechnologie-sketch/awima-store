@@ -13,6 +13,7 @@ export interface Product {
   featured: boolean;
   specs: Record<string, string>;
   whatsappOrder: boolean;
+  related?: string[]; // معرّفات منتجات مقترحة يدوياً (يُشترى معه)
   hidden?: boolean; // مخفي من الموقع (مسودة) دون حذفه
 }
 

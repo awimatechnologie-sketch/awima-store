@@ -3,12 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { site } from '../config/site';
 import { buildContactLink } from '../lib/whatsapp';
+import { buildStoreLd } from '../lib/seo';
 import { getCategories, getFeaturedProducts } from '../services/products';
 
 const categories = getCategories();
 const featured = getFeaturedProducts(4);
 const categoryName = Object.fromEntries(categories.map((c) => [c.id, c.name]));
 const waLink = buildContactLink();
+const storeLd = buildStoreLd(site);
 const reasons = [
   { t: 'طلب سهل عبر واتساب', d: 'اختر المنتج واطلبه بضغطة زر برسالة جاهزة.' },
   { t: 'أسعار بالدرهم المغربي', d: 'عرض واضح للأسعار بالعملة المحلية.' },
@@ -17,6 +19,8 @@ const reasons = [
 ];
 ---
 <BaseLayout description="تصفح منتجاتنا الإلكترونية واطلبها مباشرة عبر واتساب.">
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(storeLd).replace(/</g, '\\u003c')} />
+
   <section class="hero">
     <div class="container hero-grid">
       <div>

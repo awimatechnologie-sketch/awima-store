@@ -25,5 +25,46 @@
     "instagram": "",
     "tiktok": ""
   },
+  "announcements": [
+    {
+      "text": "اشترِ أكثر من 3 منتجات وتصلك طلبيتك في أقل من 5 ساعات",
+      "link": "/products",
+      "enabled": true
+    }
+  ],
+  "hours": {
+    "open": "10:00",
+    "close": "24:00"
+  },
+  "fastDelivery": {
+    "minItems": 4,
+    "hours": 5
+  },
+  "cities": [
+    {
+      "name": "أكادير",
+      "open": true
+    },
+    {
+      "name": "مراكش",
+      "open": false
+    },
+    {
+      "name": "الدار البيضاء",
+      "open": false
+    },
+    {
+      "name": "الرباط",
+      "open": false
+    },
+    {
+      "name": "فاس",
+      "open": false
+    },
+    {
+      "name": "طنجة",
+      "open": false
+    }
+  ],
   "customCss": ""
 }

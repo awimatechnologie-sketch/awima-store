@@ -17,6 +17,13 @@ const isActive = (href: string) =>
     <a href="/" class="brand" aria-label={site.name}>
       <img src={site.logo.store} alt={site.name} width="150" height="58" />
     </a>
+    <a href="/products#q" class="icon search" aria-label="بحث">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    </a>
+    <a href="/cart" class="icon cart" aria-label="السلة">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 11.2a2 2 0 0 0 2 1.5h7.6a2 2 0 0 0 2-1.5L21 7H6"/></svg>
+      <span class="count" data-cart-count hidden>0</span>
+    </a>
     <nav aria-label="التنقل الرئيسي">
       <ul>
         {links.map((l) => (
@@ -30,10 +37,14 @@ const isActive = (href: string) =>
   .header { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid var(--c-border); }
   .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px; padding-block: 6px; }
   .brand img { height: 52px; width: auto; }
-  nav { width: 100%; overflow-x: auto; }
+  .brand { order: 0; }
+  .icon { order: 1; position: relative; display: inline-flex; padding: 8px; color: var(--c-primary); }
+  .search { margin-inline-start: auto; }
+  .count { position: absolute; top: 0; inset-inline-end: 0; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: var(--c-alert); color: #fff; font-size: 0.75rem; font-weight: 700; display: grid; place-items: center; }
+  nav { order: 2; width: 100%; overflow-x: auto; }
   ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
   nav a { display: block; padding: 8px 14px; border-radius: 8px; text-decoration: none; font-weight: 600; color: var(--c-primary); white-space: nowrap; }
   nav a:hover { background: var(--c-surface); }
   nav a[aria-current='page'] { background: var(--c-accent); color: #fff; }
-  @media (min-width: 720px) { nav { width: auto; } }
+  @media (min-width: 720px) { nav { width: auto; order: 1; margin-inline-start: auto; } .search { order: 2; margin-inline-start: 0; } .cart { order: 3; } }
 </style>
