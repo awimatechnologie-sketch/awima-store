@@ -1,0 +1,37 @@
+{
+  "id": "P-0009",
+  "name": "محول OTG من USB-C إلى USB-A",
+  "slug": "otg-usb-c-adapter",
+  "shortDescription": "محول OTG صغير يحوّل منفذ USB-C في الهاتف إلى منفذ USB-A",
+  "description": "محول OTG صغير يحوّل منفذ USB-C في الهاتف إلى منفذ USB-A، لتوصيل الفلاش والماوس ولوحة المفاتيح وقارئ البطاقات.",
+  "price": 22,
+  "oldPrice": 25,
+  "currency": "MAD",
+  "category": "cat-adapters",
+  "images": [
+    "/images/products/otg-usb-c-adapter-1.svg",
+    "/images/products/otg-usb-c-adapter-2.svg",
+    "/images/products/otg-usb-c-adapter-3.svg"
+  ],
+  "availability": "on_request",
+  "featured": true,
+  "specs": [
+    {
+      "key": "الدخل",
+      "value": "USB-C (ذكر)"
+    },
+    {
+      "key": "الخرج",
+      "value": "USB-A (أنثى)"
+    },
+    {
+      "key": "نقل البيانات",
+      "value": "USB 3.0"
+    },
+    {
+      "key": "التوافق",
+      "value": "الهواتف واللوحات الداعمة لـ OTG"
+    }
+  ],
+  "whatsappOrder": true
+}

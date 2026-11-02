@@ -1,0 +1,33 @@
+{
+  "id": "P-0012",
+  "name": "محول SATA إلى USB لربط القرص بالحاسوب",
+  "slug": "sata-to-usb-adapter",
+  "shortDescription": "محول لتوصيل قرص صلب أو SSD من نوع SATA بالحاسوب كقرص خارجي",
+  "description": "محول لتوصيل قرص صلب أو SSD من نوع SATA بالحاسوب كقرص خارجي، لنسخ الملفات القديمة أو استرجاعها بسهولة.",
+  "price": 81,
+  "oldPrice": 90,
+  "currency": "MAD",
+  "category": "cat-disk",
+  "images": [
+    "/images/products/sata-to-usb-adapter-1.svg",
+    "/images/products/sata-to-usb-adapter-2.svg",
+    "/images/products/sata-to-usb-adapter-3.svg"
+  ],
+  "availability": "on_request",
+  "featured": true,
+  "specs": [
+    {
+      "key": "الواجهة",
+      "value": "SATA إلى USB 3.0"
+    },
+    {
+      "key": "الأقراص المدعومة",
+      "value": "2.5 بوصة مباشرة، و3.5 بوصة مع مزود طاقة"
+    },
+    {
+      "key": "نقل البيانات",
+      "value": "حتى 5 جيجابت/ث"
+    }
+  ],
+  "whatsappOrder": true
+}

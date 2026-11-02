@@ -1,0 +1,29 @@
+{
+  "name": "AWIMA Store",
+  "tagline": "منتجات إلكترونية بجودة موثوقة",
+  "url": "https://awima-store.pages.dev",
+  "logo": {
+    "store": "/images/logo-store.png",
+    "icon": "/images/logo-icon.png",
+    "og": "/images/og-image.png"
+  },
+  "colors": {
+    "primary": "#0B2A6F",
+    "accent": "#0A6CFF",
+    "alert": "#E4161B"
+  },
+  "contact": {
+    "whatsapp": "212652091799",
+    "whatsappSecondary": "212652305405",
+    "phoneDisplay": "0652091799",
+    "phoneSecondaryDisplay": "0652305405",
+    "email": "",
+    "address": ""
+  },
+  "social": {
+    "facebook": "",
+    "instagram": "",
+    "tiktok": ""
+  },
+  "customCss": ""
+}

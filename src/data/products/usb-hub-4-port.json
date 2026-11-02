@@ -1,0 +1,37 @@
+{
+  "id": "P-0014",
+  "name": "موزع USB بأربعة منافذ",
+  "slug": "usb-hub-4-port",
+  "shortDescription": "موزع يضيف أربعة منافذ USB إلى الحاسوب المحمول أو الهاتف",
+  "description": "موزع يضيف أربعة منافذ USB إلى الحاسوب المحمول أو الهاتف، لتوصيل الفلاش والماوس والقرص الخارجي في وقت واحد.",
+  "price": 90,
+  "oldPrice": 100,
+  "currency": "MAD",
+  "category": "cat-disk",
+  "images": [
+    "/images/products/usb-hub-4-port-1.svg",
+    "/images/products/usb-hub-4-port-2.svg",
+    "/images/products/usb-hub-4-port-3.svg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "عدد المنافذ",
+      "value": "4 × USB-A"
+    },
+    {
+      "key": "الواجهة",
+      "value": "USB 3.0"
+    },
+    {
+      "key": "الدخل",
+      "value": "USB-C"
+    },
+    {
+      "key": "طول الكابل",
+      "value": "15 سم"
+    }
+  ],
+  "whatsappOrder": true
+}

@@ -1,0 +1,37 @@
+{
+  "id": "P-0006",
+  "name": "كابل USB-A إلى Lightning",
+  "slug": "lightning-cable",
+  "shortDescription": "كابل شحن ونقل بيانات للآيفون والآيباد بمنفذ Lightning",
+  "description": "كابل شحن ونقل بيانات للآيفون والآيباد بمنفذ Lightning، بطول مناسب للاستعمال اليومي.",
+  "price": 41,
+  "oldPrice": 45,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [
+    "/images/products/lightning-cable-1.svg",
+    "/images/products/lightning-cable-2.svg",
+    "/images/products/lightning-cable-3.svg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الطول",
+      "value": "1 متر"
+    },
+    {
+      "key": "الموصلان",
+      "value": "USB-A إلى Lightning"
+    },
+    {
+      "key": "التيار",
+      "value": "حتى 2.4 أمبير"
+    },
+    {
+      "key": "التوافق",
+      "value": "آيفون، آيباد، إيربودز"
+    }
+  ],
+  "whatsappOrder": true
+}

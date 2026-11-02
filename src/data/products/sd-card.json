@@ -1,0 +1,37 @@
+{
+  "id": "P-0002",
+  "name": "بطاقة ذاكرة SD",
+  "slug": "sd-card",
+  "shortDescription": "بطاقة SD مناسبة للكاميرات الرقمية وتسجيل الفيديو بدقة Full HD",
+  "description": "بطاقة SD مناسبة للكاميرات الرقمية وتسجيل الفيديو بدقة Full HD، بسرعة جيدة لحفظ الصور المتتابعة.",
+  "price": 82,
+  "oldPrice": 90,
+  "currency": "MAD",
+  "category": "cat-storage",
+  "images": [
+    "/images/products/sd-card-1.svg",
+    "/images/products/sd-card-2.svg",
+    "/images/products/sd-card-3.svg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "السعة",
+      "value": "64 جيجابايت"
+    },
+    {
+      "key": "الفئة",
+      "value": "Class 10 / U1"
+    },
+    {
+      "key": "سرعة القراءة",
+      "value": "حتى 80 ميغابايت/ث"
+    },
+    {
+      "key": "النوع",
+      "value": "SDXC"
+    }
+  ],
+  "whatsappOrder": true
+}

@@ -1,0 +1,41 @@
+{
+  "id": "P-0013",
+  "name": "علبة قرص صلب خارجي 2.5 بوصة",
+  "slug": "hdd-enclosure-2-5",
+  "shortDescription": "علبة لتحويل قرص صلب أو SSD بحجم 2",
+  "description": "علبة لتحويل قرص صلب أو SSD بحجم 2.5 بوصة إلى قرص خارجي محمول لحفظ النسخ الاحتياطية ونقل الملفات الكبيرة.",
+  "price": 98,
+  "oldPrice": 110,
+  "currency": "MAD",
+  "category": "cat-disk",
+  "images": [
+    "/images/products/hdd-enclosure-2-5-1.svg",
+    "/images/products/hdd-enclosure-2-5-2.svg",
+    "/images/products/hdd-enclosure-2-5-3.svg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "حجم القرص",
+      "value": "2.5 بوصة SATA"
+    },
+    {
+      "key": "السماكة المدعومة",
+      "value": "7 و9.5 مم"
+    },
+    {
+      "key": "المنفذ",
+      "value": "USB-C"
+    },
+    {
+      "key": "الواجهة",
+      "value": "USB 3.0"
+    },
+    {
+      "key": "ملاحظة",
+      "value": "القرص غير مرفق"
+    }
+  ],
+  "whatsappOrder": true
+}

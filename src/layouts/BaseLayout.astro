@@ -9,6 +9,8 @@ const { title, description = site.tagline, image = site.logo.og, ogType = 'websi
 const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | ${site.tagline}`;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const ogImage = new URL(image, site.url).href;
+// ألوان العلامة من الإعدادات (html:root لضمان أولويتها على global.css)
+const themeCss = `html:root{--c-primary:${site.colors.primary};--c-accent:${site.colors.accent};--c-alert:${site.colors.alert};}`;
 ---
 <!doctype html>
 <html lang={site.lang} dir={site.dir}>
@@ -28,6 +30,8 @@ const ogImage = new URL(image, site.url).href;
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content={site.colors.primary} />
+    <style is:inline set:html={themeCss}></style>
+    {site.customCss ? <style is:inline set:html={site.customCss}></style> : null}
     <slot name="head" />
   </head>
   <body>

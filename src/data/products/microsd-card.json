@@ -1,0 +1,37 @@
+{
+  "id": "P-0003",
+  "name": "بطاقة ذاكرة microSD",
+  "slug": "microsd-card",
+  "shortDescription": "بطاقة microSD للهواتف والكاميرات وأجهزة المراقبة",
+  "description": "بطاقة microSD للهواتف والكاميرات وأجهزة المراقبة، تضيف مساحة تخزين كبيرة للصور والتطبيقات والفيديو.",
+  "price": 64,
+  "oldPrice": 70,
+  "currency": "MAD",
+  "category": "cat-storage",
+  "images": [
+    "/images/products/microsd-card-1.svg",
+    "/images/products/microsd-card-2.svg",
+    "/images/products/microsd-card-3.svg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "السعة",
+      "value": "64 جيجابايت"
+    },
+    {
+      "key": "الفئة",
+      "value": "Class 10 / A1"
+    },
+    {
+      "key": "سرعة القراءة",
+      "value": "حتى 100 ميغابايت/ث"
+    },
+    {
+      "key": "النوع",
+      "value": "microSDXC"
+    }
+  ],
+  "whatsappOrder": true
+}

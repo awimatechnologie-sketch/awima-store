@@ -1,0 +1,37 @@
+{
+  "id": "P-0011",
+  "name": "محول USB-C إلى HDMI",
+  "slug": "usbc-to-hdmi-adapter",
+  "shortDescription": "محول لعرض شاشة الهاتف أو الحاسوب المحمول على التلفاز أو شاشة العرض بجودة عالية",
+  "description": "محول لعرض شاشة الهاتف أو الحاسوب المحمول على التلفاز أو شاشة العرض بجودة عالية.",
+  "price": 108,
+  "oldPrice": 120,
+  "currency": "MAD",
+  "category": "cat-adapters",
+  "images": [
+    "/images/products/usbc-to-hdmi-adapter-1.svg",
+    "/images/products/usbc-to-hdmi-adapter-2.svg",
+    "/images/products/usbc-to-hdmi-adapter-3.svg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الدخل",
+      "value": "USB-C (ذكر)"
+    },
+    {
+      "key": "الخرج",
+      "value": "HDMI (أنثى)"
+    },
+    {
+      "key": "الدقة",
+      "value": "حتى 4K بتردد 30 هرتز"
+    },
+    {
+      "key": "شرط التشغيل",
+      "value": "جهاز يدعم إخراج الفيديو عبر USB-C"
+    }
+  ],
+  "whatsappOrder": true
+}

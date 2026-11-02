@@ -1,0 +1,137 @@
+# لوحة إدارة AWIMA Store (Sveltia CMS) — تسجيل الدخول بتوكن GitHub شخصي
+backend:
+  name: github
+  repo: awimatechnologie-sketch/awima-store
+  branch: main
+
+locale: ar
+publish_mode: simple
+site_url: https://awima-store.pages.dev
+display_url: https://awima-store.pages.dev
+logo_url: /images/logo-icon.png
+
+# مجلد رفع الصور الافتراضي (صور المنتجات)
+media_folder: public/images/products
+public_folder: /images/products
+
+collections:
+  # ---------------- المنتجات ----------------
+  - name: products
+    label: المنتجات
+    label_singular: منتج
+    folder: src/data/products
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: slug
+    slug: '{{slug}}'
+    summary: '{{id}} — {{name}} — {{price}}'
+    sortable_fields: [id, name, price]
+    fields:
+      - { label: المعرّف (مثال P-0015), name: id, widget: string, pattern: ['^P-\d{4}$', 'الصيغة: P- ثم 4 أرقام، مثل P-0015 (يجب ألا يتكرر)'] }
+      - { label: اسم المنتج, name: name, widget: string }
+      - { label: الرابط (slug) بحروف لاتينية صغيرة وشرطات, name: slug, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'حروف لاتينية صغيرة وأرقام وشرطات فقط، مثل usb-flash-drive'] }
+      - { label: وصف قصير, name: shortDescription, widget: text }
+      - { label: الوصف الكامل, name: description, widget: text }
+      - { label: السعر بالدرهم (اتركه فارغاً = اتصل لمعرفة السعر), name: price, widget: number, value_type: float, min: 0, required: false }
+      - { label: السعر القديم قبل التخفيض (اختياري), name: oldPrice, widget: number, value_type: float, min: 0, required: false }
+      - { label: العملة, name: currency, widget: hidden, default: MAD }
+      - label: القسم
+        name: category
+        widget: relation
+        collection: categories
+        value_field: id
+        search_fields: [name]
+        display_fields: [name]
+      - label: الصور (الأولى هي الرئيسية)
+        name: images
+        widget: list
+        required: false
+        field: { label: صورة, name: image, widget: image }
+      - label: حالة التوفر
+        name: availability
+        widget: select
+        options:
+          - { label: متوفر, value: in_stock }
+          - { label: غير متوفر, value: out_of_stock }
+          - { label: عند الطلب, value: on_request }
+        default: in_stock
+      - { label: منتج مميز (يظهر في الرئيسية), name: featured, widget: boolean, default: false }
+      - label: المواصفات التقنية
+        name: specs
+        widget: list
+        required: false
+        fields:
+          - { label: الاسم (مثل السعة), name: key, widget: string }
+          - { label: القيمة (مثل 64 جيجابايت), name: value, widget: string }
+      - { label: الطلب عبر واتساب, name: whatsappOrder, widget: boolean, default: true }
+
+  # ---------------- الأقسام ----------------
+  - name: categories
+    label: الأقسام
+    label_singular: قسم
+    folder: src/data/categories
+    extension: json
+    format: json
+    create: true
+    delete: true
+    identifier_field: slug
+    slug: '{{slug}}'
+    summary: '{{order}} — {{name}}'
+    fields:
+      - { label: المعرّف (مثال cat-storage), name: id, widget: string, pattern: ['^cat-[a-z0-9-]+$', 'يبدأ بـ cat- ثم حروف لاتينية صغيرة، مثل cat-storage'] }
+      - { label: اسم القسم, name: name, widget: string }
+      - { label: الرابط (slug), name: slug, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'حروف لاتينية صغيرة وأرقام وشرطات فقط'] }
+      - { label: ترتيب الظهور (1 أولاً), name: order, widget: number, value_type: int, min: 1, default: 99 }
+
+  # ---------------- إعدادات الموقع ----------------
+  - name: settings
+    label: إعدادات الموقع
+    files:
+      - label: الهوية والتواصل والتنسيق
+        name: site_settings
+        file: src/data/settings.json
+        format: json
+        media_folder: /public/images
+        public_folder: /images
+        fields:
+          - { label: اسم المتجر, name: name, widget: string }
+          - { label: الشعار النصي (Tagline), name: tagline, widget: string }
+          - { label: رابط الموقع (بدون / في النهاية), name: url, widget: string, hint: 'يُستعمل في الروابط الأساسية (canonical) وروابط واتساب' }
+          - label: الشعارات
+            name: logo
+            widget: object
+            fields:
+              - { label: الشعار الكامل (الهيدر والفوتر), name: store, widget: image }
+              - { label: أيقونة الشعار, name: icon, widget: image }
+              - { label: صورة المشاركة على السوشيال, name: og, widget: image }
+          - label: الألوان
+            name: colors
+            widget: object
+            fields:
+              - { label: اللون الأساسي, name: primary, widget: color }
+              - { label: لون التمييز (الأزرار والروابط), name: accent, widget: color }
+              - { label: لون التنبيه (التخفيض), name: alert, widget: color }
+          - label: التواصل
+            name: contact
+            widget: object
+            fields:
+              - { label: واتساب الأساسي (دولي بدون + ولا 0، مثل 212652091799), name: whatsapp, widget: string, pattern: ['^\d{8,15}$', 'أرقام فقط بالصيغة الدولية'] }
+              - { label: واتساب ثانٍ, name: whatsappSecondary, widget: string, required: false, pattern: ['^\d{8,15}$', 'أرقام فقط بالصيغة الدولية'] }
+              - { label: الهاتف الأساسي (للعرض), name: phoneDisplay, widget: string, required: false }
+              - { label: الهاتف الثاني (للعرض), name: phoneSecondaryDisplay, widget: string, required: false }
+              - { label: البريد الإلكتروني, name: email, widget: string, required: false }
+              - { label: العنوان, name: address, widget: string, required: false }
+          - label: التواصل الاجتماعي
+            name: social
+            widget: object
+            fields:
+              - { label: فيسبوك (رابط كامل), name: facebook, widget: string, required: false }
+              - { label: إنستغرام (رابط كامل), name: instagram, widget: string, required: false }
+              - { label: تيك توك (رابط كامل), name: tiktok, widget: string, required: false }
+          - label: متقدم — CSS مخصص
+            name: customCss
+            widget: text
+            required: false
+            hint: 'تحذير: خطأ هنا قد يكسر التصميم. للتراجع امسح المحتوى واحفظ. قد تحتاج !important لتجاوز تنسيقات الموقع.'

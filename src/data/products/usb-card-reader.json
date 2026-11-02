@@ -1,0 +1,37 @@
+{
+  "id": "P-0004",
+  "name": "قارئ بطاقات SD و microSD",
+  "slug": "usb-card-reader",
+  "shortDescription": "قارئ بطاقات صغير يدعم SD وmicroSD لنقل الصور والفيديوهات إلى الحاسوب بسرعة",
+  "description": "قارئ بطاقات صغير يدعم SD وmicroSD لنقل الصور والفيديوهات إلى الحاسوب بسرعة، ويعمل دون برامج إضافية.",
+  "price": 36,
+  "oldPrice": 40,
+  "currency": "MAD",
+  "category": "cat-storage",
+  "images": [
+    "/images/products/usb-card-reader-1.svg",
+    "/images/products/usb-card-reader-2.svg",
+    "/images/products/usb-card-reader-3.svg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الفتحات",
+      "value": "SD و microSD"
+    },
+    {
+      "key": "الأنواع المدعومة",
+      "value": "SD وSDHC وSDXC وmicroSD"
+    },
+    {
+      "key": "الواجهة",
+      "value": "USB 3.0"
+    },
+    {
+      "key": "الموصل",
+      "value": "USB-A"
+    }
+  ],
+  "whatsappOrder": true
+}

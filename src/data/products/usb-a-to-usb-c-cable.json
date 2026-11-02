@@ -1,0 +1,37 @@
+{
+  "id": "P-0005",
+  "name": "كابل USB-A إلى USB-C",
+  "slug": "usb-a-to-usb-c-cable",
+  "shortDescription": "كابل متين للشحن ونقل البيانات بين الشاحن أو الحاسوب والهواتف ذات منفذ USB-C",
+  "description": "كابل متين للشحن ونقل البيانات بين الشاحن أو الحاسوب والهواتف ذات منفذ USB-C.",
+  "price": 27,
+  "oldPrice": 30,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [
+    "/images/products/usb-a-to-usb-c-cable-1.svg",
+    "/images/products/usb-a-to-usb-c-cable-2.svg",
+    "/images/products/usb-a-to-usb-c-cable-3.svg"
+  ],
+  "availability": "on_request",
+  "featured": true,
+  "specs": [
+    {
+      "key": "الطول",
+      "value": "1 متر"
+    },
+    {
+      "key": "الموصلان",
+      "value": "USB-A إلى USB-C"
+    },
+    {
+      "key": "التيار",
+      "value": "حتى 3 أمبير"
+    },
+    {
+      "key": "نقل البيانات",
+      "value": "حتى 480 ميغابت/ث"
+    }
+  ],
+  "whatsappOrder": true
+}

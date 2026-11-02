@@ -1,0 +1,37 @@
+{
+  "id": "P-0010",
+  "name": "محول OTG من Micro USB إلى USB-A",
+  "slug": "otg-micro-usb-adapter",
+  "shortDescription": "محول OTG للهواتف القديمة ذات منفذ Micro USB",
+  "description": "محول OTG للهواتف القديمة ذات منفذ Micro USB، يتيح توصيل ملحقات USB مباشرة بالهاتف.",
+  "price": 17,
+  "oldPrice": 20,
+  "currency": "MAD",
+  "category": "cat-adapters",
+  "images": [
+    "/images/products/otg-micro-usb-adapter-1.svg",
+    "/images/products/otg-micro-usb-adapter-2.svg",
+    "/images/products/otg-micro-usb-adapter-3.svg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الدخل",
+      "value": "Micro USB (ذكر)"
+    },
+    {
+      "key": "الخرج",
+      "value": "USB-A (أنثى)"
+    },
+    {
+      "key": "نقل البيانات",
+      "value": "USB 2.0"
+    },
+    {
+      "key": "التوافق",
+      "value": "الهواتف الداعمة لـ OTG"
+    }
+  ],
+  "whatsappOrder": true
+}

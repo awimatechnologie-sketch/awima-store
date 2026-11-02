@@ -1,0 +1,41 @@
+{
+  "id": "P-0001",
+  "name": "فلاش USB",
+  "slug": "usb-flash-drive",
+  "shortDescription": "فلاش USB بسعة 64 جيجابايت لنقل الملفات والصور والفيديوهات بين الحاسوب والهاتف والتلفاز",
+  "description": "فلاش USB بسعة 64 جيجابايت لنقل الملفات والصور والفيديوهات بين الحاسوب والهاتف والتلفاز. تصميم صغير وعملي مع حلقة للتعليق.",
+  "price": 55,
+  "oldPrice": 60,
+  "currency": "MAD",
+  "category": "cat-storage",
+  "images": [
+    "/images/products/usb-flash-drive-1.svg",
+    "/images/products/usb-flash-drive-2.svg",
+    "/images/products/usb-flash-drive-3.svg"
+  ],
+  "availability": "in_stock",
+  "featured": true,
+  "specs": [
+    {
+      "key": "السعة",
+      "value": "64 جيجابايت"
+    },
+    {
+      "key": "الواجهة",
+      "value": "USB 3.0"
+    },
+    {
+      "key": "سرعة القراءة",
+      "value": "حتى 100 ميغابايت/ث"
+    },
+    {
+      "key": "الموصل",
+      "value": "USB-A"
+    },
+    {
+      "key": "التوافق",
+      "value": "ويندوز، ماك، لينكس"
+    }
+  ],
+  "whatsappOrder": true
+}
