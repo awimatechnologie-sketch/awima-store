@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+import { buildContactLink } from '../lib/whatsapp';
+import contact from '../data/pages/contact.json';
+
+const c = site.contact;
+const tel = (n: string) => n.replace(/[^\d+]/g, '');
+const paragraphs = (t?: string) =>
+  (t ?? '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+
+const socialLabels: Record<string, string> = {
+  facebook: 'فيسبوك',
+  instagram: 'إنستغرام',
+  tiktok: 'تيك توك',
+};
+const socials = Object.entries(site.social).filter(([, url]) => /^https?:\/\//.test(url));
+const hasPhone = c.phoneDisplay || c.phoneSecondaryDisplay;
+---
+<BaseLayout title={contact.title} description={contact.intro}>
+  <section class="section">
+    <div class="container narrow">
+      <h1>{contact.title}</h1>
+      {paragraphs(contact.intro).map((p) => <p class="lead">{p}</p>)}
+
+      <div class="actions">
+        {c.whatsapp && (
+          <a class="btn btn-wa" href={buildContactLink()} target="_blank" rel="noopener">واتساب</a>
+        )}
+        {c.whatsappSecondary && (
+          <a class="btn btn-outline" href={`https://wa.me/${c.whatsappSecondary}`} target="_blank" rel="noopener">واتساب (رقم ثانٍ)</a>
+        )}
+      </div>
+
+      <ul class="info">
+        {c.phoneDisplay && (
+          <li><span>الهاتف</span><a href={`tel:${tel(c.phoneDisplay)}`} dir="ltr">{c.phoneDisplay}</a></li>
+        )}
+        {c.phoneSecondaryDisplay && (
+          <li><span>الهاتف الثاني</span><a href={`tel:${tel(c.phoneSecondaryDisplay)}`} dir="ltr">{c.phoneSecondaryDisplay}</a></li>
+        )}
+        {c.email && (
+          <li><span>البريد الإلكتروني</span><a href={`mailto:${c.email}`} dir="ltr">{c.email}</a></li>
+        )}
+        {c.address && <li><span>العنوان</span><b>{c.address}</b></li>}
+        {contact.hours && <li><span>أوقات العمل</span><b>{contact.hours}</b></li>}
+      </ul>
+
+      {!hasPhone && !c.email && !c.address && !contact.hours && (
+        <p class="empty">يمكنك التواصل معنا عبر واتساب.</p>
+      )}
+
+      {contact.note && paragraphs(contact.note).map((p) => <p class="note">{p}</p>)}
+
+      {socials.length > 0 && (
+        <>
+          <h2>تابعنا</h2>
+          <div class="actions">
+            {socials.map(([k, url]) => (
+              <a class="btn btn-outline" href={url} target="_blank" rel="noopener noreferrer">{socialLabels[k] ?? k}</a>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .narrow { max-width: 760px; }
+  h1 { margin-block: 0 12px; color: var(--c-primary); }
+  h2 { margin-block: 28px 12px; color: var(--c-primary); font-size: 1.2rem; }
+  p { line-height: 1.9; margin-block: 0 12px; }
+  .lead { font-size: 1.05rem; }
+  .note, .empty { color: var(--c-muted); }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-block: 16px; }
+  .info { list-style: none; padding: 0; margin: 20px 0; border: 1px solid var(--c-border); border-radius: var(--radius); overflow: hidden; }
+  .info li { display: flex; justify-content: space-between; gap: 16px; padding: 14px 16px; background: var(--c-bg); }
+  .info li + li { border-top: 1px solid var(--c-border); }
+  .info span { color: var(--c-muted); }
+  .info a { color: var(--c-accent); font-weight: 600; text-decoration: none; }
+</style>

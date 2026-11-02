@@ -86,6 +86,37 @@ collections:
       - { label: الرابط (slug), name: slug, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'حروف لاتينية صغيرة وأرقام وشرطات فقط'] }
       - { label: ترتيب الظهور (1 أولاً), name: order, widget: number, value_type: int, min: 1, default: 99 }
 
+  # ---------------- الصفحات ----------------
+  - name: pages
+    label: الصفحات (من نحن / اتصل بنا)
+    files:
+      - label: صفحة من نحن
+        name: about_page
+        file: src/data/pages/about.json
+        format: json
+        media_folder: /public/images
+        public_folder: /images
+        fields:
+          - { label: العنوان, name: title, widget: string }
+          - { label: مقدمة, name: intro, widget: text, hint: 'سطر فارغ بين فقرتين = فقرة جديدة' }
+          - { label: الرسالة, name: mission, widget: text, required: false }
+          - label: الأهداف (واحد في كل سطر)
+            name: goals
+            widget: list
+            required: false
+            field: { label: هدف, name: goal, widget: string }
+          - { label: الفلسفة, name: philosophy, widget: text, required: false }
+          - { label: صورة (اختيارية), name: image, widget: image, required: false }
+      - label: صفحة اتصل بنا
+        name: contact_page
+        file: src/data/pages/contact.json
+        format: json
+        fields:
+          - { label: العنوان, name: title, widget: string }
+          - { label: مقدمة, name: intro, widget: text }
+          - { label: أوقات العمل (اختياري), name: hours, widget: string, required: false }
+          - { label: ملاحظة (اختيارية), name: note, widget: text, required: false }
+
   # ---------------- إعدادات الموقع ----------------
   - name: settings
     label: إعدادات الموقع

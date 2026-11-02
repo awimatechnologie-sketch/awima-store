@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+import { buildContactLink } from '../lib/whatsapp';
+import about from '../data/pages/about.json';
+
+// فقرات من النص: السطر الفارغ يفصل بين فقرتين
+const paragraphs = (t?: string) =>
+  (t ?? '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+const goals: string[] = (about.goals ?? []).filter(Boolean);
+---
+<BaseLayout title={about.title} description={about.intro}>
+  <section class="section">
+    <div class="container narrow">
+      <h1>{about.title}</h1>
+      {paragraphs(about.intro).map((p) => <p class="lead">{p}</p>)}
+
+      {about.image && <img class="hero-img" src={about.image} alt={site.name} loading="lazy" />}
+
+      {about.mission && (
+        <>
+          <h2>رسالتنا</h2>
+          {paragraphs(about.mission).map((p) => <p>{p}</p>)}
+        </>
+      )}
+
+      {goals.length > 0 && (
+        <>
+          <h2>أهدافنا</h2>
+          <ul class="goals">{goals.map((g) => <li>{g}</li>)}</ul>
+        </>
+      )}
+
+      {about.philosophy && (
+        <>
+          <h2>فلسفتنا</h2>
+          {paragraphs(about.philosophy).map((p) => <p>{p}</p>)}
+        </>
+      )}
+
+      <div class="actions">
+        <a class="btn btn-wa" href={buildContactLink()} target="_blank" rel="noopener">تواصل عبر واتساب</a>
+        <a class="btn btn-outline" href="/products">تصفح المنتجات</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .narrow { max-width: 760px; }
+  h1 { margin-block: 0 12px; color: var(--c-primary); }
+  h2 { margin-block: 28px 8px; color: var(--c-primary); font-size: 1.2rem; }
+  .lead { font-size: 1.1rem; color: var(--c-text); }
+  p { line-height: 1.9; color: var(--c-muted); margin-block: 0 12px; }
+  .lead { color: var(--c-text); }
+  .goals { padding-inline-start: 20px; line-height: 2; color: var(--c-muted); }
+  .hero-img { width: 100%; height: auto; border-radius: var(--radius); margin-block: 16px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+</style>
