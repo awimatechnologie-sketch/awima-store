@@ -6,6 +6,7 @@ import { buildProductLink } from '../../lib/whatsapp';
 import { formatPrice, getSaving, availabilityFor } from '../../lib/format';
 import { t, langOf, localePath, type Lang } from '../../i18n';
 import { pickRelated } from '../../lib/related';
+import { isLowStock } from '../../lib/stock';
 import { getAllProducts, getCategories, getProductBySlug } from '../../services/products';
 import { getReviewSummary, getReviews } from '../../services/reviews';
 
@@ -99,6 +100,7 @@ if (product.price !== null) {
             {saving ? <span class="save">{t(lang, 'price.save', { amount: formatPrice(saving, lang) })}</span> : null}
           </p>
           <span class={`badge ${av.cls}`}>{av.text}</span>
+          {isLowStock(product.stock) ? <span class="low">{t(lang, 'product.lowStock', { n: product.stock as number })}</span> : null}
 
           <p class="short">{product.shortDescription}</p>
 
@@ -195,6 +197,7 @@ if (product.price !== null) {
   .price { font-size: 1.8rem; font-weight: 800; color: var(--c-accent); }
   .old { color: var(--c-muted); font-size: 1.05rem; }
   .save { background: var(--c-alert); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 3px 12px; border-radius: 999px; }
+  .low { margin-inline-start: 8px; color: var(--c-alert); font-weight: 700; font-size: 0.9rem; }
   .short { margin-top: 14px; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
   .note { color: var(--c-muted); font-size: 0.85rem; margin-top: 10px; }

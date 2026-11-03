@@ -322,6 +322,27 @@ collections:
             fields:
               - { label: الحد الأدنى لعدد المنتجات, name: minItems, widget: number, value_type: int, min: 1, default: 4 }
               - { label: مدة التوصيل بالساعات (أقل من), name: hours, widget: number, value_type: int, min: 1, default: 5 }
+          - { label: التوصيل مجاني ابتداءً من (درهم — اتركه فارغاً أو 0 للتعطيل), name: freeDeliveryFrom, widget: number, value_type: float, min: 0, required: false }
+          - label: أكواد الخصم
+            name: discounts
+            widget: list
+            required: false
+            hint: 'الكود يُطبَّق على مجموع المنتجات فقط (لا على التوصيل). لا يظهر الكود نفسه في كود الصفحة، لكن راجع كل طلب يحمل كوداً قبل تأكيده. التواريخ بتوقيت المغرب وتشمل اليومين.'
+            summary: '{{fields.code}} — {{fields.value}} {{fields.type}}'
+            fields:
+              - { label: الكود (حروف لاتينية وأرقام، 3–24), name: code, widget: string, pattern: ['^[A-Za-z0-9_-]{3,24}$', 'حروف لاتينية وأرقام وشرطات فقط (3 إلى 24)'] }
+              - label: نوع الخصم
+                name: type
+                widget: select
+                default: percent
+                options:
+                  - { label: نسبة مئوية %, value: percent }
+                  - { label: مبلغ ثابت بالدرهم, value: fixed }
+              - { label: القيمة (نسبة 1–100 أو مبلغ), name: value, widget: number, value_type: float, min: 1 }
+              - { label: أدنى مجموع منتجات (اختياري), name: minSubtotal, widget: number, value_type: float, min: 0, required: false }
+              - { label: يبدأ في (اختياري), name: startDate, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, required: false }
+              - { label: ينتهي في (اختياري، يشمل هذا اليوم), name: endDate, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, required: false }
+              - { label: مفعّل, name: enabled, widget: boolean, default: true }
           - label: المدن
             name: cities
             widget: list

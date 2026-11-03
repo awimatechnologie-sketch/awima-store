@@ -3,7 +3,8 @@
 import settings from '../data/settings.json';
 import { isValidTime } from '../lib/hours';
 import { isValidBeaconToken } from '../lib/analytics';
-import { normalizeFee } from '../lib/delivery';
+import { normalizeFee, normalizeFreeFrom } from '../lib/delivery';
+import { normalizeDiscounts } from '../lib/discounts';
 import { pick, type Lang } from '../i18n';
 
 type Settings = {
@@ -25,6 +26,8 @@ type Settings = {
   announcements?: { text?: string; text_fr?: string; link?: string; enabled?: boolean }[];
   hours?: { open?: string; close?: string };
   fastDelivery?: { minItems?: number; hours?: number };
+  freeDeliveryFrom?: number | null;
+  discounts?: unknown;
   cities?: { name?: string; name_fr?: string; open?: boolean; fee?: number }[];
   analytics?: { cloudflareToken?: string };
   customCss?: string;
@@ -91,6 +94,10 @@ export const site = {
     minItems: posInt(s.fastDelivery?.minItems, 4),
     hours: posInt(s.fastDelivery?.hours, 5),
   },
+  // التوصيل مجاني ابتداءً من هذا المجموع (درهم). null = معطّل
+  freeDeliveryFrom: normalizeFreeFrom(s.freeDeliveryFrom),
+  // أكواد الخصم المفعّلة والصالحة فقط
+  discounts: normalizeDiscounts(s.discounts),
   // المدن: المفتوحة فقط يمكن الطلب منها، والبقية تظهر مقفلة
   cities: (s.cities ?? [])
     .filter((c) => c?.name)

@@ -15,3 +15,8 @@ export function effectiveAvailability<A extends string>(availability: A, stock: 
 /** أقصى كمية يمكن للزبون طلبها من المنتج */
 export const maxQty = (stock: Stock, cap = MAX_QTY): number =>
   stock === null || stock === undefined ? cap : Math.min(cap, Math.max(0, stock));
+
+/** يظهر «متبقّ N فقط» عندما يكون المخزون المحدَّد بين 1 وهذا الحد */
+export const LOW_STOCK = 5;
+export const isLowStock = (stock: Stock, threshold = LOW_STOCK): boolean =>
+  typeof stock === 'number' && stock >= 1 && stock <= threshold;

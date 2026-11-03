@@ -158,6 +158,31 @@ if (s) {
       if (!Number.isInteger(s.fastDelivery[k]) || s.fastDelivery[k] < 1) err(sLabel, `fastDelivery.${k} يجب أن يكون عدداً صحيحاً ≥ 1`);
   }
 
+  if (s.freeDeliveryFrom != null && !(typeof s.freeDeliveryFrom === 'number' && Number.isFinite(s.freeDeliveryFrom) && s.freeDeliveryFrom >= 0))
+    err(sLabel, 'freeDeliveryFrom يجب أن يكون رقماً ≥ 0');
+
+  if (s.discounts !== undefined && s.discounts !== null) {
+    if (!Array.isArray(s.discounts)) err(sLabel, '"discounts" يجب أن تكون قائمة');
+    else {
+      const seenCodes = new Set();
+      const today = new Date().toISOString().slice(0, 10);
+      s.discounts.forEach((d, i) => {
+        const at = `discounts[${i + 1}]`;
+        const code = String(d?.code ?? '').replace(/\s+/g, '').toUpperCase();
+        if (!/^[A-Z0-9_-]{3,24}$/.test(code)) err(sLabel, `${at}: الكود غير صالح (حروف لاتينية وأرقام وشرطات، 3–24)`);
+        else if (seenCodes.has(code)) err(sLabel, `${at}: الكود "${code}" مكرر`);
+        else seenCodes.add(code);
+        if (!['percent', 'fixed'].includes(d?.type)) err(sLabel, `${at}: type يجب أن يكون percent أو fixed`);
+        if (!(typeof d?.value === 'number' && d.value > 0) || (d?.type === 'percent' && d.value > 100)) err(sLabel, `${at}: القيمة غير صالحة (نسبة 1–100 أو مبلغ > 0)`);
+        const dv = (v) => (v ? String(v).slice(0, 10) : '');
+        const [st, en] = [dv(d?.startDate), dv(d?.endDate)];
+        for (const [k, v] of [['startDate', st], ['endDate', en]]) if (v && (!/^\d{4}-\d{2}-\d{2}$/.test(v) || Number.isNaN(Date.parse(v)))) err(sLabel, `${at}: ${k} غير صالح (YYYY-MM-DD)`);
+        if (st && en && st > en) err(sLabel, `${at}: تاريخ البداية بعد النهاية`);
+        if (en && en < today && d?.enabled !== false) warn(sLabel, `${at}: الكود "${code}" منتهي (${en}) وما زال مفعّلاً`);
+      });
+    }
+  }
+
   if (s.cities !== undefined) {
     if (!Array.isArray(s.cities)) err(sLabel, '"cities" يجب أن تكون قائمة');
     else {

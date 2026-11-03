@@ -4,6 +4,7 @@ import HoursBadge from '../components/HoursBadge.astro';
 import { site, localizedSite } from '../config/site';
 import { getAllProducts } from '../services/products';
 import { formatPrice } from '../lib/format';
+import { hashCode } from '../lib/discounts';
 import { t, langOf, localePath, type Lang } from '../i18n';
 
 interface Props { lang?: Lang }
@@ -17,12 +18,16 @@ const products = getAllProducts(lang).map((p) => ({
   image: p.images[0] ?? '/images/placeholder.svg',
   availability: p.availability,
   stock: p.stock ?? null,
+  category: p.category,
+  related: p.related ?? [],
 }));
 const data = {
   products,
   currencyLabel: t(lang, 'currency'),
   whatsapp: site.contact.whatsapp,
   fast: site.fastDelivery,
+  freeFrom: site.freeDeliveryFrom,
+  discounts: await Promise.all(site.discounts.map(async ({ code, ...d }) => ({ ...d, h: await hashCode(code) }))),
   cities: ls.cities.map((c) => ({ name: c.name, fee: c.fee })),
   siteName: site.name,
 };
@@ -54,13 +59,29 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
 
           <p class="row"><span>{t(lang, 'cart.itemCount')}</span><b id="qty">0</b></p>
           <p class="row"><span>{t(lang, 'cart.subtotal')}</span><b id="subtotal">0</b></p>
+          <p class="row" id="disc-row" hidden><span>{t(lang, 'cart.discount')}</span><b id="disc">—</b></p>
           <p class="row"><span>{t(lang, 'cart.delivery')}</span><b id="fee">—</b></p>
           <p class="row grand"><span>{t(lang, 'cart.grand')}</span><b id="total">0</b></p>
           <p id="unpriced" class="hint" hidden></p>
           <p id="offer" class="offer"></p>
+          <p id="freehint" class="offer" hidden></p>
+          {site.discounts.length > 0 && (
+            <div class="field-group" id="code-box">
+              <label for="f-code">{t(lang, 'cart.code.label')}</label>
+              <div class="code-row">
+                <input type="text" id="f-code" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="24" placeholder={t(lang, 'cart.code.placeholder')} />
+                <button type="button" id="code-apply" class="btn btn-outline">{t(lang, 'cart.code.apply')}</button>
+              </div>
+              <p id="code-msg" class="hint" role="status" hidden></p>
+            </div>
+          )}
           <div id="suggest" class="suggest" hidden>
             <h3>{t(lang, 'cart.suggest')}</h3>
             <ul id="suggest-list"></ul>
+          </div>
+          <div id="also" class="suggest" hidden>
+            <h3>{t(lang, 'cart.alsoLike')}</h3>
+            <ul id="also-list"></ul>
           </div>
 
           <fieldset class="field-group">
@@ -132,6 +153,10 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
   .notice { margin: 12px 0 0; padding: 10px 14px; border-radius: 10px; background: #fff4e0; color: #8a4b00; font-weight: 600; }
   .offer { margin: 0; padding: 10px 12px; border-radius: 10px; background: #e8f0ff; color: var(--c-primary); font-weight: 600; }
   .offer.ok { background: #e6f6ec; color: #0e6e3c; }
+  .code-row { display: flex; gap: 8px; }
+  .code-row input { flex: 1; text-transform: uppercase; }
+  .code-msg-ok { color: #0e6e3c; font-weight: 600; }
+  .code-msg-bad { color: var(--c-alert); font-weight: 600; }
   .field-group { border: 1px solid var(--c-border); border-radius: 10px; padding: 12px; display: grid; gap: 10px; margin: 0; }
   legend { font-weight: 700; color: var(--c-primary); padding-inline: 6px; }
   legend small { color: var(--c-muted); font-weight: 400; }
@@ -149,11 +174,12 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
 <script>
   import { readCart, setQty, removeFromCart, clearCart, takePruned } from '../lib/cart';
   import { orderRef } from '../lib/order';
-  import { pickSuggestions } from '../lib/suggest';
-  import { feeFor, orderTotals } from '../lib/delivery';
+  import { pickSuggestions, pickCartRelated } from '../lib/suggest';
+  import { feeFor, orderTotals, effectiveFee, freeRemaining } from '../lib/delivery';
   import { maxQty } from '../lib/stock';
   import { t, plural, langOf } from '../i18n';
   import { isOpenNow } from '../lib/hours';
+  import { normalizeCode, hashCode, evaluateDiscount, moroccoToday, type DiscountEntry } from '../lib/discounts';
 
   const lang = langOf(document.documentElement.lang);
   type P = { id: string; name: string; slug: string; price: number | null; image: string; availability: string; stock: number | null };
@@ -189,8 +215,47 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
 
   let staleCount = 0;
   const clampNotes: string[] = [];
+  const freeFrom = (data.freeFrom as number | null) ?? null;
   const fees = (data.cities as { name: string; fee: number | null }[]) ?? [];
   const items = (n: number) => plural(lang, n);
+
+  // ---- كود الخصم ----
+  const CKEY = 'awima_code';
+  const codeInput = document.getElementById('f-code') as HTMLInputElement | null;
+  const codeBtn = document.getElementById('code-apply') as HTMLButtonElement | null;
+  const codeMsg = document.getElementById('code-msg');
+  let active: { entry: DiscountEntry; code: string } | null = null;
+  let codeNotice = '';
+  const evalCode = (subtotal: number) => (active ? evaluateDiscount(active.entry, subtotal, moroccoToday()) : null);
+  const reasonText = (ev: Exclude<ReturnType<typeof evaluateDiscount>, { ok: true }>) =>
+    ev.reason === 'notStarted' ? t(lang, 'cart.code.notStarted', { date: ev.date ?? '' })
+    : ev.reason === 'expired' ? t(lang, 'cart.code.expired')
+    : ev.reason === 'min' ? t(lang, 'cart.code.min', { amount: money(ev.min ?? 0) })
+    : t(lang, 'cart.code.invalid');
+  async function applyCode(raw: string, silent = false) {
+    const code = normalizeCode(raw);
+    if (!code) return;
+    const h = await hashCode(code);
+    const entry = ((data.discounts as DiscountEntry[]) ?? []).find((d) => d.h === h);
+    if (!entry) {
+      active = null;
+      codeNotice = silent ? '' : t(lang, 'cart.code.invalid');
+      try { sessionStorage.removeItem(CKEY); } catch {}
+    } else {
+      active = { entry, code };
+      codeNotice = '';
+      try { sessionStorage.setItem(CKEY, code); } catch {}
+    }
+    render();
+  }
+  function clearCode() {
+    active = null; codeNotice = '';
+    if (codeInput) codeInput.value = '';
+    try { sessionStorage.removeItem(CKEY); } catch {}
+    render();
+  }
+  codeBtn?.addEventListener('click', () => (active ? clearCode() : applyCode(codeInput?.value ?? '')));
+  codeInput?.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); if (!active) applyCode(codeInput.value); } });
 
   function selectedCity(): string {
     return (document.querySelector<HTMLInputElement>('input[name="city"]:checked')?.value ?? '').trim();
@@ -263,12 +328,28 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
     stale.hidden = notes.length === 0;
     stale.textContent = notes.join(' ');
 
+    // كود الخصم (على مجموع المنتجات فقط)
+    const ev = evalCode(total);
+    const dc = ev && ev.ok ? ev.amount : 0;
+    const net = total - dc;
+    $('disc-row').hidden = dc === 0;
+    $('disc').textContent = dc ? `− ${money(dc)}` : '—';
+    if (codeBtn && codeInput && codeMsg) {
+      codeBtn.textContent = t(lang, active ? 'cart.code.remove' : 'cart.code.apply');
+      codeInput.readOnly = !!active;
+      if (active) codeInput.value = active.code;
+      const msg = active ? (ev && ev.ok ? t(lang, 'cart.code.ok', { code: active.code }) : ev ? reasonText(ev) : '') : codeNotice;
+      codeMsg.hidden = !msg;
+      codeMsg.textContent = msg;
+      codeMsg.className = `hint ${active && ev && ev.ok ? 'code-msg-ok' : 'code-msg-bad'}`;
+    }
+
     const city = selectedCity();
-    const fee = city ? feeFor(fees, city) : null;
-    const tot = orderTotals(total, qty, fee);
+    const fee = effectiveFee(city ? feeFor(fees, city) : null, net, freeFrom);
+    const tot = orderTotals(net, qty, fee);
     $('qty').textContent = String(qty);
-    $('subtotal').textContent = money(tot.subtotal);
-    $('fee').textContent = qty === 0 ? '—' : !city ? t(lang, 'cart.chooseCity') : fee === null ? t(lang, 'cart.feeTbd') : fee === 0 ? t(lang, 'cart.free') : money(fee);
+    $('subtotal').textContent = money(total);
+    $('fee').textContent = qty === 0 ? '—' : fee === 0 ? t(lang, 'cart.free') : !city ? t(lang, 'cart.chooseCity') : fee === null ? t(lang, 'cart.feeTbd') : money(fee);
     $('total').textContent = money(tot.total);
     const un = $('unpriced');
     un.hidden = unpriced === 0;
@@ -284,23 +365,38 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
       offer.className = 'offer';
     }
 
-    // اقتراحات لإكمال العدد المطلوب للتوصيل السريع (أرخص المنتجات المتوفرة غير الموجودة في السلة)
-    const sBox = $('suggest');
-    const sList = $('suggest-list');
-    sList.replaceChildren();
-    const inCart = new Set(lines.map((l) => l.id));
-    const picks = qty > 0 && qty < minItems ? pickSuggestions(Array.from(products.values()), inCart, 3) : [];
-    sBox.hidden = picks.length === 0;
-    for (const p of picks) {
-      const li = el('li');
-      const a = el('a', 'sg-name', p.name); a.href = `/products/${p.slug}`;
-      const price = el('span', 'sg-price', money(p.price as number));
-      const add = el('button', 'btn btn-outline sg-add', t(lang, 'cart.add')); add.type = 'button';
-      add.dataset.addToCart = p.id; add.dataset.name = p.name;
-      if (p.stock !== null) add.dataset.stock = String(p.stock);
-      li.append(a, price, add);
-      sList.append(li);
+    // حد التوصيل المجاني
+    const fh = $('freehint');
+    const missing = freeRemaining(net, freeFrom);
+    fh.hidden = freeFrom === null || qty === 0;
+    if (!fh.hidden) {
+      fh.textContent = missing === null ? t(lang, 'cart.freeOk') : t(lang, 'cart.freeNeed', { amount: money(missing) });
+      fh.className = missing === null ? 'offer ok' : 'offer';
     }
+
+    // «قد يعجبك أيضاً» ثم إكمال عدد التوصيل السريع (أرخص المتوفر دون تكرار)
+    const inCart = new Set(lines.map((l) => l.id));
+    const fill = (boxId: string, listId: string, picks: { id: string; name: string; slug: string; price: number | null; stock: number | null }[]) => {
+      const box = $(boxId);
+      const list = $(listId);
+      list.replaceChildren();
+      box.hidden = picks.length === 0;
+      for (const p of picks) {
+        const li = el('li');
+        const a = el('a', 'sg-name', p.name); a.href = localePath(lang, `/products/${p.slug}`);
+        const price = el('span', 'sg-price', money(p.price as number));
+        const add = el('button', 'btn btn-outline sg-add', t(lang, 'cart.add')); add.type = 'button';
+        add.dataset.addToCart = p.id; add.dataset.name = p.name;
+        if (p.stock !== null) add.dataset.stock = String(p.stock);
+        li.append(a, price, add);
+        list.append(li);
+      }
+    };
+    const all = Array.from(products.values());
+    const also = qty > 0 ? pickCartRelated(all, inCart, 3) : [];
+    fill('also', 'also-list', also);
+    const shown = new Set([...inCart, ...also.map((p) => p.id)]);
+    fill('suggest', 'suggest-list', qty > 0 && qty < minItems ? pickSuggestions(all, shown, 3) : []);
 
     const st = isOpenNow(document.querySelector<HTMLElement>('[data-hours]')?.dataset.open ?? '', document.querySelector<HTMLElement>('[data-hours]')?.dataset.close ?? '');
     $('closed-note').hidden = st !== false;
@@ -316,9 +412,13 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
       out.push(l.p.price === null ? t(lang, 'cart.msg.qty', { n: l.qty, price }) : `   ${price}`);
     });
     const city = selectedCity();
-    const fee = feeFor(fees, city);
-    const tot = orderTotals(total, avail.length, fee);
-    out.push('', t(lang, 'cart.msg.subtotal', { amount: money(tot.subtotal) }) + (unpriced ? t(lang, 'cart.msg.subtotalExtra', { items: items(unpriced) }) : ''));
+    const ev = evalCode(total);
+    const dc = ev && ev.ok ? ev.amount : 0;
+    const net = total - dc;
+    const fee = effectiveFee(feeFor(fees, city), net, freeFrom);
+    const tot = orderTotals(net, avail.length, fee);
+    out.push('', t(lang, 'cart.msg.subtotal', { amount: money(total) }) + (unpriced ? t(lang, 'cart.msg.subtotalExtra', { items: items(unpriced) }) : ''));
+    if (dc && active) out.push(t(lang, 'cart.msg.code', { code: active.code, amount: money(dc) }));
     out.push(t(lang, 'cart.msg.delivery', { city, fee: fee === null ? t(lang, 'cart.msg.deliveryTbd') : fee === 0 ? t(lang, 'cart.free') : money(fee) }));
     out.push(t(lang, 'cart.msg.grand', { amount: money(tot.total) }));
     const extras: [string, string][] = [
@@ -342,4 +442,5 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
   window.addEventListener('cart:change', render);
   window.addEventListener('storage', render);
   render();
+  try { const saved = sessionStorage.getItem(CKEY); if (saved) applyCode(saved, true); } catch {}
 </script>

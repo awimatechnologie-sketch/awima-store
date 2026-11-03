@@ -6,13 +6,14 @@ import { normalize, matches } from '../src/lib/search.ts';
 import { orderRef, dateStamp } from '../src/lib/order.ts';
 import { isOpenNow } from '../src/lib/hours.ts';
 import { pickRelated } from '../src/lib/related.ts';
-import { pickSuggestions } from '../src/lib/suggest.ts';
+import { pickSuggestions, pickCartRelated } from '../src/lib/suggest.ts';
 import { isValidBeaconToken, beaconAttr, BEACON_SRC } from '../src/lib/analytics.ts';
-import { feeFor, orderTotals, normalizeFee } from '../src/lib/delivery.ts';
-import { normalizeStock, effectiveAvailability, maxQty } from '../src/lib/stock.ts';
+import { feeFor, orderTotals, normalizeFee, normalizeFreeFrom, effectiveFee, freeRemaining } from '../src/lib/delivery.ts';
+import { normalizeStock, effectiveAvailability, maxQty, isLowStock } from '../src/lib/stock.ts';
 import { dictionaries, t, plural, pick, localePath, alternatePath, langFromPath, langOf, dirOf } from '../src/i18n/index.ts';
 import { formatTime, hoursLabel } from '../src/lib/hours.ts';
 import { formatPrice } from '../src/lib/format.ts';
+import { normalizeCode, normalizeDiscounts, evaluateDiscount, hashCode, moroccoToday } from '../src/lib/discounts.ts';
 import { summarize, tierFor, normalizeReview, MIN_POINTS } from '../src/lib/reviews.ts';
 import { localizeProduct, localizeCategory } from '../src/lib/localize.ts';
 import { buildSitemap, buildRobots, buildStoreLd } from '../src/lib/seo.ts';
@@ -295,4 +296,78 @@ test('reviews: التحقق من السجل الخام', () => {
   assert.equal(normalizeReview({ rating: 4, buyer: 'new' }), null);
   assert.equal(normalizeReview({ product: 'P-1', rating: 4, buyer: 'غريب' }).buyer, 'new'); // غير المعروف = زبون جديد
   assert.equal(normalizeReview({ product: 'P-1', rating: 5, buyer: 'verified', comment: '  ممتاز ' }).comment, 'ممتاز');
+});
+
+test('delivery: التوصيل المجاني فوق حد معيّن', () => {
+  assert.equal(normalizeFreeFrom(300), 300);
+  assert.equal(normalizeFreeFrom(0), null);
+  assert.equal(normalizeFreeFrom(null), null);
+  assert.equal(normalizeFreeFrom('300'), null);
+  assert.equal(effectiveFee(15, 299, 300), 15);
+  assert.equal(effectiveFee(15, 300, 300), 0);
+  assert.equal(effectiveFee(null, 450, 300), 0); // رسم غير محدد + بلوغ الحد = مجاني
+  assert.equal(effectiveFee(15, 500, null), 15); // معطّل
+  assert.equal(effectiveFee(15, 0, 300), 15);
+  assert.equal(freeRemaining(120, 300), 180);
+  assert.equal(freeRemaining(300, 300), null);
+  assert.equal(freeRemaining(50, null), null);
+  assert.deepEqual(orderTotals(320, 2, effectiveFee(30, 320, 300)), { subtotal: 320, fee: 0, total: 320 });
+});
+
+test('stock: متبقّ N فقط', () => {
+  assert.equal(isLowStock(5), true);
+  assert.equal(isLowStock(1), true);
+  assert.equal(isLowStock(6), false);
+  assert.equal(isLowStock(0), false);
+  assert.equal(isLowStock(null), false);
+  assert.equal(isLowStock(undefined), false);
+});
+
+test('suggest: قد يعجبك أيضاً في السلة', () => {
+  const mk = (id, price, category, related = [], availability = 'in_stock') => ({ id, price, category, related, availability });
+  const all = [mk('A', 50, 'c1', ['D', 'X']), mk('B', 20, 'c1'), mk('C', 10, 'c2'), mk('D', 90, 'c3'), mk('E', 5, 'c1', [], 'out_of_stock'), mk('F', null, 'c1')];
+  assert.deepEqual(pickCartRelated(all, new Set(['A']), 3).map((p) => p.id), ['D', 'B']); // اليدوي أولاً ثم القسم؛ E نافد وF بلا سعر
+  assert.deepEqual(pickCartRelated(all, new Set(['A', 'B', 'D']), 3), []);
+  assert.deepEqual(pickCartRelated(all, new Set(), 3), []);
+  assert.equal(pickCartRelated(all, new Set(['A']), 1).length, 1);
+});
+
+test('discounts: التطبيع والتحقق', () => {
+  assert.equal(normalizeCode(' ab c-1 '), 'ABC-1');
+  const list = normalizeDiscounts([
+    { code: 'welcome10', type: 'percent', value: 10 },
+    { code: 'WELCOME10', type: 'fixed', value: 5 }, // مكرر
+    { code: 'bad', type: 'percent', value: 150 }, // نسبة > 100
+    { code: 'ab', type: 'fixed', value: 5 }, // قصير
+    { code: 'OFF', type: 'fixed', value: 0 },
+    { code: 'GONE', type: 'fixed', value: 5, enabled: false },
+    { code: 'RANGE', type: 'fixed', value: 5, startDate: '2026-12-31', endDate: '2026-01-01' },
+    { code: 'SAVE20', type: 'fixed', value: 20, minSubtotal: 100, startDate: '2026-11-01T00:00:00', endDate: '2026-11-30' },
+    null,
+  ]);
+  assert.deepEqual(list.map((d) => d.code), ['WELCOME10', 'SAVE20']);
+  assert.equal(list[1].start, '2026-11-01');
+  assert.equal(list[1].minSubtotal, 100);
+  assert.deepEqual(normalizeDiscounts(undefined), []);
+});
+
+test('discounts: التقييم والتواريخ', () => {
+  const pct = { type: 'percent', value: 10, minSubtotal: null, start: null, end: null };
+  assert.deepEqual(evaluateDiscount(pct, 250, '2026-11-03'), { ok: true, amount: 25 });
+  assert.deepEqual(evaluateDiscount({ ...pct, type: 'fixed', value: 500 }, 120, '2026-11-03'), { ok: true, amount: 120 }); // لا يتجاوز المجموع
+  const win = { ...pct, start: '2026-11-10', end: '2026-11-20', minSubtotal: 100 };
+  assert.deepEqual(evaluateDiscount(win, 200, '2026-11-09'), { ok: false, reason: 'notStarted', date: '2026-11-10' });
+  assert.equal(evaluateDiscount(win, 200, '2026-11-10').ok, true); // يوم البداية يشمل
+  assert.equal(evaluateDiscount(win, 200, '2026-11-20').ok, true); // يوم النهاية يشمل
+  assert.deepEqual(evaluateDiscount(win, 200, '2026-11-21'), { ok: false, reason: 'expired' });
+  assert.deepEqual(evaluateDiscount(win, 99, '2026-11-15'), { ok: false, reason: 'min', min: 100 });
+  assert.deepEqual(evaluateDiscount(null, 99, '2026-11-15'), { ok: false, reason: 'invalid' });
+  assert.match(moroccoToday(new Date('2026-11-03T23:30:00Z')), /^2026-11-0[34]$/);
+});
+
+test('discounts: البصمة لا تكشف الكود', async () => {
+  const a = await hashCode('welcome10');
+  assert.match(a, /^[a-f0-9]{64}$/);
+  assert.equal(a, await hashCode(' WELCOME10 ')); // التوحيد قبل الحساب
+  assert.notEqual(a, await hashCode('WELCOME11'));
 });

@@ -75,6 +75,12 @@ if (anns.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) 
 }
 
 // زر تبديل اللغة يحافظ على الفلاتر (?q=...) والمرساة (#q) عند الانتقال إلى نفس الصفحة بلغة أخرى
+const LANG_KEY = 'awima_lang_v1';
+const savedLang = (): string | null => { try { return localStorage.getItem(LANG_KEY); } catch { return null; } };
 document.querySelectorAll<HTMLAnchorElement>('[data-lang-switch]').forEach((a) => {
   a.href = a.href.split(/[?#]/)[0] + location.search + location.hash;
+  // نتذكّر اختيار الزائر الصريح فقط (النقر على الزر)
+  a.addEventListener('click', () => { try { localStorage.setItem(LANG_KEY, a.hreflang); } catch {} });
 });
+// من فضّل الفرنسية يُوجَّه من الصفحة الرئيسية العربية فقط (روابط الصفحات الأخرى تُحترم كما هي)
+if (location.pathname === '/' && savedLang() === 'fr') location.replace('/fr/' + location.search + location.hash);
