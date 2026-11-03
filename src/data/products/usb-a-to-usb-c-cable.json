@@ -33,5 +33,28 @@
       "value": "حتى 480 ميغابت/ث"
     }
   ],
-  "whatsappOrder": true
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Câble USB-A vers USB-C",
+    "shortDescription": "Câble robuste de charge et de transfert entre le chargeur ou l'ordinateur et les téléphones USB-C",
+    "description": "Câble robuste de charge et de transfert de données entre le chargeur ou l'ordinateur et les téléphones dotés d'un port USB-C.",
+    "specs": [
+      {
+        "key": "Longueur",
+        "value": "1 m"
+      },
+      {
+        "key": "Connecteurs",
+        "value": "USB-A vers USB-C"
+      },
+      {
+        "key": "Courant",
+        "value": "jusqu'à 3 A"
+      },
+      {
+        "key": "Transfert de données",
+        "value": "jusqu'à 480 Mbit/s"
+      }
+    ]
+  }
 }

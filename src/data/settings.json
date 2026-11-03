@@ -29,7 +29,8 @@
     {
       "text": "اشترِ أكثر من 3 منتجات وتصلك طلبيتك في أقل من 5 ساعات",
       "link": "/products",
-      "enabled": true
+      "enabled": true,
+      "text_fr": "Achetez plus de 3 produits et recevez votre commande en moins de 5 heures"
     }
   ],
   "hours": {
@@ -43,28 +44,44 @@
   "cities": [
     {
       "name": "أكادير",
-      "open": true
+      "open": true,
+      "fee": 15,
+      "name_fr": "Agadir"
     },
     {
       "name": "مراكش",
-      "open": false
+      "open": false,
+      "fee": 30,
+      "name_fr": "Marrakech"
     },
     {
       "name": "الدار البيضاء",
-      "open": false
+      "open": false,
+      "fee": 30,
+      "name_fr": "Casablanca"
     },
     {
       "name": "الرباط",
-      "open": false
+      "open": false,
+      "fee": 30,
+      "name_fr": "Rabat"
     },
     {
       "name": "فاس",
-      "open": false
+      "open": false,
+      "fee": 30,
+      "name_fr": "Fès"
     },
     {
       "name": "طنجة",
-      "open": false
+      "open": false,
+      "fee": 30,
+      "name_fr": "Tanger"
     }
   ],
-  "customCss": ""
+  "analytics": {
+    "cloudflareToken": ""
+  },
+  "customCss": "",
+  "tagline_fr": "Des produits électroniques de qualité fiable"
 }

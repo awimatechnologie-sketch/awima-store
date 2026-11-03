@@ -1,5 +1,10 @@
 // سكربت عام لكل الصفحات: السلة، شريط العروض، حالة أوقات العمل.
 import { addToCart, cartCount, pruneCart } from '../lib/cart';
+import { maxQty } from '../lib/stock';
+import { t, langOf } from '../i18n';
+
+// لغة الصفحة من وسم html (ar/fr)
+const lang = langOf(document.documentElement.lang);
 import { isOpenNow } from '../lib/hours';
 
 function updateBadges() {
@@ -31,8 +36,12 @@ document.addEventListener('click', (e) => {
   const btn = (e.target as Element).closest<HTMLElement>('[data-add-to-cart]');
   if (!btn) return;
   e.preventDefault();
-  addToCart(btn.dataset.addToCart!);
-  toast(`أُضيف «${btn.dataset.name ?? 'المنتج'}» إلى السلة`);
+  // data-stock فارغ/غير موجود = مخزون غير محدود
+  const raw = btn.dataset.stock;
+  const max = maxQty(raw === undefined || raw === '' ? null : Number(raw));
+  const name = btn.dataset.name ?? 'المنتج';
+  if (addToCart(btn.dataset.addToCart!, 1, max)) toast(t(lang, 'toast.added', { name }));
+  else toast(t(lang, 'toast.max', { name, n: max }));
 });
 // أي منتج حُذف أو أُخفي من المتجر يُزال من سلة الزبون (وتُعرض له رسالة في صفحة السلة)
 const validIds = document.body.dataset.validIds;
@@ -47,7 +56,7 @@ function updateHours() {
     const st = isOpenNow(el.dataset.open ?? '', el.dataset.close ?? '');
     const s = el.querySelector<HTMLElement>('[data-hours-status]');
     if (!s || st === null) return;
-    s.textContent = st ? 'مفتوح الآن' : 'مغلق الآن';
+    s.textContent = t(lang, st ? 'hours.open' : 'hours.closed');
     s.dataset.state = st ? 'open' : 'closed';
   });
 }
@@ -64,3 +73,8 @@ if (anns.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) 
     anns[i].classList.add('active');
   }, 5000);
 }
+
+// زر تبديل اللغة يحافظ على الفلاتر (?q=...) والمرساة (#q) عند الانتقال إلى نفس الصفحة بلغة أخرى
+document.querySelectorAll<HTMLAnchorElement>('[data-lang-switch]').forEach((a) => {
+  a.href = a.href.split(/[?#]/)[0] + location.search + location.hash;
+});

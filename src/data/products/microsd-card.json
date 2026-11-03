@@ -33,5 +33,28 @@
       "value": "microSDXC"
     }
   ],
-  "whatsappOrder": true
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Carte mémoire microSD",
+    "shortDescription": "Carte microSD pour téléphones, appareils photo et caméras de surveillance",
+    "description": "Carte microSD pour téléphones, appareils photo et caméras de surveillance : beaucoup d'espace pour les photos, applications et vidéos.",
+    "specs": [
+      {
+        "key": "Capacité",
+        "value": "64 Go"
+      },
+      {
+        "key": "Classe",
+        "value": "Class 10 / A1"
+      },
+      {
+        "key": "Vitesse de lecture",
+        "value": "jusqu'à 100 Mo/s"
+      },
+      {
+        "key": "Type",
+        "value": "microSDXC"
+      }
+    ]
+  }
 }

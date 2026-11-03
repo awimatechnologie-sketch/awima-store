@@ -1,42 +1,50 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getReviewSummary } from '../../services/reviews';
 import ProductCard from '../../components/ProductCard.astro';
 import { getAllProducts, getCategories } from '../../services/products';
+import { t, langOf, type Lang } from '../../i18n';
 
-const products = getAllProducts();
-const categories = getCategories();
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
+const products = getAllProducts(lang);
+// نص الصفحة بالعربية والفرنسية معاً حتى يعمل البحث بأي من اللغتين
+const otherById = new Map(getAllProducts(lang === 'fr' ? 'ar' : 'fr').map((p) => [p.id, p]));
+const categories = getCategories(lang);
 const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
 ---
 <BaseLayout
-  title="المنتجات"
-  description="تصفح جميع منتجاتنا الإلكترونية، ابحث وصفّ حسب القسم، واطلب مباشرة عبر واتساب."
+  lang={lang}
+  title={t(lang, 'products.title')}
+  description={t(lang, 'products.description')}
 >
   <section class="section">
     <div class="container">
-      <h1>المنتجات</h1>
+      <h1>{t(lang, 'products.title')}</h1>
 
       <div class="tools card">
         <label class="field grow">
-          <span>بحث</span>
-          <input id="q" type="search" placeholder="ابحث عن منتج..." autocomplete="off" />
+          <span>{t(lang, 'products.search')}</span>
+          <input id="q" type="search" placeholder={t(lang, 'products.searchPlaceholder')} autocomplete="off" />
         </label>
         <label class="field check">
           <input id="instock" type="checkbox" />
-          <span>المتوفر فقط</span>
+          <span>{t(lang, 'products.inStockOnly')}</span>
         </label>
         <label class="field">
-          <span>الترتيب</span>
+          <span>{t(lang, 'products.sort')}</span>
           <select id="sort">
-            <option value="default">الافتراضي</option>
-            <option value="price-asc">السعر: من الأقل</option>
-            <option value="price-desc">السعر: من الأعلى</option>
-            <option value="name">الاسم</option>
+            <option value="default">{t(lang, 'products.sortDefault')}</option>
+            <option value="price-asc">{t(lang, 'products.sortPriceAsc')}</option>
+            <option value="price-desc">{t(lang, 'products.sortPriceDesc')}</option>
+            <option value="name">{t(lang, 'products.sortName')}</option>
+            <option value="rating">{t(lang, 'products.sortRating')}</option>
           </select>
         </label>
       </div>
 
-      <div class="chips" id="chips" role="group" aria-label="الأقسام">
-        <button type="button" class="chip" data-cat="" aria-pressed="true">الكل</button>
+      <div class="chips" id="chips" role="group" aria-label={t(lang, 'products.categories')}>
+        <button type="button" class="chip" data-cat="" aria-pressed="true">{t(lang, 'products.all')}</button>
         {categories.map((c) => (
           <button type="button" class="chip" data-cat={c.slug} aria-pressed="false">{c.name}</button>
         ))}
@@ -48,20 +56,22 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
         {products.map((p) => (
           <li
             data-name={p.name}
-            data-text={[p.name, p.shortDescription, p.description, p.id, catById[p.category]?.name ?? '', ...Object.entries(p.specs).flat()].join(' ')}
+            data-text={[p.name, p.shortDescription, p.description, p.id, catById[p.category]?.name ?? '', ...Object.entries(p.specs).flat(), otherById.get(p.id)?.name ?? '', otherById.get(p.id)?.shortDescription ?? ''].join(' ')}
             data-av={p.availability}
             data-cat={catById[p.category]?.slug ?? ''}
             data-price={p.price ?? ''}
+            data-rating={getReviewSummary(p.id).average}
+            data-points={getReviewSummary(p.id).points}
           >
-            <ProductCard product={p} categoryName={catById[p.category]?.name} />
+            <ProductCard product={p} categoryName={catById[p.category]?.name} lang={lang} />
           </li>
         ))}
       </ul>
 
       <div class="empty card" id="empty" hidden>
-        <h2>لا توجد نتائج</h2>
-        <p>جرّب كلمة بحث أخرى أو اختر قسمًا مختلفًا.</p>
-        <button type="button" class="btn btn-outline" id="reset">إعادة الضبط</button>
+        <h2>{t(lang, 'products.none')}</h2>
+        <p>{t(lang, 'products.tryOther')}</p>
+        <button type="button" class="btn btn-outline" id="reset">{t(lang, 'products.reset')}</button>
       </div>
     </div>
   </section>
@@ -93,6 +103,9 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
 
 <script>
   import { normalize, matches } from '../../lib/search';
+  import { t, langOf } from '../../i18n';
+
+  const lang = langOf(document.documentElement.lang);
 
   const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
   const q = $<HTMLInputElement>('q');
@@ -130,6 +143,13 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
         if (pb === null) return -1;
         return (pa - pb) * dir;
       });
+    } else if (mode === 'rating') {
+      // الأعلى تقييماً (متوسط مرجّح) ثم الأكثر نقاطاً؛ بلا تقييم في النهاية
+      const key = (li: HTMLLIElement) => [Number(li.dataset.rating || 0), Number(li.dataset.points || 0)];
+      visible = [...visible].sort((a, b) => {
+        const [ra, pa] = key(a), [rb, pb] = key(b);
+        return rb - ra || pb - pa;
+      });
     } else if (mode === 'name') {
       visible = [...visible].sort((a, b) =>
         (a.dataset.name ?? '').localeCompare(b.dataset.name ?? '', 'ar')
@@ -140,7 +160,7 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
     visible.forEach((li) => list.appendChild(li));
     empty.hidden = visible.length > 0;
     list.hidden = visible.length === 0;
-    count.textContent = `${visible.length} منتج`;
+    count.textContent = t(lang, 'products.count', { n: visible.length });
 
     const params = new URLSearchParams();
     if (cat) params.set('category', cat);

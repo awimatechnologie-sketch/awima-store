@@ -33,5 +33,28 @@
       "value": "جهاز يدعم إخراج الفيديو عبر USB-C"
     }
   ],
-  "whatsappOrder": true
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Adaptateur USB-C vers HDMI",
+    "shortDescription": "Adaptateur pour afficher l'écran du téléphone ou de l'ordinateur portable sur une TV ou un moniteur en haute qualité",
+    "description": "Adaptateur pour afficher l'écran du téléphone ou de l'ordinateur portable sur une télévision ou un moniteur en haute qualité.",
+    "specs": [
+      {
+        "key": "Entrée",
+        "value": "USB-C (mâle)"
+      },
+      {
+        "key": "Sortie",
+        "value": "HDMI (femelle)"
+      },
+      {
+        "key": "Résolution",
+        "value": "jusqu'à 4K à 30 Hz"
+      },
+      {
+        "key": "Condition de fonctionnement",
+        "value": "Appareil compatible sortie vidéo via USB-C"
+      }
+    ]
+  }
 }

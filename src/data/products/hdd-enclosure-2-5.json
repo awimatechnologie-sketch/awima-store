@@ -37,5 +37,32 @@
       "value": "القرص غير مرفق"
     }
   ],
-  "whatsappOrder": true
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Boîtier disque dur externe 2,5 pouces",
+    "shortDescription": "Boîtier pour transformer un disque dur ou SSD 2,5\" en disque externe portable",
+    "description": "Boîtier qui transforme un disque dur ou un SSD de 2,5 pouces en disque externe portable, pour vos sauvegardes et le transfert de gros fichiers.",
+    "specs": [
+      {
+        "key": "Taille du disque",
+        "value": "2,5 pouces SATA"
+      },
+      {
+        "key": "Épaisseur compatible",
+        "value": "7 et 9,5 mm"
+      },
+      {
+        "key": "Port",
+        "value": "USB-C"
+      },
+      {
+        "key": "Interface",
+        "value": "USB 3.0"
+      },
+      {
+        "key": "Remarque",
+        "value": "Disque non fourni"
+      }
+    ]
+  }
 }

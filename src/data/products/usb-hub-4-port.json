@@ -33,5 +33,28 @@
       "value": "15 سم"
     }
   ],
-  "whatsappOrder": true
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Hub USB 4 ports",
+    "shortDescription": "Hub qui ajoute quatre ports USB à l'ordinateur portable ou au téléphone",
+    "description": "Hub qui ajoute quatre ports USB à l'ordinateur portable ou au téléphone, pour brancher en même temps une clé, une souris et un disque externe.",
+    "specs": [
+      {
+        "key": "Nombre de ports",
+        "value": "4 × USB-A"
+      },
+      {
+        "key": "Interface",
+        "value": "USB 3.0"
+      },
+      {
+        "key": "Entrée",
+        "value": "USB-C"
+      },
+      {
+        "key": "Longueur du câble",
+        "value": "15 cm"
+      }
+    ]
+  }
 }

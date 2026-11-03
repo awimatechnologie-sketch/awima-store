@@ -33,5 +33,28 @@
       "value": "حتى 480 ميغابت/ث"
     }
   ],
-  "whatsappOrder": true
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Câble USB-A vers Micro USB",
+    "shortDescription": "Câble de charge et de transfert de données pour téléphones, tablettes et accessoires Micro USB",
+    "description": "Câble de charge et de transfert de données pour les téléphones, tablettes et accessoires dotés d'un port Micro USB.",
+    "specs": [
+      {
+        "key": "Longueur",
+        "value": "1 m"
+      },
+      {
+        "key": "Connecteurs",
+        "value": "USB-A vers Micro USB"
+      },
+      {
+        "key": "Courant",
+        "value": "jusqu'à 2,4 A"
+      },
+      {
+        "key": "Transfert de données",
+        "value": "jusqu'à 480 Mbit/s"
+      }
+    ]
+  }
 }

@@ -33,5 +33,28 @@
       "value": "الهواتف الداعمة لـ OTG"
     }
   ],
-  "whatsappOrder": true
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Adaptateur OTG Micro USB vers USB-A",
+    "shortDescription": "Adaptateur OTG pour les anciens téléphones à port Micro USB",
+    "description": "Adaptateur OTG pour les anciens téléphones à port Micro USB : branchez directement des accessoires USB sur votre téléphone.",
+    "specs": [
+      {
+        "key": "Entrée",
+        "value": "Micro USB (mâle)"
+      },
+      {
+        "key": "Sortie",
+        "value": "USB-A (femelle)"
+      },
+      {
+        "key": "Transfert de données",
+        "value": "USB 2.0"
+      },
+      {
+        "key": "Compatibilité",
+        "value": "Téléphones compatibles OTG"
+      }
+    ]
+  }
 }

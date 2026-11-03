@@ -33,5 +33,28 @@
       "value": "آيفون، آيباد، إيربودز"
     }
   ],
-  "whatsappOrder": true
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Câble USB-A vers Lightning",
+    "shortDescription": "Câble de charge et de transfert de données pour iPhone et iPad, port Lightning",
+    "description": "Câble de charge et de transfert de données pour iPhone et iPad avec port Lightning, d'une longueur adaptée à un usage quotidien.",
+    "specs": [
+      {
+        "key": "Longueur",
+        "value": "1 m"
+      },
+      {
+        "key": "Connecteurs",
+        "value": "USB-A vers Lightning"
+      },
+      {
+        "key": "Courant",
+        "value": "jusqu'à 2,4 A"
+      },
+      {
+        "key": "Compatibilité",
+        "value": "iPhone, iPad, AirPods"
+      }
+    ]
+  }
 }

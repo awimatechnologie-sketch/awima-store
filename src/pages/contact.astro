@@ -1,24 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../config/site';
+import { t, langOf, type Lang } from '../i18n';
 import { buildContactLink } from '../lib/whatsapp';
 import HoursBadge from '../components/HoursBadge.astro';
 import CityList from '../components/CityList.astro';
-import contact from '../data/pages/contact.json';
+import contactAr from '../data/pages/contact.json';
+import contactFr from '../data/pages/contact.fr.json';
 
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
+const contact = lang === 'fr' ? contactFr : contactAr;
 const c = site.contact;
 const tel = (n: string) => n.replace(/[^\d+]/g, '');
-const paragraphs = (t?: string) =>
-  (t ?? '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+const paragraphs = (txt?: string) =>
+  (txt ?? '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
 
-const socialLabels: Record<string, string> = {
-  facebook: 'فيسبوك',
-  instagram: 'إنستغرام',
-  tiktok: 'تيك توك',
-};
+const socialLabel = (k: string) => t(lang, `social.${k}`) === `social.${k}` ? k : t(lang, `social.${k}`);
 const socials = Object.entries(site.social).filter(([, url]) => /^https?:\/\//.test(url));
 ---
-<BaseLayout title={contact.title} description={contact.intro}>
+<BaseLayout lang={lang} title={contact.title} description={contact.intro}>
   <section class="section">
     <div class="container narrow">
       <h1>{contact.title}</h1>
@@ -26,32 +27,32 @@ const socials = Object.entries(site.social).filter(([, url]) => /^https?:\/\//.t
 
       <div class="actions">
         {c.whatsapp && (
-          <a class="btn btn-wa" href={buildContactLink()} target="_blank" rel="noopener">واتساب</a>
+          <a class="btn btn-wa" href={buildContactLink(undefined, lang)} target="_blank" rel="noopener">{t(lang, 'whatsapp')}</a>
         )}
         {c.whatsappSecondary && (
-          <a class="btn btn-outline" href={`https://wa.me/${c.whatsappSecondary}`} target="_blank" rel="noopener">واتساب (رقم ثانٍ)</a>
+          <a class="btn btn-outline" href={`https://wa.me/${c.whatsappSecondary}`} target="_blank" rel="noopener">{t(lang, 'whatsappSecond')}</a>
         )}
       </div>
 
       <ul class="info">
         {c.phoneDisplay && (
-          <li><span>الهاتف</span><a href={`tel:${tel(c.phoneDisplay)}`} dir="ltr">{c.phoneDisplay}</a></li>
+          <li><span>{t(lang, 'contact.phone')}</span><a href={`tel:${tel(c.phoneDisplay)}`} dir="ltr">{c.phoneDisplay}</a></li>
         )}
         {c.phoneSecondaryDisplay && (
-          <li><span>الهاتف الثاني</span><a href={`tel:${tel(c.phoneSecondaryDisplay)}`} dir="ltr">{c.phoneSecondaryDisplay}</a></li>
+          <li><span>{t(lang, 'contact.phone2')}</span><a href={`tel:${tel(c.phoneSecondaryDisplay)}`} dir="ltr">{c.phoneSecondaryDisplay}</a></li>
         )}
         {c.email && (
-          <li><span>البريد الإلكتروني</span><a href={`mailto:${c.email}`} dir="ltr">{c.email}</a></li>
+          <li><span>{t(lang, 'contact.email')}</span><a href={`mailto:${c.email}`} dir="ltr">{c.email}</a></li>
         )}
-        {c.address && <li><span>العنوان</span><b>{c.address}</b></li>}
-        <li><span>أوقات العمل</span><HoursBadge /></li>
+        {c.address && <li><span>{t(lang, 'contact.address')}</span><b>{c.address}</b></li>}
+        <li><span>{t(lang, 'contact.hours')}</span><HoursBadge lang={lang} /></li>
       </ul>
 
       
       {site.cities.length > 0 && (
         <>
-          <h2>مدن التوصيل</h2>
-          <CityList />
+          <h2>{t(lang, 'contact.cities')}</h2>
+          <CityList lang={lang} />
         </>
       )}
 
@@ -59,10 +60,10 @@ const socials = Object.entries(site.social).filter(([, url]) => /^https?:\/\//.t
 
       {socials.length > 0 && (
         <>
-          <h2>تابعنا</h2>
+          <h2>{t(lang, 'contact.follow')}</h2>
           <div class="actions">
             {socials.map(([k, url]) => (
-              <a class="btn btn-outline" href={url} target="_blank" rel="noopener noreferrer">{socialLabels[k] ?? k}</a>
+              <a class="btn btn-outline" href={url} target="_blank" rel="noopener noreferrer">{socialLabel(k)}</a>
             ))}
           </div>
         </>

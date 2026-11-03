@@ -1,0 +1,30 @@
+{
+  "title": "Awima Box",
+  "tagline": "Des boîtes de rangement organisées pour les ateliers de réparation de téléphones",
+  "intro": "Des boîtes transparentes et numérotées qui vous aident à organiser les pièces détachées et accessoires de votre atelier, et à retrouver rapidement n'importe quelle pièce pendant une réparation.",
+  "steps": [
+    {
+      "title": "Rangez",
+      "text": "Dédiez une boîte à chaque type de pièces."
+    },
+    {
+      "title": "Numérotez",
+      "text": "Chaque boîte porte un numéro bien visible pour la retrouver facilement."
+    },
+    {
+      "title": "Retrouvez l'emplacement",
+      "text": "Avec l'application Awima Stock, vous voyez directement le numéro de la boîte et l'emplacement de la pièce."
+    }
+  ],
+  "benefits": [
+    "Retrouver la pièce rapidement pendant la réparation",
+    "Moins de petites pièces perdues",
+    "Un stock organisé et un inventaire facilité",
+    "Relier le stockage physique au stock numérique"
+  ],
+  "productsTitle": "Boîtes de rangement",
+  "emptyText": "Nous ajoutons les boîtes progressivement. Contactez-nous sur WhatsApp pour connaître les modèles disponibles.",
+  "appTitle": "Compatible avec l'application Awima Stock",
+  "appText": "Une application de gestion pour les ateliers de réparation de téléphones : réparations, clients et stock, avec l'emplacement de chaque pièce (boîte et étagère).",
+  "ctaText": "Bonjour, je souhaite des informations sur les boîtes Awima Box."
+}

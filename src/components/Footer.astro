@@ -1,6 +1,9 @@
 ---
-import { site } from '../config/site';
+import { site, localizedSite } from '../config/site';
+import { t, langOf, localePath, type Lang } from '../i18n';
 import HoursBadge from './HoursBadge.astro';
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
 const socials = Object.entries(site.social).filter(([, url]) => url);
 const year = new Date().getFullYear();
 ---
@@ -8,23 +11,23 @@ const year = new Date().getFullYear();
   <div class="container cols">
     <div>
       <img src={site.logo.store} alt={site.name} width="190" height="74" loading="lazy" />
-      <p>{site.tagline}</p>
+      <p>{localizedSite(lang).tagline}</p>
     </div>
     <div>
-      <h3>تواصل معنا</h3>
-      {site.contact.whatsapp ? <p><a href={`https://wa.me/${site.contact.whatsapp}`}>واتساب: {site.contact.phoneDisplay}</a></p> : null}
-      {site.contact.whatsappSecondary ? <p><a href={`https://wa.me/${site.contact.whatsappSecondary}`}>واتساب: {site.contact.phoneSecondaryDisplay}</a></p> : null}
+      <h3>{t(lang, 'footer.contact')}</h3>
+      {site.contact.whatsapp ? <p><a href={`https://wa.me/${site.contact.whatsapp}`}>{t(lang, 'footer.whatsappPhone', { phone: site.contact.phoneDisplay })}</a></p> : null}
+      {site.contact.whatsappSecondary ? <p><a href={`https://wa.me/${site.contact.whatsappSecondary}`}>{t(lang, 'footer.whatsappPhone', { phone: site.contact.phoneSecondaryDisplay })}</a></p> : null}
       {site.contact.email ? <p>{site.contact.email}</p> : null}
       {site.contact.address ? <p>{site.contact.address}</p> : null}
-      <p><HoursBadge light /></p>
+      <p><HoursBadge light lang={lang} /></p>
     </div>
     <div>
-      <h3>روابط</h3>
-      <p><a href="/products">المنتجات</a></p>
-      <p><a href="/cart">السلة</a></p>
-      <p><a href="/awima-box">Awima Box</a></p>
-      <p><a href="/about">من نحن</a></p>
-      <p><a href="/contact">اتصل بنا</a></p>
+      <h3>{t(lang, 'footer.links')}</h3>
+      <p><a href={localePath(lang, '/products')}>{t(lang, 'nav.products')}</a></p>
+      <p><a href={localePath(lang, '/cart')}>{t(lang, 'nav.cart')}</a></p>
+      <p><a href={localePath(lang, '/awima-box')}>{t(lang, 'nav.awimaBox')}</a></p>
+      <p><a href={localePath(lang, '/about')}>{t(lang, 'nav.about')}</a></p>
+      <p><a href={localePath(lang, '/contact')}>{t(lang, 'nav.contact')}</a></p>
       {socials.map(([name, url]) => (
         <p><a href={url} rel="noopener" target="_blank">{name}</a></p>
       ))}

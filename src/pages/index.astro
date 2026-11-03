@@ -1,34 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/ProductCard.astro';
-import { site } from '../config/site';
+import { site, localizedSite } from '../config/site';
 import { buildContactLink } from '../lib/whatsapp';
 import { buildStoreLd } from '../lib/seo';
 import { getCategories, getFeaturedProducts } from '../services/products';
+import { t, langOf, localePath, type Lang } from '../i18n';
 
-const categories = getCategories();
-const featured = getFeaturedProducts(4);
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
+const ls = localizedSite(lang);
+const categories = getCategories(lang);
+const featured = getFeaturedProducts(4, lang);
 const categoryName = Object.fromEntries(categories.map((c) => [c.id, c.name]));
-const waLink = buildContactLink();
-const storeLd = buildStoreLd(site);
-const reasons = [
-  { t: 'طلب سهل عبر واتساب', d: 'اختر المنتج واطلبه بضغطة زر برسالة جاهزة.' },
-  { t: 'أسعار بالدرهم المغربي', d: 'عرض واضح للأسعار بالعملة المحلية.' },
-  { t: 'عرض واضح للمنتجات', d: 'صور ومواصفات تساعدك على الاختيار.' },
-  { t: 'تواصل مباشر', d: 'تكلّم معنا مباشرة لأي استفسار قبل الشراء.' },
-];
+const waLink = buildContactLink(undefined, lang);
+const storeLd = buildStoreLd({ ...site, tagline: ls.tagline, cities: ls.cities });
+const reasons = [1, 2, 3, 4].map((n) => ({ t: t(lang, `home.r${n}.t`), d: t(lang, `home.r${n}.d`) }));
 ---
-<BaseLayout description="تصفح منتجاتنا الإلكترونية واطلبها مباشرة عبر واتساب.">
+<BaseLayout lang={lang} description={t(lang, 'home.description')}>
   <script type="application/ld+json" slot="head" set:html={JSON.stringify(storeLd).replace(/</g, '\\u003c')} />
 
   <section class="hero">
     <div class="container hero-grid">
       <div>
-        <h1>{site.tagline}</h1>
-        <p class="lead">تصفح منتجاتنا الإلكترونية، واختر ما يناسبك، ثم اطلبه مباشرة عبر واتساب.</p>
+        <h1>{ls.tagline}</h1>
+        <p class="lead">{t(lang, 'home.lead')}</p>
         <div class="actions">
-          <a class="btn btn-primary" href="/products">تصفح المنتجات</a>
-          <a class="btn btn-wa" href={waLink} target="_blank" rel="noopener">اطلب عبر واتساب</a>
+          <a class="btn btn-primary" href={localePath(lang, '/products')}>{t(lang, 'home.browse')}</a>
+          <a class="btn btn-wa" href={waLink} target="_blank" rel="noopener">{t(lang, 'home.orderWa')}</a>
         </div>
       </div>
       <div class="hero-logo card">
@@ -39,10 +38,10 @@ const reasons = [
 
   <section class="section" aria-labelledby="cats">
     <div class="container">
-      <h2 id="cats">تسوّق حسب القسم</h2>
+      <h2 id="cats">{t(lang, 'home.shopByCat')}</h2>
       <div class="grid grid-4">
         {categories.map((c) => (
-          <a class="card cat" href={`/products?category=${c.slug}`}>{c.name}</a>
+          <a class="card cat" href={localePath(lang, `/products?category=${c.slug}`)}>{c.name}</a>
         ))}
       </div>
     </div>
@@ -51,12 +50,12 @@ const reasons = [
   <section class="section section-alt" aria-labelledby="feat">
     <div class="container">
       <div class="section-head">
-        <h2 id="feat">منتجات مميزة</h2>
-        <a class="link-more" href="/products">عرض الكل</a>
+        <h2 id="feat">{t(lang, 'home.featured')}</h2>
+        <a class="link-more" href={localePath(lang, '/products')}>{t(lang, 'home.viewAll')}</a>
       </div>
       <div class="grid grid-4">
         {featured.map((p) => (
-          <ProductCard product={p} categoryName={categoryName[p.category]} />
+          <ProductCard product={p} categoryName={categoryName[p.category]} lang={lang} />
         ))}
       </div>
     </div>
@@ -64,15 +63,15 @@ const reasons = [
 
   <section class="promo">
     <div class="container">
-      <h2>اطلب منتجك مباشرة عبر واتساب</h2>
-      <p>اختر المنتج من الموقع وستصلنا رسالة جاهزة بالاسم والمرجع والرابط.</p>
-      <a class="btn btn-wa" href={waLink} target="_blank" rel="noopener">ابدأ المحادثة</a>
+      <h2>{t(lang, 'home.promoTitle')}</h2>
+      <p>{t(lang, 'home.promoText')}</p>
+      <a class="btn btn-wa" href={waLink} target="_blank" rel="noopener">{t(lang, 'home.startChat')}</a>
     </div>
   </section>
 
   <section class="section" aria-labelledby="why">
     <div class="container">
-      <h2 id="why">لماذا تختارنا؟</h2>
+      <h2 id="why">{t(lang, 'home.why')}</h2>
       <div class="grid grid-4">
         {reasons.map((r) => (
           <div class="card why">
@@ -86,8 +85,8 @@ const reasons = [
 
   <section class="section section-alt" aria-labelledby="talk">
     <div class="container talk">
-      <h2 id="talk">تحدّث معنا</h2>
-      <p>لأي استفسار أو طلب خاص، راسلنا على واتساب.</p>
+      <h2 id="talk">{t(lang, 'home.talk')}</h2>
+      <p>{t(lang, 'home.talkText')}</p>
       <div class="actions">
         <a class="btn btn-wa" href={`https://wa.me/${site.contact.whatsapp}`} target="_blank" rel="noopener">{site.contact.phoneDisplay}</a>
         <a class="btn btn-outline" href={`https://wa.me/${site.contact.whatsappSecondary}`} target="_blank" rel="noopener">{site.contact.phoneSecondaryDisplay}</a>

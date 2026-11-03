@@ -1,4 +1,6 @@
 // أوقات العمل — تعمل على الخادم (البناء) وعلى المتصفح بنفس المنطق.
+import { t, type Lang } from '../i18n';
+
 const TZ = 'Africa/Casablanca';
 
 export const isValidTime = (s: unknown): s is string =>
@@ -32,17 +34,18 @@ export function isOpenNow(open: string, close: string, d = new Date()): boolean 
   return o < c ? cur >= o && cur < c : cur >= o || cur < c;
 }
 
-/** 10:00 → "10:00 صباحاً" ، 24:00 → "12:00 منتصف الليل" */
-export function formatTime(s: string): string {
+/** 10:00 → "10:00 صباحاً" ، 24:00 → "12:00 منتصف الليل" (وبالفرنسية: 10h00 ، minuit) */
+export function formatTime(s: string, lang: Lang = 'ar'): string {
   const mins = toMinutes(s);
   if (mins === null) return s;
-  if (mins % 1440 === 0) return '12:00 منتصف الليل';
+  if (mins % 1440 === 0) return t(lang, 'hours.midnight');
   const h = Math.floor(mins / 60) % 24;
   const mm = String(mins % 60).padStart(2, '0');
-  if (h === 12) return `12:${mm} ظهراً`;
-  if (h === 0) return `12:${mm} صباحاً`;
-  return h < 12 ? `${h}:${mm} صباحاً` : `${h - 12}:${mm} مساءً`;
+  if (lang === 'fr') return `${h}h${mm}`;
+  if (h === 12) return t(lang, 'hours.noon', { mm });
+  if (h === 0) return t(lang, 'hours.midnightAm', { mm });
+  return h < 12 ? t(lang, 'hours.am', { h, mm }) : t(lang, 'hours.pm', { h: h - 12, mm });
 }
 
-export const hoursLabel = (open: string, close: string) =>
-  `من ${formatTime(open)} إلى ${formatTime(close)}`;
+export const hoursLabel = (open: string, close: string, lang: Lang = 'ar') =>
+  t(lang, 'hours.range', { a: formatTime(open, lang), b: formatTime(close, lang) });

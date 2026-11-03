@@ -1,33 +1,40 @@
 ---
 import { site } from '../config/site';
+import { t, langOf, localePath, alternatePath, type Lang } from '../i18n';
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
+const other: Lang = lang === 'fr' ? 'ar' : 'fr';
 const links = [
-  { href: '/', label: 'الرئيسية' },
-  { href: '/products', label: 'المنتجات' },
-  { href: '/awima-box', label: 'Awima Box' },
-  { href: '/about', label: 'من نحن' },
-  { href: '/contact', label: 'اتصل بنا' },
+  { href: '/', key: 'nav.home' },
+  { href: '/products', key: 'nav.products' },
+  { href: '/awima-box', key: 'nav.awimaBox' },
+  { href: '/about', key: 'nav.about' },
+  { href: '/contact', key: 'nav.contact' },
 ];
 const norm = (p: string) => (p.length > 1 ? p.replace(/\/$/, '') : p);
 const current = norm(Astro.url.pathname);
-const isActive = (href: string) =>
-  href === '/' ? current === '/' : current === href || current.startsWith(href + '/');
+const isActive = (href: string) => {
+  const h = norm(localePath(lang, href));
+  return href === '/' ? current === h : current === h || current.startsWith(h + '/');
+};
 ---
 <header class="header">
   <div class="container bar">
-    <a href="/" class="brand" aria-label={site.name}>
+    <a href={localePath(lang, '/')} class="brand" aria-label={site.name}>
       <img src={site.logo.store} alt={site.name} width="150" height="58" />
     </a>
-    <a href="/products#q" class="icon search" aria-label="بحث">
+    <a href={alternatePath(Astro.url.pathname, other)} class="lang" data-lang-switch hreflang={other} lang={other} aria-label={t(lang, 'lang.switchLabel')}>{t(lang, 'lang.switch')}</a>
+    <a href={localePath(lang, '/products') + '#q'} class="icon search" aria-label={t(lang, 'nav.search')}>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
     </a>
-    <a href="/cart" class="icon cart" aria-label="السلة">
+    <a href={localePath(lang, '/cart')} class="icon cart" aria-label={t(lang, 'nav.cart')}>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 11.2a2 2 0 0 0 2 1.5h7.6a2 2 0 0 0 2-1.5L21 7H6"/></svg>
       <span class="count" data-cart-count hidden>0</span>
     </a>
-    <nav aria-label="التنقل الرئيسي">
+    <nav aria-label={t(lang, 'nav.main')}>
       <ul>
         {links.map((l) => (
-          <li><a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a></li>
+          <li><a href={localePath(lang, l.href)} aria-current={isActive(l.href) ? 'page' : undefined}>{t(lang, l.key)}</a></li>
         ))}
       </ul>
     </nav>
@@ -39,12 +46,13 @@ const isActive = (href: string) =>
   .brand img { height: 52px; width: auto; }
   .brand { order: 0; }
   .icon { order: 1; position: relative; display: inline-flex; padding: 8px; color: var(--c-primary); }
-  .search { margin-inline-start: auto; }
+  .lang { order: 1; margin-inline-start: auto; padding: 5px 12px; border: 1px solid var(--c-border); border-radius: 999px; font-weight: 700; font-size: 0.85rem; color: var(--c-primary); text-decoration: none; }
+  .lang:hover { background: var(--c-surface); }
   .count { position: absolute; top: 0; inset-inline-end: 0; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: var(--c-alert); color: #fff; font-size: 0.75rem; font-weight: 700; display: grid; place-items: center; }
   nav { order: 2; width: 100%; overflow-x: auto; }
   ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
   nav a { display: block; padding: 8px 14px; border-radius: 8px; text-decoration: none; font-weight: 600; color: var(--c-primary); white-space: nowrap; }
   nav a:hover { background: var(--c-surface); }
   nav a[aria-current='page'] { background: var(--c-accent); color: #fff; }
-  @media (min-width: 720px) { nav { width: auto; order: 1; margin-inline-start: auto; } .search { order: 2; margin-inline-start: 0; } .cart { order: 3; } }
+  @media (min-width: 720px) { nav { width: auto; order: 1; margin-inline-start: auto; } .lang { order: 2; margin-inline-start: 0; } .search { order: 3; } .cart { order: 4; } }
 </style>

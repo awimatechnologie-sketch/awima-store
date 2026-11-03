@@ -2,5 +2,6 @@
   "id": "cat-adapters",
   "name": "محولات و OTG",
   "slug": "adapters",
-  "order": 3
+  "order": 3,
+  "name_fr": "Adaptateurs et OTG"
 }

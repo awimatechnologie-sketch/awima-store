@@ -33,5 +33,28 @@
       "value": "الهواتف واللوحات الداعمة لـ OTG"
     }
   ],
-  "whatsappOrder": true
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Adaptateur OTG USB-C vers USB-A",
+    "shortDescription": "Petit adaptateur OTG qui transforme le port USB-C du téléphone en port USB-A",
+    "description": "Petit adaptateur OTG qui transforme le port USB-C du téléphone en port USB-A, pour brancher une clé USB, une souris, un clavier ou un lecteur de cartes.",
+    "specs": [
+      {
+        "key": "Entrée",
+        "value": "USB-C (mâle)"
+      },
+      {
+        "key": "Sortie",
+        "value": "USB-A (femelle)"
+      },
+      {
+        "key": "Transfert de données",
+        "value": "USB 3.0"
+      },
+      {
+        "key": "Compatibilité",
+        "value": "Téléphones et tablettes compatibles OTG"
+      }
+    ]
+  }
 }

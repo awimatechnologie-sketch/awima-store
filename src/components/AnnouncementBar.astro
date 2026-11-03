@@ -1,21 +1,24 @@
 ---
-import { site } from '../config/site';
+import { localizedSite } from '../config/site';
+import { t, langOf, localePath, type Lang } from '../i18n';
 import HoursBadge from './HoursBadge.astro';
-const items = site.announcements;
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
+const items = localizedSite(lang).announcements;
 ---
 {items.length > 0 && (
-  <div class="ann" role="region" aria-label="العروض">
+  <div class="ann" role="region" aria-label={t(lang, 'offers')}>
     <div class="container row">
       <div class="msgs">
         {items.map((a, i) =>
           a.link ? (
-            <a class:list={['msg', { active: i === 0 }]} href={a.link} data-ann>{a.text}</a>
+            <a class:list={['msg', { active: i === 0 }]} href={localePath(lang, a.link)} data-ann>{a.text}</a>
           ) : (
             <span class:list={['msg', { active: i === 0 }]} data-ann>{a.text}</span>
           )
         )}
       </div>
-      <HoursBadge light hideOnMobile />
+      <HoursBadge light hideOnMobile lang={lang} />
     </div>
   </div>
 )}

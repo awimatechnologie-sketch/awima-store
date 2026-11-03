@@ -1,4 +1,7 @@
-import type { Product, Category } from '../types/product';
+import type { Product, Category, ProductFr } from '../types/product';
+import type { Lang } from '../i18n';
+import { localizeProduct, localizeCategory } from '../lib/localize';
+import { normalizeStock, effectiveAvailability } from '../lib/stock';
 
 // المنتجات والأقسام: ملف JSON لكل عنصر (تُدار من لوحة /admin)
 const productFiles = import.meta.glob('../data/products/*.json', {
@@ -28,6 +31,18 @@ function normalizeSpecs(raw: unknown): Record<string, string> {
   return {};
 }
 
+function normalizeFr(raw: any): ProductFr | undefined {
+  if (!raw || typeof raw !== 'object') return undefined;
+  const str = (v: unknown) => (typeof v === 'string' && v.trim() ? v : undefined);
+  const specs = normalizeSpecs(raw.specs);
+  return {
+    name: str(raw.name),
+    shortDescription: str(raw.shortDescription),
+    description: str(raw.description),
+    specs: Object.keys(specs).length ? specs : undefined,
+  };
+}
+
 function normalizeProduct(file: string, r: any): Product {
   const where = `(${file})`;
   for (const f of ['id', 'name', 'slug', 'category'])
@@ -45,10 +60,12 @@ function normalizeProduct(file: string, r: any): Product {
     currency: String(r.currency ?? 'MAD'),
     category: String(r.category),
     images: Array.isArray(r.images) ? r.images.filter(Boolean) : [],
-    availability: r.availability,
+    availability: effectiveAvailability(r.availability, normalizeStock(r.stock)),
+    stock: normalizeStock(r.stock),
     featured: Boolean(r.featured),
     specs: normalizeSpecs(r.specs),
     whatsappOrder: r.whatsappOrder !== false,
+    fr: normalizeFr(r.fr),
     related: Array.isArray(r.related) ? r.related.map(String).filter(Boolean) : [],
     hidden: Boolean(r.hidden),
   };
@@ -58,10 +75,10 @@ const categories: Category[] = Object.entries(categoryFiles)
   .map(([file, r]) => {
     if (!r?.id || !r?.name || !r?.slug)
       throw new Error(`قسم ناقص البيانات (${file})`);
-    return { id: String(r.id), name: String(r.name), slug: String(r.slug), order: Number(r.order ?? 999) };
+    return { id: String(r.id), name: String(r.name), slug: String(r.slug), nameFr: typeof r.name_fr === 'string' && r.name_fr.trim() ? r.name_fr : undefined, order: Number(r.order ?? 999) };
   })
   .sort((a, b) => a.order - b.order || a.name.localeCompare(b.name, 'ar'))
-  .map(({ id, name, slug }) => ({ id, name, slug }));
+  .map(({ id, name, slug, nameFr }) => ({ id, name, slug, nameFr }));
 
 const allProducts: Product[] = Object.entries(productFiles)
   .map(([file, r]) => normalizeProduct(file, r))
@@ -90,12 +107,16 @@ const products: Product[] = allProducts.filter((p) => !p.hidden);
 // الأقسام الفارغة لا تظهر في التنقل (الرئيسية وصفحة المنتجات)
 const usedCategories = categories.filter((c) => products.some((p) => p.category === c.id));
 
-export const getAllProducts = (): Product[] => products;
-export const getCategories = (): Category[] => usedCategories;
-export const getAllCategories = (): Category[] => categories;
-export const getFeaturedProducts = (limit = 4): Product[] =>
-  products.filter((p) => p.featured).slice(0, limit);
-export const getProductBySlug = (slug: string): Product | undefined =>
-  products.find((p) => p.slug === slug);
-export const getProductsByCategory = (categoryId: string): Product[] =>
-  products.filter((p) => p.category === categoryId);
+// ---- اللغة: المحتوى الفرنسي اختياري، وما ليس له ترجمة يظهر بالعربية (الدوال في lib/localize.ts) ----
+const productsFr: Product[] = products.map((p) => localizeProduct(p, 'fr'));
+const productsBy = (lang: Lang): Product[] => (lang === 'fr' ? productsFr : products);
+
+export const getAllProducts = (lang: Lang = 'ar'): Product[] => productsBy(lang);
+export const getCategories = (lang: Lang = 'ar'): Category[] => usedCategories.map((c) => localizeCategory(c, lang));
+export const getAllCategories = (lang: Lang = 'ar'): Category[] => categories.map((c) => localizeCategory(c, lang));
+export const getFeaturedProducts = (limit = 4, lang: Lang = 'ar'): Product[] =>
+  productsBy(lang).filter((p) => p.featured).slice(0, limit);
+export const getProductBySlug = (slug: string, lang: Lang = 'ar'): Product | undefined =>
+  productsBy(lang).find((p) => p.slug === slug);
+export const getProductsByCategory = (categoryId: string, lang: Lang = 'ar'): Product[] =>
+  productsBy(lang).filter((p) => p.category === categoryId);

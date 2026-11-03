@@ -1,31 +1,45 @@
 ---
 import type { Product } from '../types/product';
-import { formatPrice, getSaving, availabilityLabel } from '../lib/format';
-interface Props { product: Product; categoryName?: string }
+import { formatPrice, getSaving, availabilityFor } from '../lib/format';
+import { t, langOf, localePath, type Lang } from '../i18n';
+import { getReviewSummary } from '../services/reviews';
+interface Props { product: Product; categoryName?: string; lang?: Lang }
 const { product, categoryName } = Astro.props;
-const av = availabilityLabel[product.availability];
+const lang = langOf(Astro.props.lang);
+const av = availabilityFor(lang, product.availability);
 const saving = getSaving(product.price, product.oldPrice);
+const rv = getReviewSummary(product.id);
+const hasTier = rv.tier !== 'none';
+const avgText = lang === 'fr' ? String(rv.average).replace('.', ',') : String(rv.average);
+const rvLabel = hasTier ? t(lang, `reviews.tier.${rv.tier}`) : '';
 const canAdd = product.availability !== 'out_of_stock';
 ---
-<article class="card pc">
-  <a class="link" href={`/products/${product.slug}`}>
+<article class="card pc" data-tier={hasTier ? rv.tier : undefined}>
+  <a class="link" href={localePath(lang, `/products/${product.slug}`)}>
     <div class="media">
       <img src={product.images[0] ?? '/images/placeholder.svg'} alt={product.name} width="400" height="400" loading="lazy" decoding="async" />
-      {saving ? <span class="save">وفّر {formatPrice(saving)}</span> : null}
+      {saving ? <span class="save">{t(lang, 'price.save', { amount: formatPrice(saving, lang) })}</span> : null}
     </div>
     <div class="body">
       {categoryName ? <span class="cat">{categoryName}</span> : null}
       <h3>{product.name}</h3>
+      {rv.count > 0 ? (
+        <p class="rate" aria-label={t(lang, 'reviews.aria', { avg: avgText, count: rv.count, tier: rvLabel })}>
+          <span class="stars" aria-hidden="true">★ {avgText}</span>
+          <span class="n" aria-hidden="true">({rv.count})</span>
+          {hasTier ? <span class="tier" aria-hidden="true">{rvLabel}</span> : null}
+        </p>
+      ) : null}
       <p class="prices">
-        <span class="price">{formatPrice(product.price)}</span>
-        {saving ? <del class="old">{formatPrice(product.oldPrice)}</del> : null}
+        <span class="price">{formatPrice(product.price, lang)}</span>
+        {saving ? <del class="old">{formatPrice(product.oldPrice, lang)}</del> : null}
       </p>
       <span class={`badge ${av.cls}`}>{av.text}</span>
     </div>
   </a>
   {canAdd && (
     <div class="foot">
-      <button type="button" class="btn btn-cart add" data-add-to-cart={product.id} data-name={product.name}>أضف إلى السلة</button>
+      <button type="button" class="btn btn-cart add" data-add-to-cart={product.id} data-name={product.name} data-stock={product.stock ?? undefined}>{t(lang, 'product.addToCart')}</button>
     </div>
   )}
 </article>
@@ -42,6 +56,16 @@ const canAdd = product.availability !== 'out_of_stock';
   .prices { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; margin: 0 0 8px; }
   .price { font-weight: 800; color: var(--c-accent); font-size: 1.05rem; }
   .old { color: var(--c-muted); font-size: 0.88rem; }
+  /* الإطار اللوني: أخضر = جودة وضمان (بتدرّج)، أصفر = متوسط. الأحمر محجوز لمرحلة السوق. */
+  .pc[data-tier] { border-width: 2px; border-style: solid; }
+  .pc[data-tier='green-dark'] { --tier: #166534; --tier-text: #166534; }
+  .pc[data-tier='green-light'] { --tier: #84cc16; --tier-text: #4d7c0f; }
+  .pc[data-tier='yellow'] { --tier: #eab308; --tier-text: #854d0e; }
+  .pc[data-tier] { border-color: var(--tier); }
+  .rate { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 6px; margin: 0 0 4px; font-size: 0.85rem; }
+  .stars { color: #b45309; font-weight: 700; }
+  .n { color: var(--c-muted); }
+  .tier { color: var(--tier-text); font-weight: 700; }
   .foot { padding: 0 12px 12px; }
   .add { width: 100%; padding: 10px 12px; font-size: 0.95rem; }
 </style>

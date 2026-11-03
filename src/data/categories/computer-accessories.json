@@ -2,5 +2,6 @@
   "id": "cat-computer-accessories",
   "name": "إكسسوارات الحواسب",
   "slug": "computer-accessories",
-  "order": 7
+  "order": 7,
+  "name_fr": "Accessoires informatiques"
 }

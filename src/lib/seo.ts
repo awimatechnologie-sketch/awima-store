@@ -3,13 +3,22 @@
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
 
-/** base بدون / في النهاية، وpaths تبدأ بـ / */
-export function buildSitemap(base: string, paths: string[]): string {
+export type SitemapAlternate = { lang: string; path: string };
+
+/** base بدون / في النهاية، وpaths تبدأ بـ /. `alternates` اختياري: يعيد روابط اللغات الأخرى لكل مسار (hreflang) */
+export function buildSitemap(base: string, paths: string[], alternates?: (path: string) => SitemapAlternate[]): string {
   const root = base.replace(/\/$/, '');
+  const abs = (p: string) => esc(root + (p.startsWith('/') ? p : '/' + p));
   const urls = [...new Set(paths)]
-    .map((p) => `  <url><loc>${esc(root + (p.startsWith('/') ? p : '/' + p))}</loc></url>`)
+    .map((p) => {
+      const alts = alternates
+        ? alternates(p).map((a) => `<xhtml:link rel="alternate" hreflang="${esc(a.lang)}" href="${abs(a.path)}"/>`).join('')
+        : '';
+      return `  <url><loc>${abs(p)}</loc>${alts}</url>`;
+    })
     .join('\n');
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
+  const ns = alternates ? ' xmlns:xhtml="http://www.w3.org/1999/xhtml"' : '';
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"${ns}>\n${urls}\n</urlset>\n`;
 }
 
 export function buildRobots(base: string): string {

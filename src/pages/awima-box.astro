@@ -3,21 +3,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { getProductsByCategory } from '../services/products';
 import { buildContactLink } from '../lib/whatsapp';
-import box from '../data/pages/awima-box.json';
+import boxAr from '../data/pages/awima-box.json';
+import boxFr from '../data/pages/awima-box.fr.json';
+import { t, langOf, type Lang } from '../i18n';
 
-const products = getProductsByCategory('cat-awima-box');
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
+const box = lang === 'fr' ? boxFr : boxAr;
+const products = getProductsByCategory('cat-awima-box', lang);
 const steps = (box.steps ?? []).filter((s) => s?.title);
 const benefits = (box.benefits ?? []).filter(Boolean);
 ---
-<BaseLayout title={box.title} description={box.intro}>
+<BaseLayout lang={lang} title={box.title} description={box.intro}>
   <section class="hero">
     <div class="container">
       <h1>{box.title}</h1>
       {box.tagline && <p class="tag">{box.tagline}</p>}
       {box.intro && <p class="intro">{box.intro}</p>}
       <div class="actions">
-        <a class="btn btn-wa" href={buildContactLink(box.ctaText)} target="_blank" rel="noopener">اسأل عبر واتساب</a>
-        {products.length > 0 && <a class="btn btn-light" href="#boxes">شاهد العلب</a>}
+        <a class="btn btn-wa" href={buildContactLink(box.ctaText, lang)} target="_blank" rel="noopener">{t(lang, 'box.askWa')}</a>
+        {products.length > 0 && <a class="btn btn-light" href="#boxes">{t(lang, 'box.seeBoxes')}</a>}
       </div>
     </div>
   </section>
@@ -25,7 +30,7 @@ const benefits = (box.benefits ?? []).filter(Boolean);
   {steps.length > 0 && (
     <section class="section">
       <div class="container">
-        <h2>كيف تعمل؟</h2>
+        <h2>{t(lang, 'box.how')}</h2>
         <ol class="steps">
           {steps.map((s, i) => (
             <li class="card">
@@ -41,17 +46,17 @@ const benefits = (box.benefits ?? []).filter(Boolean);
 
   <section class="section section-alt" id="boxes">
     <div class="container">
-      <h2>{box.productsTitle || 'علب التخزين'}</h2>
+      <h2>{box.productsTitle || t(lang, 'box.productsTitle')}</h2>
       {products.length > 0 ? (
         <ul class="grid grid-4 list">
           {products.map((p) => (
-            <li><ProductCard product={p} categoryName="Awima Box" /></li>
+            <li><ProductCard product={p} categoryName="Awima Box" lang={lang} /></li>
           ))}
         </ul>
       ) : (
         <div class="card empty">
           <p>{box.emptyText}</p>
-          <a class="btn btn-wa" href={buildContactLink(box.ctaText)} target="_blank" rel="noopener">تواصل عبر واتساب</a>
+          <a class="btn btn-wa" href={buildContactLink(box.ctaText, lang)} target="_blank" rel="noopener">{t(lang, 'box.contactWa')}</a>
         </div>
       )}
     </div>
@@ -62,7 +67,7 @@ const benefits = (box.benefits ?? []).filter(Boolean);
       <div class="container two">
         {benefits.length > 0 && (
           <div>
-            <h2>لماذا Awima Box؟</h2>
+            <h2>{t(lang, 'box.why')}</h2>
             <ul class="benefits">{benefits.map((b) => <li>{b}</li>)}</ul>
           </div>
         )}

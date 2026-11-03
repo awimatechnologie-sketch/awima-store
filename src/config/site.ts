@@ -2,10 +2,14 @@
 // حافظنا على نفس شكل الكائن `site` حتى لا تتغير بقية الملفات.
 import settings from '../data/settings.json';
 import { isValidTime } from '../lib/hours';
+import { isValidBeaconToken } from '../lib/analytics';
+import { normalizeFee } from '../lib/delivery';
+import { pick, type Lang } from '../i18n';
 
 type Settings = {
   name: string;
   tagline: string;
+  tagline_fr?: string;
   url: string;
   logo?: { store?: string; icon?: string; og?: string };
   colors?: { primary?: string; accent?: string; alert?: string };
@@ -18,10 +22,11 @@ type Settings = {
     address?: string;
   };
   social?: { facebook?: string; instagram?: string; tiktok?: string };
-  announcements?: { text?: string; link?: string; enabled?: boolean }[];
+  announcements?: { text?: string; text_fr?: string; link?: string; enabled?: boolean }[];
   hours?: { open?: string; close?: string };
   fastDelivery?: { minItems?: number; hours?: number };
-  cities?: { name?: string; open?: boolean }[];
+  cities?: { name?: string; name_fr?: string; open?: boolean; fee?: number }[];
+  analytics?: { cloudflareToken?: string };
   customCss?: string;
 };
 const s = settings as Settings;
@@ -41,6 +46,7 @@ const posInt = (v: unknown, fallback: number) =>
 export const site = {
   name: s.name || 'AWIMA Store',
   tagline: s.tagline || '',
+  taglineFr: (s.tagline_fr ?? '').trim(),
   url: (s.url || 'https://awima-store.pages.dev').replace(/\/$/, ''),
   // ثوابت لا تُعدَّل من اللوحة
   lang: 'ar',
@@ -74,7 +80,7 @@ export const site = {
   // شريط العروض: تُعرض العروض المفعّلة فقط
   announcements: (s.announcements ?? [])
     .filter((a) => a?.text && a.enabled !== false)
-    .map((a) => ({ text: String(a.text), link: safeLink(a.link) })),
+    .map((a) => ({ text: String(a.text), textFr: (a.text_fr ?? '').trim(), link: safeLink(a.link) })),
   // أوقات العمل (توقيت المغرب). 24:00 = منتصف الليل
   hours: {
     open: isValidTime(s.hours?.open) ? s.hours!.open!.trim() : '10:00',
@@ -88,7 +94,20 @@ export const site = {
   // المدن: المفتوحة فقط يمكن الطلب منها، والبقية تظهر مقفلة
   cities: (s.cities ?? [])
     .filter((c) => c?.name)
-    .map((c) => ({ name: String(c.name), open: c.open === true })),
+    .map((c) => ({ name: String(c.name), nameFr: (c.name_fr ?? '').trim(), open: c.open === true, fee: normalizeFee(c.fee) })),
+  // إحصائيات Cloudflare (اختيارية): لا يُحمَّل شيء إن كان التوكن فارغاً أو غير صالح
+  analytics: {
+    cloudflareToken: isValidBeaconToken(s.analytics?.cloudflareToken) ? s.analytics!.cloudflareToken!.trim() : '',
+  },
   // CSS مخصص (قسم متقدم): نحذف أي "<" لمنع الخروج من وسم style
   customCss: (s.customCss ?? '').replace(/</g, ''),
 };
+
+/** الحقول القابلة للترجمة بلغة الصفحة (ما ليس له ترجمة فرنسية يبقى بالعربية) */
+export function localizedSite(lang: Lang) {
+  return {
+    tagline: pick(lang, site.tagline, site.taglineFr) as string,
+    announcements: site.announcements.map((a) => ({ ...a, text: pick(lang, a.text, a.textFr) as string })),
+    cities: site.cities.map((c) => ({ ...c, name: pick(lang, c.name, c.nameFr) as string })),
+  };
+}

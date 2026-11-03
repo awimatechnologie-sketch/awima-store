@@ -33,5 +33,28 @@
       "value": "USB-A"
     }
   ],
-  "whatsappOrder": true
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Lecteur de cartes SD et microSD",
+    "shortDescription": "Petit lecteur compatible SD et microSD pour transférer rapidement photos et vidéos vers l'ordinateur",
+    "description": "Petit lecteur compatible SD et microSD pour transférer rapidement photos et vidéos vers l'ordinateur, sans logiciel supplémentaire.",
+    "specs": [
+      {
+        "key": "Fentes",
+        "value": "SD et microSD"
+      },
+      {
+        "key": "Cartes compatibles",
+        "value": "SD, SDHC, SDXC et microSD"
+      },
+      {
+        "key": "Interface",
+        "value": "USB 3.0"
+      },
+      {
+        "key": "Connecteur",
+        "value": "USB-A"
+      }
+    ]
+  }
 }

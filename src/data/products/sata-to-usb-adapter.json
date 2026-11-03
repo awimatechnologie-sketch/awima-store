@@ -29,5 +29,24 @@
       "value": "حتى 5 جيجابت/ث"
     }
   ],
-  "whatsappOrder": true
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Adaptateur SATA vers USB pour connecter un disque à l'ordinateur",
+    "shortDescription": "Adaptateur pour brancher un disque dur ou SSD SATA à l'ordinateur comme disque externe",
+    "description": "Adaptateur pour brancher un disque dur ou un SSD SATA à l'ordinateur comme disque externe, afin de copier ou récupérer facilement d'anciens fichiers.",
+    "specs": [
+      {
+        "key": "Interface",
+        "value": "SATA vers USB 3.0"
+      },
+      {
+        "key": "Disques compatibles",
+        "value": "2,5 pouces directement, 3,5 pouces avec alimentation"
+      },
+      {
+        "key": "Transfert de données",
+        "value": "jusqu'à 5 Gbit/s"
+      }
+    ]
+  }
 }

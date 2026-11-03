@@ -13,12 +13,22 @@ export interface Product {
   featured: boolean;
   specs: Record<string, string>;
   whatsappOrder: boolean;
+  stock?: number | null; // الكمية المتوفرة. null/غير موجود = غير محدود، 0 = غير متوفر تلقائياً
+  fr?: ProductFr; // ترجمة فرنسية اختيارية (تُدار من اللوحة)
   related?: string[]; // معرّفات منتجات مقترحة يدوياً (يُشترى معه)
   hidden?: boolean; // مخفي من الموقع (مسودة) دون حذفه
+}
+
+export interface ProductFr {
+  name?: string;
+  shortDescription?: string;
+  description?: string;
+  specs?: Record<string, string>;
 }
 
 export interface Category {
   id: string;
   name: string;
   slug: string;
+  nameFr?: string; // اسم القسم بالفرنسية (اختياري)
 }

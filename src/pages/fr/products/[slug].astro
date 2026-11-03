@@ -1,0 +1,10 @@
+---
+// النسخة الفرنسية من صفحة المنتج: نفس المسارات الثابتة، ونفس الصفحة بخاصية lang
+import Page from '../../products/[slug].astro';
+import { getAllProducts } from '../../../services/products';
+
+export function getStaticPaths() {
+  return getAllProducts().map((p) => ({ params: { slug: p.slug } }));
+}
+---
+<Page lang="fr" />

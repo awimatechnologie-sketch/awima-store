@@ -1,11 +1,16 @@
 ---
-import { site } from '../config/site';
+import { localizedSite } from '../config/site';
+import { formatPrice } from '../lib/format';
+import { t, langOf, type Lang } from '../i18n';
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
+const cities = localizedSite(lang).cities;
 ---
 <ul class="cities">
-  {site.cities.map((c) => (
+  {cities.map((c) => (
     <li class:list={['city', { locked: !c.open }]}>
       <span>{c.name}</span>
-      {c.open ? <small class="ok">متاح</small> : <small>🔒 قريباً</small>}
+      {c.open ? <small class="ok">{t(lang, 'contact.available')}{c.fee !== null ? ` · ${t(lang, 'contact.deliveryFee', { fee: formatPrice(c.fee, lang) })}` : ''}</small> : <small>{t(lang, 'city.soon')}</small>}
     </li>
   ))}
 </ul>

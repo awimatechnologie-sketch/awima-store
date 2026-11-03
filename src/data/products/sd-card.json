@@ -33,5 +33,28 @@
       "value": "SDXC"
     }
   ],
-  "whatsappOrder": true
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Carte mémoire SD",
+    "shortDescription": "Carte SD adaptée aux appareils photo numériques et à l'enregistrement vidéo Full HD",
+    "description": "Carte SD adaptée aux appareils photo numériques et à l'enregistrement vidéo Full HD, avec une bonne vitesse pour les prises de vue en rafale.",
+    "specs": [
+      {
+        "key": "Capacité",
+        "value": "64 Go"
+      },
+      {
+        "key": "Classe",
+        "value": "Class 10 / U1"
+      },
+      {
+        "key": "Vitesse de lecture",
+        "value": "jusqu'à 80 Mo/s"
+      },
+      {
+        "key": "Type",
+        "value": "SDXC"
+      }
+    ]
+  }
 }

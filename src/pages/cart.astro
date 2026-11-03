@@ -1,89 +1,99 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HoursBadge from '../components/HoursBadge.astro';
-import { site } from '../config/site';
+import { site, localizedSite } from '../config/site';
 import { getAllProducts } from '../services/products';
+import { formatPrice } from '../lib/format';
+import { t, langOf, localePath, type Lang } from '../i18n';
 
-const products = getAllProducts().map((p) => ({
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
+const ls = localizedSite(lang);
+const products = getAllProducts(lang).map((p) => ({
   id: p.id,
   name: p.name,
   slug: p.slug,
   price: p.price,
   image: p.images[0] ?? '/images/placeholder.svg',
   availability: p.availability,
+  stock: p.stock ?? null,
 }));
 const data = {
   products,
-  currencyLabel: site.currencyLabel,
+  currencyLabel: t(lang, 'currency'),
   whatsapp: site.contact.whatsapp,
   fast: site.fastDelivery,
+  cities: ls.cities.map((c) => ({ name: c.name, fee: c.fee })),
   siteName: site.name,
 };
-const firstOpen = site.cities.find((c) => c.open)?.name;
+const firstOpen = ls.cities.find((c) => c.open)?.name;
 // "<" داخل JSON يُهرَّب حتى لا يُغلق وسم script
 const json = JSON.stringify(data).replace(/</g, '\\u003c');
 ---
-<BaseLayout title="السلة" description="راجع منتجاتك وأرسل طلبك عبر واتساب.">
+<BaseLayout lang={lang} title={t(lang, 'cart.title')} description={t(lang, 'cart.description')}>
   <meta name="robots" content="noindex" slot="head" />
   <script type="application/json" id="cart-data" set:html={json} />
 
   <section class="section">
     <div class="container">
-      <h1>سلة المشتريات</h1>
+      <h1>{t(lang, 'cart.heading')}</h1>
 
       <p id="stale" class="notice" role="status" hidden></p>
 
       <div id="empty" class="card empty" hidden>
-        <h2>سلتك فارغة</h2>
-        <p>أضف منتجات من الكتالوج ثم عد لإرسال طلبك.</p>
-        <a class="btn btn-primary" href="/products">تصفح المنتجات</a>
+        <h2>{t(lang, 'cart.emptyTitle')}</h2>
+        <p>{t(lang, 'cart.emptyText')}</p>
+        <a class="btn btn-primary" href={localePath(lang, '/products')}>{t(lang, 'home.browse')}</a>
       </div>
 
       <div id="content" class="layout" hidden>
         <ul id="lines" class="cart-lines"></ul>
 
         <aside class="card summary">
-          <h2>ملخص الطلب</h2>
+          <h2>{t(lang, 'cart.summary')}</h2>
 
-          <p class="row"><span>عدد المنتجات</span><b id="qty">0</b></p>
-          <p class="row"><span>المجموع</span><b id="total">0</b></p>
+          <p class="row"><span>{t(lang, 'cart.itemCount')}</span><b id="qty">0</b></p>
+          <p class="row"><span>{t(lang, 'cart.subtotal')}</span><b id="subtotal">0</b></p>
+          <p class="row"><span>{t(lang, 'cart.delivery')}</span><b id="fee">—</b></p>
+          <p class="row grand"><span>{t(lang, 'cart.grand')}</span><b id="total">0</b></p>
           <p id="unpriced" class="hint" hidden></p>
           <p id="offer" class="offer"></p>
           <div id="suggest" class="suggest" hidden>
-            <h3>أكمل طلبك بمنتج صغير</h3>
+            <h3>{t(lang, 'cart.suggest')}</h3>
             <ul id="suggest-list"></ul>
           </div>
 
           <fieldset class="field-group">
-            <legend>مدينة التوصيل</legend>
-            {site.cities.length === 0 && <p class="hint">لا توجد مدن مفعّلة حالياً.</p>}
+            <legend>{t(lang, 'cart.deliveryCity')}</legend>
+            {ls.cities.length === 0 && <p class="hint">{t(lang, 'cart.noCities')}</p>}
             <div class="city-opts">
-              {site.cities.map((c) => (
+              {ls.cities.map((c) => (
                 <label class:list={['city-opt', { off: !c.open }]}>
                   <input type="radio" name="city" value={c.name} checked={c.name === firstOpen} disabled={!c.open} />
                   <span>{c.name}</span>
-                  {!c.open && <small>🔒 قريباً</small>}
+                  {!c.open && <small>{t(lang, 'city.soon')}</small>}
+                  {c.open && c.fee !== null && <small>{formatPrice(c.fee, lang)}</small>}
                 </label>
               ))}
             </div>
           </fieldset>
 
           <fieldset class="field-group">
-            <legend>بيانات التواصل <small>(اختيارية)</small></legend>
-            <label>الاسم<input id="f-name" type="text" maxlength="60" autocomplete="name" /></label>
-            <label>الهاتف<input id="f-phone" type="tel" maxlength="20" autocomplete="tel" inputmode="tel" dir="ltr" /></label>
-            <label>العنوان<input id="f-address" type="text" maxlength="160" autocomplete="street-address" /></label>
-            <label>ملاحظة<textarea id="f-note" rows="2" maxlength="300"></textarea></label>
-            <label class="check"><input id="f-remember" type="checkbox" /> احفظ بياناتي في هذا الجهاز فقط</label>
-            <p class="hint">إن تركتها فارغة سنتواصل معك عبر واتساب مباشرة.</p>
+            <legend>{t(lang, 'cart.contactData')} <small>{t(lang, 'cart.optional')}</small></legend>
+            <label>{t(lang, 'cart.name')}<input id="f-name" type="text" maxlength="60" autocomplete="name" /></label>
+            <label>{t(lang, 'cart.phone')}<input id="f-phone" type="tel" maxlength="20" autocomplete="tel" inputmode="tel" dir="ltr" /></label>
+            <label>{t(lang, 'cart.address')}<input id="f-address" type="text" maxlength="160" autocomplete="street-address" /></label>
+            <label>{t(lang, 'cart.note')}<textarea id="f-note" rows="2" maxlength="300"></textarea></label>
+            <label class="check"><input id="f-remember" type="checkbox" /> {t(lang, 'cart.remember')}</label>
+            <p class="hint">{t(lang, 'cart.leaveEmpty')}</p>
           </fieldset>
 
-          <p class="hint"><HoursBadge /></p>
-          <p id="closed-note" class="hint" hidden>المتجر مغلق الآن؛ يمكنك إرسال الطلب وسنرد عند الفتح.</p>
+          <p class="hint"><HoursBadge lang={lang} /></p>
+          <p id="closed-note" class="hint" hidden>{t(lang, 'cart.closedNote')}</p>
 
-          <button id="send" type="button" class="btn btn-wa block">أرسل الطلب عبر واتساب</button>
-          <button id="clear" type="button" class="btn btn-outline block">إفراغ السلة</button>
-          <p class="hint">لا يتم أي دفع في الموقع. نؤكد الطلب والسعر معك عبر واتساب.</p>
+          <button id="send" type="button" class="btn btn-wa block">{t(lang, 'cart.send')}</button>
+          <button id="clear" type="button" class="btn btn-outline block">{t(lang, 'cart.clear')}</button>
+          <p class="hint">{t(lang, 'cart.noPayment')}</p>
         </aside>
       </div>
     </div>
@@ -116,6 +126,8 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
   .summary { padding: 18px; display: grid; gap: 10px; align-content: start; }
   .summary h2 { margin: 0; }
   .row { display: flex; justify-content: space-between; margin: 0; }
+  .row.grand { border-top: 1px solid var(--c-border); padding-top: 8px; font-size: 1.1rem; }
+  .row.grand b { color: var(--c-primary); }
   .hint { color: var(--c-muted); font-size: 0.88rem; margin: 0; }
   .notice { margin: 12px 0 0; padding: 10px 14px; border-radius: 10px; background: #fff4e0; color: #8a4b00; font-weight: 600; }
   .offer { margin: 0; padding: 10px 12px; border-radius: 10px; background: #e8f0ff; color: var(--c-primary); font-weight: 600; }
@@ -138,9 +150,13 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
   import { readCart, setQty, removeFromCart, clearCart, takePruned } from '../lib/cart';
   import { orderRef } from '../lib/order';
   import { pickSuggestions } from '../lib/suggest';
+  import { feeFor, orderTotals } from '../lib/delivery';
+  import { maxQty } from '../lib/stock';
+  import { t, plural, langOf } from '../i18n';
   import { isOpenNow } from '../lib/hours';
 
-  type P = { id: string; name: string; slug: string; price: number | null; image: string; availability: string };
+  const lang = langOf(document.documentElement.lang);
+  type P = { id: string; name: string; slug: string; price: number | null; image: string; availability: string; stock: number | null };
   const data = JSON.parse(document.getElementById('cart-data')!.textContent || '{}');
   const products = new Map<string, P>((data.products as P[]).map((p) => [p.id, p]));
   const nf = new Intl.NumberFormat('fr-FR');
@@ -172,7 +188,9 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
   }
 
   let staleCount = 0;
-  const plural = (n: number) => (n === 1 ? 'منتج واحد' : n === 2 ? 'منتجان' : `${n} منتجات`);
+  const clampNotes: string[] = [];
+  const fees = (data.cities as { name: string; fee: number | null }[]) ?? [];
+  const items = (n: number) => plural(lang, n);
 
   function selectedCity(): string {
     return (document.querySelector<HTMLInputElement>('input[name="city"]:checked')?.value ?? '').trim();
@@ -191,6 +209,15 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
 
   function render() {
     const { lines, avail, qty, total, unpriced } = compute();
+
+    // المخزون تغيّر بعد إضافة المنتج؟ نُنزل الكمية إلى المتوفر مع تنبيه الزبون (يُعاد الرسم تلقائياً)
+    const over = lines.find((l) => l.p.stock !== null && l.p.stock > 0 && l.qty > l.p.stock);
+    if (over) {
+      clampNotes.push(t(lang, 'cart.clampNote', { name: over.p.name, n: over.p.stock as number }));
+      setQty(over.id, over.p.stock as number);
+      return;
+    }
+
     $('empty').hidden = lines.length > 0;
     $('content').hidden = lines.length === 0;
     if (lines.length === 0) return;
@@ -204,18 +231,21 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
       img.src = l.p.image; img.alt = l.p.name; img.width = 72; img.height = 72; img.loading = 'lazy';
       const body = el('div');
       const a = el('a', 'name', l.p.name); a.href = `/products/${l.p.slug}`;
-      const meta = el('p', 'meta', out ? 'غير متوفر حالياً — لن يُضاف للطلب' : (l.p.price === null ? 'اتصل لمعرفة السعر' : money(l.p.price)));
+      const stockNote = !out && l.p.stock !== null ? t(lang, 'cart.stockNote', { n: l.p.stock }) : '';
+      const meta = el('p', 'meta', out ? t(lang, 'cart.unavailableLine') : (l.p.price === null ? t(lang, 'price.call') : money(l.p.price)) + stockNote);
       const ctrl = el('div', 'ctrl');
       const box = el('div', 'qtybox');
-      const minus = el('button', undefined, '−'); minus.type = 'button'; minus.setAttribute('aria-label', 'إنقاص');
+      const minus = el('button', undefined, '−'); minus.type = 'button'; minus.setAttribute('aria-label', t(lang, 'cart.decrease'));
       const q = el('span', undefined, String(l.qty));
-      const plus = el('button', undefined, '+'); plus.type = 'button'; plus.setAttribute('aria-label', 'زيادة');
+      const plus = el('button', undefined, '+'); plus.type = 'button'; plus.setAttribute('aria-label', t(lang, 'cart.increase'));
       minus.onclick = () => setQty(l.id, l.qty - 1);
-      plus.onclick = () => setQty(l.id, l.qty + 1);
+      const cap = maxQty(l.p.stock);
+      plus.disabled = l.qty >= cap;
+      plus.onclick = () => setQty(l.id, Math.min(l.qty + 1, cap));
       box.append(minus, q, plus);
       ctrl.append(box);
       if (!out && l.p.price !== null) ctrl.append(el('span', 'sub', money(l.p.price * l.qty)));
-      const rm = el('button', 'rm', 'حذف'); rm.type = 'button'; rm.onclick = () => removeFromCart(l.id);
+      const rm = el('button', 'rm', t(lang, 'cart.remove')); rm.type = 'button'; rm.onclick = () => removeFromCart(l.id);
       ctrl.append(rm);
       body.append(a, meta, ctrl);
       li.append(img, body);
@@ -226,24 +256,31 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
     const pruned = takePruned();
     if (pruned > 0) staleCount += pruned;
     const stale = $('stale');
-    stale.hidden = staleCount === 0;
-    stale.textContent = staleCount
-      ? `تمت إزالة ${plural(staleCount)} من سلتك لأنه لم يعد متوفراً في المتجر.`
-      : '';
+    const notes = [
+      staleCount ? t(lang, 'cart.staleNote', { items: items(staleCount) }) : '',
+      ...clampNotes,
+    ].filter(Boolean);
+    stale.hidden = notes.length === 0;
+    stale.textContent = notes.join(' ');
 
+    const city = selectedCity();
+    const fee = city ? feeFor(fees, city) : null;
+    const tot = orderTotals(total, qty, fee);
     $('qty').textContent = String(qty);
-    $('total').textContent = money(total);
+    $('subtotal').textContent = money(tot.subtotal);
+    $('fee').textContent = qty === 0 ? '—' : !city ? t(lang, 'cart.chooseCity') : fee === null ? t(lang, 'cart.feeTbd') : fee === 0 ? t(lang, 'cart.free') : money(fee);
+    $('total').textContent = money(tot.total);
     const un = $('unpriced');
     un.hidden = unpriced === 0;
-    un.textContent = unpriced ? `${plural(unpriced)} بدون سعر محدد — يُؤكَّد سعرها عبر واتساب ولا يدخل في المجموع.` : '';
+    un.textContent = unpriced ? t(lang, 'cart.unpricedNote', { items: items(unpriced) }) : '';
 
     const { minItems, hours } = data.fast;
     const offer = $('offer');
     if (qty >= minItems) {
-      offer.textContent = `✓ طلبيتك مؤهلة للتوصيل في أقل من ${hours} ساعات`;
+      offer.textContent = t(lang, 'cart.offerOk', { hours });
       offer.className = 'offer ok';
     } else {
-      offer.textContent = `أضف ${plural(minItems - qty)} إضافية لتصلك طلبيتك في أقل من ${hours} ساعات`;
+      offer.textContent = t(lang, 'cart.offerNeed', { items: items(minItems - qty), hours });
       offer.className = 'offer';
     }
 
@@ -258,8 +295,9 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
       const li = el('li');
       const a = el('a', 'sg-name', p.name); a.href = `/products/${p.slug}`;
       const price = el('span', 'sg-price', money(p.price as number));
-      const add = el('button', 'btn btn-outline sg-add', 'أضف'); add.type = 'button';
+      const add = el('button', 'btn btn-outline sg-add', t(lang, 'cart.add')); add.type = 'button';
       add.dataset.addToCart = p.id; add.dataset.name = p.name;
+      if (p.stock !== null) add.dataset.stock = String(p.stock);
       li.append(a, price, add);
       sList.append(li);
     }
@@ -271,16 +309,20 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
 
   function buildMessage(ref: string): string {
     const { avail, total, unpriced } = compute();
-    const out: string[] = [`مرحباً ${data.siteName}، أرغب في طلب المنتجات التالية:`, `رقم الطلب: ${ref}`, ''];
+    const out: string[] = [t(lang, 'cart.msg.hello', { site: data.siteName }), t(lang, 'cart.msg.orderNo', { ref }), ''];
     avail.forEach((l, i) => {
-      const price = l.p.price === null ? 'السعر عند التأكيد' : `${money(l.p.price)} × ${l.qty} = ${money(l.p.price * l.qty)}`;
+      const price = l.p.price === null ? t(lang, 'cart.msg.priceTbd') : `${money(l.p.price)} × ${l.qty} = ${money(l.p.price * l.qty)}`;
       out.push(`${i + 1}) ${l.p.name} (${l.p.id})`);
-      out.push(l.p.price === null ? `   الكمية: ${l.qty} — ${price}` : `   ${price}`);
+      out.push(l.p.price === null ? t(lang, 'cart.msg.qty', { n: l.qty, price }) : `   ${price}`);
     });
-    out.push('', `المجموع: ${money(total)}${unpriced ? ` (+ ${plural(unpriced)} بسعر يُحدَّد)` : ''}`);
-    out.push(`المدينة: ${selectedCity()}`);
+    const city = selectedCity();
+    const fee = feeFor(fees, city);
+    const tot = orderTotals(total, avail.length, fee);
+    out.push('', t(lang, 'cart.msg.subtotal', { amount: money(tot.subtotal) }) + (unpriced ? t(lang, 'cart.msg.subtotalExtra', { items: items(unpriced) }) : ''));
+    out.push(t(lang, 'cart.msg.delivery', { city, fee: fee === null ? t(lang, 'cart.msg.deliveryTbd') : fee === 0 ? t(lang, 'cart.free') : money(fee) }));
+    out.push(t(lang, 'cart.msg.grand', { amount: money(tot.total) }));
     const extras: [string, string][] = [
-      ['الاسم', nameEl.value], ['الهاتف', phoneEl.value], ['العنوان', addrEl.value], ['ملاحظة', noteEl.value],
+      [t(lang, 'cart.msg.name'), nameEl.value], [t(lang, 'cart.msg.phone'), phoneEl.value], [t(lang, 'cart.msg.address'), addrEl.value], [t(lang, 'cart.msg.note'), noteEl.value],
     ];
     for (const [k, v] of extras) if (v.trim()) out.push(`${k}: ${v.trim()}`);
     return out.join('\n');
@@ -295,7 +337,7 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
     const url = `https://wa.me/${data.whatsapp}?text=${encodeURIComponent(buildMessage(orderRef()))}`;
     window.open(url, '_blank', 'noopener');
   });
-  $('clear').addEventListener('click', () => { if (confirm('إفراغ السلة؟')) clearCart(); });
+  $('clear').addEventListener('click', () => { if (confirm(t(lang, 'cart.confirmClear'))) clearCart(); });
   document.querySelectorAll('input[name="city"]').forEach((r) => r.addEventListener('change', render));
   window.addEventListener('cart:change', render);
   window.addEventListener('storage', render);

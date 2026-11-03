@@ -33,5 +33,28 @@
       "value": "يشحن جهازًا واحدًا في كل مرة"
     }
   ],
-  "whatsappOrder": true
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Câble 3 en 1",
+    "shortDescription": "Un seul câble avec trois embouts : USB-C, Lightning et Micro USB",
+    "description": "Un seul câble avec trois embouts USB-C, Lightning et Micro USB, idéal pour la maison, la voiture et les voyages : plus besoin de transporter plusieurs câbles.",
+    "specs": [
+      {
+        "key": "Longueur",
+        "value": "1,2 m"
+      },
+      {
+        "key": "Embouts",
+        "value": "USB-C, Lightning et Micro USB"
+      },
+      {
+        "key": "Courant",
+        "value": "jusqu'à 2,4 A"
+      },
+      {
+        "key": "Remarque",
+        "value": "Charge un seul appareil à la fois"
+      }
+    ]
+  }
 }

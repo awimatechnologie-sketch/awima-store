@@ -37,5 +37,32 @@
       "value": "ويندوز، ماك، لينكس"
     }
   ],
-  "whatsappOrder": true
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Clé USB",
+    "shortDescription": "Clé USB de 64 Go pour transférer fichiers, photos et vidéos entre ordinateur, téléphone et TV",
+    "description": "Clé USB de 64 Go pour transférer fichiers, photos et vidéos entre l'ordinateur, le téléphone et la télévision. Design compact et pratique avec anneau d'attache.",
+    "specs": [
+      {
+        "key": "Capacité",
+        "value": "64 Go"
+      },
+      {
+        "key": "Interface",
+        "value": "USB 3.0"
+      },
+      {
+        "key": "Vitesse de lecture",
+        "value": "jusqu'à 100 Mo/s"
+      },
+      {
+        "key": "Connecteur",
+        "value": "USB-A"
+      },
+      {
+        "key": "Compatibilité",
+        "value": "Windows, Mac, Linux"
+      }
+    ]
+  }
 }

@@ -1,11 +1,13 @@
 ---
 import { site } from '../config/site';
 import { hoursLabel } from '../lib/hours';
-interface Props { light?: boolean; hideOnMobile?: boolean }
+import { t, langOf, type Lang } from '../i18n';
+interface Props { light?: boolean; hideOnMobile?: boolean; lang?: Lang }
 const { light = false, hideOnMobile = false } = Astro.props;
+const lang = langOf(Astro.props.lang);
 ---
 <span class:list={['hours', { light, hm: hideOnMobile }]} data-hours data-open={site.hours.open} data-close={site.hours.close}>
-  <span>ساعات العمل: {hoursLabel(site.hours.open, site.hours.close)}</span>
+  <span>{t(lang, 'hours.label', { range: hoursLabel(site.hours.open, site.hours.close, lang) })}</span>
   <b data-hours-status></b>
 </span>
 <style>

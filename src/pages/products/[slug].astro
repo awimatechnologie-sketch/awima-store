@@ -3,29 +3,39 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import { site } from '../../config/site';
 import { buildProductLink } from '../../lib/whatsapp';
-import { formatPrice, getSaving, availabilityLabel } from '../../lib/format';
+import { formatPrice, getSaving, availabilityFor } from '../../lib/format';
+import { t, langOf, localePath, type Lang } from '../../i18n';
 import { pickRelated } from '../../lib/related';
 import { getAllProducts, getCategories, getProductBySlug } from '../../services/products';
+import { getReviewSummary, getReviews } from '../../services/reviews';
 
 export function getStaticPaths() {
   return getAllProducts().map((p) => ({ params: { slug: p.slug } }));
 }
 
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
 const { slug } = Astro.params;
-const product = getProductBySlug(slug as string)!;
-const categories = getCategories();
+const product = getProductBySlug(slug as string, lang)!;
+const categories = getCategories(lang);
 const category = categories.find((c) => c.id === product.category);
 const catName = Object.fromEntries(categories.map((c) => [c.id, c.name]));
 
-const pageUrl = new URL(`/products/${product.slug}`, site.url).href;
-const waLink = buildProductLink(product, pageUrl);
-const av = availabilityLabel[product.availability];
+const pageUrl = new URL(localePath(lang, `/products/${product.slug}`), site.url).href;
+const waLink = buildProductLink(product, pageUrl, lang);
+const av = availabilityFor(lang, product.availability);
 const saving = getSaving(product.price, product.oldPrice);
 const images = product.images.length ? product.images : ['/images/placeholder.svg'];
 const specs = Object.entries(product.specs ?? {});
 const phoneHref = `tel:+${site.contact.whatsapp}`;
 
-const related = pickRelated(product, getAllProducts(), 4);
+const related = pickRelated(product, getAllProducts(lang), 4);
+const rv = getReviewSummary(product.id);
+const reviews = getReviews(product.id).slice(0, 20);
+const hasTier = rv.tier !== 'none';
+const fmtAvg = (n: number) => (lang === 'fr' ? String(n).replace('.', ',') : String(n));
+const stars = (n: number) => '★'.repeat(n) + '☆'.repeat(5 - n);
+const sep = lang === 'fr' ? '›' : '‹';
 
 const ld: Record<string, unknown> = {
   '@context': 'https://schema.org',
@@ -47,6 +57,7 @@ if (product.price !== null) {
 }
 ---
 <BaseLayout
+  lang={lang}
   title={product.name}
   description={product.shortDescription}
   image={images[0]}
@@ -56,9 +67,9 @@ if (product.price !== null) {
 
   <section class="section">
     <div class="container">
-      <nav class="crumbs" aria-label="مسار التنقل">
-        <a href="/">الرئيسية</a> ‹ <a href="/products">المنتجات</a>
-        {category ? <> ‹ <a href={`/products?category=${category.slug}`}>{category.name}</a></> : null}
+      <nav class="crumbs" aria-label={t(lang, 'nav.breadcrumb')}>
+        <a href={localePath(lang, '/')}>{t(lang, 'nav.home')}</a> {sep} <a href={localePath(lang, '/products')}>{t(lang, 'nav.products')}</a>
+        {category ? <> {sep} <a href={localePath(lang, `/products?category=${category.slug}`)}>{category.name}</a></> : null}
       </nav>
 
       <div class="layout">
@@ -67,9 +78,9 @@ if (product.price !== null) {
             <img id="main-img" src={images[0]} alt={product.name} width="800" height="800" fetchpriority="high" />
           </div>
           {images.length > 1 ? (
-            <div class="thumbs" role="group" aria-label="صور المنتج">
+            <div class="thumbs" role="group" aria-label={t(lang, 'product.gallery')}>
               {images.map((src, i) => (
-                <button type="button" class="thumb" data-src={src} aria-current={i === 0 ? 'true' : undefined} aria-label={`صورة ${i + 1}`}>
+                <button type="button" class="thumb" data-src={src} aria-current={i === 0 ? 'true' : undefined} aria-label={t(lang, 'product.imageN', { n: i + 1 })}>
                   <img src={src} alt="" width="120" height="120" loading="lazy" />
                 </button>
               ))}
@@ -80,12 +91,12 @@ if (product.price !== null) {
         <div class="info">
           {category ? <span class="cat">{category.name}</span> : null}
           <h1>{product.name}</h1>
-          <p class="ref">المرجع: {product.id}</p>
+          <p class="ref">{t(lang, 'product.ref', { id: product.id })}</p>
 
           <p class="prices">
-            <span class="price">{formatPrice(product.price)}</span>
-            {saving ? <del class="old">{formatPrice(product.oldPrice)}</del> : null}
-            {saving ? <span class="save">وفّر {formatPrice(saving)}</span> : null}
+            <span class="price">{formatPrice(product.price, lang)}</span>
+            {saving ? <del class="old">{formatPrice(product.oldPrice, lang)}</del> : null}
+            {saving ? <span class="save">{t(lang, 'price.save', { amount: formatPrice(saving, lang) })}</span> : null}
           </p>
           <span class={`badge ${av.cls}`}>{av.text}</span>
 
@@ -93,27 +104,27 @@ if (product.price !== null) {
 
           <div class="actions">
             {product.availability !== 'out_of_stock' ? (
-              <button type="button" class="btn btn-cart" data-add-to-cart={product.id} data-name={product.name}>أضف إلى السلة</button>
+              <button type="button" class="btn btn-cart" data-add-to-cart={product.id} data-name={product.name} data-stock={product.stock ?? undefined}>{t(lang, 'product.addToCart')}</button>
             ) : null}
             {product.whatsappOrder ? (
               <a class="btn btn-wa" href={waLink} target="_blank" rel="noopener">
-                {product.availability === 'out_of_stock' ? 'اسأل عن التوفر عبر واتساب' : 'اطلب عبر واتساب'}
+                {t(lang, product.availability === 'out_of_stock' ? 'product.askAvailability' : 'product.orderWa')}
               </a>
             ) : null}
-            <a class="btn btn-outline" href={phoneHref}>اتصل بنا</a>
+            <a class="btn btn-outline" href={phoneHref}>{t(lang, 'product.call')}</a>
           </div>
-          <p class="note">عند الضغط على الزر تُفتح محادثة واتساب برسالة جاهزة تحمل اسم المنتج ومرجعه وسعره ورابطه.</p>
+          <p class="note">{t(lang, 'product.note')}</p>
         </div>
       </div>
 
       <div class="details">
         <section>
-          <h2>الوصف</h2>
+          <h2>{t(lang, 'product.description')}</h2>
           <p>{product.description}</p>
         </section>
         {specs.length ? (
           <section>
-            <h2>المواصفات</h2>
+            <h2>{t(lang, 'product.specs')}</h2>
             <table class="specs">
               <tbody>
                 {specs.map(([k, v]) => (
@@ -124,15 +135,43 @@ if (product.price !== null) {
           </section>
         ) : null}
       </div>
+
+      <section class="reviews" id="reviews" aria-labelledby="rv-h" data-tier={hasTier ? rv.tier : undefined}>
+        <h2 id="rv-h">{t(lang, 'reviews.title')}</h2>
+        {rv.count > 0 ? (
+          <>
+            <p class="rv-sum">
+              <strong>★ {fmtAvg(rv.average)}</strong> · {t(lang, 'reviews.summary', { avg: fmtAvg(rv.average), count: rv.count })}
+              {hasTier ? <span class="rv-tier">{t(lang, `reviews.tier.${rv.tier}`)}</span> : null}
+            </p>
+            <p class="note">{t(lang, 'reviews.explain')}</p>
+            <ul class="rv-list">
+              {reviews.map((r) => (
+                <li class="rv">
+                  <div class="rv-h">
+                    <strong>{r.author ?? t(lang, 'reviews.customer')}</strong>
+                    {r.buyer === 'verified' ? <span class="rv-b">{t(lang, 'reviews.verified')}</span> : null}
+                    <span class="rv-s" role="img" aria-label={t(lang, 'reviews.stars', { n: r.rating })}>{stars(r.rating)}</span>
+                    {r.date ? <time datetime={r.date}>{r.date.slice(0, 10)}</time> : null}
+                  </div>
+                  {r.comment ? <p>{r.comment}</p> : null}
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <p class="note">{t(lang, 'reviews.empty')}</p>
+        )}
+      </section>
     </div>
   </section>
 
   {related.length ? (
     <section class="section section-alt" aria-labelledby="rel">
       <div class="container">
-        <h2 id="rel">منتجات مقترحة لك</h2>
+        <h2 id="rel">{t(lang, 'product.related')}</h2>
         <div class="grid grid-4">
-          {related.map((p) => <ProductCard product={p} categoryName={catName[p.category]} />)}
+          {related.map((p) => <ProductCard product={p} categoryName={catName[p.category]} lang={lang} />)}
         </div>
       </div>
     </section>
@@ -163,6 +202,20 @@ if (product.price !== null) {
   .specs { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--c-border); border-radius: 10px; overflow: hidden; }
   .specs th, .specs td { text-align: start; padding: 10px 14px; border-bottom: 1px solid var(--c-border); }
   .specs th { width: 38%; background: var(--c-surface); color: var(--c-primary); font-weight: 600; }
+  .reviews { margin-top: 32px; }
+  .reviews[data-tier='green-dark'] { --tier-text: #166534; }
+  .reviews[data-tier='green-light'] { --tier-text: #4d7c0f; }
+  .reviews[data-tier='yellow'] { --tier-text: #854d0e; }
+  .rv-sum { font-size: 1.1rem; margin: 0 0 4px; }
+  .rv-sum strong { color: #b45309; }
+  .rv-tier { margin-inline-start: 8px; font-weight: 700; color: var(--tier-text); }
+  .rv-list { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 10px; }
+  .rv { background: #fff; border: 1px solid var(--c-border); border-radius: 10px; padding: 12px 14px; }
+  .rv p { margin: 6px 0 0; }
+  .rv-h { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+  .rv-b { background: #dcfce7; color: #166534; font-size: 0.78rem; font-weight: 700; padding: 2px 10px; border-radius: 999px; }
+  .rv-s { color: #b45309; letter-spacing: 1px; }
+  .rv time { color: var(--c-muted); font-size: 0.85rem; }
   @media (min-width: 860px) {
     .layout { grid-template-columns: 1fr 1fr; align-items: start; gap: 40px; }
     .details { grid-template-columns: 1fr 1fr; }

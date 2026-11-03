@@ -52,6 +52,7 @@ for (const f of listJson(join(DATA, 'categories'))) {
   if (c.id && catIds.has(c.id)) err(label, `معرّف قسم مكرر: ${c.id}`);
   if (c.slug && catSlugs.has(c.slug)) err(label, `slug قسم مكرر: ${c.slug}`);
   if (c.order !== undefined && !Number.isFinite(c.order)) err(label, '"order" يجب أن يكون رقماً');
+  if (!(typeof c.name_fr === 'string' && c.name_fr.trim())) untranslatedCats.push(c.name ?? c.id);
   if (c.slug && basename(f, '.json') !== c.slug) warn(label, `اسم الملف لا يطابق slug (${c.slug})`);
   c.id && catIds.add(c.id);
   c.slug && catSlugs.add(c.slug);
@@ -59,6 +60,8 @@ for (const f of listJson(join(DATA, 'categories'))) {
 
 // ---------- المنتجات ----------
 const pendingRelated = [];
+const untranslated = [];
+const untranslatedCats = [];
 const ids = new Set();
 const slugs = new Set();
 let productCount = 0;
@@ -110,6 +113,12 @@ for (const f of listJson(join(DATA, 'products'))) {
     } else if (typeof p.specs !== 'object') err(label, '"specs" بصيغة غير مدعومة');
   }
   if (!p.shortDescription) warn(label, 'الوصف القصير فارغ');
+  if (p.fr !== undefined && (p.fr === null || typeof p.fr !== 'object' || Array.isArray(p.fr))) err(label, '"fr" يجب أن تكون كائناً');
+  else if (!p.hidden && !(p.fr && typeof p.fr.name === 'string' && p.fr.name.trim())) untranslated.push(p.id ?? f);
+  if (p.stock !== undefined && p.stock !== null) {
+    if (!Number.isInteger(p.stock) || p.stock < 0) err(label, `stock يجب أن يكون عدداً صحيحاً ≥ 0 أو فارغاً: ${JSON.stringify(p.stock)}`);
+    else if (p.stock > 0 && p.availability === 'out_of_stock') warn(label, 'المخزون أكبر من 0 لكن الحالة «غير متوفر» يدوياً (تبقى غير متوفر)');
+  }
   if (p.related !== undefined && !Array.isArray(p.related)) err(label, '"related" يجب أن تكون قائمة معرّفات');
   else if (Array.isArray(p.related)) pendingRelated.push([label, p.id, p.related]);
 }
@@ -158,11 +167,18 @@ if (s) {
         else if (seen.has(c.name)) warn(sLabel, `مدينة مكررة: ${c.name}`);
         seen.add(c?.name);
         if (typeof c?.open !== 'boolean') warn(sLabel, `المدينة "${c?.name}": حقل open ليس true/false (ستُعتبر مقفلة)`);
+        const feeOk = typeof c?.fee === 'number' && Number.isFinite(c.fee) && c.fee >= 0;
+        // مدينة مفتوحة بلا رسم صالح = توصيل مجاني بالخطأ، لذلك نوقف البناء
+        if (!feeOk) (c?.open === true ? err : warn)(sLabel, `المدينة "${c?.name}": رسم التوصيل (fee) مفقود أو غير صالح`);
       });
       if (s.cities.length > 0 && !s.cities.some((c) => c?.open === true))
         warn(sLabel, 'كل المدن مقفلة: لن يستطيع الزبائن إرسال أي طلب من السلة');
     }
   }
+
+  const tok = s.analytics?.cloudflareToken;
+  if (tok && !/^[a-f0-9]{32}$/i.test(String(tok).trim()))
+    warn(sLabel, 'analytics.cloudflareToken ليس توكناً صالحاً (32 خانة سداسية)، لذا لن تعمل الإحصائيات');
 
   if (Array.isArray(s.announcements)) {
     s.announcements.forEach((a, i) => {
@@ -182,6 +198,37 @@ for (const f of ['about', 'contact', 'awima-box']) {
   else {
     const pg = readJson(path, label);
     if (pg && !pg.title) warn(label, 'العنوان فارغ');
+  }
+}
+
+// ---------- الترجمة الفرنسية ----------
+for (const f of ['about', 'contact', 'awima-box']) {
+  const label = `pages/${f}.fr.json`;
+  const path = join(DATA, 'pages', `${f}.fr.json`);
+  if (!existsSync(path)) err(label, 'الملف غير موجود (تحتاجه صفحات /fr)');
+  else {
+    const pg = readJson(path, label);
+    if (pg && !pg.title) warn(label, 'العنوان فارغ');
+  }
+}
+if (untranslated.length)
+  warn('fr', `${untranslated.length} منتج بلا اسم فرنسي (يظهر بالعربية في /fr): ${untranslated.slice(0, 5).join('، ')}${untranslated.length > 5 ? '…' : ''}`);
+if (untranslatedCats.length)
+  warn('fr', `أقسام بلا اسم فرنسي: ${untranslatedCats.join('، ')}`);
+if (s && !s.tagline_fr) warn('settings.json', 'tagline_fr فارغ (يظهر الشعار بالعربية في /fr)');
+
+// ---------- التقييمات (مجلد اختياري) ----------
+const REV_DIR = join(DATA, 'reviews');
+if (existsSync(REV_DIR)) {
+  for (const f of listJson(REV_DIR)) {
+    const label = `reviews/${f}`;
+    const r = readJson(join(REV_DIR, f), label);
+    if (!r) continue;
+    if (!r.product || !ids.has(r.product)) err(label, `منتج غير موجود: ${r.product}`);
+    if (!Number.isInteger(r.rating) || r.rating < 1 || r.rating > 5) err(label, `rating يجب أن يكون عدداً صحيحاً 1..5 (الحالي: ${r.rating})`);
+    if (!['verified', 'new'].includes(r.buyer)) err(label, `buyer يجب أن يكون verified أو new (الحالي: ${r.buyer})`);
+    if (r.comment && String(r.comment).length > 600) warn(label, 'التعليق أطول من 600 حرف');
+    if (r.date && Number.isNaN(Date.parse(r.date))) warn(label, `تاريخ غير صالح: ${r.date}`);
   }
 }
 

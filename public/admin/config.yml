@@ -58,6 +58,7 @@ collections:
           - { label: غير متوفر, value: out_of_stock }
           - { label: عند الطلب, value: on_request }
         default: in_stock
+      - { label: الكمية في المخزون (اتركه فارغاً = غير محدود، و0 = غير متوفر تلقائياً), name: stock, widget: number, value_type: int, min: 0, required: false, hint: 'عدّلها بعد كل بيع. تمنع السلة طلب كمية أكبر منها. إن كانت حالة التوفر «غير متوفر» فتبقى كذلك مهما كان المخزون.' }
       - { label: منتج مميز (يظهر في الرئيسية), name: featured, widget: boolean, default: false }
       - label: المواصفات التقنية
         name: specs
@@ -77,6 +78,23 @@ collections:
         multiple: true
         required: false
         hint: 'اختياري. تظهر أسفل صفحة المنتج بترتيبك، ويُكمَل العدد تلقائياً من نفس القسم حتى 4 منتجات.'
+      - label: الترجمة الفرنسية (اختيارية)
+        name: fr
+        widget: object
+        required: false
+        collapsed: true
+        hint: 'ما تتركه فارغاً يظهر بالعربية في النسخة الفرنسية /fr'
+        fields:
+          - { label: الاسم بالفرنسية, name: name, widget: string, required: false }
+          - { label: وصف قصير بالفرنسية, name: shortDescription, widget: text, required: false }
+          - { label: الوصف الكامل بالفرنسية, name: description, widget: text, required: false }
+          - label: المواصفات بالفرنسية
+            name: specs
+            widget: list
+            required: false
+            fields:
+              - { label: الاسم (مثل Capacité), name: key, widget: string }
+              - { label: القيمة (مثل 64 Go), name: value, widget: string }
       - { label: الطلب عبر واتساب, name: whatsappOrder, widget: boolean, default: true }
       - { label: إخفاء المنتج من الموقع (مسودة), name: hidden, widget: boolean, default: false, required: false, hint: 'فعّله لتجهيز منتج دون نشره، أو لإخفائه مؤقتاً دون حذفه' }
 
@@ -95,12 +113,46 @@ collections:
     fields:
       - { label: المعرّف (مثال cat-storage), name: id, widget: string, pattern: ['^cat-[a-z0-9-]+$', 'يبدأ بـ cat- ثم حروف لاتينية صغيرة، مثل cat-storage'] }
       - { label: اسم القسم, name: name, widget: string }
+      - { label: اسم القسم بالفرنسية (اختياري), name: name_fr, widget: string, required: false }
       - { label: الرابط (slug), name: slug, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'حروف لاتينية صغيرة وأرقام وشرطات فقط'] }
       - { label: ترتيب الظهور (1 أولاً), name: order, widget: number, value_type: int, min: 1, default: 99 }
 
+  # ---------------- تقييمات الزبائن ----------------
+  - name: reviews
+    label: تقييمات الزبائن
+    label_singular: تقييم
+    folder: src/data/reviews
+    extension: json
+    format: json
+    create: true
+    delete: true
+    slug: '{{product}}-{{year}}{{month}}{{day}}-{{hour}}{{minute}}{{second}}'
+    summary: '{{product}} — {{rating}}★ — {{buyer}} — {{author}}'
+    description: 'الإطار اللوني للمنتج يُحسب تلقائياً: مشترٍ سابق موثَّق = 5 نقاط، زبون جديد = نقطة. يلزم 5 نقاط على الأقل ليظهر لون.'
+    fields:
+      - label: المنتج
+        name: product
+        widget: relation
+        collection: products
+        value_field: id
+        search_fields: [name, id]
+        display_fields: [name]
+      - { label: التقييم (1 إلى 5 نجوم), name: rating, widget: number, value_type: int, min: 1, max: 5, default: 5 }
+      - label: نوع المقيِّم
+        name: buyer
+        widget: select
+        default: new
+        options:
+          - { label: مشترٍ سابق من المتجر (موثَّق — 5 نقاط), value: verified }
+          - { label: زبون جديد (نقطة واحدة), value: new }
+      - { label: اسم المقيِّم (أو الأحرف الأولى), name: author, widget: string, required: false }
+      - { label: التعليق, name: comment, widget: text, required: false }
+      - { label: التاريخ, name: date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, required: false }
+      - { label: منشور, name: published, widget: boolean, default: true, hint: 'أوقفه لإخفاء التقييم دون حذفه.' }
+
   # ---------------- الصفحات ----------------
   - name: pages
-    label: الصفحات (من نحن / اتصل بنا)
+    label: الصفحات (من نحن / Awima Box / اتصل بنا — عربي وفرنسي)
     files:
       - label: صفحة من نحن
         name: about_page
@@ -152,7 +204,56 @@ collections:
           - { label: العنوان, name: title, widget: string }
           - { label: مقدمة, name: intro, widget: text }
           - { label: ملاحظة (اختيارية), name: note, widget: text, required: false }
-
+      - label: صفحة من نحن (الفرنسية)
+        name: about_page_fr
+        file: src/data/pages/about.fr.json
+        format: json
+        media_folder: /public/images
+        public_folder: /images
+        fields:
+          - { label: العنوان, name: title, widget: string }
+          - { label: مقدمة, name: intro, widget: text, hint: 'سطر فارغ بين فقرتين = فقرة جديدة' }
+          - { label: الرسالة, name: mission, widget: text, required: false }
+          - label: الأهداف (واحد في كل سطر)
+            name: goals
+            widget: list
+            required: false
+            field: { label: هدف, name: goal, widget: string }
+          - { label: الفلسفة, name: philosophy, widget: text, required: false }
+          - { label: صورة (اختيارية), name: image, widget: image, required: false }
+      - label: صفحة Awima Box (الفرنسية)
+        name: awima_box_page_fr
+        file: src/data/pages/awima-box.fr.json
+        format: json
+        fields:
+          - { label: العنوان, name: title, widget: string }
+          - { label: العبارة تحت العنوان, name: tagline, widget: string, required: false }
+          - { label: مقدمة, name: intro, widget: text }
+          - label: خطوات العمل
+            name: steps
+            widget: list
+            required: false
+            fields:
+              - { label: عنوان الخطوة, name: title, widget: string }
+              - { label: الشرح, name: text, widget: text, required: false }
+          - label: المزايا (واحدة في كل سطر)
+            name: benefits
+            widget: list
+            required: false
+            field: { label: ميزة, name: benefit, widget: string }
+          - { label: عنوان قسم المنتجات, name: productsTitle, widget: string, required: false }
+          - { label: نص يظهر عند عدم وجود منتجات, name: emptyText, widget: text, required: false }
+          - { label: عنوان قسم التطبيق, name: appTitle, widget: string, required: false }
+          - { label: نص قسم التطبيق (اتركه فارغاً لإخفائه), name: appText, widget: text, required: false }
+          - { label: رسالة واتساب الجاهزة, name: ctaText, widget: string }
+      - label: صفحة اتصل بنا (الفرنسية)
+        name: contact_page_fr
+        file: src/data/pages/contact.fr.json
+        format: json
+        fields:
+          - { label: العنوان, name: title, widget: string }
+          - { label: مقدمة, name: intro, widget: text }
+          - { label: ملاحظة (اختيارية), name: note, widget: text, required: false }
   # ---------------- إعدادات الموقع ----------------
   - name: settings
     label: إعدادات الموقع
@@ -166,6 +267,7 @@ collections:
         fields:
           - { label: اسم المتجر, name: name, widget: string }
           - { label: الشعار النصي (Tagline), name: tagline, widget: string }
+          - { label: الشعار النصي بالفرنسية (اختياري), name: tagline_fr, widget: string, required: false }
           - { label: رابط الموقع (بدون / في النهاية), name: url, widget: string, hint: 'يُستعمل في الروابط الأساسية (canonical) وروابط واتساب' }
           - label: الشعارات
             name: logo
@@ -205,6 +307,7 @@ collections:
             hint: 'تظهر العروض المفعّلة فقط، وإن وُجد أكثر من عرض تتناوب كل 5 ثوانٍ'
             fields:
               - { label: نص العرض, name: text, widget: string }
+              - { label: نص العرض بالفرنسية (اختياري), name: text_fr, widget: string, required: false }
               - { label: رابط عند الضغط (اختياري، مثل /products), name: link, widget: string, required: false }
               - { label: مفعّل, name: enabled, widget: boolean, default: true }
           - label: أوقات العمل (بتوقيت المغرب)
@@ -223,10 +326,19 @@ collections:
             name: cities
             widget: list
             required: false
-            hint: 'المدن غير المفعّلة تظهر مقفلة 🔒 ولا يمكن الطلب منها. فعّل المدينة عند بدء العمل فيها.'
+            hint: 'المدن غير المفعّلة تظهر مقفلة 🔒 ولا يمكن الطلب منها. فعّل المدينة عند بدء العمل فيها، وحدّد رسم التوصيل لها.'
             fields:
               - { label: اسم المدينة, name: name, widget: string }
+              - { label: اسم المدينة بالفرنسية (اختياري), name: name_fr, widget: string, required: false }
               - { label: مفتوحة للطلب, name: open, widget: boolean, default: false }
+              - { label: رسم التوصيل بالدرهم (يُضاف إلى مجموع الطلب), name: fee, widget: number, value_type: float, min: 0, default: 30 }
+          - label: الإحصائيات (Cloudflare Web Analytics)
+            name: analytics
+            widget: object
+            required: false
+            hint: 'بلا كوكيز. الصق توكن الموقع من Cloudflare ← Web Analytics ← Manage site (32 خانة). اتركه فارغاً لتعطيل الإحصائيات. لا تفعّله هنا إن كنت فعّلت Web Analytics من إعدادات مشروع Pages نفسه (لا حاجة للاثنين).'
+            fields:
+              - { label: توكن Cloudflare, name: cloudflareToken, widget: string, required: false, pattern: ['^[a-fA-F0-9]{32}$', '32 خانة من الأرقام وحروف a-f فقط'] }
           - label: متقدم — CSS مخصص
             name: customCss
             widget: text

@@ -1,15 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { t } from '../i18n';
 ---
-<BaseLayout title="الصفحة غير موجودة">
+<BaseLayout title={t('ar', 'notfound.title')} alternates={false}>
   <section class="section">
     <div class="container box">
-      <h1>الصفحة غير موجودة</h1>
-      <p>ربما تغيّر الرابط أو حُذف المنتج.</p>
-      <a class="btn btn-primary" href="/products">تصفح المنتجات</a>
+      <h1>{t('ar', 'notfound.title')}</h1>
+      <p>{t('ar', 'notfound.text')}</p>
+      <a class="btn btn-primary" href="/products">{t('ar', 'home.browse')}</a>
+      <hr />
+      <p lang="fr" dir="ltr"><b>{t('fr', 'notfound.title')}</b> — {t('fr', 'notfound.text')}</p>
+      <a class="btn btn-outline" href="/fr/products" lang="fr" dir="ltr">{t('fr', 'home.browse')}</a>
     </div>
   </section>
 </BaseLayout>
 <style>
   .box { text-align: center; padding-block: 48px; }
+  hr { border: 0; border-top: 1px solid var(--c-border); margin: 24px auto; max-width: 320px; }
 </style>

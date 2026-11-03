@@ -29,12 +29,18 @@ function write(lines: CartLine[]) {
 
 export const cartCount = () => readCart().reduce((n, l) => n + l.qty, 0);
 
-export function addToCart(id: string, qty = 1) {
+/** يضيف للسلة دون تجاوز `max` (مخزون المنتج). يعيد true إن زادت الكمية فعلاً */
+export function addToCart(id: string, qty = 1, max = MAX_QTY): boolean {
+  const cap = Math.min(max, MAX_QTY);
   const lines = readCart();
   const line = lines.find((l) => l.id === id);
-  if (line) line.qty = Math.min(line.qty + qty, MAX_QTY);
-  else lines.push({ id, qty: Math.min(qty, MAX_QTY) });
+  const before = line?.qty ?? 0;
+  const after = Math.min(before + qty, cap);
+  if (after <= before) return false;
+  if (line) line.qty = after;
+  else lines.push({ id, qty: after });
   write(lines);
+  return true;
 }
 
 export function setQty(id: string, qty: number) {

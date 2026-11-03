@@ -2,5 +2,6 @@
   "id": "cat-storage",
   "name": "ذاكرة وتخزين",
   "slug": "storage",
-  "order": 1
+  "order": 1,
+  "name_fr": "Mémoire et stockage"
 }
