@@ -1,0 +1,59 @@
+{
+  "id": "P-0015",
+  "name": "Awima Box 12 — طقم 12 علبة صغيرة لقطع الهاتف الدقيقة",
+  "slug": "awima-box-12",
+  "shortDescription": "12 علبة شفافة صغيرة بغطاء بمفصلة لفرز البراغي والموصلات والقطع الدقيقة",
+  "description": "طقم من 12 علبة شفافة صغيرة بغطاء بمفصلة. مناسب لفرز البراغي والموصلات والأزرار والشرائح وقطع الهاتف الدقيقة، وترقيم كل علبة لتجدها بسرعة أثناء الإصلاح. يُباع الطقم دون علبة حاملة كبيرة.",
+  "price": 100,
+  "currency": "MAD",
+  "category": "cat-awima-box",
+  "images": [
+    "/images/products/awima-box-12-1.jpg",
+    "/images/products/awima-box-use-phone.jpg",
+    "/images/products/awima-box-use-parts.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "عدد العلب",
+      "value": "12 علبة"
+    },
+    {
+      "key": "الشكل",
+      "value": "علب صغيرة مربعة بغطاء بمفصلة"
+    },
+    {
+      "key": "الاستعمال",
+      "value": "براغي، موصلات، أزرار، قطع دقيقة"
+    },
+    {
+      "key": "المادة",
+      "value": "بلاستيك شفاف"
+    }
+  ],
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Awima Box 12 — Lot de 12 petites boîtes pour pièces fines de téléphone",
+    "shortDescription": "12 petites boîtes transparentes à couvercle à charnière pour trier vis, connecteurs et petites pièces",
+    "description": "Lot de 12 petites boîtes transparentes à couvercle à charnière. Idéal pour trier vis, connecteurs, boutons, cartes SIM et petites pièces de téléphone, et numéroter chaque boîte pour la retrouver vite pendant la réparation. Vendu sans grande boîte porteuse.",
+    "specs": [
+      {
+        "key": "Nombre de boîtes",
+        "value": "12 boîtes"
+      },
+      {
+        "key": "Forme",
+        "value": "Petites boîtes carrées à couvercle à charnière"
+      },
+      {
+        "key": "Usage",
+        "value": "Vis, connecteurs, boutons, petites pièces"
+      },
+      {
+        "key": "Matière",
+        "value": "Plastique transparent"
+      }
+    ]
+  }
+}

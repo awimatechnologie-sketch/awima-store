@@ -195,6 +195,21 @@ collections:
           - { label: نص يظهر عند عدم وجود منتجات, name: emptyText, widget: text, required: false }
           - { label: عنوان قسم التطبيق, name: appTitle, widget: string, required: false }
           - { label: نص قسم التطبيق (اتركه فارغاً لإخفائه), name: appText, widget: text, required: false }
+          - label: مزايا التطبيق (واحدة في كل سطر)
+            name: appFeatures
+            widget: list
+            required: false
+            field: { label: ميزة, name: feature, widget: string }
+          - { label: عنوان لقطات التطبيق, name: appShotsTitle, widget: string, required: false }
+          - label: لقطات التطبيق (اتركها فارغة لإخفاء القسم)
+            name: appShots
+            widget: list
+            required: false
+            media_folder: /public/images/awima-stock
+            public_folder: /images/awima-stock
+            fields:
+              - { label: الصورة, name: image, widget: image }
+              - { label: التعليق, name: caption, widget: string, required: false }
           - { label: رسالة واتساب الجاهزة, name: ctaText, widget: string }
       - label: صفحة اتصل بنا
         name: contact_page
@@ -245,6 +260,21 @@ collections:
           - { label: نص يظهر عند عدم وجود منتجات, name: emptyText, widget: text, required: false }
           - { label: عنوان قسم التطبيق, name: appTitle, widget: string, required: false }
           - { label: نص قسم التطبيق (اتركه فارغاً لإخفائه), name: appText, widget: text, required: false }
+          - label: مزايا التطبيق (واحدة في كل سطر)
+            name: appFeatures
+            widget: list
+            required: false
+            field: { label: ميزة, name: feature, widget: string }
+          - { label: عنوان لقطات التطبيق, name: appShotsTitle, widget: string, required: false }
+          - label: لقطات التطبيق (اتركها فارغة لإخفاء القسم)
+            name: appShots
+            widget: list
+            required: false
+            media_folder: /public/images/awima-stock
+            public_folder: /images/awima-stock
+            fields:
+              - { label: الصورة, name: image, widget: image }
+              - { label: التعليق, name: caption, widget: string, required: false }
           - { label: رسالة واتساب الجاهزة, name: ctaText, widget: string }
       - label: صفحة اتصل بنا (الفرنسية)
         name: contact_page_fr

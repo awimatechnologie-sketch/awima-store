@@ -1,0 +1,59 @@
+{
+  "id": "P-0018",
+  "name": "Awima Box 32 — طقم 32 علبة صغيرة لتنظيم محل كامل",
+  "slug": "awima-box-32",
+  "shortDescription": "32 علبة شفافة صغيرة بغطاء بمفصلة، تكفي لتخصيص علبة لكل نوع من القطع",
+  "description": "طقم من 32 علبة شفافة صغيرة بغطاء بمفصلة، يكفي لتخصيص علبة لكل نوع من القطع في المحل: براغي، موصلات، أزرار، كاميرات صغيرة وغيرها. رقّم العلب وسجّل مكان كل قطعة في تطبيق Awima Stock. العلبة الحاملة الكبيرة الظاهرة في الصورة غير مشمولة.",
+  "price": 159,
+  "currency": "MAD",
+  "category": "cat-awima-box",
+  "images": [
+    "/images/products/awima-box-32-1.jpg",
+    "/images/products/awima-box-use-phone.jpg",
+    "/images/products/awima-box-use-parts.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "عدد العلب",
+      "value": "32 علبة صغيرة"
+    },
+    {
+      "key": "الشكل",
+      "value": "علب مربعة بغطاء بمفصلة"
+    },
+    {
+      "key": "ملاحظة",
+      "value": "العلبة الحاملة الكبيرة غير مشمولة"
+    },
+    {
+      "key": "المادة",
+      "value": "بلاستيك شفاف"
+    }
+  ],
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Awima Box 32 — Lot de 32 petites boîtes pour organiser tout l'atelier",
+    "shortDescription": "32 petites boîtes transparentes à couvercle à charnière, une par type de pièce",
+    "description": "Lot de 32 petites boîtes transparentes à couvercle à charnière, de quoi dédier une boîte à chaque type de pièce de l'atelier : vis, connecteurs, boutons, petites caméras, etc. Numérotez les boîtes et enregistrez l'emplacement de chaque pièce dans Awima Stock. La grande boîte porteuse visible sur la photo n'est pas incluse.",
+    "specs": [
+      {
+        "key": "Nombre de boîtes",
+        "value": "32 petites boîtes"
+      },
+      {
+        "key": "Forme",
+        "value": "Boîtes carrées à couvercle à charnière"
+      },
+      {
+        "key": "Remarque",
+        "value": "Grande boîte porteuse non incluse"
+      },
+      {
+        "key": "Matière",
+        "value": "Plastique transparent"
+      }
+    ]
+  }
+}

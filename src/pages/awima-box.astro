@@ -13,6 +13,9 @@ const box = lang === 'fr' ? boxFr : boxAr;
 const products = getProductsByCategory('cat-awima-box', lang);
 const steps = (box.steps ?? []).filter((s) => s?.title);
 const benefits = (box.benefits ?? []).filter(Boolean);
+const appFeatures = ((box as { appFeatures?: string[] }).appFeatures ?? []).filter(Boolean);
+const appShots = ((box as { appShots?: { image?: string; caption?: string }[] }).appShots ?? []).filter((s) => s?.image);
+const appShotsTitle = (box as { appShotsTitle?: string }).appShotsTitle;
 ---
 <BaseLayout lang={lang} title={box.title} description={box.intro}>
   <section class="hero">
@@ -75,8 +78,29 @@ const benefits = (box.benefits ?? []).filter(Boolean);
           <div class="card app">
             <h2>{box.appTitle}</h2>
             <p>{box.appText}</p>
+            {appFeatures.length > 0 && (
+              <ul class="features">{appFeatures.map((f) => <li>{f}</li>)}</ul>
+            )}
           </div>
         )}
+      </div>
+    </section>
+  )}
+
+  {appShots.length > 0 && (
+    <section class="section section-alt">
+      <div class="container">
+        <h2>{appShotsTitle || t(lang, 'box.shots')}</h2>
+        <ul class="shots">
+          {appShots.map((s) => (
+            <li>
+              <figure>
+                <img src={s.image} alt={s.caption || box.appTitle} width="360" height="800" loading="lazy" decoding="async" />
+                {s.caption && <figcaption>{s.caption}</figcaption>}
+              </figure>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )}
@@ -101,9 +125,17 @@ const benefits = (box.benefits ?? []).filter(Boolean);
   .benefits { padding-inline-start: 20px; line-height: 2.1; color: var(--c-muted); margin: 0; }
   .app { padding: 20px; }
   .app p { margin: 0; line-height: 1.9; color: var(--c-muted); }
+  .features { margin: 14px 0 0; padding-inline-start: 20px; line-height: 2; color: var(--c-text, inherit); }
+  .shots { list-style: none; padding: 0; margin: 0; display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
+  .shots li { flex: 0 0 62%; max-width: 260px; scroll-snap-align: start; }
+  .shots figure { margin: 0; }
+  .shots img { width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--c-border, #e2e8f0); background: #fff; display: block; }
+  .shots figcaption { margin-top: 8px; font-size: .9rem; font-weight: 600; text-align: center; color: var(--c-muted); }
   @media (min-width: 720px) {
     .steps { grid-template-columns: repeat(3, 1fr); }
     .two { grid-template-columns: 1fr 1fr; }
     .hero h1 { font-size: 2.6rem; }
+    .shots { overflow: visible; display: grid; grid-template-columns: repeat(4, 1fr); }
+    .shots li { max-width: none; }
   }
 </style>

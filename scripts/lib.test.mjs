@@ -14,6 +14,9 @@ import { dictionaries, t, plural, pick, localePath, alternatePath, langFromPath,
 import { formatTime, hoursLabel } from '../src/lib/hours.ts';
 import { formatPrice } from '../src/lib/format.ts';
 import { normalizeCode, normalizeDiscounts, evaluateDiscount, hashCode, moroccoToday } from '../src/lib/discounts.ts';
+import { buildManifest } from '../src/lib/pwa.ts';
+import vm from 'node:vm';
+import { readFileSync } from 'node:fs';
 import { summarize, tierFor, normalizeReview, MIN_POINTS } from '../src/lib/reviews.ts';
 import { localizeProduct, localizeCategory } from '../src/lib/localize.ts';
 import { buildSitemap, buildRobots, buildStoreLd } from '../src/lib/seo.ts';
@@ -370,4 +373,75 @@ test('discounts: البصمة لا تكشف الكود', async () => {
   assert.match(a, /^[a-f0-9]{64}$/);
   assert.equal(a, await hashCode(' WELCOME10 ')); // التوحيد قبل الحساب
   assert.notEqual(a, await hashCode('WELCOME11'));
+});
+
+test('pwa: manifest من إعدادات الموقع', () => {
+  const m = buildManifest({ name: 'AWIMA Store', tagline: 'x', colors: { primary: '#0B2A6F' } });
+  assert.equal(m.display, 'standalone');
+  assert.equal(m.theme_color, '#0B2A6F');
+  assert.equal(m.scope, '/');
+  assert.equal(m.short_name, 'AWIMA Store'); // 11 حرفاً
+  assert.equal(buildManifest({ name: 'اسم طويل جداً للمتجر', colors: { primary: '#000' } }).short_name, 'اسم');
+  assert.ok(m.icons.some((i) => i.sizes === '512x512' && i.purpose === 'maskable'));
+  for (const i of m.icons) assert.ok(readFileSync(`public${i.src}`).length > 1000, i.src); // الأيقونات موجودة فعلاً
+});
+
+// بيئة وهمية لتجربة public/sw.js دون متصفح
+function loadSw({ online = true, cached = {} } = {}) {
+  const handlers = {};
+  const stores = new Map(); // اسم الكاش -> Map(url -> Response)
+  const open = (n) => { if (!stores.has(n)) stores.set(n, new Map()); return stores.get(n); };
+  for (const [n, entries] of Object.entries(cached)) for (const [u, body] of Object.entries(entries)) open(n).set('https://x.ma' + u, { body, ok: true, clone() { return this; } });
+  const cacheApi = (n) => { const m = open(n); return { put: async (r, res) => m.set(r.url ?? r, res), match: async (r) => m.get(r.url ?? r), add: async (u) => m.set('https://x.ma' + u, { body: 'precached:' + u, ok: true, clone() { return this; } }), keys: async () => [...m.keys()].map((url) => ({ url })), delete: async (r) => m.delete(r.url ?? r) }; };
+  const caches = {
+    open: async (n) => cacheApi(n),
+    keys: async () => [...stores.keys()],
+    delete: async (n) => stores.delete(n),
+    match: async (r) => { const u = typeof r === 'string' ? 'https://x.ma' + r : r.url; for (const m of stores.values()) if (m.has(u)) return m.get(u); },
+  };
+  const calls = { skip: 0, claim: 0 };
+  const self = { addEventListener: (t, h) => (handlers[t] = h), location: { origin: 'https://x.ma' }, skipWaiting: () => { calls.skip++; return Promise.resolve(); }, clients: { claim: () => { calls.claim++; return Promise.resolve(); } } };
+  const fetchFn = async () => { if (!online) throw new Error('offline'); return { ok: true, body: 'network', clone() { return this; } }; };
+  vm.runInNewContext(readFileSync('public/sw.js', 'utf8'), { self, caches, fetch: fetchFn, URL, Promise, Response: { error: () => ({ error: true }) } });
+  const run = async (type, extra = {}) => { let p; const event = { waitUntil: (x) => (p = x), respondWith: (x) => (p = x), ...extra }; const before = p; handlers[type](event); return { responded: p !== before, value: p ? await p : undefined }; };
+  return { run, stores, calls };
+}
+
+test('sw: التثبيت يخزّن صفحة offline ويفعّل فوراً', async () => {
+  const sw = loadSw();
+  await sw.run('install');
+  assert.ok(sw.stores.get('awima-pages-v1').has('https://x.ma/offline.html'));
+  assert.equal(sw.calls.skip, 1);
+});
+
+test('sw: التفعيل يحذف الكاش القديم فقط', async () => {
+  const sw = loadSw({ cached: { 'awima-pages-v0': { '/a': 'old' }, 'awima-pages-v1': { '/b': 'cur' }, 'other-app': { '/c': 'x' } } });
+  await sw.run('activate');
+  assert.deepEqual([...sw.stores.keys()].sort(), ['awima-pages-v1', 'other-app']);
+  assert.equal(sw.calls.claim, 1);
+});
+
+test('sw: لا يعترض الإدارة ولا POST ولا المواقع الأخرى', async () => {
+  const sw = loadSw();
+  const req = (url, method = 'GET', mode = 'navigate') => ({ request: { url, method, mode } });
+  assert.equal((await sw.run('fetch', req('https://x.ma/admin/'))).responded, false);
+  assert.equal((await sw.run('fetch', req('https://x.ma/products', 'POST'))).responded, false);
+  assert.equal((await sw.run('fetch', req('https://wa.me/212600000000'))).responded, false);
+  assert.equal((await sw.run('fetch', req('https://x.ma/sw.js', 'GET', 'no-cors'))).responded, false);
+  assert.equal((await sw.run('fetch', req('https://x.ma/api/x', 'GET', 'cors'))).responded, false); // ليس صفحة ولا ملفاً ثابتاً
+});
+
+test('sw: الصفحات — الشبكة أولاً ثم آخر نسخة ثم offline', async () => {
+  const online = loadSw();
+  const r = await online.run('fetch', { request: { url: 'https://x.ma/products', method: 'GET', mode: 'navigate' } });
+  assert.equal(r.value.body, 'network');
+  const off = loadSw({ online: false, cached: { 'awima-pages-v1': { '/products': 'last-seen', '/offline.html': 'offline-page' } } });
+  assert.equal((await off.run('fetch', { request: { url: 'https://x.ma/products', method: 'GET', mode: 'navigate' } })).value.body, 'last-seen');
+  assert.equal((await off.run('fetch', { request: { url: 'https://x.ma/never-visited', method: 'GET', mode: 'navigate' } })).value.body, 'offline-page');
+});
+
+test('sw: الملفات الثابتة من الكاش أولاً', async () => {
+  const sw = loadSw({ online: false, cached: { 'awima-assets-v1': { '/images/a.jpg': 'img' } } });
+  const r = await sw.run('fetch', { request: { url: 'https://x.ma/images/a.jpg', method: 'GET', mode: 'no-cors' } });
+  assert.equal(r.value.body, 'img');
 });

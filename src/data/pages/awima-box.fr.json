@@ -1,7 +1,7 @@
 {
   "title": "Awima Box",
-  "tagline": "Des boîtes de rangement organisées pour les ateliers de réparation de téléphones",
-  "intro": "Des boîtes transparentes et numérotées qui vous aident à organiser les pièces détachées et accessoires de votre atelier, et à retrouver rapidement n'importe quelle pièce pendant une réparation.",
+  "tagline": "Des boîtes transparentes pour ranger les pièces de téléphone de votre atelier",
+  "intro": "Des boîtes transparentes, numérotées et dédiées à chaque type de pièce de téléphone : vis, connecteurs, batteries, cartes SIM, nappes. Vous retrouvez la pièce en quelques secondes pendant la réparation, vous perdez moins de petites pièces, et le stock sur l'étagère correspond à celui de votre téléphone.",
   "steps": [
     {
       "title": "Rangez",
@@ -25,6 +25,32 @@
   "productsTitle": "Boîtes de rangement",
   "emptyText": "Nous ajoutons les boîtes progressivement. Contactez-nous sur WhatsApp pour connaître les modèles disponibles.",
   "appTitle": "Compatible avec l'application Awima Stock",
-  "appText": "Une application de gestion pour les ateliers de réparation de téléphones : réparations, clients et stock, avec l'emplacement de chaque pièce (boîte et étagère).",
-  "ctaText": "Bonjour, je souhaite des informations sur les boîtes Awima Box."
+  "appText": "Awima Stock est une application arabe/française de gestion pour ateliers de réparation de téléphones, qui fonctionne sans internet sur votre téléphone. Elle relie les boîtes de votre étagère à votre stock numérique : enregistrez la pièce et son emplacement (boîte et étagère), puis scannez le code de la boîte pour voir son contenu.",
+  "ctaText": "Bonjour, je souhaite des informations sur les boîtes Awima Box.",
+  "appFeatures": [
+    "Réparations avec file d'attente, chronomètre par réparation et priorité « Urgent »",
+    "Reçu de dépôt avec QR et message WhatsApp « Votre appareil est prêt »",
+    "Stock de pièces avec l'emplacement de chaque pièce et scan de boîte au téléphone",
+    "Rapport quotidien et analyses des bénéfices et des durées de réparation",
+    "Sauvegarde des données de l'atelier"
+  ],
+  "appShotsTitle": "Aperçu de l'application",
+  "appShots": [
+    {
+      "image": "/images/awima-stock/add-part.jpg",
+      "caption": "Ajoutez la pièce et son emplacement"
+    },
+    {
+      "image": "/images/awima-stock/locations.jpg",
+      "caption": "Emplacements de stockage et scan de boîte"
+    },
+    {
+      "image": "/images/awima-stock/new-repair.jpg",
+      "caption": "Enregistrez une réparation en quelques secondes"
+    },
+    {
+      "image": "/images/awima-stock/home.jpg",
+      "caption": "Accueil : réparations, stock et alertes"
+    }
+  ]
 }

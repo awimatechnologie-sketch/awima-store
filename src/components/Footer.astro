@@ -31,6 +31,7 @@ const year = new Date().getFullYear();
       {socials.map(([name, url]) => (
         <p><a href={url} rel="noopener" target="_blank">{name}</a></p>
       ))}
+      <p><button type="button" class="install" data-install-app hidden>{t(lang, 'pwa.install')}</button></p>
     </div>
   </div>
   <div class="copy container">© {year} {site.name}</div>
@@ -43,6 +44,8 @@ const year = new Date().getFullYear();
   .footer a:hover { text-decoration: underline; }
   .footer img { height: 74px; width: auto; background: #fff; border-radius: 10px; padding: 6px 10px; margin-bottom: 8px; }
   .footer p { margin: 0 0 6px; }
+  .install { font: inherit; font-weight: 700; padding: 8px 16px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.5); background: transparent; color: #fff; cursor: pointer; }
+  .install:hover { background: rgba(255, 255, 255, 0.12); }
   .copy { text-align: center; padding-block: 20px; margin-top: 24px; border-top: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.9rem; }
   @media (min-width: 720px) { .cols { grid-template-columns: 2fr 1.5fr 1fr; } }
 </style>

@@ -1,0 +1,59 @@
+{
+  "id": "P-0016",
+  "name": "Awima Box 15 — حقيبة تنظيم مع 15 علبة لقطع الهاتف",
+  "slug": "awima-box-15",
+  "shortDescription": "حقيبة حاملة شفافة بمشبكين تضم 15 علبة صغيرة لتنظيم قطع الغيار",
+  "description": "حقيبة حاملة شفافة بمشبكين تضم 15 علبة صغيرة قابلة للإخراج. تناسب بداية التنظيم في محل صغير: خصّص علبة لكل نوع من القطع ورقّمها، ثم انقل ما تحتاجه إلى طاولة العمل دون أن تتبعثر القطع.",
+  "price": 129,
+  "currency": "MAD",
+  "category": "cat-awima-box",
+  "images": [
+    "/images/products/awima-box-15-1.jpg",
+    "/images/products/awima-box-use-phone.jpg",
+    "/images/products/awima-box-use-parts.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "عدد العلب",
+      "value": "15 علبة داخل حقيبة حاملة"
+    },
+    {
+      "key": "الإغلاق",
+      "value": "مشبكان على الحقيبة وغطاء بمفصلة لكل علبة"
+    },
+    {
+      "key": "الاستعمال",
+      "value": "قطع الهاتف الصغيرة والإكسسوارات"
+    },
+    {
+      "key": "المادة",
+      "value": "بلاستيك شفاف"
+    }
+  ],
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Awima Box 15 — Mallette avec 15 boîtes pour pièces de téléphone",
+    "shortDescription": "Mallette transparente à deux fermoirs avec 15 petites boîtes pour organiser les pièces",
+    "description": "Mallette transparente à deux fermoirs contenant 15 petites boîtes amovibles. Idéale pour commencer à ranger un petit atelier : une boîte par type de pièce, numérotée, que l'on sort sur l'établi sans que les pièces se mélangent.",
+    "specs": [
+      {
+        "key": "Nombre de boîtes",
+        "value": "15 boîtes dans une mallette"
+      },
+      {
+        "key": "Fermeture",
+        "value": "Deux fermoirs sur la mallette, couvercle à charnière sur chaque boîte"
+      },
+      {
+        "key": "Usage",
+        "value": "Petites pièces de téléphone et accessoires"
+      },
+      {
+        "key": "Matière",
+        "value": "Plastique transparent"
+      }
+    ]
+  }
+}

@@ -84,3 +84,27 @@ document.querySelectorAll<HTMLAnchorElement>('[data-lang-switch]').forEach((a) =
 });
 // من فضّل الفرنسية يُوجَّه من الصفحة الرئيسية العربية فقط (روابط الصفحات الأخرى تُحترم كما هي)
 if (location.pathname === '/' && savedLang() === 'fr') location.replace('/fr/' + location.search + location.hash);
+
+// ---- PWA: تسجيل الـ Service Worker (في الإنتاج فقط) وزر «تثبيت التطبيق» ----
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+type InstallEvent = Event & { prompt: () => Promise<void>; userChoice: Promise<{ outcome: string }> };
+let installEvent: InstallEvent | null = null;
+const installBtns = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-install-app]'));
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  installEvent = e as InstallEvent;
+  installBtns.forEach((b) => (b.hidden = false));
+});
+installBtns.forEach((b) =>
+  b.addEventListener('click', async () => {
+    if (!installEvent) return;
+    await installEvent.prompt();
+    installEvent = null;
+    installBtns.forEach((x) => (x.hidden = true));
+  })
+);
+window.addEventListener('appinstalled', () => installBtns.forEach((b) => (b.hidden = true)));

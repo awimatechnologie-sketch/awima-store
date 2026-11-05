@@ -1,0 +1,59 @@
+{
+  "id": "P-0017",
+  "name": "Awima Box 24 — 24 علبة مستطيلة بأربعة مقاسات للشاشات والبطاريات",
+  "slug": "awima-box-rect-24",
+  "shortDescription": "24 علبة شفافة مستطيلة بأربعة مقاسات لتخزين الشاشات الصغيرة والبطاريات والكابلات",
+  "description": "24 علبة شفافة مستطيلة بأربعة مقاسات مختلفة، فتجد المقاس المناسب لكل قطعة: بطاريات، كابلات مرنة، لوحات صغيرة وقطع الشحن. الغطاء شفاف فترى ما بالداخل دون فتحه، ويمكن تكديس العلب فوق بعضها وإلصاق رقم أو QR على كل واحدة.",
+  "price": 149,
+  "currency": "MAD",
+  "category": "cat-awima-box",
+  "images": [
+    "/images/products/awima-box-24-1.jpg",
+    "/images/products/awima-box-use-phone.jpg",
+    "/images/products/awima-box-use-parts.jpg"
+  ],
+  "availability": "on_request",
+  "featured": true,
+  "specs": [
+    {
+      "key": "عدد العلب",
+      "value": "24 علبة"
+    },
+    {
+      "key": "المقاسات",
+      "value": "8 علب 6.5×4.5×2 سم، و8 علب 7.5×5×2 سم، و4 علب 8.5×6×2.5 سم، و4 علب 9.5×6.5×2.5 سم"
+    },
+    {
+      "key": "الاستعمال",
+      "value": "بطاريات، كابلات مرنة، لوحات صغيرة، قطع الشحن"
+    },
+    {
+      "key": "المادة",
+      "value": "بلاستيك شفاف"
+    }
+  ],
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Awima Box 24 — 24 boîtes rectangulaires en 4 tailles pour écrans et batteries",
+    "shortDescription": "24 boîtes transparentes rectangulaires en 4 tailles pour petits écrans, batteries et câbles",
+    "description": "24 boîtes transparentes rectangulaires en quatre tailles : vous trouvez la bonne taille pour chaque pièce (batteries, nappes, petites cartes, pièces de charge). Le couvercle transparent permet de voir le contenu sans ouvrir, les boîtes s'empilent et peuvent porter un numéro ou un QR.",
+    "specs": [
+      {
+        "key": "Nombre de boîtes",
+        "value": "24 boîtes"
+      },
+      {
+        "key": "Tailles",
+        "value": "8 boîtes 6,5×4,5×2 cm, 8 boîtes 7,5×5×2 cm, 4 boîtes 8,5×6×2,5 cm, 4 boîtes 9,5×6,5×2,5 cm"
+      },
+      {
+        "key": "Usage",
+        "value": "Batteries, nappes, petites cartes, pièces de charge"
+      },
+      {
+        "key": "Matière",
+        "value": "Plastique transparent"
+      }
+    ]
+  }
+}

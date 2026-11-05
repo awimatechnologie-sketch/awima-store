@@ -1,0 +1,59 @@
+{
+  "id": "P-0019",
+  "name": "Awima Box 45 — حقيبة تنظيم كبيرة مع 45 علبة",
+  "slug": "awima-box-45",
+  "shortDescription": "حقيبة حاملة كبيرة بمشبكين زرقاوين تضم 45 علبة صغيرة، لمحل صيانة منظّم بالكامل",
+  "description": "حقيبة حاملة كبيرة بمشبكين زرقاوين تضم 45 علبة صغيرة قابلة للإخراج. أكبر مجموعة في Awima Box: تكفي لتنظيم مخزون قطع الغيار الصغيرة لمحل كامل، وتُنقل بسهولة وتحفظ القطع من الغبار والضياع. رقّم كل علبة وسجّل موقعها في Awima Stock.",
+  "price": 189,
+  "currency": "MAD",
+  "category": "cat-awima-box",
+  "images": [
+    "/images/products/awima-box-45-1.jpg",
+    "/images/products/awima-box-use-parts.jpg",
+    "/images/products/awima-box-use-phone.jpg"
+  ],
+  "availability": "on_request",
+  "featured": true,
+  "specs": [
+    {
+      "key": "عدد العلب",
+      "value": "45 علبة داخل حقيبة حاملة"
+    },
+    {
+      "key": "الإغلاق",
+      "value": "مشبكان زرقاوان على الحقيبة وغطاء بمفصلة لكل علبة"
+    },
+    {
+      "key": "الاستعمال",
+      "value": "مخزون القطع الصغيرة لمحل كامل"
+    },
+    {
+      "key": "المادة",
+      "value": "بلاستيك شفاف"
+    }
+  ],
+  "whatsappOrder": true,
+  "fr": {
+    "name": "Awima Box 45 — Grande mallette avec 45 boîtes",
+    "shortDescription": "Grande mallette à deux fermoirs bleus avec 45 petites boîtes pour un atelier entièrement organisé",
+    "description": "Grande mallette à deux fermoirs bleus contenant 45 petites boîtes amovibles. Le plus grand ensemble Awima Box : de quoi organiser tout le stock de petites pièces d'un atelier, facile à transporter et à l'abri de la poussière. Numérotez chaque boîte et enregistrez son emplacement dans Awima Stock.",
+    "specs": [
+      {
+        "key": "Nombre de boîtes",
+        "value": "45 boîtes dans une mallette"
+      },
+      {
+        "key": "Fermeture",
+        "value": "Deux fermoirs bleus sur la mallette, couvercle à charnière sur chaque boîte"
+      },
+      {
+        "key": "Usage",
+        "value": "Stock de petites pièces pour tout un atelier"
+      },
+      {
+        "key": "Matière",
+        "value": "Plastique transparent"
+      }
+    ]
+  }
+}
