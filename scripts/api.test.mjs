@@ -5,9 +5,9 @@ import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
 import { getCommunity, postLike, getReviews, postReview, adminList, adminAct } from '../server/handlers.js';
 
-function fakeD1() {
+function fakeD1({ withSchema = true } = {}) {
   const db = new DatabaseSync(':memory:');
-  db.exec(readFileSync(new URL('../db/schema.sql', import.meta.url), 'utf8'));
+  if (withSchema) db.exec(readFileSync(new URL('../db/schema.sql', import.meta.url), 'utf8'));
   return {
     prepare(sql) {
       const stmt = db.prepare(sql);
@@ -88,4 +88,20 @@ test('حدود الإساءة: 5 تقييمات يومياً لكل IP', async (
 test('الإدارة بلا ADMIN_TOKEN مضبوط ترفض كل شيء', async () => {
   const env = { DB: fakeD1() };
   assert.equal((await adminList(req('/api/admin/reviews', undefined, { Authorization: 'Bearer ' }), env)).status, 401);
+});
+
+test('قاعدة فارغة بلا جداول: تُنشأ تلقائياً ولا يحدث انهيار (خطأ 1101)', async () => {
+  const env = { DB: fakeD1({ withSchema: false }), ADMIN_TOKEN: 'secret-token-123456' };
+  const r = await getCommunity(req('/api/community'), env);
+  assert.equal(r.status, 200);
+  assert.deepEqual(await r.json(), { likes: {}, reviews: {} });
+  const like = await postLike(req('/api/like', { product: 'P-0001', device: DEV(1) }), env);
+  assert.equal((await like.json()).count, 1);
+});
+
+test('خطأ غير متوقع في القاعدة يعطي 500 JSON وليس استثناءً', async () => {
+  const env = { DB: { prepare() { throw new Error('boom'); } } };
+  const r = await getCommunity(req('/api/community'), env);
+  assert.equal(r.status, 500);
+  assert.deepEqual(await r.json(), { error: 'server_error' });
 });

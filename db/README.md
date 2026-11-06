@@ -1,7 +1,7 @@
 # تفعيل الإعجابات وتقييمات الزوار (مرة واحدة، من لوحة Cloudflare)
 
 1. Cloudflare ← Workers & Pages ← **D1 SQL Database** ← Create ← الاسم: `awima-store-db`.
-2. افتح القاعدة ← **Console** ← الصق محتوى `db/schema.sql` كله ← Execute.
+2. (اختياري) الجداول تُنشأ تلقائياً عند أول طلب. إن أردت يدوياً: Console ← الصق `db/schema.sql` ← Execute.
 3. مشروع Pages (awima-store) ← Settings ← **Bindings** ← Add ← D1 database:
    - Variable name: `DB` ← القاعدة `awima-store-db` (للـProduction والـPreview).
 4. Settings ← **Variables and Secrets** ← أضف (كـSecret):

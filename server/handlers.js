@@ -1,5 +1,6 @@
 // منطق واجهات /api (يُختبر محلياً فوق SQLite، ويعمل في Cloudflare فوق D1).
 // كل دالة تأخذ (request, env) وتُرجع Response. env.DB = قاعدة D1.
+import { SCHEMA } from './schema.js';
 import { checkReview, isProductId, isDeviceId, REVIEW_WEIGHT_SQL, LIMITS } from '../src/lib/community.ts';
 
 const JSON_HEADERS = { 'Content-Type': 'application/json; charset=utf-8' };
@@ -46,7 +47,7 @@ async function verifyTurnstile(token, request, env) {
 }
 
 /** GET /api/community → عدّادات الإعجاب + مجاميع التقييمات المعتمدة لكل منتج */
-export async function getCommunity(request, env) {
+async function getCommunity_(request, env) {
   if (!hasDb(env)) return unavailable();
   const likes = {};
   for (const r of (await env.DB.prepare('SELECT product, COUNT(*) AS n FROM likes GROUP BY product').all()).results ?? []) likes[r.product] = r.n;
@@ -60,7 +61,7 @@ export async function getCommunity(request, env) {
 }
 
 /** POST /api/like {product, device, on} */
-export async function postLike(request, env) {
+async function postLike_(request, env) {
   if (!hasDb(env)) return unavailable();
   const b = await readBody(request);
   if (!b || !isProductId(b.product) || !isDeviceId(b.device)) return json({ error: 'bad_request' }, 400, NO_STORE);
@@ -78,7 +79,7 @@ export async function postLike(request, env) {
 }
 
 /** GET /api/reviews?product=ID → التقييمات المعتمدة (الأحدث أولاً) */
-export async function getReviews(request, env) {
+async function getReviews_(request, env) {
   if (!hasDb(env)) return unavailable();
   const product = new URL(request.url).searchParams.get('product');
   if (!isProductId(product)) return json({ error: 'bad_request' }, 400, NO_STORE);
@@ -89,7 +90,7 @@ export async function getReviews(request, env) {
 }
 
 /** POST /api/reviews → تقييم جديد بحالة «قيد المراجعة» */
-export async function postReview(request, env) {
+async function postReview_(request, env) {
   if (!hasDb(env)) return unavailable();
   const b = await readBody(request);
   const checked = checkReview(b);
@@ -119,7 +120,7 @@ function isAdmin(request, env) {
 }
 
 /** GET /api/admin/reviews?status=pending|approved|rejected */
-export async function adminList(request, env) {
+async function adminList_(request, env) {
   if (!hasDb(env)) return unavailable();
   if (!isAdmin(request, env)) return json({ error: 'unauthorized' }, 401, NO_STORE);
   const status = new URL(request.url).searchParams.get('status');
@@ -131,7 +132,7 @@ export async function adminList(request, env) {
 }
 
 /** POST /api/admin/reviews {id, action: approve|reject|delete|verify|unverify} */
-export async function adminAct(request, env) {
+async function adminAct_(request, env) {
   if (!hasDb(env)) return unavailable();
   if (!isAdmin(request, env)) return json({ error: 'unauthorized' }, 401, NO_STORE);
   const b = await readBody(request);
@@ -148,3 +149,31 @@ export async function adminAct(request, env) {
   await env.DB.prepare(sql).bind(id).run();
   return json({ ok: true }, 200, NO_STORE);
 }
+
+// ---------- الغلاف: ينشئ الجداول عند الحاجة ولا يترك أي استثناء يصل للزائر (خطأ 1101) ----------
+const ready = new WeakMap(); // لكل قاعدة مرة واحدة في عمر الـisolate
+function ensureSchema(env) {
+  let p = ready.get(env.DB);
+  if (!p) {
+    p = (async () => { for (const sql of SCHEMA) await env.DB.prepare(sql).run(); })();
+    p.catch(() => ready.delete(env.DB));
+    ready.set(env.DB, p);
+  }
+  return p;
+}
+const guard = (fn) => async (request, env) => {
+  if (!hasDb(env)) return unavailable();
+  try {
+    await ensureSchema(env);
+    return await fn(request, env);
+  } catch (e) {
+    console.error('api error', e && e.message);
+    return json({ error: 'server_error' }, 500, NO_STORE);
+  }
+};
+export const getCommunity = guard(getCommunity_);
+export const postLike = guard(postLike_);
+export const getReviews = guard(getReviews_);
+export const postReview = guard(postReview_);
+export const adminList = guard(adminList_);
+export const adminAct = guard(adminAct_);
