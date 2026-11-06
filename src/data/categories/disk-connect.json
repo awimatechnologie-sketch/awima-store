@@ -3,5 +3,6 @@
   "name": "ربط الأقراص بالحاسوب",
   "slug": "disk-connect",
   "order": 4,
-  "name_fr": "Connexion de disques à l’ordinateur"
+  "name_fr": "Connexion de disques à l’ordinateur",
+  "icon": "💽"
 }

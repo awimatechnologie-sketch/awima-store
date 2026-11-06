@@ -214,6 +214,8 @@ async function init() {
   if (!cfg) return;
   const data = await loadData();
   if (!data) return; // الواجهة غير مفعّلة: الموقع كما هو
+  (window as unknown as { __awimaData?: Data }).__awimaData = data;
+  window.dispatchEvent(new CustomEvent('awima:data', { detail: data }));
   document.querySelectorAll<HTMLElement>('.pc[data-pid], .reviews[data-pid]').forEach((el) => paintRating(el, data));
   if (cfg.likes) { paintLikes(data); bindLikes(); }
   const section = document.querySelector<HTMLElement>('.reviews[data-pid]');

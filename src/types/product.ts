@@ -36,5 +36,6 @@ export interface Category {
   name: string;
   slug: string;
   nameFr?: string; // اسم القسم بالفرنسية (اختياري)
+  icon?: string; // إيموجي يظهر في بطاقة القسم بالرئيسية (اختياري)
   parent?: string; // معرّف القسم الأب (قسم فرعي). فارغ = قسم رئيسي
 }

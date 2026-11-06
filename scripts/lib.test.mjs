@@ -21,6 +21,7 @@ import { normalizeWarranty, warrantyDaysFor, warrantyUnit } from '../src/lib/war
 import { normalizeDevices, brandsOf, normalizePorts, productsForPort } from '../src/lib/compat.ts';
 import { normalizeCommunity, isTrusted, starsHtml, checkReview } from '../src/lib/community.ts';
 import { summaryFrom, DEFAULT_THRESHOLDS } from '../src/lib/reviews.ts';
+import { normalizeTrust, buildTrustItems } from '../src/lib/trust.ts';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 import { summarize, tierFor, normalizeReview, MIN_POINTS } from '../src/lib/reviews.ts';
@@ -621,4 +622,27 @@ test('search: كلمات البحث الإضافية والدارجة تجد ا�
   assert.equal(matches('protege ecran', hay), true);
   assert.equal(matches('اكسسوارات هواتف', hay), true);
   assert.equal(matches('حامل سيارة', hay), false);
+});
+
+test('trust: عناصر الشريط مشتقة من الإعدادات الفعلية وتختفي إن غابت بياناتها', () => {
+  const tr = (k, v = {}) => k + JSON.stringify(v);
+  const facts = { fastDelivery: { minItems: 4, hours: 5 }, freeDeliveryFrom: 300, warrantyEnabled: false, hoursRange: '10-24' };
+  const items = buildTrustItems(normalizeTrust(undefined), facts, tr, (n) => `${n}MAD`, 'ar', '/policy');
+  const texts = items.map((i) => i.text);
+  assert.ok(texts[0].startsWith('trust.whatsapp'));
+  assert.ok(texts.some((x) => x.includes('trust.fast') && x.includes('"hours":5')));
+  assert.ok(texts.some((x) => x.includes('300MAD')));
+  assert.ok(!texts.some((x) => x.startsWith('trust.warranty'))); // الضمان غير مفعّل
+  const w = buildTrustItems(normalizeTrust(undefined), { ...facts, warrantyEnabled: true, freeDeliveryFrom: null }, tr, String, 'ar', '/policy');
+  assert.equal(w.find((i) => i.text.startsWith('trust.warranty')).href, '/policy');
+  assert.ok(!w.some((i) => i.text.includes('trust.free')));
+  assert.deepEqual(buildTrustItems(normalizeTrust({ enabled: false }), facts, tr, String, 'ar', '/p'), []);
+  const c = buildTrustItems(normalizeTrust({ show: { whatsapp: false, fastDelivery: false, freeDelivery: false, warranty: false, hours: false }, custom: [{ icon: '⭐', text: 'عربي', text_fr: 'Français' }, { text: '' }] }), facts, tr, String, 'fr', '/p');
+  assert.deepEqual(c, [{ icon: '⭐', text: 'Français' }]);
+});
+
+test('community: قسم الأكثر إعجاباً افتراضياته وحدوده', () => {
+  assert.deepEqual(normalizeCommunity(undefined).likedSection, { enabled: true, count: 4, minLikes: 3 });
+  assert.equal(normalizeCommunity({ likedSection: { count: 99 } }).likedSection.count, 4);
+  assert.equal(normalizeCommunity({ likedSection: { enabled: false } }).likedSection.enabled, false);
 });

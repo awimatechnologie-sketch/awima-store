@@ -3,5 +3,6 @@
   "name": "إكسسوارات الحواسب",
   "slug": "computer-accessories",
   "order": 7,
-  "name_fr": "Accessoires informatiques"
+  "name_fr": "Accessoires informatiques",
+  "icon": "💻"
 }

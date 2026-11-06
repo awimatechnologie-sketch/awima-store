@@ -3,5 +3,6 @@
   "name": "ذاكرة وتخزين",
   "slug": "storage",
   "order": 1,
-  "name_fr": "Mémoire et stockage"
+  "name_fr": "Mémoire et stockage",
+  "icon": "💾"
 }

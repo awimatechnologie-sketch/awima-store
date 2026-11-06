@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../config/site';
 import { getReviewSummary } from '../../services/reviews';
 import ProductCard from '../../components/ProductCard.astro';
 import { getAllProducts, getCategories } from '../../services/products';
@@ -43,6 +44,7 @@ const catPath = (catId: string) => [catById[catId]?.parent ? catById[catById[cat
             <option value="price-desc">{t(lang, 'products.sortPriceDesc')}</option>
             <option value="name">{t(lang, 'products.sortName')}</option>
             <option value="rating">{t(lang, 'products.sortRating')}</option>
+            {site.community.likesEnabled ? <option value="likes" id="opt-likes" hidden>{t(lang, 'products.sortLikes')}</option> : null}
           </select>
         </label>
       </div>
@@ -69,6 +71,7 @@ const catPath = (catId: string) => [catById[catId]?.parent ? catById[catById[cat
             data-name={p.name}
             data-text={[p.name, p.shortDescription, p.description, p.id, catPath(p.category), p.keywords ?? '', otherById.get(p.id)?.keywords ?? '', ...Object.entries(p.specs).flat(), otherById.get(p.id)?.name ?? '', otherById.get(p.id)?.shortDescription ?? ''].join(' ')}
             data-av={p.availability}
+            data-pid={p.id}
             data-cat={catById[p.category]?.slug ?? ''}
             data-parent={parentSlug(p.category)}
             data-price={p.price ?? ''}
@@ -165,6 +168,9 @@ const catPath = (catId: string) => [catById[catId]?.parent ? catById[catById[cat
         const [ra, pa] = key(a), [rb, pb] = key(b);
         return rb - ra || pb - pa;
       });
+    } else if (mode === 'likes') {
+      const n = (li: HTMLLIElement) => Number(li.dataset.likes || 0);
+      visible = [...visible].sort((a, b) => n(b) - n(a));
     } else if (mode === 'name') {
       visible = [...visible].sort((a, b) =>
         (a.dataset.name ?? '').localeCompare(b.dataset.name ?? '', 'ar')
@@ -220,6 +226,18 @@ const catPath = (catId: string) => [catById[catId]?.parent ? catById[catById[cat
   const urlSort = params.get('sort');
   if (urlSort && Array.from(sortEl.options).some((o) => o.value === urlSort)) sortEl.value = urlSort;
   apply();
+
+  // الإعجابات تصل من سكربت المجتمع (إن كانت الواجهة مفعّلة): نفعّل خيار «الأكثر إعجاباً» عندها
+  const likesOpt = document.getElementById('opt-likes') as HTMLOptionElement | null;
+  const useLikes = (data: { likes: Record<string, number> }) => {
+    if (!likesOpt) return;
+    items.forEach((li) => (li.dataset.likes = String(data.likes[li.dataset.pid ?? ''] ?? 0)));
+    likesOpt.hidden = false;
+    if (sortEl.value === 'likes') apply();
+  };
+  const wd = window as unknown as { __awimaData?: { likes: Record<string, number> } };
+  if (wd.__awimaData) useLikes(wd.__awimaData);
+  window.addEventListener('awima:data', (e) => useLikes((e as CustomEvent).detail));
 
   // الرابط /products#q (من أيقونة البحث في الهيدر) يضع المؤشر في خانة البحث
   if (location.hash === '#q') q.focus();

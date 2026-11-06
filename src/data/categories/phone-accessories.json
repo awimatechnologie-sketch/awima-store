@@ -3,5 +3,6 @@
   "name": "إكسسوارات الهواتف",
   "slug": "phone-accessories",
   "order": 6,
-  "name_fr": "Accessoires téléphone"
+  "name_fr": "Accessoires téléphone",
+  "icon": "📱"
 }

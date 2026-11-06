@@ -81,10 +81,10 @@ const categories: Category[] = Object.entries(categoryFiles)
   .map(([file, r]) => {
     if (!r?.id || !r?.name || !r?.slug)
       throw new Error(`قسم ناقص البيانات (${file})`);
-    return { id: String(r.id), name: String(r.name), slug: String(r.slug), nameFr: typeof r.name_fr === 'string' && r.name_fr.trim() ? r.name_fr : undefined, order: Number(r.order ?? 999), parent: typeof r.parent === 'string' && r.parent.trim() ? r.parent.trim() : undefined };
+    return { id: String(r.id), name: String(r.name), slug: String(r.slug), nameFr: typeof r.name_fr === 'string' && r.name_fr.trim() ? r.name_fr : undefined, order: Number(r.order ?? 999), icon: typeof r.icon === 'string' && r.icon.trim() ? r.icon.trim().slice(0, 4) : undefined, parent: typeof r.parent === 'string' && r.parent.trim() ? r.parent.trim() : undefined };
   })
   .sort((a, b) => a.order - b.order || a.name.localeCompare(b.name, 'ar'))
-  .map(({ id, name, slug, nameFr, parent }) => ({ id, name, slug, nameFr, parent }));
+  .map(({ id, name, slug, nameFr, parent, icon }) => ({ id, name, slug, nameFr, parent, icon }));
 
 const allProducts: Product[] = Object.entries(productFiles)
   .map(([file, r]) => normalizeProduct(file, r))

@@ -3,5 +3,6 @@
   "name": "محولات و OTG",
   "slug": "adapters",
   "order": 3,
-  "name_fr": "Adaptateurs et OTG"
+  "name_fr": "Adaptateurs et OTG",
+  "icon": "🔁"
 }

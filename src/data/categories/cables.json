@@ -3,5 +3,6 @@
   "name": "كوابل",
   "slug": "cables",
   "order": 2,
-  "name_fr": "Câbles"
+  "name_fr": "Câbles",
+  "icon": "🔌"
 }

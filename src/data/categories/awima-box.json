@@ -3,5 +3,6 @@
   "name": "علب Awima Box",
   "slug": "awima-box",
   "order": 5,
-  "name_fr": "Boîtes Awima Box"
+  "name_fr": "Boîtes Awima Box",
+  "icon": "📦"
 }

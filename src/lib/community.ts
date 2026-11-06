@@ -8,6 +8,7 @@ export interface CommunityConfig {
   thresholds: Thresholds;
   crown: { enabled: boolean; minAvg: number; minPoints: number };
   turnstileSiteKey: string;
+  likedSection: { enabled: boolean; count: number; minLikes: number }; // «الأكثر إعجاباً» في الرئيسية
 }
 
 const num = (v: unknown, min: number, max: number, fallback: number) =>
@@ -32,6 +33,7 @@ export function normalizeCommunity(raw: any): CommunityConfig {
       minAvg: num(cr.minAvg, 1, 5, 4.5),
       minPoints: num(cr.minPoints, 1, 1000, 10),
     },
+    likedSection: { enabled: raw?.likedSection?.enabled !== false, count: Math.floor(num(raw?.likedSection?.count, 1, 12, 4)), minLikes: Math.floor(num(raw?.likedSection?.minLikes, 1, 1000, 3)) },
     turnstileSiteKey: /^[0-9A-Za-z_-]{8,80}$/.test(key) ? key : '',
   };
 }

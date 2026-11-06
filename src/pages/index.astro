@@ -4,7 +4,10 @@ import ProductCard from '../components/ProductCard.astro';
 import { site, localizedSite } from '../config/site';
 import { buildContactLink } from '../lib/whatsapp';
 import { buildStoreLd } from '../lib/seo';
-import { getCategories, getFeaturedProducts } from '../services/products';
+import { getCategories, getFeaturedProducts, getAllProducts } from '../services/products';
+import { buildTrustItems } from '../lib/trust';
+import { hoursLabel } from '../lib/hours';
+import { formatPrice } from '../lib/format';
 import { t, langOf, localePath, type Lang } from '../i18n';
 
 interface Props { lang?: Lang }
@@ -15,6 +18,18 @@ const featured = getFeaturedProducts(4, lang);
 const categoryName = Object.fromEntries(categories.map((c) => [c.id, c.name]));
 const waLink = buildContactLink(undefined, lang);
 const storeLd = buildStoreLd({ ...site, tagline: ls.tagline, cities: ls.cities });
+const trustItems = buildTrustItems(
+  site.trustStrip,
+  { fastDelivery: site.fastDelivery, freeDeliveryFrom: site.freeDeliveryFrom, warrantyEnabled: site.warranty.enabled, hoursRange: t(lang, 'hours.label', { range: hoursLabel(site.hours.open, site.hours.close, lang) }) },
+  (k, v) => t(lang, k, v),
+  (n) => formatPrice(n, lang),
+  lang,
+  localePath(lang, '/policy')
+);
+const ls2 = site.community.likedSection;
+const likedPool = site.community.likesEnabled && ls2.enabled
+  ? getAllProducts(lang).map((p) => ({ id: p.id, name: p.name, href: localePath(lang, `/products/${p.slug}`), img: p.images[0] ?? '/images/placeholder.svg', price: formatPrice(p.price, lang) }))
+  : [];
 const reasons = [1, 2, 3, 4].map((n) => ({ t: t(lang, `home.r${n}.t`), d: t(lang, `home.r${n}.d`) }));
 ---
 <BaseLayout lang={lang} description={t(lang, 'home.description')}>
@@ -36,12 +51,22 @@ const reasons = [1, 2, 3, 4].map((n) => ({ t: t(lang, `home.r${n}.t`), d: t(lang
     </div>
   </section>
 
+  {trustItems.length > 0 && (
+    <section class="trust" aria-label={t(lang, 'home.why')}>
+      <ul class="container trust-list">
+        {trustItems.map((i) => (
+          <li>{i.href ? <a href={i.href}><span aria-hidden="true">{i.icon}</span> {i.text}</a> : <span><span aria-hidden="true">{i.icon}</span> {i.text}</span>}</li>
+        ))}
+      </ul>
+    </section>
+  )}
+
   <section class="section" aria-labelledby="cats">
     <div class="container">
       <h2 id="cats">{t(lang, 'home.shopByCat')}</h2>
       <div class="grid grid-4">
         {categories.filter((c) => !c.parent).map((c) => (
-          <a class="card cat" href={localePath(lang, `/products?category=${c.slug}`)}>{c.name}</a>
+          <a class="card cat" href={localePath(lang, `/products?category=${c.slug}`)}>{c.icon ? <span class="ic" aria-hidden="true">{c.icon}</span> : null}<span>{c.name}</span></a>
         ))}
       </div>
     </div>
@@ -60,6 +85,18 @@ const reasons = [1, 2, 3, 4].map((n) => ({ t: t(lang, `home.r${n}.t`), d: t(lang
       </div>
     </div>
   </section>
+
+  {likedPool.length > 0 && (
+    <section class="section" id="liked" aria-labelledby="likedh" hidden data-pool={JSON.stringify(likedPool)} data-count={ls2.count} data-min={ls2.minLikes}>
+      <div class="container">
+        <div class="section-head">
+          <h2 id="likedh">❤️ {t(lang, 'home.liked')}</h2>
+          <a class="link-more" href={localePath(lang, '/products?sort=likes')}>{t(lang, 'home.viewAll')}</a>
+        </div>
+        <ul class="grid grid-4 liked-list" id="liked-list"></ul>
+      </div>
+    </section>
+  )}
 
   <section class="promo">
     <div class="container">
@@ -95,13 +132,53 @@ const reasons = [1, 2, 3, 4].map((n) => ({ t: t(lang, `home.r${n}.t`), d: t(lang
   </section>
 </BaseLayout>
 
+<script>
+  // «الأكثر إعجاباً»: تُبنى من عدّادات الإعجاب الحقيقية، وتبقى مخفية حتى يبلغ منتج الحد الأدنى
+  const sec = document.getElementById('liked');
+  if (sec) {
+    const show = (data: { likes: Record<string, number> }) => {
+      type P = { id: string; name: string; href: string; img: string; price: string };
+      let pool: P[] = [];
+      try { pool = JSON.parse(sec.dataset.pool || '[]'); } catch { return; }
+      const min = Number(sec.dataset.min || 3), count = Number(sec.dataset.count || 4);
+      const top = pool.filter((p) => (data.likes[p.id] ?? 0) >= min).sort((a, b) => (data.likes[b.id] ?? 0) - (data.likes[a.id] ?? 0)).slice(0, count);
+      if (!top.length) return;
+      const ul = document.getElementById('liked-list')!;
+      ul.innerHTML = '';
+      for (const p of top) {
+        const li = document.createElement('li'); li.className = 'card lk';
+        const a = document.createElement('a'); a.href = p.href;
+        const img = document.createElement('img'); img.src = p.img; img.alt = p.name; img.loading = 'lazy'; img.width = 400; img.height = 400;
+        const nm = document.createElement('strong'); nm.textContent = p.name;
+        const pr = document.createElement('span'); pr.className = 'pr'; pr.textContent = p.price;
+        const n = document.createElement('small'); n.textContent = `♥ ${data.likes[p.id]}`;
+        a.append(img, nm, pr, n); li.append(a); ul.append(li);
+      }
+      sec.hidden = false;
+    };
+    const w = window as unknown as { __awimaData?: { likes: Record<string, number> } };
+    if (w.__awimaData) show(w.__awimaData);
+    window.addEventListener('awima:data', (e) => show((e as CustomEvent).detail));
+  }
+</script>
 <style>
   .hero { background: linear-gradient(180deg, var(--c-surface), #fff); padding-block: 32px; }
   .hero-grid { display: grid; gap: 24px; align-items: center; }
   .lead { color: var(--c-muted); font-size: 1.1rem; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; }
   .hero-logo { padding: 20px; max-width: 420px; width: 100%; justify-self: center; }
-  .cat { display: grid; place-items: center; min-height: 90px; font-weight: 700; color: var(--c-primary); text-decoration: none; text-align: center; padding: 12px; }
+  .trust { background: #fff; border-bottom: 1px solid var(--c-border); }
+  .trust-list { list-style: none; margin: 0 auto; padding-block: 10px; display: flex; flex-wrap: wrap; gap: 6px 22px; justify-content: center; font-size: 0.92rem; font-weight: 600; color: var(--c-primary); }
+  .trust-list a { color: inherit; text-decoration: none; }
+  .trust-list a:hover { text-decoration: underline; }
+  .liked-list { list-style: none; padding: 0; margin: 0; }
+  .lk a { display: grid; gap: 4px; padding: 0 0 12px; text-decoration: none; color: var(--c-text); }
+  .lk img { width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--c-surface); border-radius: var(--radius) var(--radius) 0 0; }
+  .lk strong, .lk .pr, .lk small { padding-inline: 12px; }
+  .lk .pr { color: var(--c-accent); font-weight: 800; }
+  .lk small { color: #e4161b; font-weight: 700; }
+  .ic { font-size: 1.8rem; line-height: 1; }
+  .cat { display: grid; place-items: center; gap: 6px; min-height: 90px; font-weight: 700; color: var(--c-primary); text-decoration: none; text-align: center; padding: 12px; }
   .cat:hover { border-color: var(--c-accent); }
   .promo { background: var(--c-primary); color: #fff; padding-block: 40px; text-align: center; }
   .promo h2 { color: #fff; }

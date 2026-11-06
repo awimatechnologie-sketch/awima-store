@@ -130,6 +130,7 @@ collections:
       - { label: اسم القسم بالفرنسية (اختياري), name: name_fr, widget: string, required: false }
       - { label: الرابط (slug), name: slug, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'حروف لاتينية صغيرة وأرقام وشرطات فقط'] }
       - { label: ترتيب الظهور (1 أولاً), name: order, widget: number, value_type: int, min: 1, default: 99 }
+      - { label: 'أيقونة (إيموجي واحد يظهر في بطاقة القسم بالرئيسية، مثل 📱)', name: icon, widget: string, required: false }
       - label: القسم الرئيسي (اتركه فارغاً ليكون هذا قسماً رئيسياً)
         name: parent
         widget: relation
@@ -502,6 +503,30 @@ collections:
               - { label: يبدأ في (اختياري), name: startDate, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, required: false }
               - { label: ينتهي في (اختياري، يشمل هذا اليوم), name: endDate, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, required: false }
               - { label: مفعّل, name: enabled, widget: boolean, default: true }
+          - label: شريط الثقة (تحت عنوان الرئيسية)
+            name: trustStrip
+            widget: object
+            hint: 'عناصره تُشتق من إعداداتك الفعلية: التوصيل السريع من «التوصيل السريع»، والمجاني من «التوصيل مجاني ابتداءً من»، والضمان يظهر فقط إن فعّلته، وساعات العمل من «أوقات العمل».'
+            fields:
+              - { label: إظهار الشريط, name: enabled, widget: boolean, default: true }
+              - label: العناصر التلقائية
+                name: show
+                widget: object
+                fields:
+                  - { label: الطلب عبر واتساب, name: whatsapp, widget: boolean, default: true }
+                  - { label: التوصيل السريع, name: fastDelivery, widget: boolean, default: true }
+                  - { label: التوصيل المجاني (إن حدّدت حدّاً), name: freeDelivery, widget: boolean, default: true }
+                  - { label: الضمان (إن فعّلته), name: warranty, widget: boolean, default: true }
+                  - { label: ساعات العمل, name: hours, widget: boolean, default: true }
+              - label: عناصر إضافية من عندك
+                name: custom
+                widget: list
+                required: false
+                summary: '{{fields.icon}} {{fields.text}}'
+                fields:
+                  - { label: 'أيقونة (إيموجي)', name: icon, widget: string, required: false }
+                  - { label: النص (قصير), name: text, widget: string }
+                  - { label: النص بالفرنسية, name: text_fr, widget: string, required: false }
           - label: مجتمع الموقع (الإعجابات والتقييمات والتاج)
             name: community
             widget: object
@@ -525,6 +550,13 @@ collections:
                   - { label: تفعيل التاج, name: enabled, widget: boolean, default: true }
                   - { label: 'أدنى متوسط للتاج التلقائي', name: minAvg, widget: number, value_type: float, min: 1, max: 5, default: 4.5 }
                   - { label: 'أدنى نقاط للتاج التلقائي', name: minPoints, widget: number, value_type: int, min: 1, default: 10 }
+              - label: قسم «الأكثر إعجاباً» في الرئيسية
+                name: likedSection
+                widget: object
+                fields:
+                  - { label: إظهار القسم, name: enabled, widget: boolean, default: true }
+                  - { label: عدد المنتجات, name: count, widget: number, value_type: int, min: 1, max: 12, default: 4 }
+                  - { label: 'أقل عدد إعجابات ليدخل المنتج القسم (يبقى القسم مخفياً قبل ذلك)', name: minLikes, widget: number, value_type: int, min: 1, default: 3 }
               - { label: 'مفتاح Cloudflare Turnstile العام (اختياري؛ يمنع الروبوتات في نموذج التقييم)', name: turnstileSiteKey, widget: string, required: false }
           - label: الضمان
             name: warranty

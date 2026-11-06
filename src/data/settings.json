@@ -121,6 +121,22 @@
       "minAvg": 4.5,
       "minPoints": 10
     },
-    "turnstileSiteKey": ""
+    "turnstileSiteKey": "",
+    "likedSection": {
+      "enabled": true,
+      "count": 4,
+      "minLikes": 3
+    }
+  },
+  "trustStrip": {
+    "enabled": true,
+    "show": {
+      "whatsapp": true,
+      "fastDelivery": true,
+      "freeDelivery": true,
+      "warranty": true,
+      "hours": true
+    },
+    "custom": []
   }
 }
