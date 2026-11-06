@@ -1,3 +1,4 @@
+import { site } from '../config/site';
 import { normalizeReview, groupByProduct, summarize, EMPTY_SUMMARY, type Review, type ReviewSummary } from '../lib/reviews';
 
 // تقييمات الزبائن: ملف JSON لكل تقييم (تُدخل من لوحة /admin). المجلد قد يكون فارغاً.
@@ -8,7 +9,7 @@ const reviews: Review[] = Object.values(files)
   .filter((r): r is Review => r !== null);
 
 const byProduct = groupByProduct(reviews);
-const summaries = new Map<string, ReviewSummary>([...byProduct].map(([id, list]) => [id, summarize(list)]));
+const summaries = new Map<string, ReviewSummary>([...byProduct].map(([id, list]) => [id, summarize(list, site.community.thresholds)]));
 
 export const getReviewSummary = (productId: string): ReviewSummary => summaries.get(productId) ?? EMPTY_SUMMARY;
 // الأحدث أولاً

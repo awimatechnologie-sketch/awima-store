@@ -3,28 +3,48 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import AnnouncementBar from '../components/AnnouncementBar.astro';
 import Footer from '../components/Footer.astro';
-import { site } from '../config/site';
+import { site, localizedSite } from '../config/site';
+import { langOf, dirOf, alternatePath, t, type Lang } from '../i18n';
 import { getAllProducts } from '../services/products';
+import { BEACON_SRC, beaconAttr } from '../lib/analytics';
 
-interface Props { title?: string; description?: string; image?: string; ogType?: string }
-const { title, description = site.tagline, image = site.logo.og, ogType = 'website' } = Astro.props;
-const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | ${site.tagline}`;
+interface Props { title?: string; description?: string; image?: string; ogType?: string; lang?: Lang; alternates?: boolean }
+const { title, description: descProp, image = site.logo.og, ogType = 'website', lang: langProp, alternates = true } = Astro.props;
+const lang = langOf(langProp);
+const ls = localizedSite(lang);
+const description = descProp ?? ls.tagline;
+const fullTitle = title ? `${title} | ${site.name}` : `${site.name} | ${ls.tagline}`;
+// روابط النسخة العربية/الفرنسية لنفس الصفحة (hreflang)
+const altUrl = (l: Lang) => new URL(alternatePath(Astro.url.pathname, l), site.url).href;
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const ogImage = new URL(image, site.url).href;
-// ألوان العلامة من الإعدادات (html:root لضمان أولويتها على global.css)
+// معرّفات المنتجات الظاهرة: تُستعمل لتنظيف سلة الزبون من منتجات حُذفت
 const validIds = getAllProducts().map((p) => p.id).join(',');
+// الإحصائيات تعمل في الموقع المنشور فقط (ليس أثناء التطوير المحلي) وبشرط وجود توكن صالح
+const beacon = import.meta.env.PROD ? beaconAttr(site.analytics.cloudflareToken) : null;
+// ألوان العلامة من الإعدادات (html:root لضمان أولويتها على global.css)
+// إعدادات المجتمع (إعجاب/تقييم) ونصوصه للسكربت: لا شيء يُرسَل إن عُطّلت الميزتان
+const cm = site.community;
+const COMMUNITY_KEYS = ['community.crown','community.like','community.unlike','community.formTitle','community.yourRating','community.name','community.comment','community.send','community.sending','community.thanks','community.already','community.pickRating','community.tooMany','community.noLinks','community.error','community.captcha','community.pendingNote','reviews.tier.green-dark','reviews.tier.green-light','reviews.tier.yellow','reviews.aria','reviews.summary','reviews.verified','reviews.customer','reviews.stars'];
+const communityJson = cm.likesEnabled || cm.reviewsEnabled
+  ? JSON.stringify({ lang, likes: cm.likesEnabled, reviews: cm.reviewsEnabled, minLikes: cm.minLikesToShow, th: cm.thresholds, crown: cm.crown, turnstile: cm.turnstileSiteKey, t: Object.fromEntries(COMMUNITY_KEYS.map((k) => [k, t(lang, k)])) })
+  : undefined;
 const themeCss = `html:root{--c-primary:${site.colors.primary};--c-accent:${site.colors.accent};--c-alert:${site.colors.alert};}`;
 ---
 <!doctype html>
-<html lang={site.lang} dir={site.dir}>
+<html lang={lang} dir={dirOf(lang)}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {alternates && <link rel="alternate" hreflang="ar" href={altUrl('ar')} />}
+    {alternates && <link rel="alternate" hreflang="fr" href={altUrl('fr')} />}
+    {alternates && <link rel="alternate" hreflang="x-default" href={altUrl('ar')} />}
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/png" href={site.logo.icon} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_MA' : 'ar_MA'} />
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={fullTitle} />
@@ -33,19 +53,24 @@ const themeCss = `html:root{--c-primary:${site.colors.primary};--c-accent:${site
     <meta property="og:image" content={ogImage} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content={site.colors.primary} />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content={site.name} />
     <style is:inline set:html={themeCss}></style>
     {site.customCss ? <style is:inline set:html={site.customCss}></style> : null}
     <slot name="head" />
   </head>
-  
-  <body data-valid-ids={validIds}>
-    <AnnouncementBar />
-    <Header />
+  <body data-valid-ids={validIds} data-community={communityJson}>
+    <AnnouncementBar lang={lang} />
+    <Header lang={lang} />
     <main><slot /></main>
-    <Footer />
+    <Footer lang={lang} />
     <script>
       import '../scripts/site';
+      import '../scripts/community';
     </script>
+    {beacon ? <script is:inline defer src={BEACON_SRC} data-cf-beacon={beacon}></script> : null}
   </body>
 </html>
 

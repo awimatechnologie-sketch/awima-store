@@ -105,5 +105,22 @@
     "days": 0,
     "note": "",
     "note_fr": ""
+  },
+  "community": {
+    "likesEnabled": true,
+    "reviewsEnabled": true,
+    "minLikesToShow": 0,
+    "thresholds": {
+      "minPoints": 5,
+      "strongPoints": 10,
+      "greenDarkAvg": 4.5,
+      "greenLightAvg": 4
+    },
+    "crown": {
+      "enabled": true,
+      "minAvg": 4.5,
+      "minPoints": 10
+    },
+    "turnstileSiteKey": ""
   }
 }

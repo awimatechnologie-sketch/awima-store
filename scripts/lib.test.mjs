@@ -19,6 +19,8 @@ import { normalizeOffers, applyOffers, offerActive, offerCovers, badgeOffersFor 
 import { parseBlocks } from '../src/lib/richtext.ts';
 import { normalizeWarranty, warrantyDaysFor, warrantyUnit } from '../src/lib/warranty.ts';
 import { normalizeDevices, brandsOf, normalizePorts, productsForPort } from '../src/lib/compat.ts';
+import { normalizeCommunity, isTrusted, starsHtml, checkReview } from '../src/lib/community.ts';
+import { summaryFrom, DEFAULT_THRESHOLDS } from '../src/lib/reviews.ts';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 import { summarize, tierFor, normalizeReview, MIN_POINTS } from '../src/lib/reviews.ts';
@@ -566,4 +568,48 @@ test('compat: تنظيف الموديلات وإسقاط المكرر وغير �
   assert.deepEqual(normalizeDevices(null), []);
   const ps = [{ id: 1, ports: ['usb-c'] }, { id: 2, ports: ['lightning'] }, { id: 3 }];
   assert.deepEqual(productsForPort(ps, 'usb-c').map((p) => p.id), [1]);
+});
+
+test('community: الإعدادات الافتراضية والتنظيف', () => {
+  const d = normalizeCommunity(undefined);
+  assert.equal(d.likesEnabled, true);
+  assert.deepEqual(d.thresholds, DEFAULT_THRESHOLDS);
+  assert.equal(d.crown.minAvg, 4.5);
+  const c = normalizeCommunity({ likesEnabled: false, thresholds: { minPoints: 2, greenDarkAvg: 9 }, turnstileSiteKey: 'bad key!' });
+  assert.equal(c.likesEnabled, false);
+  assert.equal(c.thresholds.minPoints, 2);
+  assert.equal(c.thresholds.greenDarkAvg, DEFAULT_THRESHOLDS.greenDarkAvg); // 9 خارج المدى
+  assert.equal(c.turnstileSiteKey, '');
+});
+
+test('community: التاج يدوي أو تلقائي بحسب العتبات، ويُعطَّل بالمفتاح', () => {
+  const cr = { enabled: true, minAvg: 4.5, minPoints: 10 };
+  assert.equal(isTrusted({ average: 4.8, points: 10 }, false, cr), true);
+  assert.equal(isTrusted({ average: 4.8, points: 9 }, false, cr), false);
+  assert.equal(isTrusted({ average: 3, points: 0 }, true, cr), true); // يدوي
+  assert.equal(isTrusted({ average: 4.8, points: 50 }, true, { ...cr, enabled: false }), false);
+});
+
+test('community: دمج مجاميع البناء مع تقييمات الزوار', () => {
+  // موثَّق واحد (5★ ×5 نقاط) + 5 زوار جدد بـ4★ → 10 نقاط، مجموع 25+20
+  const s = summaryFrom(6, 10, 45);
+  assert.equal(s.average, 4.5);
+  assert.equal(s.tier, 'green-dark');
+  assert.equal(summaryFrom(0, 0, 0).tier, 'none');
+  assert.equal(summaryFrom(1, 1, 5, { ...DEFAULT_THRESHOLDS, minPoints: 1 }).tier, 'green-light'); // عتبة مخفَّضة من الإعدادات
+});
+
+test('community: النجوم الجزئية والتحقق من التقييم', () => {
+  assert.match(starsHtml(4.3), /--fill:86%/);
+  assert.match(starsHtml(9), /--fill:100%/);
+  assert.match(starsHtml(-1), /--fill:0%/);
+  const ok = checkReview({ product: 'P-0001', rating: 4, device: 'abcdefgh12', comment: ' جيد   جداً ', author: '<b>س</b>' });
+  assert.equal(ok.ok, true);
+  assert.equal(ok.value.comment, 'جيد جداً');
+  assert.ok(!ok.value.author.includes('<'));
+  assert.equal(checkReview({ product: 'P-0001', rating: 6, device: 'abcdefgh12' }).ok, false);
+  assert.equal(checkReview({ product: 'P-0001', rating: 5, device: 'x' }).ok, false);
+  assert.equal(checkReview({ product: 'P-0001', rating: 5, device: 'abcdefgh12', website: 'x' }).error, 'spam');
+  assert.equal(checkReview({ product: 'P-0001', rating: 5, device: 'abcdefgh12', comment: 'www.spam.com' }).error, 'links_not_allowed');
+  assert.equal(checkReview({ product: 'P-0001', rating: 5, device: 'abcdefgh12', comment: 'x'.repeat(900) }).value.comment.length, 500);
 });

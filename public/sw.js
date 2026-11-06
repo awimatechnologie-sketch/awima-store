@@ -11,7 +11,7 @@ const MAX_PAGES = 60;
 const MAX_ASSETS = 200;
 
 const isAsset = (p) => p.startsWith('/_astro/') || p.startsWith('/images/') || p.startsWith('/icons/');
-const skip = (p) => p.startsWith('/admin') || p.startsWith('/cdn-cgi/') || p === '/sw.js' || p === '/sitemap.xml' || p === '/robots.txt';
+const skip = (p) => p.startsWith('/admin') || p.startsWith('/api/') || p.startsWith('/moderation') || p.startsWith('/cdn-cgi/') || p === '/sw.js' || p === '/sitemap.xml' || p === '/robots.txt';
 
 async function trim(cacheName, max) {
   const cache = await caches.open(cacheName);

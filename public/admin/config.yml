@@ -60,6 +60,7 @@ collections:
         default: in_stock
       - { label: الكمية في المخزون (اتركه فارغاً = غير محدود، و0 = غير متوفر تلقائياً), name: stock, widget: number, value_type: int, min: 0, required: false, hint: 'عدّلها بعد كل بيع. تمنع السلة طلب كمية أكبر منها. إن كانت حالة التوفر «غير متوفر» فتبقى كذلك مهما كان المخزون.' }
       - { label: منتج مميز (يظهر في الرئيسية), name: featured, widget: boolean, default: false }
+      - { label: 'اختيار Awima 👑 (تاج «منتج موثوق» يدوياً)', name: trusted, widget: boolean, default: false, required: false, hint: 'يمنح التاج مهما كانت التقييمات. بدونه ينال المنتج التاج تلقائياً عند بلوغ حدّ التاج في الإعدادات ← مجتمع الموقع.' }
       - { label: 'مدة الضمان بالأيام (فارغ = الافتراضية العامة، 0 = بلا ضمان لهذا المنتج)', name: warranty, widget: number, value_type: int, min: 0, required: false, hint: 'لا تظهر شارة الضمان إلا إذا فعّلت الضمان من الإعدادات ← الضمان. 30 = شهر، 365 = سنة.' }
       - { label: 'مدة التوفر بالأيام (للمنتج «عند الطلب» فقط)', name: leadDays, widget: number, value_type: int, min: 1, required: false, hint: 'تظهر للزائر «يتوفر خلال N يوم من تأكيد الطلب» عندما تكون الحالة «عند الطلب».' }
       - label: منافذ الهواتف التي يدعمها المنتج (لصفحة «هل يناسب هاتفي؟»)
@@ -491,6 +492,30 @@ collections:
               - { label: يبدأ في (اختياري), name: startDate, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, required: false }
               - { label: ينتهي في (اختياري، يشمل هذا اليوم), name: endDate, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, required: false }
               - { label: مفعّل, name: enabled, widget: boolean, default: true }
+          - label: مجتمع الموقع (الإعجابات والتقييمات والتاج)
+            name: community
+            widget: object
+            hint: 'تحتاج الإعجابات وتقييمات الزوار ربط قاعدة D1 مرة واحدة (انظر ROADMAP). إن لم تُربط يبقى الموقع كما هو. التقييمات تُراجَع من الصفحة /moderation قبل نشرها.'
+            fields:
+              - { label: تفعيل الإعجابات (القلب), name: likesEnabled, widget: boolean, default: true }
+              - { label: تفعيل تقييمات الزوار (نموذج التقييم), name: reviewsEnabled, widget: boolean, default: true }
+              - { label: 'لا تُظهر عدّاد الإعجابات قبل بلوغ هذا العدد (0 = أظهره دائماً)', name: minLikesToShow, widget: number, value_type: int, min: 0, default: 0 }
+              - label: عتبات الإطار اللوني
+                name: thresholds
+                widget: object
+                fields:
+                  - { label: 'أقل نقاط ليظهر لون (مشترٍ موثَّق = 5 نقاط، زبون جديد = 1)', name: minPoints, widget: number, value_type: int, min: 1, default: 5 }
+                  - { label: 'نقاط الأخضر الغامق', name: strongPoints, widget: number, value_type: int, min: 1, default: 10 }
+                  - { label: 'أدنى متوسط للأخضر الغامق (من 5)', name: greenDarkAvg, widget: number, value_type: float, min: 1, max: 5, default: 4.5 }
+                  - { label: 'أدنى متوسط للأخضر الفاتح (من 5)', name: greenLightAvg, widget: number, value_type: float, min: 1, max: 5, default: 4 }
+              - label: التاج 👑 (منتج موثوق)
+                name: crown
+                widget: object
+                fields:
+                  - { label: تفعيل التاج, name: enabled, widget: boolean, default: true }
+                  - { label: 'أدنى متوسط للتاج التلقائي', name: minAvg, widget: number, value_type: float, min: 1, max: 5, default: 4.5 }
+                  - { label: 'أدنى نقاط للتاج التلقائي', name: minPoints, widget: number, value_type: int, min: 1, default: 10 }
+              - { label: 'مفتاح Cloudflare Turnstile العام (اختياري؛ يمنع الروبوتات في نموذج التقييم)', name: turnstileSiteKey, widget: string, required: false }
           - label: الضمان
             name: warranty
             widget: object

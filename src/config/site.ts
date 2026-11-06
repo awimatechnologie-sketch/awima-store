@@ -7,6 +7,7 @@ import { normalizeFee, normalizeFreeFrom } from '../lib/delivery';
 import { normalizeDiscounts } from '../lib/discounts';
 import { normalizeOffers } from '../lib/offers';
 import { normalizeWarranty } from '../lib/warranty';
+import { normalizeCommunity } from '../lib/community';
 import { pick, type Lang } from '../i18n';
 
 type Settings = {
@@ -32,6 +33,7 @@ type Settings = {
   freeDeliveryFrom?: number | null;
   discounts?: unknown;
   warranty?: unknown;
+  community?: unknown;
   autoOffersEnabled?: boolean;
   autoOffers?: unknown;
   cities?: { name?: string; name_fr?: string; open?: boolean; fee?: number }[];
@@ -108,6 +110,8 @@ export const site = {
   discounts: normalizeDiscounts(s.discounts),
   // العروض التلقائية (خصم الباقات والخصم المؤقت): المفتاح الرئيسي يوقفها كلها دفعة واحدة
   autoOffers: s.autoOffersEnabled === false ? [] : normalizeOffers(s.autoOffers),
+  // الإعجابات والتقييمات والتاج وعتبات الإطار اللوني (من الإعدادات ← مجتمع الموقع)
+  community: normalizeCommunity(s.community),
   // الضمان: يظهر على المنتجات وفي صفحة السياسة فقط عند تفعيله
   warranty: normalizeWarranty(s.warranty),
   // المدن: المفتوحة فقط يمكن الطلب منها، والبقية تظهر مقفلة

@@ -267,6 +267,20 @@ for (const f of ['about', 'contact', 'awima-box', 'policy', 'compat']) {
   }
 }
 
+// ---------- مجتمع الموقع ----------
+if (s?.community !== undefined) {
+  const cm = s.community;
+  if (cm === null || typeof cm !== 'object') err(sLabel, '"community" يجب أن يكون كائناً');
+  else {
+    const th = cm.thresholds ?? {};
+    for (const k of ['greenDarkAvg', 'greenLightAvg']) if (th[k] !== undefined && !(th[k] >= 1 && th[k] <= 5)) err(sLabel, `community.thresholds.${k} يجب أن يكون بين 1 و5`);
+    if (th.greenLightAvg > th.greenDarkAvg) warn(sLabel, 'حدّ الأخضر الفاتح أعلى من الغامق (سيتعطّل الغامق)');
+    if (th.strongPoints < th.minPoints) warn(sLabel, 'نقاط الأخضر الغامق أقل من أقل نقاط للون');
+    if (cm.turnstileSiteKey && !/^[0-9A-Za-z_-]{8,80}$/.test(cm.turnstileSiteKey)) err(sLabel, 'turnstileSiteKey غير صالح');
+  }
+}
+if (existsSync(join(ROOT, 'functions/api')) && !existsSync(join(ROOT, 'db/schema.sql'))) err('db', 'db/schema.sql مفقود');
+
 // ---------- الضمان وباحث التوافق ----------
 if (s?.warranty !== undefined) {
   const w = s.warranty;

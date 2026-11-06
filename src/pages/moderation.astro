@@ -1,0 +1,112 @@
+---
+// صفحة مراجعة التقييمات (للمدير فقط): تتطلب التوكن السري ADMIN_TOKEN. لا تُفهرَس ولا تظهر في الخريطة.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getAllProducts } from '../services/products';
+const names = Object.fromEntries(getAllProducts().map((p) => [p.id, p.name]));
+---
+<BaseLayout title="مراجعة التقييمات" alternates={false}>
+  <meta slot="head" name="robots" content="noindex, nofollow" />
+  <section class="section">
+    <div class="container narrow" id="mod" data-names={JSON.stringify(names)}>
+      <h1>مراجعة التقييمات</h1>
+      <form id="login" class="card box">
+        <label>الرمز السري (ADMIN_TOKEN)<input id="token" type="password" autocomplete="off" required /></label>
+        <button class="btn btn-cart" type="submit">دخول</button>
+      </form>
+      <div id="panel" hidden>
+        <div class="tabs" role="tablist">
+          <button type="button" data-st="pending" aria-pressed="true">قيد المراجعة</button>
+          <button type="button" data-st="approved" aria-pressed="false">المنشورة</button>
+          <button type="button" data-st="rejected" aria-pressed="false">المرفوضة</button>
+        </div>
+        <p id="msg" class="msg" aria-live="polite"></p>
+        <ul id="list" class="list"></ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<script>
+  const root = document.getElementById('mod') as HTMLElement;
+  const names: Record<string, string> = JSON.parse(root.dataset.names || '{}');
+  const login = document.getElementById('login') as HTMLFormElement;
+  const panel = document.getElementById('panel') as HTMLElement;
+  const list = document.getElementById('list') as HTMLElement;
+  const msg = document.getElementById('msg') as HTMLElement;
+  let token = '';
+  let status = 'pending';
+  try { token = sessionStorage.getItem('awima_mod') || ''; } catch { /* ignore */ }
+
+  async function api(path: string, body?: unknown) {
+    const r = await fetch(path, { method: body ? 'POST' : 'GET', headers: { Authorization: `Bearer ${token}`, 'content-type': 'application/json' }, body: body ? JSON.stringify(body) : undefined });
+    if (r.status === 401) throw new Error('الرمز غير صحيح');
+    if (r.status === 503) throw new Error('قاعدة البيانات D1 غير مربوطة بعد');
+    if (!r.ok) throw new Error('تعذّر الطلب');
+    return r.json();
+  }
+  function btn(text: string, act: string, id: number, cls = '') {
+    const b = document.createElement('button');
+    b.type = 'button'; b.textContent = text; b.className = `act ${cls}`;
+    b.addEventListener('click', async () => {
+      if (act === 'delete' && !confirm('حذف نهائي؟')) return;
+      b.disabled = true;
+      try { await api('/api/admin/reviews', { id, action: act }); await load(); } catch (e) { msg.textContent = (e as Error).message; b.disabled = false; }
+    });
+    return b;
+  }
+  async function load() {
+    msg.textContent = '';
+    try {
+      const { reviews } = await api(`/api/admin/reviews?status=${status}`);
+      panel.hidden = false; login.hidden = true;
+      list.innerHTML = '';
+      if (!reviews.length) { msg.textContent = 'لا شيء هنا.'; return; }
+      for (const r of reviews) {
+        const li = document.createElement('li'); li.className = 'card item';
+        const h = document.createElement('strong'); h.textContent = `${names[r.product] || r.product} — ${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}${r.buyer === 'verified' ? ' — مشترٍ موثَّق' : ''}`;
+        const who = document.createElement('p'); who.className = 'who'; who.textContent = `${r.author || 'بدون اسم'} · ${new Date(r.ts).toISOString().slice(0, 10)}`;
+        const c = document.createElement('p'); c.textContent = r.comment || '(بلا تعليق)';
+        const row = document.createElement('div'); row.className = 'row';
+        if (status !== 'approved') row.append(btn('نشر', 'approve', r.id, 'ok'));
+        if (status !== 'rejected') row.append(btn('رفض', 'reject', r.id));
+        row.append(btn(r.buyer === 'verified' ? 'إلغاء التوثيق' : 'توثيق كمشترٍ (وزن 5)', r.buyer === 'verified' ? 'unverify' : 'verify', r.id));
+        row.append(btn('حذف', 'delete', r.id, 'danger'));
+        li.append(h, who, c, row);
+        list.append(li);
+      }
+    } catch (e) {
+      msg.textContent = (e as Error).message;
+      panel.hidden = true; login.hidden = false;
+    }
+  }
+  login.addEventListener('submit', (e) => {
+    e.preventDefault();
+    token = (document.getElementById('token') as HTMLInputElement).value.trim();
+    try { sessionStorage.setItem('awima_mod', token); } catch { /* ignore */ }
+    load();
+  });
+  document.querySelectorAll<HTMLButtonElement>('[data-st]').forEach((b) => b.addEventListener('click', () => {
+    status = b.dataset.st!;
+    document.querySelectorAll<HTMLButtonElement>('[data-st]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    load();
+  }));
+  if (token) load();
+</script>
+<style>
+  .narrow { max-width: 760px; }
+  h1 { color: var(--c-primary); margin-block: 0 12px; }
+  .box { padding: 16px; display: grid; gap: 12px; max-width: 420px; }
+  label { display: grid; gap: 4px; font-weight: 700; color: var(--c-primary); }
+  input { font: inherit; padding: 10px; border: 1px solid var(--c-border); border-radius: 8px; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .tabs button { font: inherit; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--c-border); background: #fff; cursor: pointer; }
+  .tabs button[aria-pressed='true'] { background: var(--c-accent); color: #fff; border-color: var(--c-accent); }
+  .msg { color: var(--c-muted); font-weight: 700; }
+  .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .item { padding: 12px 14px; }
+  .item p { margin: 6px 0 0; }
+  .who { color: var(--c-muted); font-size: 0.9rem; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .act { font: inherit; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--c-border); background: #fff; cursor: pointer; }
+  .act.ok { background: #166534; color: #fff; border-color: #166534; }
+  .act.danger { color: #b91c1c; border-color: #b91c1c; }
+</style>

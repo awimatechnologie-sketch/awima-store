@@ -67,3 +67,26 @@ p { margin: 0 0 1rem; }
 .badge-req { background: #e8f0ff; color: var(--c-primary); }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+/* ---------- مجتمع الموقع: نجوم جزئية، تاج، إعجاب، نموذج تقييم ---------- */
+.stars5 { display: inline-block; direction: ltr; font-size: 1rem; line-height: 1; letter-spacing: 1px; background: linear-gradient(90deg, #f59e0b var(--fill, 0%), #d6d3d1 var(--fill, 0%)); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+.crown { position: absolute; top: 8px; inset-inline-end: 8px; display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 999px; background: #fef3c7; color: #92400e; border: 1px solid #f59e0b; font-size: 0.78rem; font-weight: 800; }
+.crown[hidden] { display: none; }
+.crown-inline { display: inline-flex; align-items: center; gap: 4px; padding: 2px 10px; border-radius: 999px; background: #fef3c7; color: #92400e; border: 1px solid #f59e0b; font-size: 0.85rem; font-weight: 800; }
+.like { font: inherit; display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 44px; padding: 8px 12px; border: 1px solid var(--c-border); border-radius: var(--radius); background: #fff; color: var(--c-muted); cursor: pointer; }
+.like:hover { border-color: #e4161b; color: #e4161b; }
+.like[aria-pressed='true'] { color: #e4161b; border-color: #e4161b; background: #fff1f2; }
+.like .heart { font-size: 1.15rem; line-height: 1; }
+.like .lc:empty { display: none; }
+.rv-form { margin-top: 16px; padding: 14px; border: 1px solid var(--c-border); border-radius: var(--radius); background: var(--c-surface); display: grid; gap: 10px; }
+.rv-form h3 { margin: 0; font-size: 1.05rem; color: var(--c-primary); }
+.rv-form label { display: grid; gap: 4px; font-weight: 700; color: var(--c-primary); }
+.rv-form input[type='text'], .rv-form textarea { font: inherit; padding: 10px; border: 1px solid var(--c-border); border-radius: 8px; background: #fff; }
+.rv-form textarea { min-height: 90px; resize: vertical; }
+.rv-pick { display: inline-flex; direction: ltr; gap: 2px; justify-self: start; }
+.rv-pick button { font: inherit; font-size: 1.9rem; line-height: 1; padding: 0 2px; border: 0; background: none; cursor: pointer; color: #d6d3d1; }
+.rv-pick button.on { color: #f59e0b; }
+.rv-hp { position: absolute; inset-inline-start: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.rv-msg { margin: 0; font-weight: 700; }
+.rv-msg.err { color: #b91c1c; }
+.rv-msg.ok { color: #166534; }

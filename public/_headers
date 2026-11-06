@@ -20,6 +20,11 @@
   Cache-Control: no-store
   X-Robots-Tag: noindex, nofollow
 
+# صفحة مراجعة التقييمات وواجهة /api: لا تُخزَّن ولا تُفهرَس
+/moderation*
+  Cache-Control: no-store
+  X-Robots-Tag: noindex, nofollow
+
 # Service Worker: يُعاد التحقق منه دائماً ليصل أي تحديث فوراً
 /sw.js
   Cache-Control: no-cache

@@ -18,6 +18,7 @@ export interface Product {
   related?: string[]; // معرّفات منتجات مقترحة يدوياً (يُشترى معه)
   hidden?: boolean; // مخفي من الموقع (مسودة) دون حذفه
   warranty?: number | null; // أيام الضمان لهذا المنتج. فارغ = الافتراضي العام، 0 = بلا ضمان
+  trusted?: boolean; // «اختيار Awima»: يمنح التاج يدوياً
   leadDays?: number | null; // مدة التوفر بالأيام للمنتج «عند الطلب» (اختياري)
   ports?: ('usb-c' | 'lightning' | 'micro-usb')[]; // منافذ الهواتف المدعومة (لباحث التوافق)
 }

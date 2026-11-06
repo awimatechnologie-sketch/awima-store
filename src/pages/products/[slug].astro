@@ -8,6 +8,7 @@ import { t, langOf, localePath, type Lang } from '../../i18n';
 import { pickRelated } from '../../lib/related';
 import { isLowStock } from '../../lib/stock';
 import { warrantyDaysFor, warrantyUnit } from '../../lib/warranty';
+import { starsHtml, isTrusted } from '../../lib/community';
 import { getAllProducts, getCategories, getProductBySlug } from '../../services/products';
 import { getReviewSummary, getReviews } from '../../services/reviews';
 import { badgeOffersFor, moroccoToday } from '../../lib/offers';
@@ -45,6 +46,8 @@ const related = pickRelated(product, getAllProducts(lang), 4);
 const rv = getReviewSummary(product.id);
 const reviews = getReviews(product.id).slice(0, 20);
 const hasTier = rv.tier !== 'none';
+const cm = site.community;
+const trusted = isTrusted(rv, !!product.trusted, cm.crown);
 const fmtAvg = (n: number) => (lang === 'fr' ? String(n).replace('.', ',') : String(n));
 const stars = (n: number) => '★'.repeat(n) + '☆'.repeat(5 - n);
 const sep = lang === 'fr' ? '›' : '‹';
@@ -103,6 +106,7 @@ if (product.price !== null) {
         <div class="info">
           {category ? <span class="cat">{category.name}</span> : null}
           <h1>{product.name}</h1>
+          {cm.crown.enabled ? <p class="crown-line" data-pid-crown={product.id} hidden={!trusted}><span class="crown-inline">👑 {t(lang, 'community.crown')}</span></p> : null}
           <p class="ref">{t(lang, 'product.ref', { id: product.id })}</p>
 
           <p class="prices">
@@ -136,6 +140,7 @@ if (product.price !== null) {
               </a>
             ) : null}
             <a class="btn btn-outline" href={phoneHref}>{t(lang, 'product.call')}</a>
+            {cm.likesEnabled ? <button type="button" class="like" data-like={product.id} aria-pressed="false" aria-label={t(lang, 'community.like')} hidden><span class="heart" aria-hidden="true">♡</span><span class="lc" aria-hidden="true"></span></button> : null}
           </div>
           <p class="note">{t(lang, 'product.note')}</p>
         </div>
@@ -160,32 +165,29 @@ if (product.price !== null) {
         ) : null}
       </div>
 
-      <section class="reviews" id="reviews" aria-labelledby="rv-h" data-tier={hasTier ? rv.tier : undefined}>
+      <section class="reviews" id="reviews" aria-labelledby="rv-h" data-pid={product.id} data-tier={hasTier ? rv.tier : undefined} data-rv-count={rv.count} data-rv-points={rv.points} data-rv-sum={rv.sum} data-trusted={product.trusted ? '1' : undefined}>
         <h2 id="rv-h">{t(lang, 'reviews.title')}</h2>
-        {rv.count > 0 ? (
-          <>
-            <p class="rv-sum">
-              <strong>★ {fmtAvg(rv.average)}</strong> · {t(lang, 'reviews.summary', { avg: fmtAvg(rv.average), count: rv.count })}
-              {hasTier ? <span class="rv-tier">{t(lang, `reviews.tier.${rv.tier}`)}</span> : null}
-            </p>
-            <p class="note">{t(lang, 'reviews.explain')}</p>
-            <ul class="rv-list">
-              {reviews.map((r) => (
-                <li class="rv">
-                  <div class="rv-h">
-                    <strong>{r.author ?? t(lang, 'reviews.customer')}</strong>
-                    {r.buyer === 'verified' ? <span class="rv-b">{t(lang, 'reviews.verified')}</span> : null}
-                    <span class="rv-s" role="img" aria-label={t(lang, 'reviews.stars', { n: r.rating })}>{stars(r.rating)}</span>
-                    {r.date ? <time datetime={r.date}>{r.date.slice(0, 10)}</time> : null}
-                  </div>
-                  {r.comment ? <p>{r.comment}</p> : null}
-                </li>
-              ))}
-            </ul>
-          </>
-        ) : (
-          <p class="note">{t(lang, 'reviews.empty')}</p>
-        )}
+        <p class="rv-sum" hidden={rv.count === 0}>
+          <span class="st" set:html={starsHtml(rv.average)}></span>
+          <strong class="avg">{fmtAvg(rv.average)}</strong> · <span class="sum-text">{t(lang, 'reviews.summary', { avg: fmtAvg(rv.average), count: rv.count })}</span>
+          <span class="rv-tier">{hasTier ? t(lang, `reviews.tier.${rv.tier}`) : ''}</span>
+        </p>
+        <p class="note rv-explain" hidden={rv.count === 0}>{t(lang, 'reviews.explain')}</p>
+        <p class="note rv-empty" hidden={rv.count > 0}>{t(lang, 'reviews.empty')}</p>
+        <ul class="rv-list" id="rv-list">
+          {reviews.map((r) => (
+            <li class="rv">
+              <div class="rv-h">
+                <strong>{r.author ?? t(lang, 'reviews.customer')}</strong>
+                {r.buyer === 'verified' ? <span class="rv-b">{t(lang, 'reviews.verified')}</span> : null}
+                <span class="rv-s" role="img" aria-label={t(lang, 'reviews.stars', { n: r.rating })}>{stars(r.rating)}</span>
+                {r.date ? <time datetime={r.date}>{r.date.slice(0, 10)}</time> : null}
+              </div>
+              {r.comment ? <p>{r.comment}</p> : null}
+            </li>
+          ))}
+        </ul>
+        {cm.reviewsEnabled ? <div id="rv-form-slot" hidden></div> : null}
       </section>
     </div>
   </section>
@@ -236,7 +238,10 @@ if (product.price !== null) {
   .reviews[data-tier='green-light'] { --tier-text: #4d7c0f; }
   .reviews[data-tier='yellow'] { --tier-text: #854d0e; }
   .rv-sum { font-size: 1.1rem; margin: 0 0 4px; }
+  .rv-sum[hidden], .rv-explain[hidden], .rv-empty[hidden] { display: none; }
   .rv-sum strong { color: #b45309; }
+  .crown-line { margin: 4px 0 8px; }
+  .crown-line[hidden] { display: none; }
   .rv-tier { margin-inline-start: 8px; font-weight: 700; color: var(--tier-text); }
   .rv-list { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 10px; }
   .rv { background: #fff; border: 1px solid var(--c-border); border-radius: 10px; padding: 12px 14px; }

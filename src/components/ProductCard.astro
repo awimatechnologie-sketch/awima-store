@@ -5,6 +5,7 @@ import { t, langOf, localePath, type Lang } from '../i18n';
 import { getReviewSummary } from '../services/reviews';
 import { site } from '../config/site';
 import { badgeOffersFor, moroccoToday } from '../lib/offers';
+import { starsHtml, isTrusted } from '../lib/community';
 interface Props { product: Product; categoryName?: string; lang?: Lang }
 const { product, categoryName } = Astro.props;
 const lang = langOf(Astro.props.lang);
@@ -15,27 +16,30 @@ const hasTier = rv.tier !== 'none';
 const avgText = lang === 'fr' ? String(rv.average).replace('.', ',') : String(rv.average);
 const rvLabel = hasTier ? t(lang, `reviews.tier.${rv.tier}`) : '';
 const canAdd = product.availability !== 'out_of_stock';
+const cm = site.community;
+const trusted = isTrusted(rv, !!product.trusted, cm.crown);
+const ariaTpl = t(lang, 'reviews.aria', { avg: '{avg}', count: '{count}', tier: '{tier}' });
 const today = moroccoToday();
 const offer = badgeOffersFor(site.autoOffers, product, today)[0];
 const offerValue = offer ? (offer.type === 'percent' ? `${offer.value}%` : formatPrice(offer.value, lang)) : '';
 ---
-<article class="card pc" data-tier={hasTier ? rv.tier : undefined}>
+<article class="card pc" data-pid={product.id} data-tier={hasTier ? rv.tier : undefined} data-rv-count={rv.count} data-rv-points={rv.points} data-rv-sum={rv.sum} data-trusted={product.trusted ? '1' : undefined}>
   <a class="link" href={localePath(lang, `/products/${product.slug}`)}>
     <div class="media">
       <img src={product.images[0] ?? '/images/placeholder.svg'} alt={product.name} width="400" height="400" loading="lazy" decoding="async" />
+      {cm.crown.enabled ? <span class="crown" title={t(lang, 'community.crown')} hidden={!trusted}>👑 <span>{t(lang, 'community.crown')}</span></span> : null}
       {offer ? <span class="offer-badge" data-offer-start={offer.start ?? undefined} data-offer-end={offer.end ?? undefined} hidden={!!offer.start && today < offer.start}>{t(lang, offer.minQty > 1 ? 'offer.badge.min' : 'offer.badge.single', { value: offerValue })}</span> : null}
       {saving ? <span class="save">{t(lang, 'price.save', { amount: formatPrice(saving, lang) })}</span> : null}
     </div>
     <div class="body">
       {categoryName ? <span class="cat">{categoryName}</span> : null}
       <h3>{product.name}</h3>
-      {rv.count > 0 ? (
-        <p class="rate" aria-label={t(lang, 'reviews.aria', { avg: avgText, count: rv.count, tier: rvLabel })}>
-          <span class="stars" aria-hidden="true">★ {avgText}</span>
-          <span class="n" aria-hidden="true">({rv.count})</span>
-          {hasTier ? <span class="tier" aria-hidden="true">{rvLabel}</span> : null}
-        </p>
-      ) : null}
+      <p class="rate" data-aria={ariaTpl} aria-label={rv.count > 0 ? t(lang, 'reviews.aria', { avg: avgText, count: rv.count, tier: rvLabel }) : undefined} hidden={rv.count === 0}>
+        <span class="st" set:html={starsHtml(rv.average)}></span>
+        <span class="avg" aria-hidden="true">{avgText}</span>
+        <span class="n" aria-hidden="true">({rv.count})</span>
+        <span class="tier" aria-hidden="true">{rvLabel}</span>
+      </p>
       <p class="prices">
         <span class="price">{formatPrice(product.price, lang)}</span>
         {saving ? <del class="old">{formatPrice(product.oldPrice, lang)}</del> : null}
@@ -43,9 +47,14 @@ const offerValue = offer ? (offer.type === 'percent' ? `${offer.value}%` : forma
       <span class={`badge ${av.cls}`}>{av.text}</span>
     </div>
   </a>
-  {canAdd && (
+  {(canAdd || cm.likesEnabled) && (
     <div class="foot">
-      <button type="button" class="btn btn-cart add" data-add-to-cart={product.id} data-name={product.name} data-stock={product.stock ?? undefined}>{t(lang, 'product.addToCart')}</button>
+      {canAdd && <button type="button" class="btn btn-cart add" data-add-to-cart={product.id} data-name={product.name} data-stock={product.stock ?? undefined}>{t(lang, 'product.addToCart')}</button>}
+      {cm.likesEnabled && (
+        <button type="button" class="like" data-like={product.id} aria-pressed="false" aria-label={t(lang, 'community.like')} hidden>
+          <span class="heart" aria-hidden="true">♡</span><span class="lc" aria-hidden="true"></span>
+        </button>
+      )}
     </div>
   )}
 </article>
@@ -70,10 +79,11 @@ const offerValue = offer ? (offer.type === 'percent' ? `${offer.value}%` : forma
   .pc[data-tier='green-light'] { --tier: #84cc16; --tier-text: #4d7c0f; }
   .pc[data-tier='yellow'] { --tier: #eab308; --tier-text: #854d0e; }
   .pc[data-tier] { border-color: var(--tier); }
-  .rate { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 6px; margin: 0 0 4px; font-size: 0.85rem; }
-  .stars { color: #b45309; font-weight: 700; }
+  .rate[hidden] { display: none; }
+  .rate { display: flex; align-items: center; flex-wrap: wrap; gap: 2px 6px; margin: 0 0 4px; font-size: 0.85rem; }
+  .avg { color: #b45309; font-weight: 700; }
   .n { color: var(--c-muted); }
   .tier { color: var(--tier-text); font-weight: 700; }
-  .foot { padding: 0 12px 12px; }
-  .add { width: 100%; padding: 10px 12px; font-size: 0.95rem; }
+  .foot { padding: 0 12px 12px; display: flex; gap: 8px; align-items: stretch; }
+  .add { flex: 1; padding: 10px 12px; font-size: 0.95rem; }
 </style>

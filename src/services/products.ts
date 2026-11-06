@@ -70,6 +70,7 @@ function normalizeProduct(file: string, r: any): Product {
     related: Array.isArray(r.related) ? r.related.map(String).filter(Boolean) : [],
     hidden: Boolean(r.hidden),
     warranty: typeof r.warranty === 'number' && Number.isInteger(r.warranty) && r.warranty >= 0 ? r.warranty : null,
+    trusted: r.trusted === true,
     leadDays: typeof r.leadDays === 'number' && Number.isInteger(r.leadDays) && r.leadDays > 0 ? r.leadDays : null,
     ports: normalizePorts(r.ports),
   };
