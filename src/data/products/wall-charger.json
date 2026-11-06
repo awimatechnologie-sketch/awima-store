@@ -1,0 +1,22 @@
+{
+  "id": "P-0023",
+  "name": "رأس شحن جداري",
+  "slug": "wall-charger",
+  "shortDescription": "رأس شحن USB لشحن الهاتف من مقبس الكهرباء",
+  "description": "رأس شحن جداري بمنفذ USB لشحن الهاتف والملحقات. يُستعمل مع كابل مناسب لمنفذ الهاتف.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "شاحن رأس شحن شارجور كهرباء chargeur prise adaptateur secteur",
+  "hidden": true,
+  "fr": {
+    "name": "Chargeur mural USB",
+    "shortDescription": "Adaptateur secteur USB pour charger téléphone et accessoires",
+    "description": "Chargeur mural avec port USB pour téléphone et accessoires, à utiliser avec un câble adapté au port de l’appareil."
+  }
+}

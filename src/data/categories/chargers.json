@@ -1,0 +1,8 @@
+{
+  "id": "cat-chargers",
+  "name": "شواحن ورؤوس شحن",
+  "slug": "chargers",
+  "order": 64,
+  "name_fr": "Chargeurs",
+  "parent": "cat-phone-accessories"
+}

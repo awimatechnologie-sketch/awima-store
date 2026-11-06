@@ -1,0 +1,8 @@
+{
+  "id": "cat-cleaning-care",
+  "name": "تنظيف وعناية",
+  "slug": "cleaning-care",
+  "order": 76,
+  "name_fr": "Nettoyage et entretien",
+  "parent": "cat-computer-accessories"
+}

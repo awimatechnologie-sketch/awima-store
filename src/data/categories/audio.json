@@ -1,0 +1,8 @@
+{
+  "id": "cat-audio",
+  "name": "سماعات",
+  "slug": "audio",
+  "order": 66,
+  "name_fr": "Écouteurs et casques",
+  "parent": "cat-phone-accessories"
+}

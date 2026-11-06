@@ -1,0 +1,22 @@
+{
+  "id": "P-0028",
+  "name": "لوحة مفاتيح USB",
+  "slug": "usb-keyboard",
+  "shortDescription": "لوحة مفاتيح سلكية للحاسوب",
+  "description": "لوحة مفاتيح سلكية بتوصيل USB للحواسب المكتبية والمحمولة. يُحدَّد ترتيب الأحرف (عربي/فرنسي) عند الطلب.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-keyboards-mice",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "كيبورد لوحة مفاتيح clavier keyboard سلكي",
+  "hidden": true,
+  "fr": {
+    "name": "Clavier USB",
+    "shortDescription": "Clavier filaire pour ordinateur",
+    "description": "Clavier filaire USB pour PC de bureau et portables. La disposition (arabe/français) est précisée à la commande."
+  }
+}

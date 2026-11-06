@@ -1,0 +1,8 @@
+{
+  "id": "cat-phone-holders",
+  "name": "حوامل الهواتف",
+  "slug": "phone-holders",
+  "order": 61,
+  "name_fr": "Supports de téléphone",
+  "parent": "cat-phone-accessories"
+}

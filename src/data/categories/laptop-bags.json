@@ -1,0 +1,8 @@
+{
+  "id": "cat-laptop-bags",
+  "name": "حقائب وأغلفة الحواسب",
+  "slug": "laptop-bags",
+  "order": 72,
+  "name_fr": "Sacs et housses PC",
+  "parent": "cat-computer-accessories"
+}

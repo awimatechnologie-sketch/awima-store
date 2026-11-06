@@ -1,0 +1,22 @@
+{
+  "id": "P-0031",
+  "name": "حامل للحاسوب المحمول",
+  "slug": "laptop-stand",
+  "shortDescription": "حامل يرفع الحاسوب لراحة أكبر ولتهوية أفضل",
+  "description": "حامل يرفع الحاسوب المحمول لوضعية عمل أريح ويحسّن مرور الهواء تحته.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-laptop-stands",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "حامل لابتوب ستاند مبرد support pc refroidisseur ventilateur",
+  "hidden": true,
+  "fr": {
+    "name": "Support pour ordinateur portable",
+    "shortDescription": "Support qui surélève le PC pour plus de confort et d’aération",
+    "description": "Support qui surélève l’ordinateur portable pour une posture plus confortable et une meilleure aération."
+  }
+}

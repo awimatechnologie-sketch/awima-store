@@ -1,0 +1,8 @@
+{
+  "id": "cat-power-banks",
+  "name": "بنوك الطاقة",
+  "slug": "power-banks",
+  "order": 65,
+  "name_fr": "Batteries externes",
+  "parent": "cat-phone-accessories"
+}

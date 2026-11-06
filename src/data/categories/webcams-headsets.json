@@ -1,0 +1,8 @@
+{
+  "id": "cat-webcams-headsets",
+  "name": "كاميرات وسماعات رأس",
+  "slug": "webcams-headsets",
+  "order": 74,
+  "name_fr": "Webcams et casques",
+  "parent": "cat-computer-accessories"
+}

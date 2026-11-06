@@ -12,6 +12,10 @@ const products = getAllProducts(lang);
 const otherById = new Map(getAllProducts(lang === 'fr' ? 'ar' : 'fr').map((p) => [p.id, p]));
 const categories = getCategories(lang);
 const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
+const topCats = categories.filter((c) => !c.parent);
+const subsOf = (id: string) => categories.filter((c) => c.parent === id);
+const parentSlug = (catId: string) => { const p = catById[catId]?.parent; return p ? catById[p]?.slug ?? '' : ''; };
+const catPath = (catId: string) => [catById[catId]?.parent ? catById[catById[catId].parent as string]?.name : '', catById[catId]?.name ?? ''].filter(Boolean).join(' ');
 ---
 <BaseLayout
   lang={lang}
@@ -45,10 +49,17 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
 
       <div class="chips" id="chips" role="group" aria-label={t(lang, 'products.categories')}>
         <button type="button" class="chip" data-cat="" aria-pressed="true">{t(lang, 'products.all')}</button>
-        {categories.map((c) => (
+        {topCats.map((c) => (
           <button type="button" class="chip" data-cat={c.slug} aria-pressed="false">{c.name}</button>
         ))}
       </div>
+      {topCats.filter((c) => subsOf(c.id).length > 0).map((c) => (
+        <div class="chips sub" data-sub-of={c.slug} role="group" aria-label={c.name} hidden>
+          {subsOf(c.id).map((k) => (
+            <button type="button" class="chip" data-cat={k.slug} data-parent={c.slug} aria-pressed="false">{k.name}</button>
+          ))}
+        </div>
+      ))}
 
       <p class="count" id="count" aria-live="polite"></p>
 
@@ -56,9 +67,10 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
         {products.map((p) => (
           <li
             data-name={p.name}
-            data-text={[p.name, p.shortDescription, p.description, p.id, catById[p.category]?.name ?? '', ...Object.entries(p.specs).flat(), otherById.get(p.id)?.name ?? '', otherById.get(p.id)?.shortDescription ?? ''].join(' ')}
+            data-text={[p.name, p.shortDescription, p.description, p.id, catPath(p.category), p.keywords ?? '', otherById.get(p.id)?.keywords ?? '', ...Object.entries(p.specs).flat(), otherById.get(p.id)?.name ?? '', otherById.get(p.id)?.shortDescription ?? ''].join(' ')}
             data-av={p.availability}
             data-cat={catById[p.category]?.slug ?? ''}
+            data-parent={parentSlug(p.category)}
             data-price={p.price ?? ''}
             data-rating={getReviewSummary(p.id).average}
             data-points={getReviewSummary(p.id).points}
@@ -94,6 +106,9 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
     padding: 8px 16px; border-radius: 999px; border: 1px solid var(--c-border);
     background: #fff; color: var(--c-primary);
   }
+  .chips.sub { padding-inline-start: 12px; }
+  .chips.sub[hidden] { display: none; }
+  .chips.sub .chip { padding: 5px 13px; font-size: 0.9rem; }
   .chip[aria-pressed='true'] { background: var(--c-accent); border-color: var(--c-accent); color: #fff; }
   .count { color: var(--c-muted); font-size: 0.9rem; margin: 8px 0 12px; }
   .list { list-style: none; padding: 0; margin: 0; }
@@ -125,7 +140,7 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
 
   function apply() {
     let visible = original.filter((li) => {
-      const okCat = !cat || li.dataset.cat === cat;
+      const okCat = !cat || li.dataset.cat === cat || li.dataset.parent === cat;
       const okText = matches(q.value, haystack.get(li) ?? '');
       const okStock = !instock.checked || li.dataset.av !== 'out_of_stock';
       return okCat && okText && okStock;
@@ -173,7 +188,10 @@ const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
 
   function setCat(slug: string) {
     cat = slug;
-    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.cat === slug)));
+    const active = chips.find((c) => c.dataset.cat === slug && slug);
+    const top = active?.dataset.parent || slug; // القسم الرئيسي النشط
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.cat === slug || (!!c.dataset.cat && !c.dataset.parent && c.dataset.cat === top && !!slug))));
+    document.querySelectorAll<HTMLElement>('[data-sub-of]').forEach((row) => (row.hidden = row.dataset.subOf !== top || !slug));
   }
 
   chips.forEach((c) =>

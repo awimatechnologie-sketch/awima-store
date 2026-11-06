@@ -1,0 +1,22 @@
+{
+  "id": "P-0027",
+  "name": "طقم مفكات لصيانة الهواتف",
+  "slug": "phone-repair-screwdriver-set",
+  "shortDescription": "مفكات دقيقة وأدوات فتح لصيانة الهواتف",
+  "description": "طقم مفكات دقيقة مع أدوات فتح لتفكيك الهواتف وصيانتها.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-repair-tools",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "مفكات مفك صيانة عدة اصلاح فتح هاتف tournevis kit outils reparation demontage",
+  "hidden": true,
+  "fr": {
+    "name": "Kit de tournevis pour réparation de téléphones",
+    "shortDescription": "Tournevis de précision et outils d’ouverture",
+    "description": "Kit de tournevis de précision avec outils d’ouverture pour démonter et réparer les téléphones."
+  }
+}

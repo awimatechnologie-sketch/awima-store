@@ -1,0 +1,22 @@
+{
+  "id": "P-0021",
+  "name": "زجاج حماية للشاشة",
+  "slug": "tempered-glass-protector",
+  "shortDescription": "زجاج مقوّى يحمي شاشة الهاتف من الخدوش والكسر",
+  "description": "زجاج مقوّى يلصق على الشاشة ويحميها من الخدوش والصدمات الخفيفة. يُحدَّد الموديل عند الطلب.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-screen-protectors",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "واقي شاشة زجاج مقوى كوك بروتيكتور سكرين بروتكتور verre trempe protege ecran film",
+  "hidden": true,
+  "fr": {
+    "name": "Verre trempé de protection d’écran",
+    "shortDescription": "Verre trempé contre rayures et chocs légers",
+    "description": "Verre trempé à coller sur l’écran contre les rayures et petits chocs. Le modèle est précisé à la commande."
+  }
+}

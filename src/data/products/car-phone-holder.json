@@ -1,0 +1,22 @@
+{
+  "id": "P-0020",
+  "name": "حامل هاتف للسيارة",
+  "slug": "car-phone-holder",
+  "shortDescription": "حامل ثابت للهاتف داخل السيارة لاستعمال الخريطة والمكالمات بأمان",
+  "description": "حامل هاتف للسيارة يثبّت الهاتف أمام السائق ليستعمل الخريطة والمكالمات دون إمساكه.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-phone-holders",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "حامل سيارة حامل تلفون تثبيت هاتف support voiture porte telephone gps",
+  "hidden": true,
+  "fr": {
+    "name": "Support téléphone pour voiture",
+    "shortDescription": "Support fixe pour utiliser GPS et appels en toute sécurité",
+    "description": "Support de téléphone pour voiture qui maintient l’appareil devant le conducteur pour le GPS et les appels."
+  }
+}

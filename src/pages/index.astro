@@ -40,7 +40,7 @@ const reasons = [1, 2, 3, 4].map((n) => ({ t: t(lang, `home.r${n}.t`), d: t(lang
     <div class="container">
       <h2 id="cats">{t(lang, 'home.shopByCat')}</h2>
       <div class="grid grid-4">
-        {categories.map((c) => (
+        {categories.filter((c) => !c.parent).map((c) => (
           <a class="card cat" href={localePath(lang, `/products?category=${c.slug}`)}>{c.name}</a>
         ))}
       </div>

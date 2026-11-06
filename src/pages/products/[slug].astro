@@ -23,6 +23,7 @@ const { slug } = Astro.params;
 const product = getProductBySlug(slug as string, lang)!;
 const categories = getCategories(lang);
 const category = categories.find((c) => c.id === product.category);
+const parentCat = category?.parent ? categories.find((c) => c.id === category.parent) : undefined;
 const catName = Object.fromEntries(categories.map((c) => [c.id, c.name]));
 
 const pageUrl = new URL(localePath(lang, `/products/${product.slug}`), site.url).href;
@@ -84,6 +85,7 @@ if (product.price !== null) {
     <div class="container">
       <nav class="crumbs" aria-label={t(lang, 'nav.breadcrumb')}>
         <a href={localePath(lang, '/')}>{t(lang, 'nav.home')}</a> {sep} <a href={localePath(lang, '/products')}>{t(lang, 'nav.products')}</a>
+        {parentCat ? <> {sep} <a href={localePath(lang, `/products?category=${parentCat.slug}`)}>{parentCat.name}</a></> : null}
         {category ? <> {sep} <a href={localePath(lang, `/products?category=${category.slug}`)}>{category.name}</a></> : null}
       </nav>
 

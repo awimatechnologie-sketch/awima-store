@@ -1,0 +1,8 @@
+{
+  "id": "cat-keyboards-mice",
+  "name": "لوحات المفاتيح والفأرات",
+  "slug": "keyboards-mice",
+  "order": 71,
+  "name_fr": "Claviers et souris",
+  "parent": "cat-computer-accessories"
+}

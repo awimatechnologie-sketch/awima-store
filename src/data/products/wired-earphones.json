@@ -1,0 +1,22 @@
+{
+  "id": "P-0025",
+  "name": "سماعات أذن بسلك",
+  "slug": "wired-earphones",
+  "shortDescription": "سماعات سلكية بميكروفون للمكالمات والموسيقى",
+  "description": "سماعات أذن سلكية بميكروفون للمكالمات والموسيقى. يُحدَّد نوع الوصلة (3.5mm أو USB-C أو Lightning) عند الطلب.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "سماعة سماعات اذن كاسك ايرفون écouteurs casque oreillette micro",
+  "hidden": true,
+  "fr": {
+    "name": "Écouteurs filaires",
+    "shortDescription": "Écouteurs filaires avec micro pour appels et musique",
+    "description": "Écouteurs filaires avec micro. Le type de connecteur (3,5 mm, USB-C ou Lightning) est précisé à la commande."
+  }
+}

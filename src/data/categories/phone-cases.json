@@ -1,0 +1,8 @@
+{
+  "id": "cat-phone-cases",
+  "name": "أغلفة وحافظات",
+  "slug": "phone-cases",
+  "order": 63,
+  "name_fr": "Coques et étuis",
+  "parent": "cat-phone-accessories"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "cat-repair-tools",
+  "name": "أدوات صيانة الهواتف",
+  "slug": "repair-tools",
+  "order": 68,
+  "name_fr": "Outils de réparation",
+  "parent": "cat-phone-accessories"
+}

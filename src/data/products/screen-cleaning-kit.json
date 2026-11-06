@@ -1,0 +1,22 @@
+{
+  "id": "P-0034",
+  "name": "طقم تنظيف الشاشات",
+  "slug": "screen-cleaning-kit",
+  "shortDescription": "سائل ومنشفة لتنظيف شاشات الحاسوب والهاتف",
+  "description": "طقم تنظيف لشاشات الحاسوب والهاتف والتلفاز بمنشفة ناعمة لا تخدش.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-cleaning-care",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "تنظيف شاشة منظف منشفة kit nettoyage ecran chiffon microfibre",
+  "hidden": true,
+  "fr": {
+    "name": "Kit de nettoyage d’écran",
+    "shortDescription": "Liquide et chiffon pour écrans PC et téléphone",
+    "description": "Kit de nettoyage pour écrans d’ordinateur, téléphone et TV avec chiffon doux qui ne raye pas."
+  }
+}

@@ -59,6 +59,7 @@ collections:
           - { label: عند الطلب, value: on_request }
         default: in_stock
       - { label: الكمية في المخزون (اتركه فارغاً = غير محدود، و0 = غير متوفر تلقائياً), name: stock, widget: number, value_type: int, min: 0, required: false, hint: 'عدّلها بعد كل بيع. تمنع السلة طلب كمية أكبر منها. إن كانت حالة التوفر «غير متوفر» فتبقى كذلك مهما كان المخزون.' }
+      - { label: 'كلمات بحث إضافية (مرادفات بالعربية والفرنسية والدارجة، مفصولة بمسافة)', name: keywords, widget: text, required: false, hint: 'مثال لواقي الشاشة: كوك واقي سكرين بروتكتور verre trempé. تساعد الزائر على إيجاد المنتج بالاسم الذي يعرفه.' }
       - { label: منتج مميز (يظهر في الرئيسية), name: featured, widget: boolean, default: false }
       - { label: 'اختيار Awima 👑 (تاج «منتج موثوق» يدوياً)', name: trusted, widget: boolean, default: false, required: false, hint: 'يمنح التاج مهما كانت التقييمات. بدونه ينال المنتج التاج تلقائياً عند بلوغ حدّ التاج في الإعدادات ← مجتمع الموقع.' }
       - { label: 'مدة الضمان بالأيام (فارغ = الافتراضية العامة، 0 = بلا ضمان لهذا المنتج)', name: warranty, widget: number, value_type: int, min: 0, required: false, hint: 'لا تظهر شارة الضمان إلا إذا فعّلت الضمان من الإعدادات ← الضمان. 30 = شهر، 365 = سنة.' }
@@ -129,6 +130,15 @@ collections:
       - { label: اسم القسم بالفرنسية (اختياري), name: name_fr, widget: string, required: false }
       - { label: الرابط (slug), name: slug, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'حروف لاتينية صغيرة وأرقام وشرطات فقط'] }
       - { label: ترتيب الظهور (1 أولاً), name: order, widget: number, value_type: int, min: 1, default: 99 }
+      - label: القسم الرئيسي (اتركه فارغاً ليكون هذا قسماً رئيسياً)
+        name: parent
+        widget: relation
+        collection: categories
+        value_field: id
+        search_fields: [name]
+        display_fields: [name]
+        required: false
+        hint: 'لجعله قسماً فرعياً اختر قسمه الرئيسي (مثل إكسسوارات الهواتف). مستوى واحد فقط. القسم الرئيسي يظهر تلقائياً عند وجود منتجات في فروعه.'
 
   # ---------------- تقييمات الزبائن ----------------
   - name: reviews

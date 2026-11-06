@@ -1,0 +1,8 @@
+{
+  "id": "cat-laptop-stands",
+  "name": "حوامل ومبرّدات الحواسب",
+  "slug": "laptop-stands",
+  "order": 73,
+  "name_fr": "Supports et refroidisseurs PC",
+  "parent": "cat-computer-accessories"
+}

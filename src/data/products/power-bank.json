@@ -1,0 +1,22 @@
+{
+  "id": "P-0024",
+  "name": "باور بانك",
+  "slug": "power-bank",
+  "shortDescription": "بطارية خارجية لشحن الهاتف أثناء التنقل",
+  "description": "بطارية خارجية محمولة تشحن الهاتف في أي مكان دون كهرباء.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-power-banks",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "باور بانك بطارية متنقلة شاحن متنقل batterie externe powerbank",
+  "hidden": true,
+  "fr": {
+    "name": "Batterie externe (power bank)",
+    "shortDescription": "Batterie portable pour recharger en déplacement",
+    "description": "Batterie externe portable pour recharger le téléphone partout sans prise électrique."
+  }
+}

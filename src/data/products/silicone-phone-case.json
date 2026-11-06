@@ -1,0 +1,22 @@
+{
+  "id": "P-0022",
+  "name": "غلاف سيليكون للهاتف",
+  "slug": "silicone-phone-case",
+  "shortDescription": "غلاف مرن يحمي الهاتف من السقوط والخدوش",
+  "description": "غلاف سيليكون مرن يحمي جسم الهاتف من الخدوش والسقوط الخفيف. يُحدَّد الموديل عند الطلب.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-phone-cases",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "غلاف كوفر جيكة جراب حافظة هاتف coque etui housse telephone silicone",
+  "hidden": true,
+  "fr": {
+    "name": "Coque silicone pour téléphone",
+    "shortDescription": "Coque souple contre chutes et rayures",
+    "description": "Coque en silicone souple qui protège le téléphone des rayures et chutes légères. Le modèle est précisé à la commande."
+  }
+}

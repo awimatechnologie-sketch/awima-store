@@ -1,0 +1,8 @@
+{
+  "id": "cat-laptop-chargers",
+  "name": "شواحن الحواسب",
+  "slug": "laptop-chargers",
+  "order": 75,
+  "name_fr": "Chargeurs PC",
+  "parent": "cat-computer-accessories"
+}

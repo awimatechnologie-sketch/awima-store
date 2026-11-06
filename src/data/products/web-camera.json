@@ -1,0 +1,22 @@
+{
+  "id": "P-0032",
+  "name": "كاميرا ويب",
+  "slug": "web-camera",
+  "shortDescription": "كاميرا USB لمكالمات الفيديو والدراسة عن بعد",
+  "description": "كاميرا ويب بتوصيل USB لمكالمات الفيديو والاجتماعات والدراسة عن بعد.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-webcams-headsets",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "كاميرا ويب webcam camera usb مكالمات فيديو visio",
+  "hidden": true,
+  "fr": {
+    "name": "Webcam",
+    "shortDescription": "Caméra USB pour visioconférence et cours à distance",
+    "description": "Webcam USB pour appels vidéo, réunions et cours à distance."
+  }
+}

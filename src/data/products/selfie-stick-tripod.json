@@ -1,0 +1,22 @@
+{
+  "id": "P-0026",
+  "name": "عصا سيلفي بحامل ثلاثي",
+  "slug": "selfie-stick-tripod",
+  "shortDescription": "عصا تصوير قابلة للطي مع حامل ثلاثي للهاتف",
+  "description": "عصا سيلفي قابلة للطي تتحول إلى حامل ثلاثي لتصوير الصور والفيديو بالهاتف.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-camera-accessories",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "سيلفي ستيك عصا تصوير ترايبود حامل ثلاثي perche selfie trepied stick",
+  "hidden": true,
+  "fr": {
+    "name": "Perche à selfie avec trépied",
+    "shortDescription": "Perche pliable avec trépied pour photos et vidéos",
+    "description": "Perche à selfie pliable qui se transforme en trépied pour photographier et filmer avec le téléphone."
+  }
+}

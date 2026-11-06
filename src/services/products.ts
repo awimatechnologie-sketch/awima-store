@@ -70,6 +70,7 @@ function normalizeProduct(file: string, r: any): Product {
     related: Array.isArray(r.related) ? r.related.map(String).filter(Boolean) : [],
     hidden: Boolean(r.hidden),
     warranty: typeof r.warranty === 'number' && Number.isInteger(r.warranty) && r.warranty >= 0 ? r.warranty : null,
+    keywords: typeof r.keywords === 'string' ? r.keywords.trim() : '',
     trusted: r.trusted === true,
     leadDays: typeof r.leadDays === 'number' && Number.isInteger(r.leadDays) && r.leadDays > 0 ? r.leadDays : null,
     ports: normalizePorts(r.ports),
@@ -80,10 +81,10 @@ const categories: Category[] = Object.entries(categoryFiles)
   .map(([file, r]) => {
     if (!r?.id || !r?.name || !r?.slug)
       throw new Error(`قسم ناقص البيانات (${file})`);
-    return { id: String(r.id), name: String(r.name), slug: String(r.slug), nameFr: typeof r.name_fr === 'string' && r.name_fr.trim() ? r.name_fr : undefined, order: Number(r.order ?? 999) };
+    return { id: String(r.id), name: String(r.name), slug: String(r.slug), nameFr: typeof r.name_fr === 'string' && r.name_fr.trim() ? r.name_fr : undefined, order: Number(r.order ?? 999), parent: typeof r.parent === 'string' && r.parent.trim() ? r.parent.trim() : undefined };
   })
   .sort((a, b) => a.order - b.order || a.name.localeCompare(b.name, 'ar'))
-  .map(({ id, name, slug, nameFr }) => ({ id, name, slug, nameFr }));
+  .map(({ id, name, slug, nameFr, parent }) => ({ id, name, slug, nameFr, parent }));
 
 const allProducts: Product[] = Object.entries(productFiles)
   .map(([file, r]) => normalizeProduct(file, r))
@@ -93,7 +94,10 @@ const allProducts: Product[] = Object.entries(productFiles)
 const ids = new Set<string>();
 const slugs = new Set<string>();
 const catSlugs = new Set<string>();
+const catIdSet = new Set(categories.map((c) => c.id));
 for (const c of categories) {
+  if (c.parent && (!catIdSet.has(c.parent) || c.parent === c.id)) throw new Error(`القسم الأب غير صالح للقسم ${c.id}: ${c.parent}`);
+  if (c.parent && categories.find((x) => x.id === c.parent)?.parent) throw new Error(`الأقسام تدعم مستوىً واحداً من الفروع فقط (${c.id})`);
   if (catSlugs.has(c.slug)) throw new Error(`slug قسم مكرر: ${c.slug}`);
   catSlugs.add(c.slug);
 }
@@ -110,7 +114,9 @@ for (const p of allProducts) {
 const products: Product[] = allProducts.filter((p) => !p.hidden);
 
 // الأقسام الفارغة لا تظهر في التنقل (الرئيسية وصفحة المنتجات)
-const usedCategories = categories.filter((c) => products.some((p) => p.category === c.id));
+// القسم الرئيسي يظهر إن كان له منتجات أو كان لأحد فروعه منتجات
+const hasProducts = (id: string) => products.some((p) => p.category === id);
+const usedCategories = categories.filter((c) => hasProducts(c.id) || categories.some((k) => k.parent === c.id && hasProducts(k.id)));
 
 // ---- اللغة: المحتوى الفرنسي اختياري، وما ليس له ترجمة يظهر بالعربية (الدوال في lib/localize.ts) ----
 const productsFr: Product[] = products.map((p) => localizeProduct(p, 'fr'));

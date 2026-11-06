@@ -1,0 +1,22 @@
+{
+  "id": "P-0030",
+  "name": "حقيبة للحاسوب المحمول",
+  "slug": "laptop-bag",
+  "shortDescription": "حقيبة تحمي الحاسوب المحمول أثناء التنقل",
+  "description": "حقيبة مبطّنة تحمي الحاسوب المحمول وملحقاته أثناء التنقل. يُحدَّد المقاس عند الطلب.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-laptop-bags",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "حقيبة لابتوب محفظة حاسوب جراب sacoche sac pc housse ordinateur portable",
+  "hidden": true,
+  "fr": {
+    "name": "Sac pour ordinateur portable",
+    "shortDescription": "Sac rembourré pour protéger le PC en déplacement",
+    "description": "Sac rembourré qui protège l’ordinateur portable et ses accessoires. La taille est précisée à la commande."
+  }
+}

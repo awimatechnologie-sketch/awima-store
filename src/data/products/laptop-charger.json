@@ -1,0 +1,22 @@
+{
+  "id": "P-0033",
+  "name": "شاحن حاسوب محمول",
+  "slug": "laptop-charger",
+  "shortDescription": "شاحن بديل للحاسوب المحمول حسب الماركة والموديل",
+  "description": "شاحن للحاسوب المحمول. يُحدَّد الموديل أو القدرة والوصلة عند الطلب للتأكد من التوافق.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-laptop-chargers",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "شاحن لابتوب شارجور حاسوب chargeur pc portable adaptateur",
+  "hidden": true,
+  "fr": {
+    "name": "Chargeur pour ordinateur portable",
+    "shortDescription": "Chargeur de remplacement selon la marque et le modèle",
+    "description": "Chargeur pour ordinateur portable. Le modèle, la puissance et le connecteur sont vérifiés à la commande."
+  }
+}

@@ -39,6 +39,7 @@ const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const TIME = /^([01]?\d|2[0-4]):[0-5]\d$/;
 
 // ---------- الأقسام ----------
+const catParents = [];
 const catIds = new Set();
 const catSlugs = new Set();
 for (const f of listJson(join(DATA, 'categories'))) {
@@ -56,10 +57,19 @@ for (const f of listJson(join(DATA, 'categories'))) {
   if (c.slug && basename(f, '.json') !== c.slug) warn(label, `اسم الملف لا يطابق slug (${c.slug})`);
   c.id && catIds.add(c.id);
   c.slug && catSlugs.add(c.slug);
+  catParents.push([label, c.id, c.parent]);
+}
+for (const [label, id, parent] of catParents) {
+  if (!parent) continue;
+  if (parent === id) err(label, 'القسم أب لنفسه');
+  else if (!catIds.has(parent)) err(label, `القسم الأب غير موجود: ${parent}`);
+  else if (catParents.find((x) => x[1] === parent)?.[2]) err(label, 'يُسمح بمستوى واحد من الأقسام الفرعية فقط');
 }
 
 // ---------- المنتجات ----------
 let anyProductWarranty = false;
+const draftsNoImage = [];
+const svgOnly = [];
 const pendingRelated = [];
 const untranslated = [];
 const untranslatedCats = [];
@@ -101,7 +111,9 @@ for (const f of listJson(join(DATA, 'products'))) {
 
   if (p.images !== undefined && !Array.isArray(p.images)) err(label, '"images" يجب أن تكون قائمة');
   const images = Array.isArray(p.images) ? p.images.filter(Boolean) : [];
-  if (images.length === 0) warn(label, 'لا توجد صور (ستظهر الصورة البديلة)');
+  if (images.length === 0 && !p.hidden) warn(label, 'لا توجد صور (ستظهر الصورة البديلة)');
+  if (images.length === 0 && p.hidden) draftsNoImage.push(p.slug ?? f);
+  if (!p.hidden && images.length && images.every((x) => /\.svg$/i.test(x))) svgOnly.push(p.slug ?? f);
   for (const img of images) {
     if (!publicFileExists(img)) (p.hidden ? warn : err)(label, `صورة غير موجودة في public: ${img}`);
   }
@@ -139,6 +151,8 @@ for (const [label, self, rel] of pendingRelated) {
   }
 }
 if (visibleCount === 0) warn('products', 'لا يوجد أي منتج ظاهر في الموقع');
+if (svgOnly.length) warn('images', `${svgOnly.length} منتج ظاهر بصور رسومية (SVG) بدل صور حقيقية: ${svgOnly.slice(0, 6).join('، ')}${svgOnly.length > 6 ? '…' : ''}`);
+if (draftsNoImage.length) console.log(`[check] ${draftsNoImage.length} مسودة مخفية تنتظر صوراً وأسعاراً (انشرها بإلغاء «إخفاء المنتج»).`);
 
 // ---------- الإعدادات ----------
 const sLabel = 'settings.json';

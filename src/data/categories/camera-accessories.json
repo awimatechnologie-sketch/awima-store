@@ -1,0 +1,8 @@
+{
+  "id": "cat-camera-accessories",
+  "name": "إكسسوارات التصوير",
+  "slug": "camera-accessories",
+  "order": 67,
+  "name_fr": "Accessoires photo",
+  "parent": "cat-phone-accessories"
+}

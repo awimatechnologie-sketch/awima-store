@@ -613,3 +613,12 @@ test('community: النجوم الجزئية والتحقق من التقييم'
   assert.equal(checkReview({ product: 'P-0001', rating: 5, device: 'abcdefgh12', comment: 'www.spam.com' }).error, 'links_not_allowed');
   assert.equal(checkReview({ product: 'P-0001', rating: 5, device: 'abcdefgh12', comment: 'x'.repeat(900) }).value.comment.length, 500);
 });
+
+test('search: كلمات البحث الإضافية والدارجة تجد المنتج', () => {
+  const hay = normalize(['زجاج حماية للشاشة', 'إكسسوارات الهواتف واقيات الشاشة', 'كوك واقي سكرين بروتكتور verre trempé protège écran'].join(' '));
+  assert.equal(matches('كوك', hay), true);
+  assert.equal(matches('verre trempe', hay), true);
+  assert.equal(matches('protege ecran', hay), true);
+  assert.equal(matches('اكسسوارات هواتف', hay), true);
+  assert.equal(matches('حامل سيارة', hay), false);
+});

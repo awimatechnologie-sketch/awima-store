@@ -1,0 +1,22 @@
+{
+  "id": "P-0029",
+  "name": "فأرة (ماوس) للحاسوب",
+  "slug": "usb-mouse",
+  "shortDescription": "فأرة بصرية للحاسوب المكتبي والمحمول",
+  "description": "فأرة بصرية بتوصيل USB أو لاسلكي حسب الموديل لاستعمال مريح مع الحاسوب.",
+  "price": null,
+  "currency": "MAD",
+  "category": "cat-keyboards-mice",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [],
+  "whatsappOrder": true,
+  "keywords": "ماوس فأرة سوريس souris mouse",
+  "hidden": true,
+  "fr": {
+    "name": "Souris pour ordinateur",
+    "shortDescription": "Souris optique pour PC de bureau et portable",
+    "description": "Souris optique USB ou sans fil selon le modèle pour une utilisation confortable."
+  }
+}
