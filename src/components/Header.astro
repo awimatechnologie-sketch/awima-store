@@ -46,13 +46,14 @@ const isActive = (href: string) => {
   .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px; padding-block: 6px; }
   .brand img { height: 52px; width: auto; }
   .brand { order: 0; }
-  .icon { order: 1; position: relative; display: inline-flex; padding: 8px; color: var(--c-primary); }
-  .lang { order: 1; margin-inline-start: auto; padding: 5px 12px; border: 1px solid var(--c-border); border-radius: 999px; font-weight: 700; font-size: 0.85rem; color: var(--c-primary); text-decoration: none; }
+  .icon { order: 1; position: relative; display: inline-flex; padding: 10px; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; color: var(--c-primary); }
+  .lang { order: 1; margin-inline-start: auto; display: inline-flex; align-items: center; min-height: 44px; padding: 5px 14px; border: 1px solid var(--c-border); border-radius: 999px; font-weight: 700; font-size: 0.85rem; color: var(--c-primary); text-decoration: none; }
   .lang:hover { background: var(--c-surface); }
   .count { position: absolute; top: 0; inset-inline-end: 0; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: var(--c-alert); color: #fff; font-size: 0.75rem; font-weight: 700; display: grid; place-items: center; }
-  nav { order: 2; width: 100%; overflow-x: auto; }
+  nav { order: 2; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  nav::-webkit-scrollbar { display: none; }
   ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
-  nav a { display: block; padding: 8px 14px; border-radius: 8px; text-decoration: none; font-weight: 600; color: var(--c-primary); white-space: nowrap; }
+  nav a { display: block; padding: 12px 14px; border-radius: 8px; text-decoration: none; font-weight: 600; color: var(--c-primary); white-space: nowrap; }
   nav a:hover { background: var(--c-surface); }
   nav a[aria-current='page'] { background: var(--c-accent); color: #fff; }
   @media (min-width: 720px) { nav { width: auto; order: 1; margin-inline-start: auto; } .lang { order: 2; margin-inline-start: 0; } .search { order: 3; } .cart { order: 4; } }

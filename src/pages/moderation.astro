@@ -2,12 +2,14 @@
 // صفحة مراجعة التقييمات (للمدير فقط): تتطلب التوكن السري ADMIN_TOKEN. لا تُفهرَس ولا تظهر في الخريطة.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getAllProducts } from '../services/products';
-const names = Object.fromEntries(getAllProducts().map((p) => [p.id, p.name]));
+const prods = getAllProducts();
+const names = Object.fromEntries(prods.map((p) => [p.id, p.name]));
+const slugs = Object.fromEntries(prods.map((p) => [p.id, p.slug]));
 ---
 <BaseLayout title="مراجعة التقييمات" alternates={false}>
   <meta slot="head" name="robots" content="noindex, nofollow" />
   <section class="section">
-    <div class="container narrow" id="mod" data-names={JSON.stringify(names)}>
+    <div class="container narrow" id="mod" data-names={JSON.stringify(names)} data-slugs={JSON.stringify(slugs)}>
       <h1>مراجعة التقييمات</h1>
       <form id="login" class="card box">
         <label>الرمز السري (ADMIN_TOKEN)<input id="token" type="password" autocomplete="off" required /></label>
@@ -19,6 +21,18 @@ const names = Object.fromEntries(getAllProducts().map((p) => [p.id, p.name]));
           <button type="button" data-st="approved" aria-pressed="false">المنشورة</button>
           <button type="button" data-st="rejected" aria-pressed="false">المرفوضة</button>
         </div>
+        <details class="card gen">
+          <summary>إنشاء رابط تقييم «مشترٍ موثّق» لزبون</summary>
+          <p class="hint">أرسل الرابط للزبون عبر واتساب بعد التسليم. يصلح لمنتج واحد، مرة واحدة، ويُسقط وسم «مشترٍ موثّق» (وزن 5) تلقائياً.</p>
+          <label>المنتج<select id="gen-product">{prods.map((p) => <option value={p.id}>{p.name}</option>)}</select></label>
+          <label>الصلاحية بالأيام<input id="gen-days" type="number" min="1" max="90" value="30" /></label>
+          <button type="button" id="gen-go" class="btn btn-cart">إنشاء الرابط</button>
+          <div id="gen-out" hidden>
+            <textarea id="gen-text" rows="4" readonly></textarea>
+            <button type="button" id="gen-copy" class="btn btn-outline">نسخ الرسالة</button>
+            <a id="gen-wa" class="btn btn-wa" target="_blank" rel="noopener">فتح في واتساب</a>
+          </div>
+        </details>
         <p id="msg" class="msg" aria-live="polite"></p>
         <ul id="list" class="list"></ul>
       </div>
@@ -32,6 +46,7 @@ const names = Object.fromEntries(getAllProducts().map((p) => [p.id, p.name]));
   const panel = document.getElementById('panel') as HTMLElement;
   const list = document.getElementById('list') as HTMLElement;
   const msg = document.getElementById('msg') as HTMLElement;
+  const slugs: Record<string, string> = JSON.parse(root.dataset.slugs || '{}');
   let token = '';
   let status = 'pending';
   try { token = sessionStorage.getItem('awima_mod') || ''; } catch { /* ignore */ }
@@ -78,6 +93,23 @@ const names = Object.fromEntries(getAllProducts().map((p) => [p.id, p.name]));
       panel.hidden = true; login.hidden = false;
     }
   }
+  document.getElementById('gen-go')!.addEventListener('click', async () => {
+    const pid = (document.getElementById('gen-product') as HTMLSelectElement).value;
+    const days = Number((document.getElementById('gen-days') as HTMLInputElement).value) || 30;
+    try {
+      const { token: tk } = await api('/api/admin/review-link', { product: pid, days });
+      const url = `${location.origin}/products/${slugs[pid]}?rv=${tk}#reviews`;
+      const text = `شكراً لشرائك ${names[pid] || ''} من AWIMA Store! يسعدنا تقييمك لتساعد زبائن آخرين:\n${url}`;
+      (document.getElementById('gen-text') as HTMLTextAreaElement).value = text;
+      (document.getElementById('gen-wa') as HTMLAnchorElement).href = `https://wa.me/?text=${encodeURIComponent(text)}`;
+      (document.getElementById('gen-out') as HTMLElement).hidden = false;
+      msg.textContent = '';
+    } catch (e) { msg.textContent = (e as Error).message; }
+  });
+  document.getElementById('gen-copy')!.addEventListener('click', async () => {
+    const ta = document.getElementById('gen-text') as HTMLTextAreaElement;
+    try { await navigator.clipboard.writeText(ta.value); msg.textContent = 'تم النسخ'; } catch { ta.select(); }
+  });
   login.addEventListener('submit', (e) => {
     e.preventDefault();
     token = (document.getElementById('token') as HTMLInputElement).value.trim();
@@ -100,6 +132,11 @@ const names = Object.fromEntries(getAllProducts().map((p) => [p.id, p.name]));
   .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
   .tabs button { font: inherit; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--c-border); background: #fff; cursor: pointer; }
   .tabs button[aria-pressed='true'] { background: var(--c-accent); color: #fff; border-color: var(--c-accent); }
+  .gen { padding: 12px 14px; margin-bottom: 12px; display: grid; gap: 10px; }
+  .gen summary { cursor: pointer; font-weight: 700; color: var(--c-primary); }
+  .gen textarea { font: inherit; width: 100%; padding: 8px; border: 1px solid var(--c-border); border-radius: 8px; }
+  .hint { color: var(--c-muted); margin: 6px 0; font-size: 0.9rem; }
+  select { font: inherit; padding: 10px; border: 1px solid var(--c-border); border-radius: 8px; background: #fff; }
   .msg { color: var(--c-muted); font-weight: 700; }
   .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
   .item { padding: 12px 14px; }

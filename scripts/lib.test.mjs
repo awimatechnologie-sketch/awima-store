@@ -22,6 +22,7 @@ import { normalizeDevices, brandsOf, normalizePorts, productsForPort } from '../
 import { normalizeCommunity, isTrusted, starsHtml, checkReview } from '../src/lib/community.ts';
 import { summaryFrom, DEFAULT_THRESHOLDS } from '../src/lib/reviews.ts';
 import { normalizeTrust, buildTrustItems } from '../src/lib/trust.ts';
+import { buildSrcset, variantPath } from '../src/lib/images.ts';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 import { summarize, tierFor, normalizeReview, MIN_POINTS } from '../src/lib/reviews.ts';
@@ -645,4 +646,15 @@ test('community: قسم الأكثر إعجاباً افتراضياته وحد�
   assert.deepEqual(normalizeCommunity(undefined).likedSection, { enabled: true, count: 4, minLikes: 3 });
   assert.equal(normalizeCommunity({ likedSection: { count: 99 } }).likedSection.count, 4);
   assert.equal(normalizeCommunity({ likedSection: { enabled: false } }).likedSection.enabled, false);
+});
+
+test('images: srcset من النسخ الموجودة فقط', () => {
+  assert.equal(variantPath('/images/products/a.jpg', 480), '/images/products/a-w480.jpg');
+  const have = new Set(['/images/products/a-w480.jpg', '/images/products/a-w800.jpg']);
+  assert.equal(buildSrcset('/images/products/a.jpg', (p) => have.has(p)), '/images/products/a-w480.jpg 480w, /images/products/a-w800.jpg 800w, /images/products/a.jpg 1200w');
+  assert.equal(buildSrcset('/images/products/a.jpg', (p) => p.endsWith('-w480.jpg')), '/images/products/a-w480.jpg 480w, /images/products/a.jpg 1200w');
+  assert.equal(buildSrcset('/images/products/a.jpg', () => false), undefined);
+  assert.equal(buildSrcset('/images/products/a.svg', () => true), undefined);
+  assert.equal(buildSrcset('/images/products/a-w480.jpg', () => true), undefined);
+  assert.equal(buildSrcset('https://x.com/a.jpg', () => true), undefined);
 });

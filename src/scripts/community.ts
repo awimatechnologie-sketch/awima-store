@@ -156,7 +156,8 @@ function buildForm(section: HTMLElement) {
   const slot = section.querySelector<HTMLElement>('#rv-form-slot');
   if (!slot) return;
   const pid = section.dataset.pid!;
-  if (store.get(`awima_reviewed_${pid}`)) { slot.hidden = false; slot.innerHTML = ''; const p = document.createElement('p'); p.className = 'rv-msg ok'; p.textContent = T('community.already'); slot.append(p); return; }
+  const token = new URLSearchParams(location.search).get('rv') || '';
+  if (!token && store.get(`awima_reviewed_${pid}`)) { slot.hidden = false; slot.innerHTML = ''; const p = document.createElement('p'); p.className = 'rv-msg ok'; p.textContent = T('community.already'); slot.append(p); return; }
   const form = document.createElement('form');
   form.className = 'rv-form';
   form.noValidate = true;
@@ -174,11 +175,11 @@ function buildForm(section: HTMLElement) {
   const comment = document.createElement('textarea'); comment.maxLength = 500;
   const hp = document.createElement('div'); hp.className = 'rv-hp'; hp.setAttribute('aria-hidden', 'true');
   const hpIn = document.createElement('input'); hpIn.type = 'text'; hpIn.name = 'website'; hpIn.tabIndex = -1; hpIn.autocomplete = 'off'; hp.append(hpIn);
-  const note = document.createElement('p'); note.className = 'note'; note.textContent = T('community.pendingNote');
+  const note = document.createElement('p'); note.className = 'note'; note.textContent = token ? T('community.verifiedNote') : T('community.pendingNote');
   const msg = document.createElement('p'); msg.className = 'rv-msg'; msg.setAttribute('aria-live', 'polite');
   const send = document.createElement('button'); send.type = 'submit'; send.className = 'btn btn-cart'; send.textContent = T('community.send');
   form.append(h, label(T('community.yourRating'), pick), label(T('community.name'), name), label(T('community.comment'), comment), hp);
-  if (cfg!.turnstile) {
+  if (cfg!.turnstile && !token) {
     const ts = document.createElement('div'); ts.className = 'cf-turnstile'; ts.dataset.sitekey = cfg!.turnstile; form.append(ts);
     const sc = document.createElement('script'); sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js'; sc.async = true; document.head.append(sc);
   }
@@ -191,16 +192,20 @@ function buildForm(section: HTMLElement) {
     try {
       const r = await fetch('/api/reviews', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({
         product: pid, rating, author: name.value, comment: comment.value, device: deviceId(), website: hpIn.value,
+        token,
         turnstile: (form.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement | null)?.value || '',
       }) });
       if (r.status === 201 || r.status === 409) {
         store.set(`awima_reviewed_${pid}`, '1');
-        slot.innerHTML = ''; const p = document.createElement('p'); p.className = 'rv-msg ok'; p.textContent = T(r.status === 201 ? 'community.thanks' : 'community.already'); slot.append(p);
+        const body = r.status === 201 ? await r.json().catch(() => ({})) : {};
+        slot.innerHTML = ''; const p = document.createElement('p'); p.className = 'rv-msg ok';
+        p.textContent = T(r.status !== 201 ? 'community.already' : body.verified && body.status === 'approved' ? 'community.thanksVerified' : 'community.thanks'); slot.append(p);
+        try { sessionStorage.removeItem('awima_community'); } catch { /* ignore */ }
         return;
       }
       const err = (await r.json().catch(() => ({}))).error;
       msg.className = 'rv-msg err';
-      msg.textContent = T(r.status === 429 ? 'community.tooMany' : err === 'links_not_allowed' ? 'community.noLinks' : err === 'captcha' ? 'community.captcha' : 'community.error');
+      msg.textContent = T(err === 'bad_token' || err === 'expired_token' ? 'community.tokenBad' : err === 'token_used' ? 'community.tokenUsed' : r.status === 429 ? 'community.tooMany' : err === 'links_not_allowed' ? 'community.noLinks' : err === 'captcha' ? 'community.captcha' : 'community.error');
     } catch {
       msg.className = 'rv-msg err'; msg.textContent = T('community.error');
     }

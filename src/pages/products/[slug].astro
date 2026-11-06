@@ -141,9 +141,9 @@ if (product.price !== null) {
                 {t(lang, product.availability === 'out_of_stock' ? 'product.askAvailability' : 'product.orderWa')}
               </a>
             ) : null}
-            <a class="btn btn-outline" href={phoneHref}>{t(lang, 'product.call')}</a>
             {cm.likesEnabled ? <button type="button" class="like" data-like={product.id} aria-pressed="false" aria-label={t(lang, 'community.like')} hidden><span class="heart" aria-hidden="true">♡</span><span class="lc" aria-hidden="true"></span></button> : null}
           </div>
+          <p class="call"><a class="btn btn-outline" href={phoneHref}>{t(lang, 'product.call')}</a></p>
           <p class="note">{t(lang, 'product.note')}</p>
         </div>
       </div>
@@ -230,6 +230,14 @@ if (product.price !== null) {
   .low { margin-inline-start: 8px; color: var(--c-alert); font-weight: 700; font-size: 0.9rem; }
   .short { margin-top: 14px; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+  .call { margin: 10px 0 0; }
+  .actions .btn-cart, .actions .btn-wa { flex: 1 1 140px; }
+  /* الهاتف: شريط شراء ثابت أسفل الشاشة يبقى ظاهراً أثناء قراءة المنتج */
+  @media (max-width: 859px) {
+    .actions { position: sticky; bottom: 0; z-index: 6; flex-wrap: nowrap; gap: 8px; margin-inline: -16px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(255, 255, 255, 0.97); border-top: 1px solid var(--c-border); box-shadow: 0 -4px 14px rgba(11, 42, 111, 0.08); }
+    .actions .btn { padding-inline: 10px; font-size: 0.92rem; line-height: 1.25; text-align: center; flex: 1 1 0; }
+    .actions .like { flex: 0 0 auto; }
+  }
   .note { color: var(--c-muted); font-size: 0.85rem; margin-top: 10px; }
   .details { display: grid; gap: 24px; margin-top: 32px; }
   .specs { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--c-border); border-radius: 10px; overflow: hidden; }
@@ -269,4 +277,19 @@ if (product.price !== null) {
       b.setAttribute('aria-current', 'true');
     })
   );
+  // الهاتف: السحب بالإصبع على الصورة الرئيسية يتنقل بين الصور (يراعي اتجاه RTL)
+  if (main && thumbs.length > 1) {
+    let x0 = 0, y0 = 0;
+    const holder = main.parentElement as HTMLElement;
+    holder.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+    holder.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+      if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+      const rtl = document.documentElement.dir === 'rtl';
+      const next = (dx < 0) !== rtl;
+      const list = Array.from(thumbs);
+      const cur = Math.max(0, list.findIndex((b) => b.getAttribute('aria-current') === 'true'));
+      list[(cur + (next ? 1 : -1) + list.length) % list.length].click();
+    }, { passive: true });
+  }
 </script>

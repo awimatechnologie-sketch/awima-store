@@ -25,7 +25,7 @@ const beacon = import.meta.env.PROD ? beaconAttr(site.analytics.cloudflareToken)
 // ألوان العلامة من الإعدادات (html:root لضمان أولويتها على global.css)
 // إعدادات المجتمع (إعجاب/تقييم) ونصوصه للسكربت: لا شيء يُرسَل إن عُطّلت الميزتان
 const cm = site.community;
-const COMMUNITY_KEYS = ['community.crown','community.like','community.unlike','community.formTitle','community.yourRating','community.name','community.comment','community.send','community.sending','community.thanks','community.already','community.pickRating','community.tooMany','community.noLinks','community.error','community.captcha','community.pendingNote','reviews.tier.green-dark','reviews.tier.green-light','reviews.tier.yellow','reviews.aria','reviews.summary','reviews.verified','reviews.customer','reviews.stars'];
+const COMMUNITY_KEYS = ['community.crown','community.like','community.unlike','community.formTitle','community.yourRating','community.name','community.comment','community.send','community.sending','community.thanks','community.already','community.pickRating','community.tooMany','community.noLinks','community.error','community.captcha','community.pendingNote','community.verifiedNote','community.thanksVerified','community.tokenBad','community.tokenUsed','reviews.tier.green-dark','reviews.tier.green-light','reviews.tier.yellow','reviews.aria','reviews.summary','reviews.verified','reviews.customer','reviews.stars'];
 const communityJson = cm.likesEnabled || cm.reviewsEnabled
   ? JSON.stringify({ lang, likes: cm.likesEnabled, reviews: cm.reviewsEnabled, minLikes: cm.minLikesToShow, th: cm.thresholds, crown: cm.crown, turnstile: cm.turnstileSiteKey, t: Object.fromEntries(COMMUNITY_KEYS.map((k) => [k, t(lang, k)])) })
   : undefined;
@@ -35,7 +35,7 @@ const themeCss = `html:root{--c-primary:${site.colors.primary};--c-accent:${site
 <html lang={lang} dir={dirOf(lang)}>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />

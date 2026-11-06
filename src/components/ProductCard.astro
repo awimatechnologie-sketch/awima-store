@@ -6,6 +6,9 @@ import { getReviewSummary } from '../services/reviews';
 import { site } from '../config/site';
 import { badgeOffersFor, moroccoToday } from '../lib/offers';
 import { starsHtml, isTrusted } from '../lib/community';
+import { buildSrcset } from '../lib/images';
+// @ts-ignore — يُنفَّذ في Node أثناء البناء فقط
+import { existsSync } from 'node:fs';
 interface Props { product: Product; categoryName?: string; lang?: Lang }
 const { product, categoryName } = Astro.props;
 const lang = langOf(Astro.props.lang);
@@ -15,6 +18,8 @@ const rv = getReviewSummary(product.id);
 const hasTier = rv.tier !== 'none';
 const avgText = lang === 'fr' ? String(rv.average).replace('.', ',') : String(rv.average);
 const rvLabel = hasTier ? t(lang, `reviews.tier.${rv.tier}`) : '';
+const imgSrc = product.images[0] ?? '/images/placeholder.svg';
+const srcset = buildSrcset(imgSrc, (p) => existsSync(`public${p}`));
 const canAdd = product.availability !== 'out_of_stock';
 const cm = site.community;
 const trusted = isTrusted(rv, !!product.trusted, cm.crown);
@@ -26,7 +31,7 @@ const offerValue = offer ? (offer.type === 'percent' ? `${offer.value}%` : forma
 <article class="card pc" data-pid={product.id} data-tier={hasTier ? rv.tier : undefined} data-rv-count={rv.count} data-rv-points={rv.points} data-rv-sum={rv.sum} data-trusted={product.trusted ? '1' : undefined}>
   <a class="link" href={localePath(lang, `/products/${product.slug}`)}>
     <div class="media">
-      <img src={product.images[0] ?? '/images/placeholder.svg'} alt={product.name} width="400" height="400" loading="lazy" decoding="async" />
+      <img src={imgSrc} srcset={srcset} sizes={srcset ? '(min-width: 1024px) 270px, (min-width: 640px) 33vw, 50vw' : undefined} alt={product.name} width="400" height="400" loading="lazy" decoding="async" />
       {cm.crown.enabled ? <span class="crown" title={t(lang, 'community.crown')} hidden={!trusted}>👑 <span>{t(lang, 'community.crown')}</span></span> : null}
       {offer ? <span class="offer-badge" data-offer-start={offer.start ?? undefined} data-offer-end={offer.end ?? undefined} hidden={!!offer.start && today < offer.start}>{t(lang, offer.minQty > 1 ? 'offer.badge.min' : 'offer.badge.single', { value: offerValue })}</span> : null}
       {saving ? <span class="save">{t(lang, 'price.save', { amount: formatPrice(saving, lang) })}</span> : null}
@@ -85,5 +90,22 @@ const offerValue = offer ? (offer.type === 'percent' ? `${offer.value}%` : forma
   .n { color: var(--c-muted); }
   .tier { color: var(--tier-text); font-weight: 700; }
   .foot { padding: 0 12px 12px; display: flex; gap: 8px; align-items: stretch; }
-  .add { flex: 1; padding: 10px 12px; font-size: 0.95rem; }
+  .add { flex: 1; padding: 10px 12px; font-size: 0.95rem; line-height: 1.3; white-space: normal; }
+  .like { min-height: 44px; }
+  @media (max-width: 400px) {
+    .body { padding: 10px; }
+    .foot { padding: 0 10px 10px; gap: 6px; }
+    .add { padding: 8px 6px; font-size: 0.85rem; }
+    .like { min-width: 40px; padding: 6px; }
+    h3 { font-size: 0.95rem; }
+  }
+  /* الهاتف (شبكة عمودين): القلب فوق الصورة (أسفل الطرف) ليأخذ زر الإضافة العرض كاملاً */
+  @media (max-width: 639px) {
+    @supports (width: 1cqw) {
+      .pc { position: relative; container-type: inline-size; }
+      .like { position: absolute; top: calc(100cqw - 50px); inset-inline-end: 8px; min-width: 40px; min-height: 40px; padding: 4px 10px; border-radius: 999px; background: rgba(255, 255, 255, 0.94); box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2); }
+      .foot { padding: 0 10px 10px; }
+      .add { padding: 10px 8px; font-size: 0.9rem; }
+    }
+  }
 </style>

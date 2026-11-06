@@ -3,7 +3,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
-import { getCommunity, postLike, getReviews, postReview, adminList, adminAct } from '../server/handlers.js';
+import { getCommunity, postLike, getReviews, postReview, adminList, adminAct, adminLink } from '../server/handlers.js';
+import { makeToken, verifyToken } from '../src/lib/reviewtoken.ts';
 
 function fakeD1({ withSchema = true } = {}) {
   const db = new DatabaseSync(':memory:');
@@ -104,4 +105,45 @@ test('خطأ غير متوقع في القاعدة يعطي 500 JSON وليس ا
   const r = await getCommunity(req('/api/community'), env);
   assert.equal(r.status, 500);
   assert.deepEqual(await r.json(), { error: 'server_error' });
+});
+
+test('رمز التقييم الموثّق: توقيع، انتهاء، تلاعب', async () => {
+  const sec = 'a-long-secret-key-123';
+  const t = await makeToken(sec, 'P-0001', 30, 1000);
+  assert.deepEqual(await verifyToken(sec, t, 2000), { ok: true, product: 'P-0001', nonce: t.split('.')[1] });
+  assert.equal((await verifyToken(sec, t, 1000 + 31 * 86400_000)).error, 'expired_token');
+  assert.equal((await verifyToken('other-secret-key-999', t, 2000)).error, 'bad_token');
+  const forged = t.replace('P-0001', 'P-0002');
+  assert.equal((await verifyToken(sec, forged, 2000)).error, 'bad_token');
+  assert.equal((await verifyToken(sec, 'x.y', 2000)).error, 'bad_token');
+  assert.equal((await verifyToken(sec, undefined, 2000)).error, 'bad_token');
+});
+
+test('التقييم الموثّق: يصدر المدير الرابط، يُستعمل مرة، يُنشر موثّقاً بوزن 5', async () => {
+  const env = mkEnv();
+  assert.equal((await adminLink(req('/api/admin/review-link', { product: 'P-0003' }), env)).status, 401);
+  const { token } = await (await adminLink(req('/api/admin/review-link', { product: 'P-0003', days: 7 }, ADMIN), env)).json();
+  const send = (n, extra = {}) => postReview(req('/api/reviews', { product: 'P-0003', rating: 5, comment: 'ممتاز', device: DEV(n), token, ...extra }), env);
+  // منتج مختلف عن الرمز مرفوض
+  assert.equal((await postReview(req('/api/reviews', { product: 'P-0004', rating: 5, device: DEV(9), token }), env)).status, 400);
+  const ok = await send(1);
+  assert.equal(ok.status, 201);
+  assert.deepEqual(await ok.json(), { ok: true, status: 'approved', verified: true });
+  assert.deepEqual((await (await getCommunity(req('/api/community'), env)).json()).reviews['P-0003'], { count: 1, sum: 25, points: 5 });
+  assert.equal((await send(2)).status, 409); // الرمز استُعمل
+  assert.equal((await send(3, { token: 'bad.token.here.zzz' })).status, 400);
+  const list = (await (await getReviews(req('/api/reviews?product=P-0003'), env)).json()).reviews;
+  assert.equal(list[0].buyer, 'verified');
+});
+
+test('التقييم الموثّق يرقّي تقييم الزائر السابق من الجهاز نفسه، ويحترم VERIFIED_AUTO_APPROVE=false', async () => {
+  const env = { ...mkEnv(), VERIFIED_AUTO_APPROVE: 'false' };
+  await postReview(req('/api/reviews', { product: 'P-0005', rating: 3, device: DEV(1) }), env);
+  const { token } = await (await adminLink(req('/api/admin/review-link', { product: 'P-0005' }, ADMIN), env)).json();
+  const r = await postReview(req('/api/reviews', { product: 'P-0005', rating: 5, device: DEV(1), token }), env);
+  assert.deepEqual(await r.json(), { ok: true, status: 'pending', verified: true });
+  const pending = (await (await adminList(req('/api/admin/reviews?status=pending', undefined, ADMIN), env)).json()).reviews;
+  assert.equal(pending.length, 1); // صف واحد مُرقّى لا اثنان
+  assert.equal(pending[0].buyer, 'verified');
+  assert.equal(pending[0].rating, 5);
 });

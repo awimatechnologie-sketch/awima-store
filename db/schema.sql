@@ -23,3 +23,10 @@ CREATE TABLE IF NOT EXISTS reviews (
 CREATE UNIQUE INDEX IF NOT EXISTS reviews_device ON reviews (product, device);
 CREATE INDEX IF NOT EXISTS reviews_status ON reviews (status, product);
 CREATE INDEX IF NOT EXISTS reviews_ip ON reviews (ip, ts);
+
+-- روابط التقييم الموثّق (تُستعمل مرة واحدة)
+CREATE TABLE IF NOT EXISTS review_tokens (
+  nonce   TEXT PRIMARY KEY,
+  product TEXT NOT NULL,
+  ts      INTEGER NOT NULL
+);

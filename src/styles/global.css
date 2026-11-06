@@ -90,3 +90,28 @@ p { margin: 0 0 1rem; }
 .rv-msg { margin: 0; font-weight: 700; }
 .rv-msg.err { color: #b91c1c; }
 .rv-msg.ok { color: #166534; }
+
+/* ---------- تحسينات الهواتف (كل المقاسات: 320px حتى الأجهزة القابلة للطي والتابلت) ---------- */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; -webkit-tap-highlight-color: rgba(10, 108, 255, 0.15); }
+body { overflow-x: clip; overflow-wrap: break-word; }
+a, button, select, label, summary, input[type='checkbox'], input[type='radio'] { touch-action: manipulation; } /* بلا تأخير 300ms ولا تكبير بالنقر المزدوج */
+input, select, textarea { font-size: max(16px, 1rem); } /* iOS يكبّر الصفحة عند التركيز على خانة أصغر من 16px */
+[id] { scroll-margin-top: 120px; } /* المقاطع لا تختبئ تحت الهيدر الثابت */
+.container { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); } /* الحواف المقوّسة والنتوء */
+.footer .copy, .copy { padding-bottom: calc(20px + env(safe-area-inset-bottom)); }
+.btn { min-height: 44px; }
+.chip { min-height: 44px; }
+h3 { overflow-wrap: anywhere; }
+img { -webkit-user-drag: none; }
+@media (max-width: 400px) { /* الهواتف الصغيرة: 320 إلى 400px */
+  .section { padding-block: 28px; }
+  .grid { gap: 10px; }
+  .btn { padding: 10px 14px; }
+  h1 { font-size: 1.55rem; }
+}
+@media (max-height: 520px) and (orientation: landscape) { /* هاتف أفقي: الهيدر لا يحتل نصف الشاشة */
+  .header { position: static !important; }
+  [id] { scroll-margin-top: 16px; }
+}
+@media (hover: none) { .pc:hover { box-shadow: var(--shadow); } .like:hover { border-color: var(--c-border); color: var(--c-muted); } }
+@media (max-width: 639px) { .crown > span { display: none; } .crown { padding: 3px 8px; } } /* بطاقات ضيقة: التاج أيقونة فقط حتى لا يتزاحم مع شارة التخفيض */
