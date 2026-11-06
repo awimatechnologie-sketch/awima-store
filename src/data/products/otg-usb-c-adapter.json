@@ -56,5 +56,8 @@
         "value": "Téléphones et tablettes compatibles OTG"
       }
     ]
-  }
+  },
+  "ports": [
+    "usb-c"
+  ]
 }

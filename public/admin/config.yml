@@ -60,6 +60,18 @@ collections:
         default: in_stock
       - { label: الكمية في المخزون (اتركه فارغاً = غير محدود، و0 = غير متوفر تلقائياً), name: stock, widget: number, value_type: int, min: 0, required: false, hint: 'عدّلها بعد كل بيع. تمنع السلة طلب كمية أكبر منها. إن كانت حالة التوفر «غير متوفر» فتبقى كذلك مهما كان المخزون.' }
       - { label: منتج مميز (يظهر في الرئيسية), name: featured, widget: boolean, default: false }
+      - { label: 'مدة الضمان بالأيام (فارغ = الافتراضية العامة، 0 = بلا ضمان لهذا المنتج)', name: warranty, widget: number, value_type: int, min: 0, required: false, hint: 'لا تظهر شارة الضمان إلا إذا فعّلت الضمان من الإعدادات ← الضمان. 30 = شهر، 365 = سنة.' }
+      - { label: 'مدة التوفر بالأيام (للمنتج «عند الطلب» فقط)', name: leadDays, widget: number, value_type: int, min: 1, required: false, hint: 'تظهر للزائر «يتوفر خلال N يوم من تأكيد الطلب» عندما تكون الحالة «عند الطلب».' }
+      - label: منافذ الهواتف التي يدعمها المنتج (لصفحة «هل يناسب هاتفي؟»)
+        name: ports
+        widget: select
+        multiple: true
+        required: false
+        options:
+          - { label: USB-C, value: usb-c }
+          - { label: Lightning (آيفون), value: lightning }
+          - { label: Micro USB, value: micro-usb }
+        hint: 'اختر المنافذ التي يعمل معها المنتج. يظهر المنتج في صفحة التوافق لهذه المنافذ.'
       - label: المواصفات التقنية
         name: specs
         widget: list
@@ -171,6 +183,28 @@ collections:
             field: { label: هدف, name: goal, widget: string }
           - { label: الفلسفة, name: philosophy, widget: text, required: false }
           - { label: صورة (اختيارية), name: image, widget: image, required: false }
+          - label: أقسام الصفحة (عنوان + نص)
+            name: sections
+            widget: list
+            required: false
+            hint: 'في النص: سطر فارغ = فقرة جديدة، وأسطر تبدأ بـ "- " = قائمة نقطية.'
+            fields:
+              - { label: عنوان القسم, name: title, widget: string }
+              - { label: النص, name: text, widget: text }
+          - { label: عنوان قسم المشاريع, name: projectsTitle, widget: string, required: false }
+          - label: المشاريع (بطاقات؛ اتركها فارغة لإخفاء القسم)
+            name: projects
+            widget: list
+            required: false
+            fields:
+              - { label: اسم المشروع, name: name, widget: string }
+              - { label: عبارة قصيرة, name: tagline, widget: string, required: false }
+              - { label: الوصف, name: text, widget: text, required: false }
+              - { label: 'رابط داخلي اختياري (مثل /awima-box)', name: link, widget: string, required: false }
+          - { label: ملاحظة تحت المشاريع, name: projectsNote, widget: text, required: false }
+          - { label: العبارة الختامية الكبيرة, name: closing, widget: string, required: false }
+          - { label: سطر تحت العبارة الختامية, name: closingSub, widget: string, required: false }
+          - { label: عنوان قسم الزيارة (يظهر إن وُجد عنوان أو رابط خريطة في الإعدادات), name: visitTitle, widget: string, required: false }
       - label: صفحة Awima Box
         name: awima_box_page
         file: src/data/pages/awima-box.json
@@ -236,6 +270,28 @@ collections:
             field: { label: هدف, name: goal, widget: string }
           - { label: الفلسفة, name: philosophy, widget: text, required: false }
           - { label: صورة (اختيارية), name: image, widget: image, required: false }
+          - label: أقسام الصفحة (عنوان + نص)
+            name: sections
+            widget: list
+            required: false
+            hint: 'في النص: سطر فارغ = فقرة جديدة، وأسطر تبدأ بـ "- " = قائمة نقطية.'
+            fields:
+              - { label: عنوان القسم, name: title, widget: string }
+              - { label: النص, name: text, widget: text }
+          - { label: عنوان قسم المشاريع, name: projectsTitle, widget: string, required: false }
+          - label: المشاريع (بطاقات؛ اتركها فارغة لإخفاء القسم)
+            name: projects
+            widget: list
+            required: false
+            fields:
+              - { label: اسم المشروع, name: name, widget: string }
+              - { label: عبارة قصيرة, name: tagline, widget: string, required: false }
+              - { label: الوصف, name: text, widget: text, required: false }
+              - { label: 'رابط داخلي اختياري (مثل /awima-box)', name: link, widget: string, required: false }
+          - { label: ملاحظة تحت المشاريع, name: projectsNote, widget: text, required: false }
+          - { label: العبارة الختامية الكبيرة, name: closing, widget: string, required: false }
+          - { label: سطر تحت العبارة الختامية, name: closingSub, widget: string, required: false }
+          - { label: عنوان قسم الزيارة (يظهر إن وُجد عنوان أو رابط خريطة في الإعدادات), name: visitTitle, widget: string, required: false }
       - label: صفحة Awima Box (الفرنسية)
         name: awima_box_page_fr
         file: src/data/pages/awima-box.fr.json
@@ -276,6 +332,45 @@ collections:
               - { label: الصورة, name: image, widget: image }
               - { label: التعليق, name: caption, widget: string, required: false }
           - { label: رسالة واتساب الجاهزة, name: ctaText, widget: string }
+      - label: صفحة الضمان وسياسة الاسترجاع
+        name: policy_page
+        file: src/data/pages/policy.json
+        format: json
+        fields:
+          - { label: العنوان, name: title, widget: string }
+          - { label: مقدمة, name: intro, widget: text, required: false }
+          - label: الأقسام
+            name: sections
+            widget: list
+            required: false
+            fields:
+              - { label: عنوان القسم, name: title, widget: string }
+              - { label: النص (سطر فارغ = فقرة، "- " = نقطة), name: text, widget: text }
+      - label: صفحة هل يناسب هاتفي؟ (وقائمة الموديلات)
+        name: compat_page
+        file: src/data/pages/compat.json
+        format: json
+        fields:
+          - { label: العنوان, name: title, widget: string }
+          - { label: مقدمة, name: intro, widget: text }
+          - { label: ملاحظة أسفل الصفحة, name: devicesNote, widget: text, required: false }
+          - label: الموديلات (الماركة + الموديل + المنفذ)
+            name: devices
+            widget: list
+            required: false
+            summary: '{{fields.brand}} — {{fields.name}} — {{fields.port}}'
+            fields:
+              - { label: الماركة, name: brand, widget: string }
+              - { label: الموديل, name: name, widget: string }
+              - label: منفذ الشحن
+                name: port
+                widget: select
+                options:
+                  - { label: USB-C, value: usb-c }
+                  - { label: Lightning (آيفون), value: lightning }
+                  - { label: Micro USB, value: micro-usb }
+              - { label: ملاحظة (اختيارية), name: note, widget: string, required: false }
+              - { label: الملاحظة بالفرنسية, name: note_fr, widget: string, required: false }
       - label: صفحة اتصل بنا (الفرنسية)
         name: contact_page_fr
         file: src/data/pages/contact.fr.json
@@ -284,6 +379,28 @@ collections:
           - { label: العنوان, name: title, widget: string }
           - { label: مقدمة, name: intro, widget: text }
           - { label: ملاحظة (اختيارية), name: note, widget: text, required: false }
+      - label: صفحة الضمان وسياسة الاسترجاع (الفرنسية)
+        name: policy_page_fr
+        file: src/data/pages/policy.fr.json
+        format: json
+        fields:
+          - { label: العنوان, name: title, widget: string }
+          - { label: مقدمة, name: intro, widget: text, required: false }
+          - label: الأقسام
+            name: sections
+            widget: list
+            required: false
+            fields:
+              - { label: عنوان القسم, name: title, widget: string }
+              - { label: النص, name: text, widget: text }
+      - label: صفحة هل يناسب هاتفي؟ (الفرنسية)
+        name: compat_page_fr
+        file: src/data/pages/compat.fr.json
+        format: json
+        fields:
+          - { label: العنوان, name: title, widget: string }
+          - { label: مقدمة, name: intro, widget: text }
+          - { label: ملاحظة أسفل الصفحة, name: devicesNote, widget: text, required: false }
   # ---------------- إعدادات الموقع ----------------
   - name: settings
     label: إعدادات الموقع
@@ -323,6 +440,7 @@ collections:
               - { label: الهاتف الثاني (للعرض), name: phoneSecondaryDisplay, widget: string, required: false }
               - { label: البريد الإلكتروني, name: email, widget: string, required: false }
               - { label: العنوان, name: address, widget: string, required: false }
+              - { label: 'رابط الخريطة (https، مثل رابط Google Maps) — يظهر في صفحة من نحن', name: mapUrl, widget: string, required: false }
           - label: التواصل الاجتماعي
             name: social
             widget: object
@@ -372,6 +490,48 @@ collections:
               - { label: أدنى مجموع منتجات (اختياري), name: minSubtotal, widget: number, value_type: float, min: 0, required: false }
               - { label: يبدأ في (اختياري), name: startDate, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, required: false }
               - { label: ينتهي في (اختياري، يشمل هذا اليوم), name: endDate, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, required: false }
+              - { label: مفعّل, name: enabled, widget: boolean, default: true }
+          - label: الضمان
+            name: warranty
+            widget: object
+            hint: 'يبقى مخفياً حتى تفعّله. راجع نص صفحة «الضمان وسياسة الاسترجاع» (الصفحات) قبل التفعيل لأنه التزام أمام الزبائن.'
+            fields:
+              - { label: تفعيل الضمان (شارة في المنتجات + صفحة السياسة + رابط في التذييل), name: enabled, widget: boolean, default: false }
+              - { label: 'المدة الافتراضية بالأيام (30 = شهر، 365 = سنة؛ 0 = لا شيء)', name: days, widget: number, value_type: int, min: 0, default: 0 }
+              - { label: عبارة قصيرة بجانب الشارة (اختيارية), name: note, widget: string, required: false }
+              - { label: العبارة بالفرنسية, name: note_fr, widget: string, required: false }
+          - { label: 'تفعيل العروض التلقائية (مفتاح عام — إيقافه يوقف كل العروض أدناه فوراً)', name: autoOffersEnabled, widget: boolean, default: true }
+          - label: العروض التلقائية (خصم الباقات والخصم المؤقت)
+            name: autoOffers
+            widget: list
+            required: false
+            hint: 'خصم يُطبَّق في السلة تلقائياً دون كود. «أدنى عدد قطع» = 1 لخصم مباشر، و3 مثلاً لخصم الباقة (يُحسب على مجموع القطع المشمولة). السطر لا يأخذ إلا أول عرض ينطبق عليه حسب الترتيب هنا. كود الخصم يُحسب بعد العروض. التواريخ بتوقيت المغرب وتشمل اليومين. لإيقاف عرض دون حذفه ألغِ «مفعّل».'
+            summary: '{{fields.name}} — {{fields.value}} {{fields.type}}'
+            fields:
+              - { label: اسم العرض (يظهر للزبون), name: name, widget: string }
+              - { label: اسم العرض بالفرنسية (اختياري), name: name_fr, widget: string, required: false }
+              - label: يشمل
+                name: scope
+                widget: select
+                default: category
+                options:
+                  - { label: قسماً كاملاً, value: category }
+                  - { label: منتجات محددة, value: products }
+                  - { label: كل المتجر, value: all }
+              - { label: القسم (إن اخترت «قسماً كاملاً»), name: category, widget: relation, collection: categories, value_field: id, search_fields: [name], display_fields: [name], required: false }
+              - { label: المنتجات (إن اخترت «منتجات محددة»), name: products, widget: relation, collection: products, value_field: id, search_fields: [name, id], display_fields: [name], multiple: true, required: false }
+              - label: نوع الخصم
+                name: type
+                widget: select
+                default: percent
+                options:
+                  - { label: نسبة مئوية %, value: percent }
+                  - { label: مبلغ ثابت بالدرهم (مرة واحدة للطلب), value: fixed }
+              - { label: القيمة (نسبة 1–100 أو مبلغ), name: value, widget: number, value_type: float, min: 1 }
+              - { label: أدنى عدد قطع مشمولة (1 = خصم مباشر، 3 = باقة), name: minQty, widget: number, value_type: int, min: 1, default: 1 }
+              - { label: يبدأ في (اختياري), name: startDate, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, required: false }
+              - { label: ينتهي في (اختياري، يشمل هذا اليوم), name: endDate, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, required: false }
+              - { label: إظهار شارة العرض على المنتجات, name: badge, widget: boolean, default: true }
               - { label: مفعّل, name: enabled, widget: boolean, default: true }
           - label: المدن
             name: cities

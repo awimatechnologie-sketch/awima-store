@@ -56,5 +56,8 @@
         "value": "Appareil compatible sortie vidéo via USB-C"
       }
     ]
-  }
+  },
+  "ports": [
+    "usb-c"
+  ]
 }

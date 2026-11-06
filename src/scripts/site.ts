@@ -6,6 +6,17 @@ import { t, langOf } from '../i18n';
 // لغة الصفحة من وسم html (ar/fr)
 const lang = langOf(document.documentElement.lang);
 import { isOpenNow } from '../lib/hours';
+import { moroccoToday } from '../lib/discounts';
+
+// شارات العروض: تُخفى عند انتهاء العرض وتظهر عند بدايته دون إعادة بناء الموقع
+function syncOffers() {
+  const today = moroccoToday();
+  document.querySelectorAll<HTMLElement>('[data-offer-start],[data-offer-end]').forEach((el) => {
+    const { offerStart: s, offerEnd: e } = el.dataset;
+    el.hidden = !!((s && today < s) || (e && today > e));
+  });
+}
+syncOffers();
 
 function updateBadges() {
   const n = cartCount();

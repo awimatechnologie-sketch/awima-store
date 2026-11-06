@@ -5,6 +5,8 @@ import { isValidTime } from '../lib/hours';
 import { isValidBeaconToken } from '../lib/analytics';
 import { normalizeFee, normalizeFreeFrom } from '../lib/delivery';
 import { normalizeDiscounts } from '../lib/discounts';
+import { normalizeOffers } from '../lib/offers';
+import { normalizeWarranty } from '../lib/warranty';
 import { pick, type Lang } from '../i18n';
 
 type Settings = {
@@ -21,6 +23,7 @@ type Settings = {
     phoneSecondaryDisplay?: string;
     email?: string;
     address?: string;
+    mapUrl?: string;
   };
   social?: { facebook?: string; instagram?: string; tiktok?: string };
   announcements?: { text?: string; text_fr?: string; link?: string; enabled?: boolean }[];
@@ -28,6 +31,9 @@ type Settings = {
   fastDelivery?: { minItems?: number; hours?: number };
   freeDeliveryFrom?: number | null;
   discounts?: unknown;
+  warranty?: unknown;
+  autoOffersEnabled?: boolean;
+  autoOffers?: unknown;
   cities?: { name?: string; name_fr?: string; open?: boolean; fee?: number }[];
   analytics?: { cloudflareToken?: string };
   customCss?: string;
@@ -74,6 +80,8 @@ export const site = {
     phoneSecondaryDisplay: s.contact?.phoneSecondaryDisplay ?? '',
     email: s.contact?.email ?? '',
     address: s.contact?.address ?? '',
+    // رابط خريطة (https فقط) يظهر في صفحة من نحن
+    mapUrl: safeLink(s.contact?.mapUrl).startsWith('https://') ? safeLink(s.contact?.mapUrl) : '',
   },
   social: {
     facebook: s.social?.facebook ?? '',
@@ -98,6 +106,10 @@ export const site = {
   freeDeliveryFrom: normalizeFreeFrom(s.freeDeliveryFrom),
   // أكواد الخصم المفعّلة والصالحة فقط
   discounts: normalizeDiscounts(s.discounts),
+  // العروض التلقائية (خصم الباقات والخصم المؤقت): المفتاح الرئيسي يوقفها كلها دفعة واحدة
+  autoOffers: s.autoOffersEnabled === false ? [] : normalizeOffers(s.autoOffers),
+  // الضمان: يظهر على المنتجات وفي صفحة السياسة فقط عند تفعيله
+  warranty: normalizeWarranty(s.warranty),
   // المدن: المفتوحة فقط يمكن الطلب منها، والبقية تظهر مقفلة
   cities: (s.cities ?? [])
     .filter((c) => c?.name)

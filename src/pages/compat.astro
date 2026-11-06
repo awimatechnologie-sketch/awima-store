@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductCard from '../components/ProductCard.astro';
+import pageAr from '../data/pages/compat.json';
+import pageFr from '../data/pages/compat.fr.json';
+import { getAllProducts, getCategories } from '../services/products';
+import { normalizeDevices, brandsOf, PORTS, productsForPort } from '../lib/compat';
+import { buildContactLink } from '../lib/whatsapp';
+import { pick, t, langOf, type Lang } from '../i18n';
+
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
+const page: any = lang === 'fr' ? { ...pageAr, ...pageFr } : pageAr;
+const devices = normalizeDevices(pageAr.devices);
+const brands = brandsOf(devices);
+const products = getAllProducts(lang);
+const catById = Object.fromEntries(getCategories(lang).map((c) => [c.id, c]));
+// فقط المنافذ التي لها منتجات ظاهرة
+const ports = PORTS.filter((p) => productsForPort(products, p).length > 0);
+const deviceData = devices.map((d) => ({ b: d.brand, n: d.name, p: d.port, note: pick(lang, d.note ?? '', d.noteFr) as string }));
+const waMissing = buildContactLink(lang === 'fr' ? 'Bonjour, je cherche un accessoire compatible avec mon téléphone : ' : 'مرحباً، أبحث عن ملحق يناسب هاتفي: ', lang);
+---
+<BaseLayout lang={lang} title={page.title} description={page.intro}>
+  <section class="section">
+    <div class="container">
+      <h1>{page.title}</h1>
+      <p class="lead">{page.intro}</p>
+
+      <div class="card pick" id="compat" data-devices={JSON.stringify(deviceData)}>
+        {brands.length > 0 && (
+          <div class="row">
+            <label class="field"><span>{t(lang, 'compat.brand')}</span>
+              <select id="brand"><option value="">{t(lang, 'compat.choose')}</option>{brands.map((b) => <option value={b}>{b}</option>)}</select>
+            </label>
+            <label class="field"><span>{t(lang, 'compat.model')}</span>
+              <select id="model" disabled><option value="">{t(lang, 'compat.choose')}</option></select>
+            </label>
+          </div>
+        )}
+        <p class="or">{brands.length > 0 ? t(lang, 'compat.orPort') : t(lang, 'compat.pickPort')}</p>
+        <div class="ports" role="group" aria-label={t(lang, 'compat.pickPort')}>
+          {ports.map((p) => (
+            <button type="button" class="port" data-port={p} aria-pressed="false">
+              <strong>{t(lang, `compat.port.${p}`)}</strong>
+              <small>{t(lang, `compat.hint.${p}`)}</small>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <p id="verdict" class="verdict" aria-live="polite" hidden></p>
+
+      {ports.map((p) => (
+        <div class="result" data-result={p} hidden>
+          <ul class="grid grid-4">
+            {productsForPort(products, p).map((pr) => (
+              <li><ProductCard product={pr} categoryName={catById[pr.category]?.name} lang={lang} /></li>
+            ))}
+          </ul>
+          <p class="caveat">{t(lang, 'compat.caveat')}</p>
+        </div>
+      ))}
+
+      <p class="missing"><a class="btn btn-wa" href={waMissing} target="_blank" rel="noopener">{t(lang, 'compat.askWa')}</a></p>
+      {page.devicesNote && <p class="dn">{page.devicesNote}</p>}
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const root = document.getElementById('compat') as HTMLElement | null;
+  if (root) {
+    type Dev = { b: string; n: string; p: string; note: string };
+    let devices: Dev[] = [];
+    try { devices = JSON.parse(root.dataset.devices || '[]'); } catch { devices = []; }
+    const brand = document.getElementById('brand') as HTMLSelectElement | null;
+    const model = document.getElementById('model') as HTMLSelectElement | null;
+    const verdict = document.getElementById('verdict') as HTMLElement;
+    const buttons = [...root.querySelectorAll<HTMLButtonElement>('[data-port]')];
+    const results = [...document.querySelectorAll<HTMLElement>('[data-result]')];
+    const portName = (p: string) => buttons.find((b) => b.dataset.port === p)?.querySelector('strong')?.textContent ?? p;
+    const tpl = document.documentElement.lang === 'fr' ? (d: string, p: string) => `${d} utilise le port ${p}. Voici les accessoires adaptés :` : (d: string, p: string) => `${d} يستعمل منفذ ${p}. إليك الملحقات المناسبة:`;
+    const tplPort = document.documentElement.lang === 'fr' ? (p: string) => `Accessoires pour le port ${p} :` : (p: string) => `ملحقات لمنفذ ${p}:`;
+
+    function show(port: string, text: string) {
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.port === port)));
+      results.forEach((r) => (r.hidden = r.dataset.result !== port));
+      verdict.textContent = text;
+      verdict.hidden = !port;
+      if (port) verdict.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+    brand?.addEventListener('change', () => {
+      if (!model) return;
+      const first = model.options[0];
+      model.innerHTML = '';
+      model.appendChild(first);
+      devices.filter((d) => d.b === brand.value).forEach((d) => model.add(new Option(d.n, d.n)));
+      model.disabled = !brand.value;
+      show('', '');
+    });
+    model?.addEventListener('change', () => {
+      const d = devices.find((x) => x.b === brand?.value && x.n === model.value);
+      if (!d) return show('', '');
+      show(d.p, tpl(d.n, portName(d.p)) + (d.note ? ' ' + d.note : ''));
+    });
+    buttons.forEach((b) => b.addEventListener('click', () => {
+      if (brand) { brand.value = ''; brand.dispatchEvent(new Event('change')); }
+      show(b.dataset.port!, tplPort(portName(b.dataset.port!)));
+    }));
+    const initial = new URLSearchParams(location.search).get('port');
+    const btn = buttons.find((b) => b.dataset.port === initial);
+    if (btn) btn.click();
+  }
+</script>
+<style>
+  h1 { margin-block: 0 8px; color: var(--c-primary); }
+  .lead { color: var(--c-muted); line-height: 1.8; margin-block: 0 16px; }
+  .pick { padding: 16px; display: grid; gap: 12px; }
+  .row { display: grid; gap: 12px; }
+  .field { display: grid; gap: 4px; font-weight: 700; color: var(--c-primary); }
+  select { font: inherit; padding: 10px; border: 1px solid var(--c-border); border-radius: 8px; background: #fff; }
+  .or { margin: 0; color: var(--c-muted); font-weight: 700; }
+  .ports { display: grid; gap: 10px; }
+  .port { font: inherit; text-align: start; display: grid; gap: 2px; padding: 12px; border: 2px solid var(--c-border); border-radius: 10px; background: #fff; cursor: pointer; color: var(--c-primary); }
+  .port small { color: var(--c-muted); font-weight: 400; }
+  .port[aria-pressed='true'] { border-color: var(--c-accent); background: var(--c-surface); }
+  .verdict { margin: 18px 0 10px; padding: 12px 14px; border-radius: 10px; background: #e9f7ee; color: #14532d; font-weight: 700; }
+  .caveat, .dn { color: var(--c-muted); font-size: 0.9rem; line-height: 1.7; }
+  .missing { margin-top: 24px; }
+  .grid { list-style: none; padding: 0; margin: 0 0 8px; }
+  @media (min-width: 720px) { .row { grid-template-columns: 1fr 1fr; } .ports { grid-template-columns: repeat(3, 1fr); } }
+</style>

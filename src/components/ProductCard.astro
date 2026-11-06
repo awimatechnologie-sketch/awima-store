@@ -3,6 +3,8 @@ import type { Product } from '../types/product';
 import { formatPrice, getSaving, availabilityFor } from '../lib/format';
 import { t, langOf, localePath, type Lang } from '../i18n';
 import { getReviewSummary } from '../services/reviews';
+import { site } from '../config/site';
+import { badgeOffersFor, moroccoToday } from '../lib/offers';
 interface Props { product: Product; categoryName?: string; lang?: Lang }
 const { product, categoryName } = Astro.props;
 const lang = langOf(Astro.props.lang);
@@ -13,11 +15,15 @@ const hasTier = rv.tier !== 'none';
 const avgText = lang === 'fr' ? String(rv.average).replace('.', ',') : String(rv.average);
 const rvLabel = hasTier ? t(lang, `reviews.tier.${rv.tier}`) : '';
 const canAdd = product.availability !== 'out_of_stock';
+const today = moroccoToday();
+const offer = badgeOffersFor(site.autoOffers, product, today)[0];
+const offerValue = offer ? (offer.type === 'percent' ? `${offer.value}%` : formatPrice(offer.value, lang)) : '';
 ---
 <article class="card pc" data-tier={hasTier ? rv.tier : undefined}>
   <a class="link" href={localePath(lang, `/products/${product.slug}`)}>
     <div class="media">
       <img src={product.images[0] ?? '/images/placeholder.svg'} alt={product.name} width="400" height="400" loading="lazy" decoding="async" />
+      {offer ? <span class="offer-badge" data-offer-start={offer.start ?? undefined} data-offer-end={offer.end ?? undefined} hidden={!!offer.start && today < offer.start}>{t(lang, offer.minQty > 1 ? 'offer.badge.min' : 'offer.badge.single', { value: offerValue })}</span> : null}
       {saving ? <span class="save">{t(lang, 'price.save', { amount: formatPrice(saving, lang) })}</span> : null}
     </div>
     <div class="body">
@@ -49,6 +55,8 @@ const canAdd = product.availability !== 'out_of_stock';
   .link { display: block; text-decoration: none; flex: 1; }
   .media { position: relative; }
   .pc img { width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--c-surface); }
+  .offer-badge { position: absolute; bottom: 8px; inset-inline-start: 8px; background: var(--c-primary); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
+  .offer-badge[hidden] { display: none; }
   .save { position: absolute; top: 8px; inset-inline-start: 8px; background: var(--c-alert); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
   .body { padding: 12px; }
   .cat { font-size: 0.8rem; color: var(--c-muted); }

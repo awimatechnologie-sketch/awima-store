@@ -27,6 +27,7 @@ const data = {
   whatsapp: site.contact.whatsapp,
   fast: site.fastDelivery,
   freeFrom: site.freeDeliveryFrom,
+  offers: site.autoOffers.map((o) => ({ ...o, label: lang === 'fr' && o.nameFr ? o.nameFr : o.name })),
   discounts: await Promise.all(site.discounts.map(async ({ code, ...d }) => ({ ...d, h: await hashCode(code) }))),
   cities: ls.cities.map((c) => ({ name: c.name, fee: c.fee })),
   siteName: site.name,
@@ -59,12 +60,15 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
 
           <p class="row"><span>{t(lang, 'cart.itemCount')}</span><b id="qty">0</b></p>
           <p class="row"><span>{t(lang, 'cart.subtotal')}</span><b id="subtotal">0</b></p>
+          <p class="row" id="auto-row" hidden><span>{t(lang, 'cart.auto')}</span><b id="auto">—</b></p>
           <p class="row" id="disc-row" hidden><span>{t(lang, 'cart.discount')}</span><b id="disc">—</b></p>
           <p class="row"><span>{t(lang, 'cart.delivery')}</span><b id="fee">—</b></p>
           <p class="row grand"><span>{t(lang, 'cart.grand')}</span><b id="total">0</b></p>
           <p id="unpriced" class="hint" hidden></p>
           <p id="offer" class="offer"></p>
           <p id="freehint" class="offer" hidden></p>
+          <p id="auto-hint" class="offer ok" hidden></p>
+          <p id="auto-nudge" class="offer" hidden></p>
           {site.discounts.length > 0 && (
             <div class="field-group" id="code-box">
               <label for="f-code">{t(lang, 'cart.code.label')}</label>
@@ -180,9 +184,11 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
   import { t, plural, langOf } from '../i18n';
   import { isOpenNow } from '../lib/hours';
   import { normalizeCode, hashCode, evaluateDiscount, moroccoToday, type DiscountEntry } from '../lib/discounts';
+  import { applyOffers, type AutoOffer } from '../lib/offers';
 
   const lang = langOf(document.documentElement.lang);
-  type P = { id: string; name: string; slug: string; price: number | null; image: string; availability: string; stock: number | null };
+  type P = { id: string; name: string; slug: string; price: number | null; image: string; availability: string; stock: number | null; category: string };
+  type O = AutoOffer & { label: string };
   const data = JSON.parse(document.getElementById('cart-data')!.textContent || '{}');
   const products = new Map<string, P>((data.products as P[]).map((p) => [p.id, p]));
   const nf = new Intl.NumberFormat('fr-FR');
@@ -218,6 +224,14 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
   const freeFrom = (data.freeFrom as number | null) ?? null;
   const fees = (data.cities as { name: string; fee: number | null }[]) ?? [];
   const items = (n: number) => plural(lang, n);
+
+  // ---- العروض التلقائية ----
+  const offers = ((data.offers as O[]) ?? []);
+  const offerValue = (o: AutoOffer) => (o.type === 'percent' ? `${o.value}%` : money(o.value));
+  const labelOf = (o: AutoOffer) => offers.find((x) => x.name === o.name)?.label ?? o.name;
+  function autoOffers(avail: { id: string; qty: number; p: P }[]) {
+    return applyOffers(avail.map((l) => ({ id: l.id, category: l.p.category, price: l.p.price, qty: l.qty })), offers, moroccoToday());
+  }
 
   // ---- كود الخصم ----
   const CKEY = 'awima_code';
@@ -328,10 +342,23 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
     stale.hidden = notes.length === 0;
     stale.textContent = notes.join(' ');
 
-    // كود الخصم (على مجموع المنتجات فقط)
-    const ev = evalCode(total);
+    // العروض التلقائية أولاً، ثم كود الخصم على الباقي
+    const off = autoOffers(avail);
+    const au = off.amount;
+    $('auto-row').hidden = au === 0;
+    $('auto').textContent = au ? `− ${money(au)}` : '—';
+    const ah = $('auto-hint');
+    ah.hidden = off.applied.length === 0;
+    ah.textContent = off.applied.map((a) => t(lang, 'cart.auto.applied', { name: labelOf(a.offer) })).join(' · ');
+    const an = $('auto-nudge');
+    const nudge = off.nudges[0];
+    an.hidden = !nudge;
+    if (nudge) an.textContent = t(lang, 'cart.auto.nudge', { items: items(nudge.missing), name: labelOf(nudge.offer), value: offerValue(nudge.offer) });
+
+    // كود الخصم (على المجموع بعد العروض)
+    const ev = evalCode(total - au);
     const dc = ev && ev.ok ? ev.amount : 0;
-    const net = total - dc;
+    const net = total - au - dc;
     $('disc-row').hidden = dc === 0;
     $('disc').textContent = dc ? `− ${money(dc)}` : '—';
     if (codeBtn && codeInput && codeMsg) {
@@ -405,6 +432,7 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
 
   function buildMessage(ref: string): string {
     const { avail, total, unpriced } = compute();
+    const au = autoOffers(avail);
     const out: string[] = [t(lang, 'cart.msg.hello', { site: data.siteName }), t(lang, 'cart.msg.orderNo', { ref }), ''];
     avail.forEach((l, i) => {
       const price = l.p.price === null ? t(lang, 'cart.msg.priceTbd') : `${money(l.p.price)} × ${l.qty} = ${money(l.p.price * l.qty)}`;
@@ -412,12 +440,13 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
       out.push(l.p.price === null ? t(lang, 'cart.msg.qty', { n: l.qty, price }) : `   ${price}`);
     });
     const city = selectedCity();
-    const ev = evalCode(total);
+    const ev = evalCode(total - au.amount);
     const dc = ev && ev.ok ? ev.amount : 0;
-    const net = total - dc;
+    const net = total - au.amount - dc;
     const fee = effectiveFee(feeFor(fees, city), net, freeFrom);
     const tot = orderTotals(net, avail.length, fee);
     out.push('', t(lang, 'cart.msg.subtotal', { amount: money(total) }) + (unpriced ? t(lang, 'cart.msg.subtotalExtra', { items: items(unpriced) }) : ''));
+    if (au.amount) out.push(t(lang, 'cart.msg.auto', { names: au.applied.map((a) => labelOf(a.offer)).join('، '), amount: money(au.amount) }));
     if (dc && active) out.push(t(lang, 'cart.msg.code', { code: active.code, amount: money(dc) }));
     out.push(t(lang, 'cart.msg.delivery', { city, fee: fee === null ? t(lang, 'cart.msg.deliveryTbd') : fee === 0 ? t(lang, 'cart.free') : money(fee) }));
     out.push(t(lang, 'cart.msg.grand', { amount: money(tot.total) }));

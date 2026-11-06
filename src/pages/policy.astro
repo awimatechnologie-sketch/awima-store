@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../config/site';
+import { buildContactLink } from '../lib/whatsapp';
+import polAr from '../data/pages/policy.json';
+import polFr from '../data/pages/policy.fr.json';
+import { parseBlocks } from '../lib/richtext';
+import { t, langOf, localePath, type Lang } from '../i18n';
+
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
+// الصفحة لا تظهر قبل تفعيل الضمان من الإعدادات (حتى لا تُنشر شروط لم تعتمدها)
+const enabled = site.warranty.enabled;
+const pol: any = lang === 'fr' ? polFr : polAr;
+const sections: { title?: string; text?: string }[] = (pol.sections ?? []).filter((s: any) => s?.title || s?.text);
+---
+<BaseLayout lang={lang} title={pol.title} description={pol.intro}>
+  <section class="section">
+    {!enabled ? (
+      <div class="container narrow">
+        <h1>{t(lang, 'policy.off')}</h1>
+        <p><a class="btn btn-outline" href={localePath(lang, '/')}>{t(lang, 'policy.home')}</a></p>
+      </div>
+    ) : (
+    <div class="container narrow">
+      <h1>{pol.title}</h1>
+      {pol.intro && <p class="lead">{pol.intro}</p>}
+      {sections.map((s) => (
+        <section class="block">
+          {s.title && <h2>{s.title}</h2>}
+          {parseBlocks(s.text).map((b) => b.type === 'p' ? <p>{b.text}</p> : <ul class="goals">{b.items.map((x) => <li>{x}</li>)}</ul>)}
+        </section>
+      ))}
+      <div class="actions">
+        <a class="btn btn-wa" href={buildContactLink(undefined, lang)} target="_blank" rel="noopener">{t(lang, 'about.contactWa')}</a>
+      </div>
+    </div>
+    )}
+  </section>
+</BaseLayout>
+<style>
+  .narrow { max-width: 760px; }
+  h1 { margin-block: 0 12px; color: var(--c-primary); }
+  h2 { margin-block: 24px 8px; color: var(--c-primary); font-size: 1.2rem; }
+  .lead { font-size: 1.1rem; color: var(--c-text); }
+  p { line-height: 1.9; color: var(--c-muted); margin-block: 0 12px; }
+  .goals { padding-inline-start: 20px; line-height: 2; color: var(--c-muted); }
+  .actions { margin-top: 28px; }
+</style>

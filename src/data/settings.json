@@ -18,7 +18,8 @@
     "phoneDisplay": "0652091799",
     "phoneSecondaryDisplay": "0652305405",
     "email": "",
-    "address": ""
+    "address": "",
+    "mapUrl": ""
   },
   "social": {
     "facebook": "",
@@ -83,5 +84,26 @@
     "cloudflareToken": ""
   },
   "customCss": "",
-  "tagline_fr": "Des produits électroniques de qualité fiable"
+  "tagline_fr": "Des produits électroniques de qualité fiable",
+  "autoOffersEnabled": true,
+  "autoOffers": [
+    {
+      "name": "عرض الباقة: خصم 10% عند شراء 3 علب أو أكثر",
+      "name_fr": "Offre lot : 10 % de remise dès 3 boîtes achetées",
+      "enabled": true,
+      "scope": "category",
+      "category": "cat-awima-box",
+      "products": [],
+      "type": "percent",
+      "value": 10,
+      "minQty": 3,
+      "badge": true
+    }
+  ],
+  "warranty": {
+    "enabled": false,
+    "days": 0,
+    "note": "",
+    "note_fr": ""
+  }
 }

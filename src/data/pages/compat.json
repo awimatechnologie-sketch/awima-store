@@ -1,0 +1,273 @@
+{
+  "title": "هل يناسب هاتفي؟",
+  "intro": "اختر ماركة هاتفك وموديله لنعرض لك الملحقات المناسبة لمنفذ الشحن عنده. إن لم تجد موديلك فاختر نوع المنفذ مباشرة.",
+  "devicesNote": "قائمة الموديلات تُدار من لوحة الإدارة. تأكد من المنفذ إذا كان هاتفك قديماً أو مُعدَّلاً.",
+  "devices": [
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone 6",
+      "port": "lightning",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone 6s",
+      "port": "lightning",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone 7",
+      "port": "lightning",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone 8",
+      "port": "lightning",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone X",
+      "port": "lightning",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone XR",
+      "port": "lightning",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone XS",
+      "port": "lightning",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone 11",
+      "port": "lightning",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone 12",
+      "port": "lightning",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone 13",
+      "port": "lightning",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone 14",
+      "port": "lightning",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone SE (2020)",
+      "port": "lightning",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone SE (2022)",
+      "port": "lightning",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone 15",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Apple iPhone",
+      "name": "iPhone 16",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Samsung",
+      "name": "Galaxy S7",
+      "port": "micro-usb",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Samsung",
+      "name": "Galaxy J7 (2016)",
+      "port": "micro-usb",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Samsung",
+      "name": "Galaxy A10",
+      "port": "micro-usb",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Samsung",
+      "name": "Galaxy S8",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Samsung",
+      "name": "Galaxy S9",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Samsung",
+      "name": "Galaxy S10",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Samsung",
+      "name": "Galaxy S20",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Samsung",
+      "name": "Galaxy S21",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Samsung",
+      "name": "Galaxy S22",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Samsung",
+      "name": "Galaxy S23",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Samsung",
+      "name": "Galaxy S24",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Samsung",
+      "name": "Galaxy A12",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Samsung",
+      "name": "Galaxy A32",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Samsung",
+      "name": "Galaxy A53",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Xiaomi / Redmi",
+      "name": "Redmi 7A",
+      "port": "micro-usb",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Xiaomi / Redmi",
+      "name": "Redmi 9A",
+      "port": "micro-usb",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Xiaomi / Redmi",
+      "name": "Redmi 9C",
+      "port": "micro-usb",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Xiaomi / Redmi",
+      "name": "Redmi 8A",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Xiaomi / Redmi",
+      "name": "Redmi Note 8",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Xiaomi / Redmi",
+      "name": "Redmi Note 9",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Xiaomi / Redmi",
+      "name": "Redmi Note 10",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Xiaomi / Redmi",
+      "name": "Redmi Note 11",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    },
+    {
+      "brand": "Xiaomi / Redmi",
+      "name": "Redmi Note 12",
+      "port": "usb-c",
+      "note": "",
+      "note_fr": ""
+    }
+  ]
+}

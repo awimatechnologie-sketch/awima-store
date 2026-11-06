@@ -56,5 +56,10 @@
         "value": "Charge un seul appareil à la fois"
       }
     ]
-  }
+  },
+  "ports": [
+    "usb-c",
+    "lightning",
+    "micro-usb"
+  ]
 }

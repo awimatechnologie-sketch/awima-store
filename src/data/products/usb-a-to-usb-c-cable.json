@@ -56,5 +56,8 @@
         "value": "jusqu'à 480 Mbit/s"
       }
     ]
-  }
+  },
+  "ports": [
+    "usb-c"
+  ]
 }

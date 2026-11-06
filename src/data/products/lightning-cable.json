@@ -56,5 +56,8 @@
         "value": "iPhone, iPad, AirPods"
       }
     ]
-  }
+  },
+  "ports": [
+    "lightning"
+  ]
 }

@@ -15,6 +15,10 @@ import { formatTime, hoursLabel } from '../src/lib/hours.ts';
 import { formatPrice } from '../src/lib/format.ts';
 import { normalizeCode, normalizeDiscounts, evaluateDiscount, hashCode, moroccoToday } from '../src/lib/discounts.ts';
 import { buildManifest } from '../src/lib/pwa.ts';
+import { normalizeOffers, applyOffers, offerActive, offerCovers, badgeOffersFor } from '../src/lib/offers.ts';
+import { parseBlocks } from '../src/lib/richtext.ts';
+import { normalizeWarranty, warrantyDaysFor, warrantyUnit } from '../src/lib/warranty.ts';
+import { normalizeDevices, brandsOf, normalizePorts, productsForPort } from '../src/lib/compat.ts';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 import { summarize, tierFor, normalizeReview, MIN_POINTS } from '../src/lib/reviews.ts';
@@ -444,4 +448,122 @@ test('sw: الملفات الثابتة من الكاش أولاً', async () =>
   const sw = loadSw({ online: false, cached: { 'awima-assets-v1': { '/images/a.jpg': 'img' } } });
   const r = await sw.run('fetch', { request: { url: 'https://x.ma/images/a.jpg', method: 'GET', mode: 'no-cors' } });
   assert.equal(r.value.body, 'img');
+});
+
+test('offers: التطبيع يتجاهل غير الصالح ويضبط القيم', () => {
+  const raw = [
+    { name: 'باقة', scope: 'category', category: 'cat-x', type: 'percent', value: 10, minQty: 3 },
+    { name: 'معطّل', enabled: false, scope: 'all', type: 'percent', value: 5 },
+    { name: 'بلا قسم', scope: 'category', type: 'percent', value: 5 },
+    { name: 'نسبة كبيرة', scope: 'all', type: 'percent', value: 120 },
+    { name: 'بلا منتجات', scope: 'products', products: [], type: 'fixed', value: 10 },
+    { name: 'تواريخ معكوسة', scope: 'all', type: 'fixed', value: 10, startDate: '2026-12-02', endDate: '2026-12-01' },
+    { name: 'كمية رديئة', scope: 'all', type: 'fixed', value: 10, minQty: 0 },
+    { scope: 'all', type: 'fixed', value: 10 },
+  ];
+  const out = normalizeOffers(raw);
+  assert.deepEqual(out.map((o) => o.name), ['باقة', 'كمية رديئة']);
+  assert.equal(out[0].minQty, 3);
+  assert.equal(out[1].minQty, 1);
+  assert.equal(out[0].badge, true);
+  assert.deepEqual(normalizeOffers(undefined), []);
+});
+
+test('offers: التواريخ والنطاق', () => {
+  const o = normalizeOffers([{ name: 'a', scope: 'products', products: ['P-1'], type: 'fixed', value: 5, startDate: '2026-11-10', endDate: '2026-11-20' }])[0];
+  assert.equal(offerActive(o, '2026-11-09'), false);
+  assert.equal(offerActive(o, '2026-11-10'), true);
+  assert.equal(offerActive(o, '2026-11-20'), true);
+  assert.equal(offerActive(o, '2026-11-21'), false);
+  assert.equal(offerCovers(o, { id: 'P-1', category: 'c' }), true);
+  assert.equal(offerCovers(o, { id: 'P-2', category: 'c' }), false);
+  // الشارة تُخفى بعد النهاية وتبقى قبل البداية (يخفيها المتصفح حتى تبدأ)
+  assert.equal(badgeOffersFor([o], { id: 'P-1', category: 'c' }, '2026-11-01').length, 1);
+  assert.equal(badgeOffersFor([o], { id: 'P-1', category: 'c' }, '2026-11-25').length, 0);
+});
+
+test('offers: خصم الباقة على مجموع كميات القسم', () => {
+  const offers = normalizeOffers([{ name: 'باقة', scope: 'category', category: 'box', type: 'percent', value: 10, minQty: 3 }]);
+  const lines = [
+    { id: 'A', category: 'box', price: 100, qty: 2 },
+    { id: 'B', category: 'box', price: 150, qty: 1 },
+    { id: 'C', category: 'other', price: 1000, qty: 5 },
+  ];
+  const r = applyOffers(lines, offers, '2026-11-05');
+  assert.equal(r.amount, 35); // 10% من 350 فقط، لا من منتج القسم الآخر
+  assert.equal(r.applied.length, 1);
+  assert.equal(r.nudges.length, 0);
+  // قطعتان فقط: لا خصم وتنبيه بنقص قطعة
+  const r2 = applyOffers(lines.slice(0, 1), offers, '2026-11-05');
+  assert.equal(r2.amount, 0);
+  assert.equal(r2.nudges[0].missing, 1);
+  // لا تنبيه إن لم يوجد في السلة شيء من القسم
+  assert.equal(applyOffers(lines.slice(2), offers, '2026-11-05').nudges.length, 0);
+});
+
+test('offers: الأول يغلب، والمبلغ الثابت لا يتجاوز المشمول، والمنتج بلا سعر يُتجاهل', () => {
+  const offers = normalizeOffers([
+    { name: 'خاص', scope: 'products', products: ['A'], type: 'percent', value: 50 },
+    { name: 'عام', scope: 'all', type: 'percent', value: 10 },
+    { name: 'ثابت', scope: 'products', products: ['Z'], type: 'fixed', value: 500 },
+  ]);
+  const lines = [
+    { id: 'A', category: 'c', price: 100, qty: 1 },
+    { id: 'B', category: 'c', price: 200, qty: 1 },
+    { id: 'Z', category: 'c', price: 80, qty: 1 },
+    { id: 'N', category: 'c', price: null, qty: 3 },
+  ];
+  const r = applyOffers(lines, offers, '2026-11-05');
+  // A: 50 (الخاص). B وZ: عام 10% من 280 = 28 (العام أخذ B وZ قبل الثابت). N بلا سعر.
+  assert.equal(r.applied.find((x) => x.offer.name === 'خاص').amount, 50);
+  assert.equal(r.applied.find((x) => x.offer.name === 'عام').amount, 28);
+  assert.equal(r.applied.some((x) => x.offer.name === 'ثابت'), false);
+  assert.equal(r.amount, 78);
+  // الثابت وحده يُقيَّد بسعر المشمول
+  const only = normalizeOffers([{ name: 'ثابت', scope: 'products', products: ['Z'], type: 'fixed', value: 500 }]);
+  assert.equal(applyOffers(lines, only, '2026-11-05').amount, 80);
+  // عرض خارج تواريخه لا يُطبَّق
+  const old = normalizeOffers([{ name: 'قديم', scope: 'all', type: 'percent', value: 10, endDate: '2026-11-01' }]);
+  assert.equal(applyOffers(lines, old, '2026-11-05').amount, 0);
+});
+
+test('richtext: فقرات وقوائم نقطية', () => {
+  const b = parseBlocks('فقرة أولى\nمتصلة\n\n- أ\n- ب\n\nفقرة');
+  assert.deepEqual(b, [
+    { type: 'p', text: 'فقرة أولى متصلة' },
+    { type: 'ul', items: ['أ', 'ب'] },
+    { type: 'p', text: 'فقرة' },
+  ]);
+  assert.deepEqual(parseBlocks(''), []);
+  assert.deepEqual(parseBlocks(undefined), []);
+});
+
+test('warranty: معطّل افتراضياً، وتخصيص المنتج يغلب العام، و0 = بلا ضمان', () => {
+  assert.equal(warrantyDaysFor(normalizeWarranty(undefined), 30), null);
+  const on = normalizeWarranty({ enabled: true, days: 30 });
+  assert.equal(warrantyDaysFor(on, null), 30);
+  assert.equal(warrantyDaysFor(on, 365), 365);
+  assert.equal(warrantyDaysFor(on, 0), null);
+  assert.equal(warrantyDaysFor(normalizeWarranty({ enabled: true, days: 0 }), null), null);
+  assert.equal(warrantyDaysFor(normalizeWarranty({ enabled: true, days: -5 }), null), null);
+  assert.deepEqual(warrantyUnit(365), { n: 1, unit: 'year' });
+  assert.deepEqual(warrantyUnit(60), { n: 2, unit: 'month' });
+  assert.deepEqual(warrantyUnit(7), { n: 7, unit: 'day' });
+});
+
+test('compat: تنظيف الموديلات وإسقاط المكرر وغير الصالح', () => {
+  const d = normalizeDevices([
+    { brand: 'Apple', name: 'iPhone 11', port: 'lightning' },
+    { brand: 'apple', name: 'iphone 11', port: 'lightning' },
+    { brand: 'X', name: 'Y', port: 'firewire' },
+    { brand: '', name: 'Z', port: 'usb-c' },
+    { brand: 'Samsung', name: 'S24', port: 'usb-c', note: ' ملاحظة ' },
+  ]);
+  assert.equal(d.length, 2);
+  assert.equal(d[1].note, 'ملاحظة');
+  assert.deepEqual(brandsOf(d), ['Apple', 'Samsung']);
+  assert.deepEqual(normalizePorts(['usb-c', 'usb-c', 'zz']), ['usb-c']);
+  assert.deepEqual(normalizeDevices(null), []);
+  const ps = [{ id: 1, ports: ['usb-c'] }, { id: 2, ports: ['lightning'] }, { id: 3 }];
+  assert.deepEqual(productsForPort(ps, 'usb-c').map((p) => p.id), [1]);
 });

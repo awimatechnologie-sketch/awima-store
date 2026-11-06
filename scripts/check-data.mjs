@@ -59,6 +59,7 @@ for (const f of listJson(join(DATA, 'categories'))) {
 }
 
 // ---------- المنتجات ----------
+let anyProductWarranty = false;
 const pendingRelated = [];
 const untranslated = [];
 const untranslatedCats = [];
@@ -118,6 +119,15 @@ for (const f of listJson(join(DATA, 'products'))) {
   if (p.stock !== undefined && p.stock !== null) {
     if (!Number.isInteger(p.stock) || p.stock < 0) err(label, `stock يجب أن يكون عدداً صحيحاً ≥ 0 أو فارغاً: ${JSON.stringify(p.stock)}`);
     else if (p.stock > 0 && p.availability === 'out_of_stock') warn(label, 'المخزون أكبر من 0 لكن الحالة «غير متوفر» يدوياً (تبقى غير متوفر)');
+  }
+  if (p.warranty > 0) anyProductWarranty = true;
+  for (const k of ['warranty', 'leadDays']) {
+    const v = p[k];
+    if (v !== undefined && v !== null && (!Number.isInteger(v) || v < 0)) err(label, `${k} يجب أن يكون عدداً صحيحاً ≥ 0 أو فارغاً: ${JSON.stringify(v)}`);
+  }
+  if (p.ports !== undefined) {
+    if (!Array.isArray(p.ports)) err(label, '"ports" يجب أن تكون قائمة');
+    else for (const x of p.ports) if (!['usb-c', 'lightning', 'micro-usb'].includes(x)) err(label, `منفذ غير معروف في ports: ${JSON.stringify(x)}`);
   }
   if (p.related !== undefined && !Array.isArray(p.related)) err(label, '"related" يجب أن تكون قائمة معرّفات');
   else if (Array.isArray(p.related)) pendingRelated.push([label, p.id, p.related]);
@@ -183,6 +193,37 @@ if (s) {
     }
   }
 
+  if (s.autoOffersEnabled !== undefined && typeof s.autoOffersEnabled !== 'boolean') err(sLabel, 'autoOffersEnabled يجب أن يكون true/false');
+  if (s.autoOffers !== undefined && s.autoOffers !== null) {
+    if (!Array.isArray(s.autoOffers)) err(sLabel, '"autoOffers" يجب أن تكون قائمة');
+    else {
+      const today = new Date().toISOString().slice(0, 10);
+      s.autoOffers.forEach((o, i) => {
+        const at = `autoOffers[${i + 1}]`;
+        if (!String(o?.name ?? '').trim()) err(sLabel, `${at}: اسم العرض مفقود`);
+        if (!['percent', 'fixed'].includes(o?.type)) err(sLabel, `${at}: type يجب أن يكون percent أو fixed`);
+        if (!(typeof o?.value === 'number' && o.value > 0) || (o?.type === 'percent' && o.value > 100)) err(sLabel, `${at}: القيمة غير صالحة (نسبة 1–100 أو مبلغ > 0)`);
+        if (o?.minQty !== undefined && o.minQty !== null && !(Number.isInteger(o.minQty) && o.minQty >= 1)) err(sLabel, `${at}: minQty يجب أن يكون عدداً صحيحاً ≥ 1`);
+        if (!['category', 'products', 'all'].includes(o?.scope)) err(sLabel, `${at}: scope يجب أن يكون category أو products أو all`);
+        if (o?.scope === 'category') {
+          if (!o.category) err(sLabel, `${at}: اختر القسم`);
+          else if (!catIds.has(o.category)) err(sLabel, `${at}: القسم غير موجود: ${o.category}`);
+        }
+        if (o?.scope === 'products') {
+          const list = Array.isArray(o.products) ? o.products : [];
+          if (list.length === 0) err(sLabel, `${at}: اختر منتجاً واحداً على الأقل`);
+          for (const pid of list) if (!ids.has(pid)) err(sLabel, `${at}: منتج غير موجود: ${pid}`);
+        }
+        const dv = (v) => (v ? String(v).slice(0, 10) : '');
+        const [st, en] = [dv(o?.startDate), dv(o?.endDate)];
+        for (const [k, v] of [['startDate', st], ['endDate', en]]) if (v && (!/^\d{4}-\d{2}-\d{2}$/.test(v) || Number.isNaN(Date.parse(v)))) err(sLabel, `${at}: ${k} غير صالح (YYYY-MM-DD)`);
+        if (st && en && st > en) err(sLabel, `${at}: تاريخ البداية بعد النهاية`);
+        if (en && en < today && o?.enabled !== false) warn(sLabel, `${at}: العرض "${o?.name}" منتهي (${en}) وما زال مفعّلاً`);
+        if (!String(o?.name_fr ?? '').trim()) warn(sLabel, `${at}: لا اسم فرنسي للعرض (يظهر بالعربية في /fr)`);
+      });
+    }
+  }
+
   if (s.cities !== undefined) {
     if (!Array.isArray(s.cities)) err(sLabel, '"cities" يجب أن تكون قائمة');
     else {
@@ -216,7 +257,7 @@ if (s) {
 }
 
 // ---------- الصفحات ----------
-for (const f of ['about', 'contact', 'awima-box']) {
+for (const f of ['about', 'contact', 'awima-box', 'policy', 'compat']) {
   const label = `pages/${f}.json`;
   const path = join(DATA, 'pages', `${f}.json`);
   if (!existsSync(path)) err(label, 'الملف غير موجود');
@@ -226,8 +267,35 @@ for (const f of ['about', 'contact', 'awima-box']) {
   }
 }
 
+// ---------- الضمان وباحث التوافق ----------
+if (s?.warranty !== undefined) {
+  const w = s.warranty;
+  if (w === null || typeof w !== 'object') err(sLabel, '"warranty" يجب أن يكون كائناً');
+  else {
+    if (w.days !== undefined && (!Number.isInteger(w.days) || w.days < 0)) err(sLabel, `warranty.days يجب أن يكون عدداً صحيحاً ≥ 0: ${JSON.stringify(w.days)}`);
+    if (w.enabled === true && !(w.days > 0) && !anyProductWarranty) warn(sLabel, 'الضمان مفعّل لكن مدته 0 ولا منتج له ضمان خاص (لن تظهر أي شارة)');
+  }
+}
+{
+  const cpath = join(DATA, 'pages', 'compat.json');
+  if (existsSync(cpath)) {
+    const c = readJson(cpath, 'pages/compat.json');
+    const seenDev = new Set();
+    (c?.devices ?? []).forEach((d, i) => {
+      const where = `pages/compat.json (جهاز ${i + 1})`;
+      if (!d?.brand || !d?.name) err(where, 'الماركة والموديل مطلوبان');
+      else {
+        const key = `${d.brand}|${d.name}`.toLowerCase();
+        if (seenDev.has(key)) warn(where, `جهاز مكرر: ${d.brand} ${d.name} (يُتجاهل)`);
+        seenDev.add(key);
+      }
+      if (!['usb-c', 'lightning', 'micro-usb'].includes(d?.port)) err(where, `منفذ غير صالح: ${JSON.stringify(d?.port)}`);
+    });
+  }
+}
+
 // ---------- الترجمة الفرنسية ----------
-for (const f of ['about', 'contact', 'awima-box']) {
+for (const f of ['about', 'contact', 'awima-box', 'policy', 'compat']) {
   const label = `pages/${f}.fr.json`;
   const path = join(DATA, 'pages', `${f}.fr.json`);
   if (!existsSync(path)) err(label, 'الملف غير موجود (تحتاجه صفحات /fr)');

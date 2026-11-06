@@ -2,6 +2,7 @@ import type { Product, Category, ProductFr } from '../types/product';
 import type { Lang } from '../i18n';
 import { localizeProduct, localizeCategory } from '../lib/localize';
 import { normalizeStock, effectiveAvailability } from '../lib/stock';
+import { normalizePorts } from '../lib/compat';
 
 // المنتجات والأقسام: ملف JSON لكل عنصر (تُدار من لوحة /admin)
 const productFiles = import.meta.glob('../data/products/*.json', {
@@ -68,6 +69,9 @@ function normalizeProduct(file: string, r: any): Product {
     fr: normalizeFr(r.fr),
     related: Array.isArray(r.related) ? r.related.map(String).filter(Boolean) : [],
     hidden: Boolean(r.hidden),
+    warranty: typeof r.warranty === 'number' && Number.isInteger(r.warranty) && r.warranty >= 0 ? r.warranty : null,
+    leadDays: typeof r.leadDays === 'number' && Number.isInteger(r.leadDays) && r.leadDays > 0 ? r.leadDays : null,
+    ports: normalizePorts(r.ports),
   };
 }
 

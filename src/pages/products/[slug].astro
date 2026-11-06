@@ -7,8 +7,10 @@ import { formatPrice, getSaving, availabilityFor } from '../../lib/format';
 import { t, langOf, localePath, type Lang } from '../../i18n';
 import { pickRelated } from '../../lib/related';
 import { isLowStock } from '../../lib/stock';
+import { warrantyDaysFor, warrantyUnit } from '../../lib/warranty';
 import { getAllProducts, getCategories, getProductBySlug } from '../../services/products';
 import { getReviewSummary, getReviews } from '../../services/reviews';
+import { badgeOffersFor, moroccoToday } from '../../lib/offers';
 
 export function getStaticPaths() {
   return getAllProducts().map((p) => ({ params: { slug: p.slug } }));
@@ -25,7 +27,16 @@ const catName = Object.fromEntries(categories.map((c) => [c.id, c.name]));
 const pageUrl = new URL(localePath(lang, `/products/${product.slug}`), site.url).href;
 const waLink = buildProductLink(product, pageUrl, lang);
 const av = availabilityFor(lang, product.availability);
+const wDays = warrantyDaysFor(site.warranty, product.warranty);
+const wu = wDays ? warrantyUnit(wDays) : null;
+const wNote = lang === 'fr' ? site.warranty.noteFr || site.warranty.note : site.warranty.note;
 const saving = getSaving(product.price, product.oldPrice);
+const today = moroccoToday();
+const offers = badgeOffersFor(site.autoOffers, product, today).map((o) => ({
+  o,
+  value: o.type === 'percent' ? `${o.value}%` : formatPrice(o.value, lang),
+  name: lang === 'fr' && o.nameFr ? o.nameFr : o.name,
+}));
 const images = product.images.length ? product.images : ['/images/placeholder.svg'];
 const specs = Object.entries(product.specs ?? {});
 const phoneHref = `tel:+${site.contact.whatsapp}`;
@@ -99,8 +110,19 @@ if (product.price !== null) {
             {saving ? <del class="old">{formatPrice(product.oldPrice, lang)}</del> : null}
             {saving ? <span class="save">{t(lang, 'price.save', { amount: formatPrice(saving, lang) })}</span> : null}
           </p>
+          {offers.map(({ o, value, name }) => (
+            <p class="offer-banner" data-offer-start={o.start ?? undefined} data-offer-end={o.end ?? undefined} hidden={!!o.start && today < o.start}>
+              🏷️ {t(lang, o.minQty > 1 ? 'offer.banner.min' : 'offer.banner.single', { name, value, n: o.minQty })}{o.end ? ' ' + t(lang, 'offer.until', { date: o.end }) : ''}
+            </p>
+          ))}
           <span class={`badge ${av.cls}`}>{av.text}</span>
           {isLowStock(product.stock) ? <span class="low">{t(lang, 'product.lowStock', { n: product.stock as number })}</span> : null}
+
+          {product.availability === 'on_request' && product.leadDays ? <p class="lead-days">⏱️ {t(lang, 'product.lead', { n: product.leadDays })}</p> : null}
+          {wu ? (
+            <p class="warranty">🛡️ <a href={localePath(lang, '/policy')}>{t(lang, 'product.warranty', { n: wu.n, unit: t(lang, `warranty.unit.${wu.unit}`) })}</a>{wNote ? <span> — {wNote}</span> : null}</p>
+          ) : null}
+          {product.ports && product.ports.length ? <p class="compat-link">📱 <a href={localePath(lang, '/compat') + '?port=' + product.ports[0]}>{t(lang, 'product.checkCompat')}</a></p> : null}
 
           <p class="short">{product.shortDescription}</p>
 
@@ -193,10 +215,14 @@ if (product.price !== null) {
   .cat { font-size: 0.9rem; color: var(--c-muted); }
   h1 { margin: 4px 0; }
   .ref { color: var(--c-muted); font-size: 0.9rem; margin-bottom: 12px; }
+  .offer-banner { margin: 0 0 10px; padding: 10px 12px; border-radius: 10px; background: #e8f0ff; color: var(--c-primary); font-weight: 600; line-height: 1.7; }
+  .offer-banner[hidden] { display: none; }
   .prices { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin: 0 0 8px; }
   .price { font-size: 1.8rem; font-weight: 800; color: var(--c-accent); }
   .old { color: var(--c-muted); font-size: 1.05rem; }
   .save { background: var(--c-alert); color: #fff; font-weight: 700; font-size: 0.85rem; padding: 3px 12px; border-radius: 999px; }
+  .lead-days, .warranty, .compat-link { margin: 8px 0 0; font-size: 0.95rem; color: var(--c-muted); }
+  .warranty a, .compat-link a { color: var(--c-primary); font-weight: 700; }
   .low { margin-inline-start: 8px; color: var(--c-alert); font-weight: 700; font-size: 0.9rem; }
   .short { margin-top: 14px; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }

@@ -17,6 +17,9 @@ export interface Product {
   fr?: ProductFr; // ترجمة فرنسية اختيارية (تُدار من اللوحة)
   related?: string[]; // معرّفات منتجات مقترحة يدوياً (يُشترى معه)
   hidden?: boolean; // مخفي من الموقع (مسودة) دون حذفه
+  warranty?: number | null; // أيام الضمان لهذا المنتج. فارغ = الافتراضي العام، 0 = بلا ضمان
+  leadDays?: number | null; // مدة التوفر بالأيام للمنتج «عند الطلب» (اختياري)
+  ports?: ('usb-c' | 'lightning' | 'micro-usb')[]; // منافذ الهواتف المدعومة (لباحث التوافق)
 }
 
 export interface ProductFr {

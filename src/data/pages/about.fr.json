@@ -1,12 +1,66 @@
 {
   "title": "À propos",
-  "intro": "AWIMA Store est une boutique de produits électroniques et d'accessoires de connexion et de stockage. Commandez ce dont vous avez besoin directement sur WhatsApp.",
-  "mission": "Proposer des produits avec une description et un prix clairs, et rendre la commande et le contact simples.",
-  "goals": [
-    "Présenter des produits avec des informations précises et de belles photos",
-    "Répondre rapidement à vos questions et commandes sur WhatsApp",
-    "Élargir progressivement le catalogue selon les besoins des clients"
+  "intro": "D'une idée de jeune ambitieux à une vision pour bâtir un avenir numérique et industriel.\n\nAWIMA n'est pas née d'une grande entreprise ni d'investissements massifs, mais d'une idée simple en laquelle croyait un jeune Marocain : pourquoi ne pourrions-nous pas développer nos propres solutions ? Pourquoi les problèmes quotidiens de nos métiers, de notre commerce et de notre industrie ne deviendraient-ils pas des occasions de créer des projets et des produits marocains ?",
+  "mission": "",
+  "goals": [],
+  "philosophy": "",
+  "image": "",
+  "sections": [
+    {
+      "title": "Notre histoire : la technologie doit créer des opportunités",
+      "text": "Un parcours dont le but n'était pas seulement de créer des applications ou de lancer une boutique en ligne, mais de comprendre comment les choses fonctionnent, de repérer les faiblesses des systèmes traditionnels et de chercher des moyens concrets de les améliorer grâce à la technologie.\n\nNous croyons que la transformation numérique ne se réduit pas à utiliser un ordinateur ou à créer un site : c'est un vrai changement dans la façon de gérer une activité, d'organiser les ressources, d'échanger l'information, d'accroître la productivité et de créer de nouvelles opportunités pour les particuliers et les entreprises.\n\nC'est l'idée sur laquelle repose AWIMA."
+    },
+    {
+      "title": "Qui sommes-nous ?",
+      "text": "AWIMA est une marque et un projet ambitieux dédié à la transformation numérique et au développement de solutions techniques et commerciales, à partir des besoins du marché et du quotidien des particuliers et des porteurs de projets.\n\nNous développons des applications et des outils numériques qui aident à organiser l'activité, gérer les ressources, protéger les biens et faciliter l'accès aux services et aux produits.\n\nPour nous, la technologie n'est pas une fin en soi, mais un moyen de rendre le travail plus simple, plus clair et plus efficace.\n\nNous voulons créer des solutions utiles au petit commerçant, à l'artisan, au chef d'entreprise, à l'étudiant, à l'inventeur et à toute personne ayant une idée qu'elle souhaite concrétiser."
+    },
+    {
+      "title": "AWIMA STORE – bien plus qu'une boutique",
+      "text": "Nous voyons AWIMA STORE comme un projet qui évolue par étapes. À ses débuts, c'est une vitrine numérique de produits et de services, qui permet aux visiteurs de découvrir ce qui est disponible et de contacter directement les offreurs.\n\nMais notre vision dépasse l'idée d'une boutique classique. Nous voulons bâtir progressivement un espace commercial numérique réunissant :\n\n- les grossistes et fournisseurs de produits ;\n- les demi-grossistes et distributeurs ;\n- les artisans et fabricants locaux ;\n- les propriétaires de boutiques et de petits projets ;\n- les prestataires de services professionnels et techniques ;\n- les entreprises d'équipement de locaux, de matériel et de mobilier commercial ;\n- les prestataires de maintenance, d'installation, de transport et d'aménagement.\n\nNous voulons que le propriétaire d'un nouveau local trouve, par exemple, les produits dont il a besoin, le bon fournisseur, l'artisan qui peut l'aménager et le prestataire qui l'aide à démarrer, le tout dans un seul système. Notre but n'est pas seulement d'exposer des produits, mais de faciliter l'accès aux opportunités et de créer des liens commerciaux entre les différents acteurs.\n\nNous développerons cette vision progressivement, selon les besoins des utilisateurs et les moyens du projet."
+    },
+    {
+      "title": "AWINDAR – la vision plus large",
+      "text": "Derrière AWIMA se trouve une vision plus large nommée AWINDAR : le projet par lequel nous aspirons à nous étendre vers l'automatisation industrielle, la transformation numérique et les systèmes intelligents, en reliant les domaines techniques et industriels dans un ensemble cohérent.\n\nAu fil de mon parcours d'apprentissage, de recherche et de travail, je ne me suis pas limité à un seul domaine. Je me suis intéressé à la programmation et au développement d'applications Android, j'ai appris Flutter et travaillé sur les bases de données et sur des systèmes qui fonctionnent en local sans connexion permanente. Je me suis aussi plongé dans l'électronique, les capteurs, les systèmes embarqués et la commande électronique.\n\nAu contact du secteur agricole, j'ai découvert de près les systèmes d'irrigation et de fertilisation, les pompes, les vannes, les stations d'injection, les appareils de mesure de salinité et d'acidité, et les systèmes de contrôle et de supervision. L'intérêt s'est étendu à la robotique, à l'automatisation, à l'intelligence artificielle et à l'analyse de données.\n\nCes spécialités peuvent sembler éloignées, mais elles peuvent se rejoindre dans un même projet : une application qui collecte les données, un système électronique qui les lit, une unité de commande qui agit, une machine qui exécute la tâche, et un système numérique qui surveille et analyse les performances.\n\nNous ne prétendons pas être déjà arrivés à ce stade, mais nous construisons les connaissances, l'expérience et les projets qui peuvent nous y mener."
+    },
+    {
+      "title": "Pourquoi avoir choisi cette voie ?",
+      "text": "Parce que nous croyons que la prospérité d'un pays ne dépend pas seulement des grands investissements : elle commence aussi quand les jeunes ont la possibilité d'apprendre, d'essayer et de produire.\n\n- Des jeunes ont de bonnes idées et personne pour les aider à en faire des projets.\n- Des artisans ont de vraies compétences mais atteignent difficilement de nouveaux clients.\n- De petits commerçants ont besoin d'outils d'organisation simples et peu coûteux.\n- Des porteurs de projets cherchent des solutions techniques adaptées à leurs moyens plutôt que des systèmes chers et complexes.\n\nNous voulons faire partie de la solution : créer des occasions de coopération, ouvrir la voie aux compétences et aux expériences, encourager les initiatives locales et donner de la place aux idées qui peuvent devenir des produits et des services utiles."
+    },
+    {
+      "title": "Aux jeunes qui rêvent de changement",
+      "text": "Nous ne sommes pas là pour dire que la route est facile, ni que le succès vient dès qu'on a une idée. Nous savons que les moyens sont parfois limités et que les responsabilités du quotidien peuvent rendre les rêves difficiles à réaliser.\n\nMais nous croyons que l'apprentissage continu, l'expérience, le travail concret et le fait de commencer avec les moyens du bord peuvent faire la différence. Nous sommes encore au début du chemin.\n\nNous invitons chaque jeune avec une idée, chaque artisan avec un savoir-faire, chaque commerçant avec une expérience et chaque inventeur en quête d'opportunité à croire en la valeur de ce qu'il peut apporter. L'avenir auquel nous aspirons ne se construit pas seul : il naît de nombreux efforts qui se complètent."
+    }
   ],
-  "philosophy": "La clarté de l'information et du prix, et un contact direct avec le client.",
-  "image": ""
+  "projectsTitle": "Quelques-uns de nos projets",
+  "projects": [
+    {
+      "name": "AWIMA STOCK",
+      "tagline": "Une gestion de stock plus intelligente",
+      "text": "Une application qui aide les boutiques et les activités commerciales à organiser leur stock, suivre les produits et les opérations, gérer les réparations et les services associés, et avoir une vision plus claire de l'activité. Notre but : rendre les outils de gestion numérique accessibles même aux petits projets.",
+      "link": "/awima-box"
+    },
+    {
+      "name": "AWIMA BOX",
+      "tagline": "Une organisation pratique du travail",
+      "text": "Un projet qui associe produits physiques et solutions numériques : des boîtes et organiseurs pour ranger outils, pièces et produits, pouvant être reliés à des outils numériques pour identifier et gérer leur contenu.",
+      "link": "/awima-box"
+    },
+    {
+      "name": "AWIMA GUARD",
+      "tagline": "Une protection intelligente et simple",
+      "text": "Un projet de solutions de protection et d'alerte à base d'électronique et de systèmes intelligents, pour protéger les biens et les appareils de certains risques du quotidien, avec des solutions pratiques, peu coûteuses et évolutives.",
+      "link": ""
+    },
+    {
+      "name": "AWIMA THINK",
+      "tagline": "Un espace de réflexion et de création",
+      "text": "Une application qui aide les étudiants, chercheurs et inventeurs à organiser leurs idées, planifier leurs projets, gérer leurs fichiers et travailler avec des PDF, des cartes mentales, des designs et des images.",
+      "link": ""
+    }
+  ],
+  "projectsNote": "Ces projets ne sont pas la fin du chemin, mais des étapes d'une vision plus large : développer des solutions connectées qui répondent à de vrais besoins.",
+  "closing": "AWIMA — Ideas into Solutions",
+  "closingSub": "Des idées qui deviennent des solutions, et des solutions qui créent des opportunités.",
+  "visitTitle": "Nous rendre visite et nous contacter",
+  "mapUrl": ""
 }

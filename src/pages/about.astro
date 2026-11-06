@@ -4,44 +4,75 @@ import { site } from '../config/site';
 import { buildContactLink } from '../lib/whatsapp';
 import aboutAr from '../data/pages/about.json';
 import aboutFr from '../data/pages/about.fr.json';
+import { parseBlocks } from '../lib/richtext';
+import HoursBadge from '../components/HoursBadge.astro';
 import { t, langOf, localePath, type Lang } from '../i18n';
 
 interface Props { lang?: Lang }
 const lang = langOf(Astro.props.lang);
-const about = lang === 'fr' ? aboutFr : aboutAr;
+const about: any = lang === 'fr' ? aboutFr : aboutAr;
 
-// فقرات من النص: السطر الفارغ يفصل بين فقرتين
-const paragraphs = (txt?: string) =>
-  (txt ?? '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
 const goals: string[] = (about.goals ?? []).filter(Boolean);
+const sections: { title?: string; text?: string }[] = (about.sections ?? []).filter((s: any) => s?.title || s?.text);
+const projects: { name: string; tagline?: string; text?: string; link?: string }[] = (about.projects ?? []).filter((p: any) => p?.name);
+const safeInternal = (l?: string) => (l && l.startsWith('/') && !l.startsWith('//') ? localePath(lang, l) : '');
+const hasVisit = !!(site.contact.address || site.contact.mapUrl);
 ---
-<BaseLayout lang={lang} title={about.title} description={about.intro}>
+<BaseLayout lang={lang} title={about.title} description={parseBlocks(about.intro)[0]?.type === 'p' ? (parseBlocks(about.intro)[0] as any).text : undefined}>
   <section class="section">
     <div class="container narrow">
       <h1>{about.title}</h1>
-      {paragraphs(about.intro).map((p) => <p class="lead">{p}</p>)}
+      {parseBlocks(about.intro).map((b, i) => b.type === 'p' ? <p class={i === 0 ? 'lead' : ''}>{b.text}</p> : <ul class="goals">{b.items.map((x) => <li>{x}</li>)}</ul>)}
 
       {about.image && <img class="hero-img" src={about.image} alt={site.name} loading="lazy" />}
 
-      {about.mission && (
-        <>
-          <h2>{t(lang, 'about.mission')}</h2>
-          {paragraphs(about.mission).map((p) => <p>{p}</p>)}
-        </>
+      {about.mission && (<><h2>{t(lang, 'about.mission')}</h2>{parseBlocks(about.mission).map((b) => b.type === 'p' && <p>{b.text}</p>)}</>)}
+      {goals.length > 0 && (<><h2>{t(lang, 'about.goals')}</h2><ul class="goals">{goals.map((g) => <li>{g}</li>)}</ul></>)}
+      {about.philosophy && (<><h2>{t(lang, 'about.philosophy')}</h2>{parseBlocks(about.philosophy).map((b) => b.type === 'p' && <p>{b.text}</p>)}</>)}
+
+      {sections.map((s) => (
+        <section class="block">
+          {s.title && <h2>{s.title}</h2>}
+          {parseBlocks(s.text).map((b) => b.type === 'p' ? <p>{b.text}</p> : <ul class="goals">{b.items.map((x) => <li>{x}</li>)}</ul>)}
+        </section>
+      ))}
+    </div>
+
+    {projects.length > 0 && (
+      <div class="container projects">
+        <h2>{about.projectsTitle || t(lang, 'about.projects')}</h2>
+        <ul class="grid">
+          {projects.map((p) => {
+            const href = safeInternal(p.link);
+            return (
+              <li class="card proj">
+                <h3>{p.name}</h3>
+                {p.tagline && <p class="tag">{p.tagline}</p>}
+                {p.text && <p class="txt">{p.text}</p>}
+                {href && <a class="more" href={href}>{t(lang, 'about.more')}</a>}
+              </li>
+            );
+          })}
+        </ul>
+        {about.projectsNote && <p class="pnote">{about.projectsNote}</p>}
+      </div>
+    )}
+
+    <div class="container narrow">
+      {about.closing && (
+        <div class="closing">
+          <p class="big" dir="ltr">{about.closing}</p>
+          {about.closingSub && <p class="sub">{about.closingSub}</p>}
+        </div>
       )}
 
-      {goals.length > 0 && (
-        <>
-          <h2>{t(lang, 'about.goals')}</h2>
-          <ul class="goals">{goals.map((g) => <li>{g}</li>)}</ul>
-        </>
-      )}
-
-      {about.philosophy && (
-        <>
-          <h2>{t(lang, 'about.philosophy')}</h2>
-          {paragraphs(about.philosophy).map((p) => <p>{p}</p>)}
-        </>
+      {hasVisit && (
+        <div class="card visit">
+          <h2>{about.visitTitle || t(lang, 'about.visit')}</h2>
+          {site.contact.address && <p>📍 {site.contact.address}</p>}
+          <p><HoursBadge lang={lang} /></p>
+          {site.contact.mapUrl && <p><a class="btn btn-outline" href={site.contact.mapUrl} target="_blank" rel="noopener">{t(lang, 'about.map')}</a></p>}
+        </div>
       )}
 
       <div class="actions">
@@ -57,8 +88,23 @@ const goals: string[] = (about.goals ?? []).filter(Boolean);
   h2 { margin-block: 28px 8px; color: var(--c-primary); font-size: 1.2rem; }
   .lead { font-size: 1.1rem; color: var(--c-text); }
   p { line-height: 1.9; color: var(--c-muted); margin-block: 0 12px; }
-  .lead { color: var(--c-text); }
-  .goals { padding-inline-start: 20px; line-height: 2; color: var(--c-muted); }
+  .goals { padding-inline-start: 20px; line-height: 2; color: var(--c-muted); margin-block: 0 12px; }
   .hero-img { width: 100%; height: auto; border-radius: var(--radius); margin-block: 16px; }
+  .block { border-top: 1px solid var(--c-border); margin-top: 24px; }
+  .projects { margin-block: 32px; }
+  .projects h2 { margin-top: 0; }
+  .grid { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 14px; }
+  .proj { padding: 16px; border-top: 4px solid var(--c-accent); }
+  .proj h3 { margin: 0; color: var(--c-primary); direction: ltr; text-align: start; }
+  .proj .tag { margin: 2px 0 8px; font-weight: 700; color: var(--c-text); }
+  .proj .txt { margin: 0; font-size: 0.95rem; }
+  .more { display: inline-block; margin-top: 10px; font-weight: 700; color: var(--c-accent); text-decoration: none; }
+  .pnote { margin-top: 16px; font-style: italic; }
+  .closing { text-align: center; margin-block: 32px; padding: 24px 16px; border-radius: var(--radius); background: var(--c-surface); }
+  .closing .big { font-size: 1.3rem; font-weight: 800; color: var(--c-primary); margin: 0 0 4px; }
+  .closing .sub { margin: 0; color: var(--c-text); }
+  .visit { padding: 16px; margin-bottom: 16px; }
+  .visit h2 { margin-top: 0; }
   .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
 </style>
