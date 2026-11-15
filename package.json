@@ -8,9 +8,9 @@
   "scripts": {
     "dev": "astro dev",
     "check": "node scripts/check-data.mjs",
-    "test": "node --import ./scripts/register-ts-resolver.mjs --test",
+    "test": "node scripts/gen-flow-catalog.mjs && node --import ./scripts/register-ts-resolver.mjs --test",
     "optimize": "node scripts/optimize-images.mjs",
-    "build": "node scripts/check-data.mjs && node scripts/optimize-images.mjs && astro build",
+    "build": "node scripts/gen-flow-catalog.mjs && node scripts/check-data.mjs && node scripts/optimize-images.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

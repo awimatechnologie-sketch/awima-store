@@ -534,6 +534,7 @@ collections:
             fields:
               - { label: تفعيل الإعجابات (القلب), name: likesEnabled, widget: boolean, default: true }
               - { label: تفعيل تقييمات الزوار (نموذج التقييم), name: reviewsEnabled, widget: boolean, default: true }
+              - { label: 'تسجيل عمليات البحث بلا نتيجة (تظهر في /moderation لتعرف ما يطلبه الزوار)', name: searchLog, widget: boolean, default: true }
               - { label: 'لا تُظهر عدّاد الإعجابات قبل بلوغ هذا العدد (0 = أظهره دائماً)', name: minLikesToShow, widget: number, value_type: int, min: 0, default: 0 }
               - label: عتبات الإطار اللوني
                 name: thresholds
@@ -622,3 +623,26 @@ collections:
             widget: text
             required: false
             hint: 'تحذير: خطأ هنا قد يكسر التصميم. للتراجع امسح المحتوى واحفظ. قد تحتاج !important لتجاوز تنسيقات الموقع.'
+      - label: أقسام الطلبات والمسؤولون (AWIMA FLOW)
+        name: departments
+        file: src/data/departments.json
+        format: json
+        fields:
+          - label: منسق العمليات
+            name: coordinator
+            widget: object
+            hint: 'يستقبل الطلبات غير المتوفرة والطلبات متعددة الأقسام. الرقم بصيغة دولية بلا + (212XXXXXXXXX).'
+            fields:
+              - { label: الاسم, name: name, widget: string }
+              - { label: رقم واتساب, name: phone, widget: string, pattern: ['^212[5-7][0-9]{8}$', 'الصيغة: 212 ثم 9 أرقام تبدأ بـ 5 أو 6 أو 7'] }
+          - label: الأقسام الإدارية
+            name: departments
+            widget: list
+            hint: 'لكل قسم مسؤول واحد. كل قسم من أقسام المتجر يجب أن ينتمي لقسم إداري واحد فقط؛ ما لا ينتمي لأي قسم يذهب للمنسق. الأقسام الفرعية ترث قسم أبيها.'
+            fields:
+              - { label: المعرّف (إنجليزي صغير, لا يتغير), name: id, widget: string, pattern: ['^[a-z0-9-]+$', 'حروف إنجليزية صغيرة وأرقام وشرطات'] }
+              - { label: الاسم, name: name, widget: string }
+              - { label: الاسم بالإنجليزية, name: name_en, widget: string, required: false }
+              - { label: رقم واتساب المسؤول, name: phone, widget: string, pattern: ['^212[5-7][0-9]{8}$', 'الصيغة: 212 ثم 9 أرقام تبدأ بـ 5 أو 6 أو 7'] }
+              - { label: نشِط, name: active, widget: boolean, default: true }
+              - { label: أقسام المتجر التابعة, name: categories, widget: relation, collection: categories, value_field: id, search_fields: [name], display_fields: [name], multiple: true, required: false }

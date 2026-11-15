@@ -117,6 +117,13 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
           <p id="closed-note" class="hint" hidden>{t(lang, 'cart.closedNote')}</p>
 
           <button id="send" type="button" class="btn btn-wa block">{t(lang, 'cart.send')}</button>
+          <p id="flow-msg" class="notice" role="alert" hidden></p>
+          <div id="flow-result" class="flow-result" role="status" hidden>
+            <h3 id="flow-title"></h3>
+            <p id="flow-text"></p>
+            <a id="flow-wa" class="btn btn-wa block" target="_blank" rel="noopener">{t(lang, 'flow.continue')}</a>
+            <p id="flow-ref" class="hint"></p>
+          </div>
           <button id="clear" type="button" class="btn btn-outline block">{t(lang, 'cart.clear')}</button>
           <p class="hint">{t(lang, 'cart.noPayment')}</p>
         </aside>
@@ -171,7 +178,11 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
   .city-opt.off { background: var(--c-surface); color: var(--c-muted); cursor: not-allowed; }
   .city-opt small { color: var(--c-muted); font-weight: 600; }
   .check { display: flex; align-items: center; gap: 8px; }
-  .block { width: 100%; }
+  .block { width: 100%; text-align: center; }
+  .flow-result { border: 2px solid #0e6e3c; background: #e6f6ec; border-radius: 12px; padding: 14px; display: grid; gap: 8px; }
+  .flow-result.wait { border-color: #8a4b00; background: #fff4e0; }
+  .flow-result h3 { margin: 0; font-size: 1.05rem; }
+  .flow-result p { margin: 0; }
   @media (min-width: 900px) { .layout { grid-template-columns: 1.4fr 1fr; align-items: start; } .summary { position: sticky; top: 90px; } }
 </style>
 
@@ -457,18 +468,71 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
     return out.join('\n');
   }
 
-  $('send').addEventListener('click', () => {
+  // ---- AWIMA FLOW: نسجّل الطلب في الخادم أولاً، ثم نوجّه الزبون لواتساب مع المسؤول المناسب ----
+  const sendBtn = $<HTMLButtonElement>('send');
+  const flowMsg = $('flow-msg');
+  const flowBox = $('flow-result');
+  const showMsg = (text: string) => { flowMsg.textContent = text; flowMsg.hidden = !text; };
+  let currentRef = ''; // نفس الرمز عند إعادة المحاولة فلا يتكرر الطلب
+  const waLink = (phone: string, ref: string) => `https://wa.me/${phone}?text=${encodeURIComponent(buildMessage(ref))}`;
+
+  sendBtn.addEventListener('click', async () => {
+    showMsg('');
     if (remember.checked) {
       try { localStorage.setItem(LKEY, JSON.stringify({ name: nameEl.value, phone: phoneEl.value, address: addrEl.value })); } catch {}
     } else {
       try { localStorage.removeItem(LKEY); } catch {}
     }
-    const url = `https://wa.me/${data.whatsapp}?text=${encodeURIComponent(buildMessage(orderRef()))}`;
-    window.open(url, '_blank', 'noopener');
+    if (nameEl.value.trim().length < 2) { showMsg(t(lang, 'flow.needName')); nameEl.focus(); return; }
+    if (!selectedCity()) { showMsg(t(lang, 'flow.needCity')); return; }
+    const { avail } = compute();
+    if (avail.length === 0) return;
+    if (!currentRef) currentRef = orderRef();
+    const ref = currentRef;
+    sendBtn.disabled = true;
+    showMsg(t(lang, 'flow.sending'));
+    try {
+      const res = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          ref, lang, name: nameEl.value, phone: phoneEl.value, city: selectedCity(), address: addrEl.value, note: noteEl.value,
+          items: avail.map((l) => ({ id: l.id, qty: l.qty })),
+        }),
+      });
+      if (res.status === 400) {
+        const j = await res.json().catch(() => ({}));
+        const m: string[] = j.missing ?? [];
+        showMsg(t(lang, m.includes('name') ? 'flow.needName' : m.includes('city') ? 'flow.needCity' : 'flow.badPhone'));
+        sendBtn.disabled = false;
+        return;
+      }
+      if (res.status === 429) { showMsg(t(lang, 'flow.rate')); sendBtn.disabled = false; return; }
+      if (!res.ok) throw new Error(String(res.status));
+      const r = await res.json();
+      const h = r.handler as { kind: string; name: string; phone: string };
+      const waiting = r.availability === 'waiting';
+      const text = waiting ? 'flow.waitText' : h.kind === 'coordinator' ? 'flow.coordAvailText' : 'flow.availText';
+      const local = h.phone.replace(/^212/, '0');
+      flowBox.className = 'flow-result' + (waiting ? ' wait' : '');
+      $('flow-title').textContent = t(lang, waiting ? 'flow.waitTitle' : 'flow.availTitle');
+      $('flow-text').textContent = t(lang, text, { ref: r.ref, name: h.name, phone: local });
+      ($('flow-wa') as HTMLAnchorElement).href = waLink(data.whatsapp, r.ref);
+      $('flow-ref').textContent = t(lang, 'flow.keepRef', { ref: r.ref });
+      flowBox.hidden = false;
+      showMsg('');
+      flowBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      sendBtn.disabled = false;
+    } catch {
+      // الخادم غير متاح: لا نُضيّع الطلب، نفتح واتساب بالرسالة الكاملة كما كان سابقاً
+      showMsg('');
+      sendBtn.disabled = false;
+      window.open(waLink(data.whatsapp, ref), '_blank', 'noopener');
+    }
   });
   $('clear').addEventListener('click', () => { if (confirm(t(lang, 'cart.confirmClear'))) clearCart(); });
   document.querySelectorAll('input[name="city"]').forEach((r) => r.addEventListener('change', render));
-  window.addEventListener('cart:change', render);
+  window.addEventListener('cart:change', () => { currentRef = ''; flowBox.hidden = true; render(); });
   window.addEventListener('storage', render);
   render();
   try { const saved = sessionStorage.getItem(CKEY); if (saved) applyCode(saved, true); } catch {}

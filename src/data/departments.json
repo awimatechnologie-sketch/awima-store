@@ -1,0 +1,88 @@
+{
+  "coordinator": {
+    "name": "منسق العمليات",
+    "phone": "212652305405"
+  },
+  "departments": [
+    {
+      "id": "charging",
+      "name": "الشحن والطاقة",
+      "name_en": "Charging & Power",
+      "phone": "212771280551",
+      "active": true,
+      "categories": [
+        "cat-chargers",
+        "cat-cables",
+        "cat-power-banks",
+        "cat-laptop-chargers"
+      ]
+    },
+    {
+      "id": "audio",
+      "name": "الصوتيات والسمعيات",
+      "name_en": "Audio & Sound",
+      "phone": "212782395722",
+      "active": true,
+      "categories": [
+        "cat-audio"
+      ]
+    },
+    {
+      "id": "protection",
+      "name": "الحماية والوقاية",
+      "name_en": "Protection & Covers",
+      "phone": "212615026790",
+      "active": true,
+      "categories": [
+        "cat-phone-cases",
+        "cat-screen-protectors",
+        "cat-laptop-bags"
+      ]
+    },
+    {
+      "id": "connectivity",
+      "name": "التوصيل والاتصال",
+      "name_en": "Connectivity & Adapters",
+      "phone": "212767666243",
+      "active": true,
+      "categories": [
+        "cat-adapters"
+      ]
+    },
+    {
+      "id": "storage",
+      "name": "التخزين والذاكرة",
+      "name_en": "Storage & Memory",
+      "phone": "212602566108",
+      "active": true,
+      "categories": [
+        "cat-storage",
+        "cat-disk"
+      ]
+    },
+    {
+      "id": "computers",
+      "name": "ملحقات الحواسيب",
+      "name_en": "Computer Peripherals",
+      "phone": "212621644177",
+      "active": true,
+      "categories": [
+        "cat-keyboards-mice",
+        "cat-webcams-headsets",
+        "cat-cleaning-care"
+      ]
+    },
+    {
+      "id": "mounts",
+      "name": "الحوامل والتصوير والألعاب",
+      "name_en": "Mounts, Imaging & Gaming",
+      "phone": "212605155763",
+      "active": true,
+      "categories": [
+        "cat-phone-holders",
+        "cat-laptop-stands",
+        "cat-camera-accessories"
+      ]
+    }
+  ]
+}

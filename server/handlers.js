@@ -2,7 +2,10 @@
 // كل دالة تأخذ (request, env) وتُرجع Response. env.DB = قاعدة D1.
 import { SCHEMA } from './schema.js';
 import { makeToken, verifyToken } from '../src/lib/reviewtoken.ts';
-import { checkReview, isProductId, isDeviceId, REVIEW_WEIGHT_SQL, LIMITS } from '../src/lib/community.ts';
+import { checkReview, isProductId, isDeviceId, cleanMissTerm, REVIEW_WEIGHT_SQL, LIMITS } from '../src/lib/community.ts';
+import { normalize } from '../src/lib/search.ts';
+import { parseOrder, assign, STATUSES } from '../src/lib/flow.ts';
+import CATALOG from './flow-catalog.generated.js';
 
 const JSON_HEADERS = { 'Content-Type': 'application/json; charset=utf-8' };
 export const json = (data, status = 200, extra = {}) =>
@@ -21,10 +24,10 @@ const ipHash = async (request, env) =>
   (await sha256(`${request.headers.get('CF-Connecting-IP') || 'local'}|${env.HASH_SALT || ''}`)).slice(0, 32);
 const deviceHash = async (device, env) => (await sha256(`${device}|${env.HASH_SALT || ''}`)).slice(0, 40);
 
-async function readBody(request) {
+async function readBody(request, max = 4000) {
   try {
     const text = await request.text();
-    if (text.length > 4000) return null;
+    if (text.length > max) return null;
     return JSON.parse(text);
   } catch {
     return null;
@@ -174,6 +177,48 @@ async function adminAct_(request, env) {
   return json({ ok: true }, 200, NO_STORE);
 }
 
+/** POST /api/miss {q} → يسجّل عبارة بحث لم تُرجع نتائج */
+async function postMiss_(request, env) {
+  if (!hasDb(env)) return unavailable();
+  const b = await readBody(request);
+  const term = cleanMissTerm(b?.q, normalize);
+  if (!term) return json({ ok: false }, 200, NO_STORE); // غير صالحة: نتجاهلها بصمت
+  const ip = await ipHash(request, env);
+  const now = Date.now();
+  const recent = await env.DB.prepare('SELECT COUNT(*) AS n FROM miss_ip WHERE ip = ? AND ts > ?').bind(ip, now - 3600_000).first();
+  if ((recent?.n ?? 0) >= LIMITS.missPerHour) return json({ ok: false }, 429, NO_STORE);
+  await env.DB.prepare('DELETE FROM miss_ip WHERE ts < ?').bind(now - 86400_000).run();
+  await env.DB.prepare('INSERT INTO miss_ip (ip, ts) VALUES (?, ?)').bind(ip, now).run();
+  const exists = await env.DB.prepare('SELECT term FROM search_misses WHERE term = ?').bind(term).first();
+  if (!exists) {
+    const total = await env.DB.prepare('SELECT COUNT(*) AS n FROM search_misses').first();
+    if ((total?.n ?? 0) >= LIMITS.maxMissTerms) return json({ ok: false }, 200, NO_STORE); // سقف الحماية من الإغراق
+  }
+  await env.DB.prepare(
+    'INSERT INTO search_misses (term, n, first_ts, last_ts) VALUES (?, 1, ?, ?) ON CONFLICT(term) DO UPDATE SET n = n + 1, last_ts = excluded.last_ts'
+  ).bind(term, now, now).run();
+  return json({ ok: true }, 200, NO_STORE);
+}
+
+/** GET /api/admin/misses → الأكثر بحثاً بلا نتيجة */
+async function adminMisses_(request, env) {
+  if (!hasDb(env)) return unavailable();
+  if (!isAdmin(request, env)) return json({ error: 'unauthorized' }, 401, NO_STORE);
+  const rows = await env.DB.prepare('SELECT term, n, last_ts FROM search_misses ORDER BY n DESC, last_ts DESC LIMIT 100').all();
+  return json({ misses: rows.results ?? [] }, 200, NO_STORE);
+}
+
+/** POST /api/admin/misses {action: delete|clear, term?} */
+async function adminMissAct_(request, env) {
+  if (!hasDb(env)) return unavailable();
+  if (!isAdmin(request, env)) return json({ error: 'unauthorized' }, 401, NO_STORE);
+  const b = await readBody(request);
+  if (b?.action === 'clear') await env.DB.prepare('DELETE FROM search_misses').run();
+  else if (b?.action === 'delete' && typeof b.term === 'string') await env.DB.prepare('DELETE FROM search_misses WHERE term = ?').bind(b.term).run();
+  else return json({ error: 'bad_request' }, 400, NO_STORE);
+  return json({ ok: true }, 200, NO_STORE);
+}
+
 /** POST /api/admin/review-link {product, days?} → رمز رابط تقييم موثّق */
 async function adminLink_(request, env) {
   if (!hasDb(env)) return unavailable();
@@ -183,6 +228,78 @@ async function adminLink_(request, env) {
   const secret = env.REVIEW_SECRET || env.ADMIN_TOKEN || '';
   if (secret.length < 12) return json({ error: 'no_secret' }, 503, NO_STORE);
   return json({ token: await makeToken(secret, b.product, Number(b.days) || undefined) }, 200, NO_STORE);
+}
+
+// ---------- AWIMA FLOW: الطلبات ----------
+const ORDERS_PER_HOUR = 8;
+const view = (o) => ({
+  ref: o.ref,
+  status: o.status,
+  availability: o.availability,
+  reason: o.reason,
+  handler: { kind: o.handler_kind, name: o.handler_name, phone: o.handler_phone },
+});
+
+/** POST /api/orders → يحفظ الطلب، يتحقق من التوفر، ويُسند لمسؤول القسم أو للمنسق */
+async function postOrder_(request, env) {
+  const b = await readBody(request, 8000);
+  if (!b) return json({ error: 'bad_request' }, 400, NO_STORE);
+  if (!(await verifyTurnstile(b.turnstile, request, env))) return json({ error: 'captcha' }, 403, NO_STORE);
+  const parsed = parseOrder(b, CATALOG);
+  if (!parsed.ok) return json({ error: 'incomplete', missing: parsed.missing }, 400, NO_STORE);
+  const o = parsed.order;
+  // إعادة الإرسال بالرمز نفسه لا تُنشئ طلباً ثانياً (idempotent)
+  const old = await env.DB.prepare('SELECT * FROM orders WHERE ref = ?').bind(o.ref).first();
+  if (old) return json({ ...view(old), duplicate: true }, 200, NO_STORE);
+  const ip = await ipHash(request, env);
+  const now = Date.now();
+  const recent = await env.DB.prepare('SELECT COUNT(*) AS n FROM orders WHERE ip = ? AND created_ts > ?').bind(ip, now - 3600_000).first();
+  if ((recent?.n ?? 0) >= ORDERS_PER_HOUR) return json({ error: 'rate_limited' }, 429, NO_STORE);
+
+  const a = assign(o, CATALOG);
+  const subtotal = o.items.reduce((n, it) => n + (CATALOG.products[it.id].price ?? 0) * it.qty, 0);
+  for (const l of a.lines) {
+    await env.DB.prepare('INSERT OR REPLACE INTO order_items (ref, product, name, qty, price, state, department) VALUES (?, ?, ?, ?, ?, ?, ?)')
+      .bind(o.ref, l.id, l.name, l.qty, CATALOG.products[l.id].price, l.state, l.departmentId).run();
+  }
+  await env.DB.prepare(
+    `INSERT INTO orders (ref, name, phone, city, address, note, status, availability, handler_kind, handler_name, handler_phone, department, reason, subtotal, lang, ip, created_ts, updated_ts)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+  ).bind(o.ref, o.name, o.phone, o.city, o.address || null, o.note || null, a.status, a.availability, a.handler.kind, a.handler.name, a.handler.phone,
+    a.handler.departmentId, a.reason, subtotal, b.lang === 'fr' ? 'fr' : 'ar', ip, now, now).run();
+  await env.DB.prepare('INSERT INTO order_events (ref, kind, detail, ts) VALUES (?, ?, ?, ?)').bind(o.ref, 'created', `${a.status}|${a.handler.kind}|${a.reason}`, now).run();
+  return json({ ref: o.ref, status: a.status, availability: a.availability, reason: a.reason, handler: { kind: a.handler.kind, name: a.handler.name, phone: a.handler.phone } }, 201, NO_STORE);
+}
+
+/** GET /api/admin/orders?status=&limit= → أحدث الطلبات مع بنودها */
+async function adminOrders_(request, env) {
+  if (!isAdmin(request, env)) return json({ error: 'unauthorized' }, 401, NO_STORE);
+  const u = new URL(request.url);
+  const st = u.searchParams.get('status');
+  const limit = Math.min(200, Math.max(1, Number(u.searchParams.get('limit')) || 50));
+  const rows = st && STATUSES.includes(st)
+    ? (await env.DB.prepare('SELECT * FROM orders WHERE status = ? ORDER BY created_ts DESC LIMIT ?').bind(st, limit).all()).results ?? []
+    : (await env.DB.prepare('SELECT * FROM orders ORDER BY created_ts DESC LIMIT ?').bind(limit).all()).results ?? [];
+  const orders = [];
+  for (const r of rows) {
+    const items = (await env.DB.prepare('SELECT product, name, qty, price, state, department FROM order_items WHERE ref = ?').bind(r.ref).all()).results ?? [];
+    const { ip, ...safe } = r;
+    orders.push({ ...safe, items });
+  }
+  return json({ orders }, 200, NO_STORE);
+}
+
+/** POST /api/admin/orders {ref, status} → تغيير حالة الطلب مع تسجيل الحدث */
+async function adminOrderStatus_(request, env) {
+  if (!isAdmin(request, env)) return json({ error: 'unauthorized' }, 401, NO_STORE);
+  const b = await readBody(request);
+  if (typeof b?.ref !== 'string' || !STATUSES.includes(b?.status)) return json({ error: 'bad_request' }, 400, NO_STORE);
+  const cur = await env.DB.prepare('SELECT status FROM orders WHERE ref = ?').bind(b.ref).first();
+  if (!cur) return json({ error: 'not_found' }, 404, NO_STORE);
+  const now = Date.now();
+  await env.DB.prepare('UPDATE orders SET status = ?, updated_ts = ? WHERE ref = ?').bind(b.status, now, b.ref).run();
+  await env.DB.prepare('INSERT INTO order_events (ref, kind, detail, ts) VALUES (?, ?, ?, ?)').bind(b.ref, 'status', `${cur.status}>${b.status}`, now).run();
+  return json({ ok: true }, 200, NO_STORE);
 }
 
 // ---------- الغلاف: ينشئ الجداول عند الحاجة ولا يترك أي استثناء يصل للزائر (خطأ 1101) ----------
@@ -213,3 +330,9 @@ export const postReview = guard(postReview_);
 export const adminList = guard(adminList_);
 export const adminAct = guard(adminAct_);
 export const adminLink = guard(adminLink_);
+export const postMiss = guard(postMiss_);
+export const adminMisses = guard(adminMisses_);
+export const adminMissAct = guard(adminMissAct_);
+export const postOrder = guard(postOrder_);
+export const adminOrders = guard(adminOrders_);
+export const adminOrderStatus = guard(adminOrderStatus_);

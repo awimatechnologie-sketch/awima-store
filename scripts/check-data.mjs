@@ -322,6 +322,34 @@ if (s?.warranty !== undefined) {
   }
 }
 
+// ---------- AWIMA FLOW: الأقسام الإدارية والمسؤولون ----------
+{
+  const dPath = join(DATA, 'departments.json');
+  if (existsSync(dPath)) {
+    const dl = 'departments.json';
+    const d = readJson(dPath, dl);
+    const PHONE = /^212[5-7]\d{8}$/;
+    if (d) {
+      if (!d.coordinator || !PHONE.test(d.coordinator.phone ?? '')) err(dl, 'رقم منسق العمليات مفقود أو بصيغة غير صحيحة (212XXXXXXXXX)');
+      const ids = new Set();
+      const owner = new Map();
+      (d.departments ?? []).forEach((dep, i) => {
+        const w = `${dl} (قسم ${i + 1}: ${dep?.name ?? '؟'})`;
+        if (!dep?.id || !/^[a-z0-9-]+$/.test(dep.id)) err(w, 'المعرّف مفقود أو غير صالح');
+        else if (ids.has(dep.id)) err(w, `معرّف مكرر: ${dep.id}`);
+        else ids.add(dep.id);
+        if (!dep?.name) err(w, 'الاسم مطلوب');
+        if (!PHONE.test(dep?.phone ?? '')) err(w, `رقم المسؤول غير صحيح: ${JSON.stringify(dep?.phone)}`);
+        for (const c of dep?.categories ?? []) {
+          if (!catIds.has(c)) err(w, `قسم متجر غير موجود: ${c}`);
+          else if (owner.has(c)) err(w, `القسم ${c} تابع لقسمين إداريين (${owner.get(c)} و${dep.id}) — يجب أن يكون لواحد فقط`);
+          else owner.set(c, dep.id);
+        }
+      });
+    }
+  }
+}
+
 // ---------- الترجمة الفرنسية ----------
 for (const f of ['about', 'contact', 'awima-box', 'policy', 'compat']) {
   const label = `pages/${f}.fr.json`;
