@@ -1,0 +1,10 @@
+---
+// النسخة الفرنسية من صفحة الصنف
+import Page from '../../sections/[slug].astro';
+import { getSectionSlugs } from '../../../services/sections';
+
+export function getStaticPaths() {
+  return getSectionSlugs().map((slug) => ({ params: { slug } }));
+}
+---
+<Page lang="fr" />

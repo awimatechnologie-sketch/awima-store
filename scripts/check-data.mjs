@@ -118,21 +118,6 @@ for (const f of listJson(join(DATA, 'products'))) {
     if (!publicFileExists(img)) (p.hidden ? warn : err)(label, `صورة غير موجودة في public: ${img}`);
   }
 
-  if (p.variants !== undefined && p.variants !== null) {
-    if (!Array.isArray(p.variants)) err(label, '"variants" يجب أن تكون قائمة');
-    else {
-      const vids = new Set();
-      p.variants.forEach((v, i) => {
-        const w = `${label} (نوع ${i + 1})`;
-        if (!v?.id || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(v.id)) err(w, `معرّف النوع مفقود أو غير صالح: ${JSON.stringify(v?.id)}`);
-        else if (vids.has(v.id)) err(w, `معرّف نوع مكرر: ${v.id}`);
-        else vids.add(v.id);
-        if (!v?.name || !String(v.name).trim()) err(w, 'اسم النوع مطلوب');
-        if (v?.image && !publicFileExists(v.image)) err(w, `صورة النوع غير موجودة: ${v.image}`);
-      });
-      if (p.variants.length > 0 && !p.variants.some((v) => v?.available !== false)) warn(label, 'كل الأنواع موقوفة: يظهر المنتج بلا خيارات');
-    }
-  }
   if (p.specs !== undefined && p.specs !== null) {
     if (Array.isArray(p.specs)) {
       p.specs.forEach((s, i) => {

@@ -1,0 +1,77 @@
+---
+// صفحة صنف: غلاف كبير + تصفّح منتجات الصنف (مع ترشيح بالأقسام الفرعية)
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { getSections, getSectionSlugs } from '../../services/sections';
+import { t, langOf, localePath, type Lang } from '../../i18n';
+
+export function getStaticPaths() {
+  return getSectionSlugs().map((slug) => ({ params: { slug } }));
+}
+
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
+const { slug } = Astro.params;
+const section = getSections(lang).find((s) => s.slug === slug)!;
+const catName = Object.fromEntries(section.categories.map((c) => [c.id, c.name]));
+const title = section.name;
+const description = t(lang, 'section.description', { name: section.name, n: section.products.length });
+---
+<BaseLayout lang={lang} title={title} description={description} image={section.cover}>
+  <section class="section">
+    <div class="container">
+      <nav class="crumbs" aria-label={t(lang, 'nav.breadcrumb')}>
+        <a href={localePath(lang, '/')}>{t(lang, 'nav.home')}</a> ›
+        <a href={localePath(lang, '/products')}>{t(lang, 'nav.products')}</a> ›
+        <span>{section.name}</span>
+      </nav>
+
+      <header class="cover">
+        {section.cover && <img src={section.cover} alt={section.name} width="1400" height="1400" fetchpriority="high" decoding="async" />}
+        <div class="cover-text">
+          <h1>{section.name}</h1>
+          <p class="n">{section.products.length > 0 ? t(lang, 'section.count', { n: section.products.length }) : t(lang, 'section.emptyShort')}</p>
+          {section.categories.length > 1 && (
+            <div class="chips" id="chips" role="group" aria-label={t(lang, 'products.categories')}>
+              <button type="button" class="chip" data-cat="" aria-pressed="true">{t(lang, 'products.all')}</button>
+              {section.categories.map((c) => <button type="button" class="chip" data-cat={c.id} aria-pressed="false">{c.name}</button>)}
+            </div>
+          )}
+          <a class="all" href={localePath(lang, '/products')}>{t(lang, 'section.allProducts')}</a>
+        </div>
+      </header>
+
+      {section.products.length === 0 && <p class="card soon">{t(lang, 'section.empty')}</p>}
+      <ul class="grid grid-4 list" id="list">
+        {section.products.map((p) => (
+          <li data-cat={p.category}><ProductCard product={p} categoryName={catName[p.category]} lang={lang} /></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+<script>
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('#chips .chip'));
+  const items = Array.from(document.querySelectorAll<HTMLElement>('#list > li'));
+  chips.forEach((c) => c.addEventListener('click', () => {
+    const cat = c.dataset.cat ?? '';
+    chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+    items.forEach((li) => (li.hidden = !!cat && li.dataset.cat !== cat));
+  }));
+</script>
+<style>
+  .crumbs { font-size: 0.9rem; color: var(--c-muted); margin-bottom: 12px; }
+  .crumbs a { color: var(--c-primary); text-decoration: none; }
+  .cover { display: grid; gap: 16px; margin-bottom: 24px; align-items: center; }
+  .cover img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 16px; background: var(--c-surface); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18); }
+  .cover-text h1 { margin: 0 0 6px; color: var(--c-primary); }
+  .cover-text .n { margin: 0 0 12px; color: var(--c-muted); font-weight: 600; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .chip { font: inherit; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--c-border); background: #fff; cursor: pointer; min-height: 44px; }
+  .chip[aria-pressed='true'] { background: var(--c-accent); color: #fff; border-color: var(--c-accent); }
+  .soon { padding: 18px; text-align: center; font-weight: 700; color: var(--c-primary); }
+  .all { color: var(--c-primary); font-weight: 700; }
+  .list { list-style: none; margin: 0; padding: 0; }
+  .list > li[hidden] { display: none; }
+  @media (min-width: 900px) { .cover { grid-template-columns: minmax(0, 560px) 1fr; gap: 32px; } }
+</style>

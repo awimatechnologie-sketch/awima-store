@@ -5,6 +5,7 @@ import { site, localizedSite } from '../config/site';
 import { buildContactLink } from '../lib/whatsapp';
 import { buildStoreLd } from '../lib/seo';
 import { getCategories, getFeaturedProducts, getAllProducts } from '../services/products';
+import { getSections } from '../services/sections';
 import { buildTrustItems } from '../lib/trust';
 import { hoursLabel } from '../lib/hours';
 import { formatPrice } from '../lib/format';
@@ -14,6 +15,7 @@ interface Props { lang?: Lang }
 const lang = langOf(Astro.props.lang);
 const ls = localizedSite(lang);
 const categories = getCategories(lang);
+const sections = getSections(lang);
 const featured = getFeaturedProducts(4, lang);
 const categoryName = Object.fromEntries(categories.map((c) => [c.id, c.name]));
 const waLink = buildContactLink(undefined, lang);
@@ -64,11 +66,22 @@ const reasons = [1, 2, 3, 4].map((n) => ({ t: t(lang, `home.r${n}.t`), d: t(lang
   <section class="section" aria-labelledby="cats">
     <div class="container">
       <h2 id="cats">{t(lang, 'home.shopByCat')}</h2>
+      {sections.length > 0 ? (
+        <div class="grid grid-4 sec-grid">
+          {sections.map((s) => (
+            <a class="card sec" href={localePath(lang, `/sections/${s.slug}`)}>
+              {s.cover && <img src={s.cover} alt="" width="400" height="400" loading="lazy" decoding="async" />}
+              <span>{s.name}</span>
+            </a>
+          ))}
+        </div>
+      ) : (
       <div class="grid grid-4">
         {categories.filter((c) => !c.parent).map((c) => (
           <a class="card cat" href={localePath(lang, `/products?category=${c.slug}`)}>{c.icon ? <span class="ic" aria-hidden="true">{c.icon}</span> : null}<span>{c.name}</span></a>
         ))}
       </div>
+      )}
     </div>
   </section>
 
@@ -180,6 +193,9 @@ const reasons = [1, 2, 3, 4].map((n) => ({ t: t(lang, `home.r${n}.t`), d: t(lang
   .ic { font-size: 1.8rem; line-height: 1; }
   .cat { display: grid; place-items: center; gap: 6px; min-height: 90px; font-weight: 700; color: var(--c-primary); text-decoration: none; text-align: center; padding: 12px; }
   .cat:hover { border-color: var(--c-accent); }
+  .sec { display: grid; gap: 8px; padding: 0 0 12px; overflow: hidden; text-align: center; font-weight: 700; color: var(--c-primary); text-decoration: none; }
+  .sec img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; background: var(--c-surface); }
+  .sec:hover { border-color: var(--c-accent); }
   .promo { background: var(--c-primary); color: #fff; padding-block: 40px; text-align: center; }
   .promo h2 { color: #fff; }
   .why { padding: 18px; }

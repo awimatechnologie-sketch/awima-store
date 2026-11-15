@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { site } from '../config/site';
 import { getAllProducts } from '../services/products';
+import { getIndexableSectionSlugs } from '../services/sections';
 import { buildSitemap } from '../lib/seo';
 import { localePath } from '../i18n';
 
@@ -8,7 +9,7 @@ import { localePath } from '../i18n';
 const stripFr = (p: string) => p.replace(/^\/fr(?=\/|$)/, '') || '/';
 
 export const GET: APIRoute = () => {
-  const arPaths = ['/', '/products', '/awima-box', '/about', '/compat', ...(site.warranty.enabled ? ['/policy'] : []), '/contact', ...getAllProducts().map((p) => `/products/${p.slug}`)];
+  const arPaths = ['/', '/products', '/awima-box', '/about', '/compat', ...(site.warranty.enabled ? ['/policy'] : []), '/contact', ...getIndexableSectionSlugs().map((s) => `/sections/${s}`), ...getAllProducts().map((p) => `/products/${p.slug}`)];
   const paths = [...arPaths, ...arPaths.map((p) => localePath('fr', p))];
   const xml = buildSitemap(site.url, paths, (p) => {
     const base = stripFr(p);

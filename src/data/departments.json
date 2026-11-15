@@ -6,8 +6,11 @@
   "departments": [
     {
       "id": "charging",
+      "slug": "charging",
       "name": "الشحن والطاقة",
+      "name_fr": "Charge et énergie",
       "name_en": "Charging & Power",
+      "cover": "/images/sections/charging.jpg",
       "phone": "212771280551",
       "active": true,
       "categories": [
@@ -19,8 +22,11 @@
     },
     {
       "id": "audio",
+      "slug": "audio",
       "name": "الصوتيات والسمعيات",
+      "name_fr": "Audio et son",
       "name_en": "Audio & Sound",
+      "cover": "/images/sections/audio.jpg",
       "phone": "212782395722",
       "active": true,
       "categories": [
@@ -29,8 +35,11 @@
     },
     {
       "id": "protection",
+      "slug": "protection",
       "name": "الحماية والوقاية",
+      "name_fr": "Protection et coques",
       "name_en": "Protection & Covers",
+      "cover": "/images/sections/protection.jpg",
       "phone": "212615026790",
       "active": true,
       "categories": [
@@ -41,8 +50,11 @@
     },
     {
       "id": "connectivity",
+      "slug": "connectivity",
       "name": "التوصيل والاتصال",
+      "name_fr": "Connectique et adaptateurs",
       "name_en": "Connectivity & Adapters",
+      "cover": "/images/sections/connectivity.jpg",
       "phone": "212767666243",
       "active": true,
       "categories": [
@@ -51,8 +63,11 @@
     },
     {
       "id": "storage",
+      "slug": "storage",
       "name": "التخزين والذاكرة",
+      "name_fr": "Stockage et mémoire",
       "name_en": "Storage & Memory",
+      "cover": "/images/sections/storage.jpg",
       "phone": "212602566108",
       "active": true,
       "categories": [
@@ -62,8 +77,11 @@
     },
     {
       "id": "computers",
+      "slug": "computers",
       "name": "ملحقات الحواسيب",
+      "name_fr": "Accessoires PC",
       "name_en": "Computer Peripherals",
+      "cover": "/images/sections/computers.jpg",
       "phone": "212621644177",
       "active": true,
       "categories": [
@@ -74,8 +92,11 @@
     },
     {
       "id": "mounts",
+      "slug": "mounts",
       "name": "الحوامل والتصوير والألعاب",
+      "name_fr": "Supports, photo et jeux",
       "name_en": "Mounts, Imaging & Gaming",
+      "cover": "/images/sections/mounts.jpg",
       "phone": "212605155763",
       "active": true,
       "categories": [
