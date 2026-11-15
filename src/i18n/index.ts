@@ -311,6 +311,12 @@ const ar: Dict = {
   'cart.msg.note': 'ملاحظة',
   // إشعارات
   'toast.added': 'أُضيف «{name}» إلى السلة',
+  'variant.choose': 'اختر النوع',
+  'variant.samePrice': '(كلها بنفس السعر)',
+  'variant.pick': 'اختر النوع أولاً.',
+  'variant.pickCta': 'اختر النوع',
+  'variant.line': 'النوع: {name}',
+
   'toast.max': 'وصلت إلى الحد المتوفر من «{name}» ({n})',
   // الوحدات
   'plural.one': 'منتج واحد',
@@ -595,6 +601,12 @@ const fr: Dict = {
   'cart.msg.address': 'Adresse',
   'cart.msg.note': 'Remarque',
   'toast.added': '« {name} » ajouté au panier',
+  'variant.choose': 'Choisissez le modèle',
+  'variant.samePrice': '(même prix)',
+  'variant.pick': 'Choisissez d’abord le modèle.',
+  'variant.pickCta': 'Choisir le modèle',
+  'variant.line': 'Modèle : {name}',
+
   'toast.max': 'Quantité maximale disponible atteinte pour « {name} » ({n})',
   'plural.one': '1 produit',
   'plural.two': '2 produits',

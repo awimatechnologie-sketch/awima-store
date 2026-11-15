@@ -60,6 +60,18 @@ collections:
         default: in_stock
       - { label: الكمية في المخزون (اتركه فارغاً = غير محدود، و0 = غير متوفر تلقائياً), name: stock, widget: number, value_type: int, min: 0, required: false, hint: 'عدّلها بعد كل بيع. تمنع السلة طلب كمية أكبر منها. إن كانت حالة التوفر «غير متوفر» فتبقى كذلك مهما كان المخزون.' }
       - { label: 'كلمات بحث إضافية (مرادفات بالعربية والفرنسية والدارجة، مفصولة بمسافة)', name: keywords, widget: text, required: false, hint: 'مثال لواقي الشاشة: كوك واقي سكرين بروتكتور verre trempé. تساعد الزائر على إيجاد المنتج بالاسم الذي يعرفه.' }
+      - label: الأنواع المتوفرة (اختياري)
+        name: variants
+        widget: list
+        required: false
+        summary: '{{fields.name}}'
+        hint: 'للمنتج الذي يتوفر بعدة علامات/موديلات بنفس السعر (مثال: شاحن 25W → Samsung / Anker / Baseus). يختار الزبون النوع قبل الإضافة للسلة ويصل اسمه في الطلب. اعتمد العلامات الجيدة فقط. أوقف «متوفر» لنوع نفد فيختفي فوراً. اتركها فارغة لمنتج بلا خيارات.'
+        fields:
+          - { label: المعرّف (إنجليزي صغير، لا يتغير), name: id, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'حروف إنجليزية صغيرة وأرقام وشرطات'] }
+          - { label: اسم النوع (يظهر للزبون), name: name, widget: string }
+          - { label: الاسم بالفرنسية (اختياري), name: name_fr, widget: string, required: false }
+          - { label: صورة النوع (اختياري), name: image, widget: image, required: false }
+          - { label: متوفر حالياً, name: available, widget: boolean, default: true }
       - { label: منتج مميز (يظهر في الرئيسية), name: featured, widget: boolean, default: false }
       - { label: 'اختيار Awima 👑 (تاج «منتج موثوق» يدوياً)', name: trusted, widget: boolean, default: false, required: false, hint: 'يمنح التاج مهما كانت التقييمات. بدونه ينال المنتج التاج تلقائياً عند بلوغ حدّ التاج في الإعدادات ← مجتمع الموقع.' }
       - { label: 'مدة الضمان بالأيام (فارغ = الافتراضية العامة، 0 = بلا ضمان لهذا المنتج)', name: warranty, widget: number, value_type: int, min: 0, required: false, hint: 'لا تظهر شارة الضمان إلا إذا فعّلت الضمان من الإعدادات ← الضمان. 30 = شهر، 365 = سنة.' }
