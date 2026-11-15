@@ -1,0 +1,137 @@
+---
+// لوحة الطلبات (للمدير والمنسق): تتطلب التوكن السري ADMIN_TOKEN. لا تُفهرَس ولا تظهر في الخريطة.
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="الطلبات" alternates={false}>
+  <meta slot="head" name="robots" content="noindex, nofollow" />
+  <section class="section">
+    <div class="container narrow">
+      <h1>الطلبات</h1>
+      <form id="login" class="card box">
+        <label>الرمز السري (ADMIN_TOKEN)<input id="token" type="password" autocomplete="off" required /></label>
+        <button class="btn btn-cart" type="submit">دخول</button>
+      </form>
+      <div id="panel" hidden>
+        <div class="tabs">
+          <button type="button" data-st="" aria-pressed="true">الكل</button>
+          <button type="button" data-st="ASSIGNED" aria-pressed="false">جديدة</button>
+          <button type="button" data-st="WAITING_STOCK" aria-pressed="false">بانتظار التوفر</button>
+          <button type="button" data-st="CONTACTED" aria-pressed="false">تم التواصل</button>
+          <button type="button" data-st="CONFIRMED" aria-pressed="false">مؤكدة</button>
+          <button type="button" data-st="SHIPPED" aria-pressed="false">قيد التوصيل</button>
+          <button type="button" data-st="COMPLETED" aria-pressed="false">مكتملة</button>
+          <button type="button" data-st="CANCELLED" aria-pressed="false">ملغاة</button>
+        </div>
+        <p id="msg" class="msg" aria-live="polite"></p>
+        <ul id="list" class="list"></ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<script>
+  const login = document.getElementById('login') as HTMLFormElement;
+  const panel = document.getElementById('panel') as HTMLElement;
+  const list = document.getElementById('list') as HTMLElement;
+  const msg = document.getElementById('msg') as HTMLElement;
+  let token = '';
+  let status = '';
+  try { token = sessionStorage.getItem('awima_mod') || ''; } catch { /* ignore */ }
+
+  const LABEL: Record<string, string> = {
+    NEW: 'جديد', ASSIGNED: 'جديد (مُسند)', WAITING_STOCK: 'بانتظار التوفر', CONTACTED: 'تم التواصل',
+    CONFIRMED: 'مؤكد', SHIPPED: 'قيد التوصيل', COMPLETED: 'مكتمل', CANCELLED: 'ملغى',
+  };
+  const NEXT: [string, string][] = [['CONTACTED', 'تم التواصل'], ['CONFIRMED', 'تأكيد'], ['SHIPPED', 'قيد التوصيل'], ['COMPLETED', 'اكتمل'], ['CANCELLED', 'إلغاء']];
+  const fmt = (ts: number) => new Date(ts).toLocaleString('fr-MA', { timeZone: 'Africa/Casablanca', dateStyle: 'short', timeStyle: 'short' });
+
+  async function api(path: string, body?: unknown) {
+    const r = await fetch(path, { method: body ? 'POST' : 'GET', headers: { Authorization: `Bearer ${token}`, 'content-type': 'application/json' }, body: body ? JSON.stringify(body) : undefined });
+    if (r.status === 401) throw new Error('الرمز غير صحيح');
+    if (r.status === 503) throw new Error('قاعدة البيانات D1 غير مربوطة بعد');
+    if (!r.ok) throw new Error('تعذّر الطلب');
+    return r.json();
+  }
+  const el = (tag: string, cls?: string, text?: string) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; };
+
+  // رسالة لمسؤول القسم بمعلومات الزبون (إشعار يدوي بنقرة إلى أن يُؤتمت)
+  function notifyText(o: any): string {
+    const lines = (o.items as any[]).map((i) => `• ${i.name} ×${i.qty}${i.state === 'waiting' ? ' (غير متوفر)' : ''}`);
+    return [`طلب جديد ${o.ref}`, `الزبون: ${o.name}`, o.phone ? `الهاتف: ${o.phone}` : '', `المدينة: ${o.city}`, ...lines, o.note ? `ملاحظة: ${o.note}` : ''].filter(Boolean).join('\n');
+  }
+
+  async function load() {
+    msg.textContent = '';
+    try {
+      const { orders } = await api(`/api/admin/orders${status ? `?status=${status}` : ''}`);
+      panel.hidden = false; login.hidden = true;
+      list.replaceChildren();
+      if (!orders.length) { msg.textContent = 'لا طلبات هنا.'; return; }
+      for (const o of orders) {
+        const li = el('li', 'card item');
+        li.append(el('strong', undefined, `${o.ref} — ${LABEL[o.status] || o.status}`));
+        li.append(el('p', 'who', `${o.name} · ${o.city} · ${fmt(o.created_ts)}`));
+        if (o.phone) {
+          const p = el('p'); const a = el('a', undefined, `0${String(o.phone).slice(3)}`) as HTMLAnchorElement;
+          a.href = `https://wa.me/${o.phone}`; a.target = '_blank'; a.rel = 'noopener'; p.append(a); li.append(p);
+        }
+        const ul = el('ul', 'its');
+        for (const i of o.items) ul.append(el('li', i.state === 'waiting' ? 'wait' : '', `${i.name} × ${i.qty}${i.price != null ? ` — ${i.price * i.qty} د.م` : ''}${i.state === 'waiting' ? ' (غير متوفر)' : ''}`));
+        li.append(ul);
+        li.append(el('p', 'who', `المجموع التقريبي: ${o.subtotal} د.م · المسؤول: ${o.handler_name} (0${String(o.handler_phone).slice(3)})`));
+        if (o.note) li.append(el('p', 'who', `ملاحظة: ${o.note}`));
+        const row = el('div', 'row');
+        const n = el('a', 'act ok', 'إشعار المسؤول') as HTMLAnchorElement;
+        n.href = `https://wa.me/${o.handler_phone}?text=${encodeURIComponent(notifyText(o))}`; n.target = '_blank'; n.rel = 'noopener';
+        row.append(n);
+        for (const [st, label] of NEXT) {
+          if (st === o.status) continue;
+          const b = el('button', 'act' + (st === 'CANCELLED' ? ' danger' : ''), label) as HTMLButtonElement; b.type = 'button';
+          b.addEventListener('click', async () => {
+            if (st === 'CANCELLED' && !confirm('إلغاء الطلب؟')) return;
+            b.disabled = true;
+            try { await api('/api/admin/orders', { ref: o.ref, status: st }); await load(); } catch (e) { msg.textContent = (e as Error).message; b.disabled = false; }
+          });
+          row.append(b);
+        }
+        li.append(row);
+        list.append(li);
+      }
+    } catch (e) {
+      msg.textContent = (e as Error).message;
+      panel.hidden = true; login.hidden = false;
+    }
+  }
+  login.addEventListener('submit', (e) => {
+    e.preventDefault();
+    token = (document.getElementById('token') as HTMLInputElement).value.trim();
+    try { sessionStorage.setItem('awima_mod', token); } catch { /* ignore */ }
+    load();
+  });
+  document.querySelectorAll<HTMLButtonElement>('[data-st]').forEach((b) => b.addEventListener('click', () => {
+    status = b.dataset.st!;
+    document.querySelectorAll<HTMLButtonElement>('[data-st]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    load();
+  }));
+  if (token) load();
+</script>
+<style>
+  .narrow { max-width: 760px; }
+  h1 { color: var(--c-primary); margin-block: 0 12px; }
+  .box { padding: 16px; display: grid; gap: 12px; max-width: 420px; }
+  label { display: grid; gap: 4px; font-weight: 700; color: var(--c-primary); }
+  input { font: inherit; padding: 10px; border: 1px solid var(--c-border); border-radius: 8px; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .tabs button { font: inherit; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--c-border); background: #fff; cursor: pointer; }
+  .tabs button[aria-pressed='true'] { background: var(--c-accent); color: #fff; border-color: var(--c-accent); }
+  .msg { color: var(--c-muted); font-weight: 700; }
+  .list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .item { padding: 12px 14px; }
+  .item p { margin: 6px 0 0; }
+  .its { margin: 8px 0 0; padding-inline-start: 18px; }
+  .its .wait { color: #8a4b00; }
+  .who { color: var(--c-muted); font-size: 0.9rem; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .act { font: inherit; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--c-border); background: #fff; cursor: pointer; text-decoration: none; color: inherit; }
+  .act.ok { background: #166534; color: #fff; border-color: #166534; }
+  .act.danger { color: #b91c1c; border-color: #b91c1c; }
+</style>
