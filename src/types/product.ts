@@ -21,7 +21,16 @@ export interface Product {
   keywords?: string; // كلمات بحث إضافية (مرادفات بالعربية والفرنسية والدارجة)
   trusted?: boolean; // «اختيار Awima»: يمنح التاج يدوياً
   leadDays?: number | null; // مدة التوفر بالأيام للمنتج «عند الطلب» (اختياري)
+  variants?: ProductVariant[]; // الأنواع المتوفرة حالياً (بنفس السعر). فارغ = منتج بلا اختيار نوع
   ports?: ('usb-c' | 'lightning' | 'micro-usb')[]; // منافذ الهواتف المدعومة (لباحث التوافق)
+}
+
+/** نوع/موديل متوفر لنفس المنتج بنفس السعر (علامة تجارية معتمدة). يختاره الزبون قبل الإضافة للسلة */
+export interface ProductVariant {
+  id: string;
+  name: string;
+  nameFr?: string;
+  image?: string;
 }
 
 export interface ProductFr {

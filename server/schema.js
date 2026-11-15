@@ -16,4 +16,5 @@ export const SCHEMA = [
   "CREATE TABLE IF NOT EXISTS order_items (ref TEXT NOT NULL, product TEXT NOT NULL, name TEXT NOT NULL, qty INTEGER NOT NULL, price INTEGER, state TEXT NOT NULL, department TEXT, PRIMARY KEY (ref, product))",
   "CREATE TABLE IF NOT EXISTS order_events (id INTEGER PRIMARY KEY AUTOINCREMENT, ref TEXT NOT NULL, kind TEXT NOT NULL, detail TEXT, ts INTEGER NOT NULL)",
   "CREATE INDEX IF NOT EXISTS order_events_ref ON order_events (ref, ts)",
+  "CREATE TABLE IF NOT EXISTS order_lines (ref TEXT NOT NULL, line INTEGER NOT NULL, product TEXT NOT NULL, variant TEXT, variant_name TEXT, name TEXT NOT NULL, qty INTEGER NOT NULL, price INTEGER, state TEXT NOT NULL, department TEXT, PRIMARY KEY (ref, line))",
 ];

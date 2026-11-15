@@ -25,6 +25,7 @@ const categories = getCategories(lang);
 const category = categories.find((c) => c.id === product.category);
 const parentCat = category?.parent ? categories.find((c) => c.id === category.parent) : undefined;
 const catName = Object.fromEntries(categories.map((c) => [c.id, c.name]));
+const variants = product.variants ?? [];
 
 const pageUrl = new URL(localePath(lang, `/products/${product.slug}`), site.url).href;
 const waLink = buildProductLink(product, pageUrl, lang);
@@ -132,9 +133,24 @@ if (product.price !== null) {
 
           <p class="short">{product.shortDescription}</p>
 
+          {variants.length > 0 && product.availability !== 'out_of_stock' && (
+            <fieldset class="variants" id="variants">
+              <legend>{t(lang, 'variant.choose')} <small>{t(lang, 'variant.samePrice')}</small></legend>
+              <div class="vopts">
+                {variants.map((v) => (
+                  <label class="vopt">
+                    <input type="radio" name="variant" value={v.id} checked={variants.length === 1} />
+                    {v.image && <img src={v.image} alt="" width="48" height="48" loading="lazy" />}
+                    <span>{v.name}</span>
+                  </label>
+                ))}
+              </div>
+              <p class="vmsg" id="vmsg" role="alert" hidden>{t(lang, 'variant.pick')}</p>
+            </fieldset>
+          )}
           <div class="actions">
             {product.availability !== 'out_of_stock' ? (
-              <button type="button" class="btn btn-cart" data-add-to-cart={product.id} data-name={product.name} data-stock={product.stock ?? undefined}>{t(lang, 'product.addToCart')}</button>
+              <button type="button" class="btn btn-cart" data-add-to-cart={product.id} data-name={product.name} data-stock={product.stock ?? undefined} data-variant={variants.length === 1 ? variants[0].id : undefined} data-needs-variant={variants.length > 1 ? '1' : undefined}>{t(lang, 'product.addToCart')}</button>
             ) : null}
             {product.whatsappOrder ? (
               <a class="btn btn-wa" href={waLink} target="_blank" rel="noopener">
@@ -207,6 +223,15 @@ if (product.price !== null) {
 </BaseLayout>
 
 <style>
+  .variants { border: 1px solid var(--c-border); border-radius: 12px; padding: 12px; margin: 12px 0; display: grid; gap: 10px; }
+  .variants legend { font-weight: 700; color: var(--c-primary); padding-inline: 6px; }
+  .variants legend small { color: var(--c-muted); font-weight: 400; }
+  .vopts { display: grid; gap: 8px; }
+  .vopt { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border: 1px solid var(--c-border); border-radius: 10px; cursor: pointer; min-height: 48px; background: #fff; }
+  .vopt:has(input:checked) { border-color: var(--c-accent); box-shadow: 0 0 0 2px var(--c-accent) inset; }
+  .vopt img { width: 48px; height: 48px; object-fit: cover; border-radius: 8px; }
+  .vopt span { font-weight: 600; }
+  .vmsg { margin: 0; color: var(--c-alert); font-weight: 700; }
   .crumbs { font-size: 0.9rem; color: var(--c-muted); margin-bottom: 16px; }
   .crumbs a { color: var(--c-accent); text-decoration: none; }
   .layout { display: grid; gap: 24px; }
@@ -267,6 +292,16 @@ if (product.price !== null) {
 </style>
 
 <script>
+  // اختيار النوع: يُمرَّر لزر الإضافة، ويُمنع الإضافة قبل الاختيار عند وجود أكثر من نوع
+  const addBtn = document.querySelector<HTMLElement>('[data-add-to-cart][data-needs-variant]');
+  const vmsg = document.getElementById('vmsg');
+  document.querySelectorAll<HTMLInputElement>('input[name="variant"]').forEach((r) =>
+    r.addEventListener('change', () => {
+      if (addBtn) addBtn.dataset.variant = r.value;
+      if (vmsg) vmsg.hidden = true;
+    })
+  );
+
   const main = document.getElementById('main-img') as HTMLImageElement | null;
   const thumbs = document.querySelectorAll<HTMLButtonElement>('.thumb');
   thumbs.forEach((b) =>

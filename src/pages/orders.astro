@@ -55,7 +55,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   // رسالة لمسؤول القسم بمعلومات الزبون (إشعار يدوي بنقرة إلى أن يُؤتمت)
   function notifyText(o: any): string {
-    const lines = (o.items as any[]).map((i) => `• ${i.name} ×${i.qty}${i.state === 'waiting' ? ' (غير متوفر)' : ''}`);
+    const lines = (o.items as any[]).map((i) => `• ${i.name}${i.variant_name ? ` — ${i.variant_name}` : ''} ×${i.qty}${i.state === 'waiting' ? ' (غير متوفر)' : ''}`);
     return [`طلب جديد ${o.ref}`, `الزبون: ${o.name}`, o.phone ? `الهاتف: ${o.phone}` : '', `المدينة: ${o.city}`, ...lines, o.note ? `ملاحظة: ${o.note}` : ''].filter(Boolean).join('\n');
   }
 
@@ -75,7 +75,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           a.href = `https://wa.me/${o.phone}`; a.target = '_blank'; a.rel = 'noopener'; p.append(a); li.append(p);
         }
         const ul = el('ul', 'its');
-        for (const i of o.items) ul.append(el('li', i.state === 'waiting' ? 'wait' : '', `${i.name} × ${i.qty}${i.price != null ? ` — ${i.price * i.qty} د.م` : ''}${i.state === 'waiting' ? ' (غير متوفر)' : ''}`));
+        for (const i of o.items) ul.append(el('li', i.state === 'waiting' ? 'wait' : '', `${i.name}${i.variant_name ? ` — ${i.variant_name}` : ''} × ${i.qty}${i.price != null ? ` — ${i.price * i.qty} د.م` : ''}${i.state === 'waiting' ? ' (غير متوفر)' : ''}`));
         li.append(ul);
         li.append(el('p', 'who', `المجموع التقريبي: ${o.subtotal} د.م · المسؤول: ${o.handler_name} (0${String(o.handler_phone).slice(3)})`));
         if (o.note) li.append(el('p', 'who', `ملاحظة: ${o.note}`));

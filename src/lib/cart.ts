@@ -3,7 +3,9 @@
 const KEY = 'awima_cart_v1';
 const MAX_QTY = 99;
 
-export type CartLine = { id: string; qty: number };
+// v = معرّف النوع المختار (اختياري). السطر مفتاحه id + v: منتج واحد بنوعين = سطران.
+export type CartLine = { id: string; qty: number; v?: string };
+const same = (l: CartLine, id: string, v?: string) => l.id === id && (l.v ?? '') === (v ?? '');
 
 export function readCart(): CartLine[] {
   try {
@@ -12,7 +14,7 @@ export function readCart(): CartLine[] {
     if (!Array.isArray(arr)) return [];
     return arr
       .filter((l) => l && typeof l.id === 'string' && Number.isInteger(l.qty) && l.qty > 0)
-      .map((l) => ({ id: l.id, qty: Math.min(l.qty, MAX_QTY) }));
+      .map((l) => (typeof l.v === 'string' && l.v ? { id: l.id, qty: Math.min(l.qty, MAX_QTY), v: l.v } : { id: l.id, qty: Math.min(l.qty, MAX_QTY) }));
   } catch {
     return [];
   }
@@ -30,26 +32,28 @@ function write(lines: CartLine[]) {
 export const cartCount = () => readCart().reduce((n, l) => n + l.qty, 0);
 
 /** يضيف للسلة دون تجاوز `max` (مخزون المنتج). يعيد true إن زادت الكمية فعلاً */
-export function addToCart(id: string, qty = 1, max = MAX_QTY): boolean {
+export function addToCart(id: string, qty = 1, max = MAX_QTY, v?: string): boolean {
   const cap = Math.min(max, MAX_QTY);
   const lines = readCart();
-  const line = lines.find((l) => l.id === id);
+  const line = lines.find((l) => same(l, id, v));
+  // المخزون للمنتج كله: يُحسب مجموع أنواعه في السلة
+  const total = lines.filter((l) => l.id === id).reduce((n, l) => n + l.qty, 0);
   const before = line?.qty ?? 0;
-  const after = Math.min(before + qty, cap);
+  const after = Math.min(before + qty, cap - (total - before));
   if (after <= before) return false;
   if (line) line.qty = after;
-  else lines.push({ id, qty: after });
+  else lines.push(v ? { id, qty: after, v } : { id, qty: after });
   write(lines);
   return true;
 }
 
-export function setQty(id: string, qty: number) {
-  if (qty <= 0) return removeFromCart(id);
-  write(readCart().map((l) => (l.id === id ? { ...l, qty: Math.min(qty, MAX_QTY) } : l)));
+export function setQty(id: string, qty: number, v?: string) {
+  if (qty <= 0) return removeFromCart(id, v);
+  write(readCart().map((l) => (same(l, id, v) ? { ...l, qty: Math.min(qty, MAX_QTY) } : l)));
 }
 
-export function removeFromCart(id: string) {
-  write(readCart().filter((l) => l.id !== id));
+export function removeFromCart(id: string, v?: string) {
+  write(readCart().filter((l) => !same(l, id, v)));
 }
 
 export function clearCart() {

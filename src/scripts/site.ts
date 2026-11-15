@@ -51,7 +51,14 @@ document.addEventListener('click', (e) => {
   const raw = btn.dataset.stock;
   const max = maxQty(raw === undefined || raw === '' ? null : Number(raw));
   const name = btn.dataset.name ?? 'المنتج';
-  if (addToCart(btn.dataset.addToCart!, 1, max)) toast(t(lang, 'toast.added', { name }));
+  const variant = btn.dataset.variant || undefined;
+  if (btn.dataset.needsVariant && !variant) {
+    const m = document.getElementById('vmsg');
+    if (m) m.hidden = false;
+    document.getElementById('variants')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  if (addToCart(btn.dataset.addToCart!, 1, max, variant)) toast(t(lang, 'toast.added', { name }));
   else toast(t(lang, 'toast.max', { name, n: max }));
 });
 // أي منتج حُذف أو أُخفي من المتجر يُزال من سلة الزبون (وتُعرض له رسالة في صفحة السلة)

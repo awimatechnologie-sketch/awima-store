@@ -258,9 +258,9 @@ async function postOrder_(request, env) {
 
   const a = assign(o, CATALOG);
   const subtotal = o.items.reduce((n, it) => n + (CATALOG.products[it.id].price ?? 0) * it.qty, 0);
-  for (const l of a.lines) {
-    await env.DB.prepare('INSERT OR REPLACE INTO order_items (ref, product, name, qty, price, state, department) VALUES (?, ?, ?, ?, ?, ?, ?)')
-      .bind(o.ref, l.id, l.name, l.qty, CATALOG.products[l.id].price, l.state, l.departmentId).run();
+  for (const [i, l] of a.lines.entries()) {
+    await env.DB.prepare('INSERT OR REPLACE INTO order_lines (ref, line, product, variant, variant_name, name, qty, price, state, department) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)')
+      .bind(o.ref, i, l.id, l.variant, l.variantName, l.name, l.qty, CATALOG.products[l.id].price, l.state, l.departmentId).run();
   }
   await env.DB.prepare(
     `INSERT INTO orders (ref, name, phone, city, address, note, status, availability, handler_kind, handler_name, handler_phone, department, reason, subtotal, lang, ip, created_ts, updated_ts)
@@ -282,7 +282,8 @@ async function adminOrders_(request, env) {
     : (await env.DB.prepare('SELECT * FROM orders ORDER BY created_ts DESC LIMIT ?').bind(limit).all()).results ?? [];
   const orders = [];
   for (const r of rows) {
-    const items = (await env.DB.prepare('SELECT product, name, qty, price, state, department FROM order_items WHERE ref = ?').bind(r.ref).all()).results ?? [];
+    let items = (await env.DB.prepare('SELECT product, variant, variant_name, name, qty, price, state, department FROM order_lines WHERE ref = ? ORDER BY line').bind(r.ref).all()).results ?? [];
+    if (!items.length) items = (await env.DB.prepare('SELECT product, name, qty, price, state, department FROM order_items WHERE ref = ?').bind(r.ref).all()).results ?? [];
     const { ip, ...safe } = r;
     orders.push({ ...safe, items });
   }

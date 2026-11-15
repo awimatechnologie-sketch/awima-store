@@ -54,7 +54,8 @@ const offerValue = offer ? (offer.type === 'percent' ? `${offer.value}%` : forma
   </a>
   {(canAdd || cm.likesEnabled) && (
     <div class="foot">
-      {canAdd && <button type="button" class="btn btn-cart add" data-add-to-cart={product.id} data-name={product.name} data-stock={product.stock ?? undefined}>{t(lang, 'product.addToCart')}</button>}
+      {canAdd && (product.variants?.length ?? 0) > 1 && <a class="btn btn-cart add" href={localePath(lang, `/products/${product.slug}`) + '#variants'}>{t(lang, 'variant.pickCta')}</a>}
+      {canAdd && (product.variants?.length ?? 0) <= 1 && <button type="button" class="btn btn-cart add" data-add-to-cart={product.id} data-name={product.name} data-stock={product.stock ?? undefined} data-variant={product.variants?.[0]?.id}>{t(lang, 'product.addToCart')}</button>}
       {cm.likesEnabled && (
         <button type="button" class="like" data-like={product.id} aria-pressed="false" aria-label={t(lang, 'community.like')} hidden>
           <span class="heart" aria-hidden="true">♡</span><span class="lc" aria-hidden="true"></span>

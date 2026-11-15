@@ -118,6 +118,21 @@ for (const f of listJson(join(DATA, 'products'))) {
     if (!publicFileExists(img)) (p.hidden ? warn : err)(label, `صورة غير موجودة في public: ${img}`);
   }
 
+  if (p.variants !== undefined && p.variants !== null) {
+    if (!Array.isArray(p.variants)) err(label, '"variants" يجب أن تكون قائمة');
+    else {
+      const vids = new Set();
+      p.variants.forEach((v, i) => {
+        const w = `${label} (نوع ${i + 1})`;
+        if (!v?.id || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(v.id)) err(w, `معرّف النوع مفقود أو غير صالح: ${JSON.stringify(v?.id)}`);
+        else if (vids.has(v.id)) err(w, `معرّف نوع مكرر: ${v.id}`);
+        else vids.add(v.id);
+        if (!v?.name || !String(v.name).trim()) err(w, 'اسم النوع مطلوب');
+        if (v?.image && !publicFileExists(v.image)) err(w, `صورة النوع غير موجودة: ${v.image}`);
+      });
+      if (p.variants.length > 0 && !p.variants.some((v) => v?.available !== false)) warn(label, 'كل الأنواع موقوفة: يظهر المنتج بلا خيارات');
+    }
+  }
   if (p.specs !== undefined && p.specs !== null) {
     if (Array.isArray(p.specs)) {
       p.specs.forEach((s, i) => {
@@ -332,6 +347,7 @@ if (s?.warranty !== undefined) {
     if (d) {
       if (!d.coordinator || !PHONE.test(d.coordinator.phone ?? '')) err(dl, 'رقم منسق العمليات مفقود أو بصيغة غير صحيحة (212XXXXXXXXX)');
       const ids = new Set();
+      const slugsSeen = new Set();
       const owner = new Map();
       (d.departments ?? []).forEach((dep, i) => {
         const w = `${dl} (قسم ${i + 1}: ${dep?.name ?? '؟'})`;
@@ -339,6 +355,10 @@ if (s?.warranty !== undefined) {
         else if (ids.has(dep.id)) err(w, `معرّف مكرر: ${dep.id}`);
         else ids.add(dep.id);
         if (!dep?.name) err(w, 'الاسم مطلوب');
+        if (!dep?.slug || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(dep.slug)) err(w, 'الرابط (slug) مفقود أو غير صالح');
+        else if (slugsSeen.has(dep.slug)) err(w, `slug مكرر: ${dep.slug}`);
+        else slugsSeen.add(dep.slug);
+        if (dep?.cover && !publicFileExists(dep.cover)) err(w, `صورة الغلاف غير موجودة: ${dep.cover}`);
         if (!PHONE.test(dep?.phone ?? '')) err(w, `رقم المسؤول غير صحيح: ${JSON.stringify(dep?.phone)}`);
         for (const c of dep?.categories ?? []) {
           if (!catIds.has(c)) err(w, `قسم متجر غير موجود: ${c}`);

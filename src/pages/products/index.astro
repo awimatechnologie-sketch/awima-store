@@ -4,7 +4,8 @@ import { site } from '../../config/site';
 import { getReviewSummary } from '../../services/reviews';
 import ProductCard from '../../components/ProductCard.astro';
 import { getAllProducts, getCategories } from '../../services/products';
-import { t, langOf, type Lang } from '../../i18n';
+import { getSections } from '../../services/sections';
+import { t, langOf, localePath, type Lang } from '../../i18n';
 
 interface Props { lang?: Lang }
 const lang = langOf(Astro.props.lang);
@@ -12,6 +13,7 @@ const products = getAllProducts(lang);
 // نص الصفحة بالعربية والفرنسية معاً حتى يعمل البحث بأي من اللغتين
 const otherById = new Map(getAllProducts(lang === 'fr' ? 'ar' : 'fr').map((p) => [p.id, p]));
 const categories = getCategories(lang);
+const sections = getSections(lang);
 const catById = Object.fromEntries(categories.map((c) => [c.id, c]));
 const topCats = categories.filter((c) => !c.parent);
 const subsOf = (id: string) => categories.filter((c) => c.parent === id);
@@ -49,6 +51,17 @@ const catPath = (catId: string) => [catById[catId]?.parent ? catById[catById[cat
         </label>
       </div>
 
+      {sections.length > 0 && (
+        <nav class="secs" aria-label={t(lang, 'home.shopByCat')}>
+          {sections.map((s) => (
+            <a class="sec-link" href={localePath(lang, `/sections/${s.slug}`)}>
+              {s.cover && <img src={s.cover} alt="" width="40" height="40" loading="lazy" decoding="async" />}
+              <span>{s.name}</span>
+            </a>
+          ))}
+        </nav>
+      )}
+
       <div class="chips" id="chips" role="group" aria-label={t(lang, 'products.categories')}>
         <button type="button" class="chip" data-cat="" aria-pressed="true">{t(lang, 'products.all')}</button>
         {topCats.map((c) => (
@@ -69,7 +82,7 @@ const catPath = (catId: string) => [catById[catId]?.parent ? catById[catById[cat
         {products.map((p) => (
           <li
             data-name={p.name}
-            data-text={[p.name, p.shortDescription, p.description, p.id, catPath(p.category), p.keywords ?? '', otherById.get(p.id)?.keywords ?? '', ...Object.entries(p.specs).flat(), otherById.get(p.id)?.name ?? '', otherById.get(p.id)?.shortDescription ?? ''].join(' ')}
+            data-text={[p.name, p.shortDescription, p.description, p.id, catPath(p.category), p.keywords ?? '', (p.variants ?? []).map((v) => v.name).join(' '), (otherById.get(p.id)?.variants ?? []).map((v) => v.name).join(' '), otherById.get(p.id)?.keywords ?? '', ...Object.entries(p.specs).flat(), otherById.get(p.id)?.name ?? '', otherById.get(p.id)?.shortDescription ?? ''].join(' ')}
             data-av={p.availability}
             data-pid={p.id}
             data-cat={catById[p.category]?.slug ?? ''}
@@ -87,12 +100,17 @@ const catPath = (catId: string) => [catById[catId]?.parent ? catById[catById[cat
         <h2>{t(lang, 'products.none')}</h2>
         <p>{t(lang, 'products.tryOther')}</p>
         <button type="button" class="btn btn-outline" id="reset">{t(lang, 'products.reset')}</button>
+        {site.contact.whatsapp ? <a class="btn btn-wa" id="ask-wa" target="_blank" rel="noopener" data-base={`https://wa.me/${site.contact.whatsapp}?text=`} data-msg={t(lang, 'products.askWaMsg', { q: '{q}' })} hidden>{t(lang, 'products.askWa')}</a> : null}
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
+  .secs { display: flex; gap: 10px; overflow-x: auto; padding: 4px 2px 12px; scrollbar-width: thin; }
+  .sec-link { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; border: 1px solid var(--c-border); border-radius: 999px; background: #fff; color: var(--c-primary); font-weight: 700; text-decoration: none; min-height: 48px; }
+  .sec-link img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+  .sec-link:hover { border-color: var(--c-accent); }
   h1 { margin-bottom: 16px; }
   .tools { display: flex; flex-wrap: wrap; gap: 12px; padding: 12px; margin-bottom: 14px; }
   .field { display: grid; gap: 4px; font-size: 0.85rem; color: var(--c-muted); min-width: 150px; }
@@ -141,6 +159,25 @@ const catPath = (catId: string) => [catById[catId]?.parent ? catById[catById[cat
 
   let cat = '';
 
+  // لا نتيجة لعبارة بحث: زر واتساب جاهز + تسجيل صامت (بعد توقف الكتابة) ليعرف المدير ما يطلبه الزوار
+  const askWa = document.getElementById('ask-wa') as HTMLAnchorElement | null;
+  let missTimer: number | undefined;
+  const reported = new Set<string>();
+  function onMiss(term: string) {
+    clearTimeout(missTimer);
+    if (askWa) {
+      askWa.hidden = !term;
+      if (term) askWa.href = (askWa.dataset.base ?? '') + encodeURIComponent((askWa.dataset.msg ?? '').replace('{q}', term));
+    }
+    let logOn = false;
+    try { logOn = JSON.parse(document.body.dataset.community || 'null')?.searchLog === true; } catch { /* ignore */ }
+    if (!term || term.length < 2 || !logOn || reported.has(term)) return;
+    missTimer = window.setTimeout(() => {
+      reported.add(term);
+      fetch('/api/miss', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ q: term }) }).catch(() => {});
+    }, 1800);
+  }
+
   function apply() {
     let visible = original.filter((li) => {
       const okCat = !cat || li.dataset.cat === cat || li.dataset.parent === cat;
@@ -180,6 +217,7 @@ const catPath = (catId: string) => [catById[catId]?.parent ? catById[catById[cat
     original.forEach((li) => (li.hidden = !visible.includes(li)));
     visible.forEach((li) => list.appendChild(li));
     empty.hidden = visible.length > 0;
+    onMiss(visible.length === 0 ? q.value.trim() : '');
     list.hidden = visible.length === 0;
     count.textContent = t(lang, 'products.count', { n: visible.length });
 

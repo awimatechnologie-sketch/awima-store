@@ -10,7 +10,7 @@ const dep = JSON.parse(readFileSync(join(DATA, 'departments.json'), 'utf8'));
 
 const products = {};
 for (const p of readDir('products'))
-  products[p.id] = { name: p.name, category: p.category, price: typeof p.price === 'number' ? p.price : null, availability: p.availability, stock: Number.isInteger(p.stock) && p.stock >= 0 ? p.stock : null };
+  products[p.id] = { variants: (Array.isArray(p.variants) ? p.variants : []).filter((v) => v && /^[a-z0-9]+(-[a-z0-9]+)*$/.test(v.id ?? '') && typeof v.name === 'string' && v.name.trim() && v.available !== false).map((v) => ({ id: v.id, name: v.name.trim() })), name: p.name, category: p.category, price: typeof p.price === 'number' ? p.price : null, availability: p.availability, stock: Number.isInteger(p.stock) && p.stock >= 0 ? p.stock : null };
 const categories = {};
 for (const c of readDir('categories')) categories[c.id] = { name: c.name, parent: c.parent ?? null };
 

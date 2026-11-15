@@ -20,6 +20,7 @@ const products = getAllProducts(lang).map((p) => ({
   stock: p.stock ?? null,
   category: p.category,
   related: p.related ?? [],
+  variants: (p.variants ?? []).map((v) => ({ id: v.id, name: v.name })),
 }));
 const data = {
   products,
@@ -198,7 +199,7 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
   import { applyOffers, type AutoOffer } from '../lib/offers';
 
   const lang = langOf(document.documentElement.lang);
-  type P = { id: string; name: string; slug: string; price: number | null; image: string; availability: string; stock: number | null; category: string };
+  type P = { id: string; name: string; slug: string; price: number | null; image: string; availability: string; stock: number | null; category: string; variants?: { id: string; name: string }[] };
   type O = AutoOffer & { label: string };
   const data = JSON.parse(document.getElementById('cart-data')!.textContent || '{}');
   const products = new Map<string, P>((data.products as P[]).map((p) => [p.id, p]));
@@ -289,7 +290,7 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
   function compute() {
     const lines = readCart()
       .map((l) => ({ ...l, p: products.get(l.id) }))
-      .filter((l): l is { id: string; qty: number; p: P } => !!l.p);
+      .filter((l): l is { id: string; qty: number; v?: string; p: P } => !!l.p);
     const avail = lines.filter((l) => l.p.availability !== 'out_of_stock');
     const qty = avail.reduce((n, l) => n + l.qty, 0);
     const total = avail.reduce((n, l) => n + (l.p.price ?? 0) * l.qty, 0);
@@ -300,11 +301,19 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
   function render() {
     const { lines, avail, qty, total, unpriced } = compute();
 
+    // نوع لم يعد متوفراً (حُذف أو أُخفي من اللوحة)؟ نحذف السطر مع تنبيه الزبون
+    const gone = lines.find((l) => l.v && !(l.p.variants ?? []).some((x) => x.id === l.v));
+    if (gone) {
+      staleCount += 1;
+      removeFromCart(gone.id, gone.v);
+      return;
+    }
+
     // المخزون تغيّر بعد إضافة المنتج؟ نُنزل الكمية إلى المتوفر مع تنبيه الزبون (يُعاد الرسم تلقائياً)
     const over = lines.find((l) => l.p.stock !== null && l.p.stock > 0 && l.qty > l.p.stock);
     if (over) {
       clampNotes.push(t(lang, 'cart.clampNote', { name: over.p.name, n: over.p.stock as number }));
-      setQty(over.id, over.p.stock as number);
+      setQty(over.id, over.p.stock as number, over.v);
       return;
     }
 
@@ -321,6 +330,7 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
       img.src = l.p.image; img.alt = l.p.name; img.width = 72; img.height = 72; img.loading = 'lazy';
       const body = el('div');
       const a = el('a', 'name', l.p.name); a.href = `/products/${l.p.slug}`;
+      const vname = l.v ? (l.p.variants ?? []).find((x) => x.id === l.v)?.name : undefined;
       const stockNote = !out && l.p.stock !== null ? t(lang, 'cart.stockNote', { n: l.p.stock }) : '';
       const meta = el('p', 'meta', out ? t(lang, 'cart.unavailableLine') : (l.p.price === null ? t(lang, 'price.call') : money(l.p.price)) + stockNote);
       const ctrl = el('div', 'ctrl');
@@ -328,16 +338,18 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
       const minus = el('button', undefined, '−'); minus.type = 'button'; minus.setAttribute('aria-label', t(lang, 'cart.decrease'));
       const q = el('span', undefined, String(l.qty));
       const plus = el('button', undefined, '+'); plus.type = 'button'; plus.setAttribute('aria-label', t(lang, 'cart.increase'));
-      minus.onclick = () => setQty(l.id, l.qty - 1);
+      minus.onclick = () => setQty(l.id, l.qty - 1, l.v);
       const cap = maxQty(l.p.stock);
       plus.disabled = l.qty >= cap;
-      plus.onclick = () => setQty(l.id, Math.min(l.qty + 1, cap));
+      plus.onclick = () => setQty(l.id, Math.min(l.qty + 1, cap), l.v);
       box.append(minus, q, plus);
       ctrl.append(box);
       if (!out && l.p.price !== null) ctrl.append(el('span', 'sub', money(l.p.price * l.qty)));
-      const rm = el('button', 'rm', t(lang, 'cart.remove')); rm.type = 'button'; rm.onclick = () => removeFromCart(l.id);
+      const rm = el('button', 'rm', t(lang, 'cart.remove')); rm.type = 'button'; rm.onclick = () => removeFromCart(l.id, l.v);
       ctrl.append(rm);
-      body.append(a, meta, ctrl);
+      body.append(a);
+      if (vname) body.append(el('p', 'meta', t(lang, 'variant.line', { name: vname })));
+      body.append(meta, ctrl);
       li.append(img, body);
       ul.append(li);
     }
@@ -448,6 +460,8 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
     avail.forEach((l, i) => {
       const price = l.p.price === null ? t(lang, 'cart.msg.priceTbd') : `${money(l.p.price)} × ${l.qty} = ${money(l.p.price * l.qty)}`;
       out.push(`${i + 1}) ${l.p.name} (${l.p.id})`);
+      const vn = l.v ? (l.p.variants ?? []).find((x) => x.id === l.v)?.name : '';
+      if (vn) out.push(`   ${t(lang, 'variant.line', { name: vn })}`);
       out.push(l.p.price === null ? t(lang, 'cart.msg.qty', { n: l.qty, price }) : `   ${price}`);
     });
     const city = selectedCity();
@@ -497,7 +511,7 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c');
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
           ref, lang, name: nameEl.value, phone: phoneEl.value, city: selectedCity(), address: addrEl.value, note: noteEl.value,
-          items: avail.map((l) => ({ id: l.id, qty: l.qty })),
+          items: avail.map((l) => ({ id: l.id, qty: l.qty, variant: l.v })),
         }),
       });
       if (res.status === 400) {

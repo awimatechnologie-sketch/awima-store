@@ -1,4 +1,4 @@
-import type { Product, Category, ProductFr } from '../types/product';
+import type { Product, Category, ProductFr, ProductVariant } from '../types/product';
 import type { Lang } from '../i18n';
 import { localizeProduct, localizeCategory } from '../lib/localize';
 import { normalizeStock, effectiveAvailability } from '../lib/stock';
@@ -44,6 +44,25 @@ function normalizeFr(raw: any): ProductFr | undefined {
   };
 }
 
+const VARIANT_ID = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+/** الأنواع المتاحة فقط (available !== false) بمعرّف صالح وغير مكرر */
+function normalizeVariants(raw: unknown): ProductVariant[] {
+  if (!Array.isArray(raw)) return [];
+  const seen = new Set<string>();
+  const out: ProductVariant[] = [];
+  for (const v of raw) {
+    if (!v || typeof v.id !== 'string' || !VARIANT_ID.test(v.id) || typeof v.name !== 'string' || !v.name.trim() || v.available === false || seen.has(v.id)) continue;
+    seen.add(v.id);
+    out.push({
+      id: v.id,
+      name: v.name.trim(),
+      nameFr: typeof v.name_fr === 'string' && v.name_fr.trim() ? v.name_fr.trim() : undefined,
+      image: typeof v.image === 'string' && v.image.startsWith('/') ? v.image : undefined,
+    });
+  }
+  return out;
+}
+
 function normalizeProduct(file: string, r: any): Product {
   const where = `(${file})`;
   for (const f of ['id', 'name', 'slug', 'category'])
@@ -73,6 +92,7 @@ function normalizeProduct(file: string, r: any): Product {
     keywords: typeof r.keywords === 'string' ? r.keywords.trim() : '',
     trusted: r.trusted === true,
     leadDays: typeof r.leadDays === 'number' && Number.isInteger(r.leadDays) && r.leadDays > 0 ? r.leadDays : null,
+    variants: normalizeVariants(r.variants),
     ports: normalizePorts(r.ports),
   };
 }

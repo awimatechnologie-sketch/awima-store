@@ -82,3 +82,18 @@ CREATE TABLE IF NOT EXISTS order_events (
   ts     INTEGER NOT NULL
 );
 CREATE INDEX IF NOT EXISTS order_events_ref ON order_events (ref, ts);
+
+-- بنود الطلب (تحلّ محل order_items: تدعم نوعين مختلفين لنفس المنتج). order_items القديم يبقى للقراءة فقط.
+CREATE TABLE IF NOT EXISTS order_lines (
+  ref          TEXT NOT NULL,
+  line         INTEGER NOT NULL,
+  product      TEXT NOT NULL,
+  variant      TEXT,                        -- معرّف النوع المختار (اختياري)
+  variant_name TEXT,
+  name         TEXT NOT NULL,
+  qty          INTEGER NOT NULL,
+  price        INTEGER,
+  state        TEXT NOT NULL,               -- available|waiting
+  department   TEXT,
+  PRIMARY KEY (ref, line)
+);

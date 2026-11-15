@@ -179,3 +179,62 @@ test('API الإدارة: بلا توكن 401، وتغيير الحالة يُس
   const list = await (await adminOrders(new Request('https://x.test/api/admin/orders?status=CONFIRMED', { headers: ADMIN }), env)).json();
   assert.equal(list.orders.length, 1);
 });
+
+// ---------- الأصناف (sections) ----------
+import { sectionOf, categoriesOfSection } from '../src/lib/sections.ts';
+test('sections: القسم يرث صنف أبيه، وما لا صنف له يرجع null', () => {
+  const cats = [{ id: 'a' }, { id: 'b', parent: 'a' }, { id: 'c' }];
+  const secs = [{ id: 's1', slug: 's1', name: 'x', categories: ['a'] }];
+  assert.equal(sectionOf('b', cats, secs).id, 's1');
+  assert.equal(sectionOf('c', cats, secs), null);
+  assert.deepEqual(categoriesOfSection(secs[0], cats, secs), ['a', 'b']);
+});
+test('sections: كل صنف في departments.json له غلاف موجود وslug فريد', async () => {
+  const { existsSync } = await import('node:fs');
+  const slugs = new Set();
+  for (const d of REAL.departments) {
+    assert.ok(d.slug && !slugs.has(d.slug), d.id);
+    slugs.add(d.slug);
+    assert.ok(existsSync(new URL('../public' + d.cover, import.meta.url)), d.cover);
+  }
+});
+
+// ---------- الأنواع (variants) ----------
+const vcat = { ...cat, products: { ...cat.products, A: { ...cat.products.A, stock: null, variants: [{ id: 'samsung', name: 'Samsung 25W' }, { id: 'anker', name: 'Anker 25W' }] } } };
+test('variants: النوعان لنفس المنتج بندان، والنوع غير المعروف يُهمَل', () => {
+  const r = parseOrder(body({ items: [{ id: 'A', qty: 1, variant: 'samsung' }, { id: 'A', qty: 2, variant: 'anker' }, { id: 'A', qty: 1, variant: 'samsung' }, { id: 'A', qty: 1, variant: 'fake' }, { id: 'A', qty: 1 }] }), vcat);
+  assert.deepEqual(r.order.items, [{ id: 'A', qty: 2, variant: 'samsung' }, { id: 'A', qty: 2, variant: 'anker' }, { id: 'A', qty: 1 }]);
+  assert.deepEqual(parseOrder(body({ items: [{ id: 'A', qty: 1, variant: 'fake' }] }), vcat).missing, ['items']);
+});
+test('variants: assign يحمل اسم النوع للبند', () => {
+  const a = assign({ items: [{ id: 'A', qty: 1, variant: 'anker' }] }, vcat);
+  assert.equal(a.lines[0].variant, 'anker');
+  assert.equal(a.lines[0].variantName, 'Anker 25W');
+});
+test('variants: السلة تفصل الأنواع وتحسب المخزون للمنتج كله', async () => {
+  const mem = () => { const m = new Map(); return { getItem: (k) => (m.has(k) ? m.get(k) : null), setItem: (k, v) => m.set(k, String(v)), removeItem: (k) => m.delete(k) }; };
+  globalThis.localStorage = mem(); globalThis.sessionStorage = mem();
+  globalThis.window = { dispatchEvent: () => true }; globalThis.CustomEvent = class { constructor(t) { this.type = t; } };
+  const { addToCart, readCart, setQty, removeFromCart } = await import('../src/lib/cart.ts');
+  assert.equal(addToCart('P-9', 1, 3, 'a'), true);
+  assert.equal(addToCart('P-9', 1, 3, 'b'), true);
+  assert.equal(readCart().length, 2);
+  assert.equal(addToCart('P-9', 2, 3, 'a'), true); // 2 + 1 = 3 = الحد
+  assert.equal(addToCart('P-9', 1, 3, 'b'), false);
+  assert.equal(readCart().find((l) => l.v === 'a').qty, 2);
+  setQty('P-9', 5, 'b');
+  removeFromCart('P-9', 'a');
+  assert.deepEqual(readCart().map((l) => [l.id, l.v]), [['P-9', 'b']]);
+});
+test('variants API: يُحفظ النوع في بنود الطلب ويظهر في لوحة الإدارة', async () => {
+  const REALP = REAL.products;
+  const withV = Object.keys(REALP).find((id) => (REALP[id].variants ?? []).length >= 1);
+  if (!withV) return; // لا منتج بأنواع في البيانات الحالية: يُغطّى بالاختبارات الوحدوية أعلاه
+  const env = mkEnv();
+  const v = REALP[withV].variants[0];
+  const r = await postOrder(post('/api/orders', { ref: refN(6), name: 'سعيد', city: 'أكادير', items: [{ id: withV, qty: 1, variant: v.id }] }), env);
+  assert.equal(r.status, 201);
+  const list = await (await adminOrders(new Request('https://x.test/api/admin/orders', { headers: ADMIN }), env)).json();
+  assert.equal(list.orders[0].items[0].variant, v.id);
+  assert.equal(list.orders[0].items[0].variant_name, v.name);
+});
