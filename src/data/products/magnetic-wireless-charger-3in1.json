@@ -1,0 +1,34 @@
+{
+  "id": "P-0205",
+  "name": "شاحن لاسلكي مغناطيسي 3 في 1",
+  "slug": "magnetic-wireless-charger-3in1",
+  "shortDescription": "هاتف + ساعة + سماعات • 15 واط",
+  "description": "شاحن لاسلكي مغناطيسي 3 في 1 — هاتف + ساعة + سماعات • 15 واط. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 249,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [
+    "/images/products/magnetic-wireless-charger-3in1-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "هاتف + ساعة + سماعات • 15 واط"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "شاحن لاسلكي wireless charger sans fil chargeur sans fil magnétique 3-en-1",
+  "fr": {
+    "name": "Chargeur sans fil magnétique 3-en-1",
+    "shortDescription": "Téléphone + montre + écouteurs • 15 W",
+    "description": "Chargeur sans fil magnétique 3-en-1 — Téléphone + montre + écouteurs • 15 W. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Téléphone + montre + écouteurs • 15 W"
+      }
+    ]
+  }
+}

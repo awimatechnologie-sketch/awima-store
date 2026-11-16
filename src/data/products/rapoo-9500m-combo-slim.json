@@ -1,0 +1,34 @@
+{
+  "id": "P-0225",
+  "name": "Rapoo 9500M Slim Combo",
+  "slug": "rapoo-9500m-combo-slim",
+  "shortDescription": "نحيف • لاسلكي • للمكتب",
+  "description": "Rapoo 9500M Slim Combo — نحيف • لاسلكي • للمكتب. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 399,
+  "currency": "MAD",
+  "category": "cat-keyboards-mice",
+  "images": [
+    "/images/products/rapoo-9500m-combo-slim-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "نحيف • لاسلكي • للمكتب"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "rapoo combo clavier souris rapoo 9500m combo slim",
+  "fr": {
+    "name": "Rapoo 9500M Combo Slim",
+    "shortDescription": "Slim • sans fil • bureau",
+    "description": "Rapoo 9500M Combo Slim — Slim • sans fil • bureau. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Slim • sans fil • bureau"
+      }
+    ]
+  }
+}

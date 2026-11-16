@@ -1,0 +1,34 @@
+{
+  "id": "P-0214",
+  "name": "كابل إيثرنت Cat6 طول 5 متر",
+  "slug": "ethernet-cat6-5m",
+  "shortDescription": "Cat6 • RJ45 • 1 جيجابت",
+  "description": "كابل إيثرنت Cat6 طول 5 متر — Cat6 • RJ45 • 1 جيجابت. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 49,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [
+    "/images/products/ethernet-cat6-5m-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "Cat6 • RJ45 • 1 جيجابت"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ethernet rj45 réseau شبكة câble ethernet cat6 5 m",
+  "fr": {
+    "name": "Câble Ethernet Cat6 5 m",
+    "shortDescription": "Cat6 • RJ45 • 1 Gbps",
+    "description": "Câble Ethernet Cat6 5 m — Cat6 • RJ45 • 1 Gbps. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Cat6 • RJ45 • 1 Gbps"
+      }
+    ]
+  }
+}

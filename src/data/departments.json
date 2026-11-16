@@ -90,7 +90,8 @@
         "cat-keyboards-mice",
         "cat-webcams-headsets",
         "cat-cleaning-care",
-        "cat-printers"
+        "cat-printers",
+        "cat-desk"
       ]
     },
     {
@@ -105,7 +106,8 @@
       "categories": [
         "cat-phone-holders",
         "cat-laptop-stands",
-        "cat-camera-accessories"
+        "cat-camera-accessories",
+        "cat-gaming"
       ]
     }
   ]

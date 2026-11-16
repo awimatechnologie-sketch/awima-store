@@ -1,0 +1,34 @@
+{
+  "id": "P-0199",
+  "name": "جهاز FM بلوتوث للسيارة",
+  "slug": "fm-transmitter-bluetooth-car",
+  "shortDescription": "FM + بلوتوث + منفذان USB + مكالمات",
+  "description": "جهاز FM بلوتوث للسيارة — FM + بلوتوث + منفذان USB + مكالمات. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 149,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [
+    "/images/products/fm-transmitter-bluetooth-car-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "FM + بلوتوث + منفذان USB + مكالمات"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "fm transmitter موزع بلوتوث سيارة transmetteur fm bluetooth voiture",
+  "fr": {
+    "name": "Transmetteur FM Bluetooth voiture",
+    "shortDescription": "FM + Bluetooth + 2x USB + appels",
+    "description": "Transmetteur FM Bluetooth voiture — FM + Bluetooth + 2x USB + appels. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "FM + Bluetooth + 2x USB + appels"
+      }
+    ]
+  }
+}

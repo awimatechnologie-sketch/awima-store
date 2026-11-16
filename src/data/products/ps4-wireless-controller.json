@@ -1,0 +1,34 @@
+{
+  "id": "P-0208",
+  "name": "يد تحكم PS4 لاسلكية",
+  "slug": "ps4-wireless-controller",
+  "shortDescription": "لاسلكية • اهتزاز • PS4 / PC",
+  "description": "يد تحكم PS4 لاسلكية — لاسلكية • اهتزاز • PS4 / PC. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 249,
+  "currency": "MAD",
+  "category": "cat-gaming",
+  "images": [
+    "/images/products/ps4-wireless-controller-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "لاسلكية • اهتزاز • PS4 / PC"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "يد ألعاب manette ps4 gamepad manette ps4 sans fil",
+  "fr": {
+    "name": "Manette PS4 sans fil",
+    "shortDescription": "Sans fil • vibration • PS4 / PC",
+    "description": "Manette PS4 sans fil — Sans fil • vibration • PS4 / PC. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Sans fil • vibration • PS4 / PC"
+      }
+    ]
+  }
+}

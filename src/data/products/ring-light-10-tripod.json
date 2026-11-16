@@ -1,0 +1,34 @@
+{
+  "id": "P-0206",
+  "name": "حلقة إضاءة 10 بوصة مع حامل ثلاثي",
+  "slug": "ring-light-10-tripod",
+  "shortDescription": "10 بوصة • 3 أوضاع • ريموت",
+  "description": "حلقة إضاءة 10 بوصة مع حامل ثلاثي — 10 بوصة • 3 أوضاع • ريموت. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 149,
+  "currency": "MAD",
+  "category": "cat-camera-accessories",
+  "images": [
+    "/images/products/ring-light-10-tripod-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "10 بوصة • 3 أوضاع • ريموت"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ring light إضاءة تصوير ring light 10 pouces + trépied",
+  "fr": {
+    "name": "Ring Light 10 pouces + trépied",
+    "shortDescription": "10 pouces • 3 modes • télécommande",
+    "description": "Ring Light 10 pouces + trépied — 10 pouces • 3 modes • télécommande. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "10 pouces • 3 modes • télécommande"
+      }
+    ]
+  }
+}

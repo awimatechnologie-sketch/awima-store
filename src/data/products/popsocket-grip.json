@@ -1,0 +1,34 @@
+{
+  "id": "P-0201",
+  "name": "مقبض PopSocket للهاتف",
+  "slug": "popsocket-grip",
+  "shortDescription": "مقبض وحامل • تصميم أنيق",
+  "description": "مقبض PopSocket للهاتف — مقبض وحامل • تصميم أنيق. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 49,
+  "currency": "MAD",
+  "category": "cat-phone-holders",
+  "images": [
+    "/images/products/popsocket-grip-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "مقبض وحامل • تصميم أنيق"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "popsocket grip ring holder حلقة popsocket grip",
+  "fr": {
+    "name": "PopSocket Grip",
+    "shortDescription": "Grip • support • design",
+    "description": "PopSocket Grip — Grip • support • design. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Grip • support • design"
+      }
+    ]
+  }
+}

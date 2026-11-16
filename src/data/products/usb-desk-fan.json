@@ -1,0 +1,34 @@
+{
+  "id": "P-0212",
+  "name": "مروحة مكتب USB",
+  "slug": "usb-desk-fan",
+  "shortDescription": "USB • صغيرة • هادئة",
+  "description": "مروحة مكتب USB — USB • صغيرة • هادئة. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 79,
+  "currency": "MAD",
+  "category": "cat-desk",
+  "images": [
+    "/images/products/usb-desk-fan-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "USB • صغيرة • هادئة"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "مروحة ventilateur fan ventilateur de bureau usb",
+  "fr": {
+    "name": "Ventilateur de bureau USB",
+    "shortDescription": "USB • petit • silencieux",
+    "description": "Ventilateur de bureau USB — USB • petit • silencieux. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "USB • petit • silencieux"
+      }
+    ]
+  }
+}

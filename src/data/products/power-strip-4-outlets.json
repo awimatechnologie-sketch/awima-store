@@ -1,0 +1,34 @@
+{
+  "id": "P-0217",
+  "name": "مشترك كهرباء 4 مآخذ",
+  "slug": "power-strip-4-outlets",
+  "shortDescription": "4 مآخذ • 3 أمتار • مفتاح تشغيل",
+  "description": "مشترك كهرباء 4 مآخذ — 4 مآخذ • 3 أمتار • مفتاح تشغيل. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 99,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [
+    "/images/products/power-strip-4-outlets-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "4 مآخذ • 3 أمتار • مفتاح تشغيل"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "مشترك كهرباء multiprise rallonge multiprise 4 prises",
+  "fr": {
+    "name": "Multiprise 4 prises",
+    "shortDescription": "4 prises • 3 m • interrupteur",
+    "description": "Multiprise 4 prises — 4 prises • 3 m • interrupteur. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "4 prises • 3 m • interrupteur"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "P-0207",
+  "name": "ميكروفون لاسلكي Lavalier (2 قطعة)",
+  "slug": "wireless-lavalier-mic-x2",
+  "shortDescription": "بلوتوث • ميكروفونان • Type-C / Lightning",
+  "description": "ميكروفون لاسلكي Lavalier (2 قطعة) — بلوتوث • ميكروفونان • Type-C / Lightning. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 299,
+  "currency": "MAD",
+  "category": "cat-camera-accessories",
+  "images": [
+    "/images/products/wireless-lavalier-mic-x2-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "بلوتوث • ميكروفونان • Type-C / Lightning"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ميكروفون micro lavalier micro sans fil lavalier x2",
+  "fr": {
+    "name": "Micro sans fil Lavalier x2",
+    "shortDescription": "Bluetooth • 2 micros • Type-C / Lightning",
+    "description": "Micro sans fil Lavalier x2 — Bluetooth • 2 micros • Type-C / Lightning. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Bluetooth • 2 micros • Type-C / Lightning"
+      }
+    ]
+  }
+}

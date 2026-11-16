@@ -1,0 +1,34 @@
+{
+  "id": "P-0202",
+  "name": "طقم تنظيف الهاتف",
+  "slug": "phone-cleaning-kit",
+  "shortDescription": "فرشاة + قماش + أدوات في علبة",
+  "description": "طقم تنظيف الهاتف — فرشاة + قماش + أدوات في علبة. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 49,
+  "currency": "MAD",
+  "category": "cat-cleaning-care",
+  "images": [
+    "/images/products/phone-cleaning-kit-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "فرشاة + قماش + أدوات في علبة"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "تنظيف cleaning kit nettoyage kit de nettoyage téléphone",
+  "fr": {
+    "name": "Kit de nettoyage téléphone",
+    "shortDescription": "Brosses + chiffon + outils dans un boîtier",
+    "description": "Kit de nettoyage téléphone — Brosses + chiffon + outils dans un boîtier. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Brosses + chiffon + outils dans un boîtier"
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "cat-gaming",
+  "name": "الألعاب",
+  "slug": "gaming",
+  "order": 78,
+  "name_fr": "Gaming",
+  "parent": "cat-phone-accessories"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "P-0224",
+  "name": "Havit Gaming Pack 4-in-1",
+  "slug": "havit-gaming-pack-4in1",
+  "shortDescription": "لوحة مفاتيح + ماوس + سماعة + ماوس باد",
+  "description": "Havit Gaming Pack 4-in-1 — لوحة مفاتيح + ماوس + سماعة + ماوس باد. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 449,
+  "currency": "MAD",
+  "category": "cat-gaming",
+  "images": [
+    "/images/products/havit-gaming-pack-4in1-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "لوحة مفاتيح + ماوس + سماعة + ماوس باد"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "havit pack gaming havit pack gaming 4-en-1",
+  "fr": {
+    "name": "Havit Pack Gaming 4-en-1",
+    "shortDescription": "Clavier + souris + casque + tapis",
+    "description": "Havit Pack Gaming 4-en-1 — Clavier + souris + casque + tapis. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Clavier + souris + casque + tapis"
+      }
+    ]
+  }
+}

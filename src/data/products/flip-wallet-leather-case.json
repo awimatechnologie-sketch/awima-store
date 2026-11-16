@@ -1,0 +1,34 @@
+{
+  "id": "P-0200",
+  "name": "غلاف جلدي Flip Wallet",
+  "slug": "flip-wallet-leather-case",
+  "shortDescription": "جلد • حامل بطاقات • حامل مائل",
+  "description": "غلاف جلدي Flip Wallet — جلد • حامل بطاقات • حامل مائل. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 119,
+  "currency": "MAD",
+  "category": "cat-phone-cases",
+  "images": [
+    "/images/products/flip-wallet-leather-case-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "جلد • حامل بطاقات • حامل مائل"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "coque غلاف جلد wallet flip coque flip wallet cuir",
+  "fr": {
+    "name": "Coque Flip Wallet cuir",
+    "shortDescription": "Cuir • porte-cartes • stand",
+    "description": "Coque Flip Wallet cuir — Cuir • porte-cartes • stand. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Cuir • porte-cartes • stand"
+      }
+    ]
+  }
+}

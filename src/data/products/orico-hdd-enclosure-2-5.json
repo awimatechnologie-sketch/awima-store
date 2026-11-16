@@ -1,0 +1,34 @@
+{
+  "id": "P-0223",
+  "name": "ORICO Hard Drive Enclosure 2.5\"",
+  "slug": "orico-hdd-enclosure-2-5",
+  "shortDescription": "USB 3.0 • SATA • ألمنيوم",
+  "description": "ORICO Hard Drive Enclosure 2.5\" — USB 3.0 • SATA • ألمنيوم. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 149,
+  "currency": "MAD",
+  "category": "cat-disk",
+  "images": [
+    "/images/products/orico-hdd-enclosure-2-5-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "USB 3.0 • SATA • ألمنيوم"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "orico boitier disque dur هارد ديسك orico boîtier disque dur 2,5\"",
+  "fr": {
+    "name": "ORICO Boîtier disque dur 2,5\"",
+    "shortDescription": "USB 3.0 • SATA • aluminium",
+    "description": "ORICO Boîtier disque dur 2,5\" — USB 3.0 • SATA • aluminium. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "USB 3.0 • SATA • aluminium"
+      }
+    ]
+  }
+}

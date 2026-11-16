@@ -1,0 +1,34 @@
+{
+  "id": "P-0203",
+  "name": "سوار سيليكون لساعة Apple Watch",
+  "slug": "apple-watch-silicone-band",
+  "shortDescription": "سيليكون • 38-49 ملم • ألوان متعددة",
+  "description": "سوار سيليكون لساعة Apple Watch — سيليكون • 38-49 ملم • ألوان متعددة. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 79,
+  "currency": "MAD",
+  "category": "cat-smartwatches",
+  "images": [
+    "/images/products/apple-watch-silicone-band-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "سيليكون • 38-49 ملم • ألوان متعددة"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "سوار bracelet apple watch bracelet silicone apple watch",
+  "fr": {
+    "name": "Bracelet silicone Apple Watch",
+    "shortDescription": "Silicone • 38-49 mm • plusieurs couleurs",
+    "description": "Bracelet silicone Apple Watch — Silicone • 38-49 mm • plusieurs couleurs. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Silicone • 38-49 mm • plusieurs couleurs"
+      }
+    ]
+  }
+}

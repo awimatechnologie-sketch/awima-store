@@ -1,0 +1,8 @@
+{
+  "id": "cat-desk",
+  "name": "المكتب والمنزل",
+  "slug": "desk",
+  "order": 79,
+  "name_fr": "Bureau et maison",
+  "parent": "cat-phone-accessories"
+}

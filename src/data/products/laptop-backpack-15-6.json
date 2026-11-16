@@ -1,0 +1,34 @@
+{
+  "id": "P-0210",
+  "name": "حقيبة ظهر للابتوب 15.6",
+  "slug": "laptop-backpack-15-6",
+  "shortDescription": "15.6 بوصة • منفذ USB • مقاومة للماء",
+  "description": "حقيبة ظهر للابتوب 15.6 — 15.6 بوصة • منفذ USB • مقاومة للماء. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 199,
+  "currency": "MAD",
+  "category": "cat-laptop-bags",
+  "images": [
+    "/images/products/laptop-backpack-15-6-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "15.6 بوصة • منفذ USB • مقاومة للماء"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "حقيبة ظهر sac à dos backpack sac à dos laptop 15.6",
+  "fr": {
+    "name": "Sac à dos laptop 15.6",
+    "shortDescription": "15.6\" • USB • imperméable",
+    "description": "Sac à dos laptop 15.6 — 15.6\" • USB • imperméable. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "15.6\" • USB • imperméable"
+      }
+    ]
+  }
+}
