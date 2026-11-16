@@ -1,0 +1,35 @@
+{
+  "id": "P-0050",
+  "name": "Samsung 5A USB-C to USB-C",
+  "slug": "samsung-5a-usb-c-cable",
+  "shortDescription": "1 متر • USB-C إلى USB-C",
+  "description": "Samsung 5A USB-C to USB-C. 1 متر • USB-C إلى USB-C • 5 أمبير. مناسب للشحن السريع المتوافق؛ تحقق من رقم المنتج والأصالة.",
+  "price": 299,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "1 متر • USB-C إلى USB-C • 5 أمبير"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "samsung câble كابل",
+  "ports": [
+    "usb-c"
+  ],
+  "fr": {
+    "name": "Samsung 5A USB-C to USB-C",
+    "shortDescription": "1 m • USB-C vers USB-C",
+    "description": "Samsung 5A USB-C to USB-C. 1 m • USB-C vers USB-C • 5 A. Convient à la charge rapide compatible ; vérifiez la référence et l’authenticité.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "1 m • USB-C vers USB-C • 5 A"
+      }
+    ]
+  }
+}

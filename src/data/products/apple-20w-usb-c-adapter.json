@@ -1,0 +1,40 @@
+{
+  "id": "P-0036",
+  "name": "Apple USB-C Power Adapter 20W",
+  "slug": "apple-20w-usb-c-adapter",
+  "shortDescription": "20 واط • USB-C",
+  "description": "Apple USB-C Power Adapter 20W (20W). 20 واط • USB-C • USB Power Delivery. توجد نسخ مقلدة كثيرة في السوق، تأكد من أن المنتج أصلي.",
+  "price": 167,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "20W"
+    },
+    {
+      "key": "المواصفات",
+      "value": "20 واط • USB-C • USB Power Delivery"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "apple iphone ايفون chargeur شاحن آبل",
+  "fr": {
+    "name": "Apple USB-C Power Adapter 20W",
+    "shortDescription": "20 W • USB-C",
+    "description": "Apple USB-C Power Adapter 20W (20W). 20 W • USB-C • USB Power Delivery. Il existe de nombreuses contrefaçons sur le marché : vérifiez que le produit est original.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "20W"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "20 W • USB-C • USB Power Delivery"
+      }
+    ]
+  }
+}

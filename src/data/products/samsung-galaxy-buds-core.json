@@ -1,0 +1,40 @@
+{
+  "id": "P-0057",
+  "name": "Samsung Galaxy Buds Core",
+  "slug": "samsung-galaxy-buds-core",
+  "shortDescription": "Bluetooth 5.4 • ANC",
+  "description": "Samsung Galaxy Buds Core (Galaxy Buds Core). Bluetooth 5.4 • ANC • تصميم داخل الأذن مع أطراف تثبيت. تحقق من توافق بعض خصائص النظام مع هاتفك.",
+  "price": 359,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "Galaxy Buds Core"
+    },
+    {
+      "key": "المواصفات",
+      "value": "Bluetooth 5.4 • ANC • تصميم داخل الأذن مع أطراف تثبيت"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "samsung galaxy buds tws ecouteurs سماعات",
+  "fr": {
+    "name": "Samsung Galaxy Buds Core",
+    "shortDescription": "Bluetooth 5.4 • ANC",
+    "description": "Samsung Galaxy Buds Core (Galaxy Buds Core). Bluetooth 5.4 • ANC • Intra-auriculaire avec ailettes de maintien. Vérifiez la compatibilité de certaines fonctions avec votre téléphone.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "Galaxy Buds Core"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "Bluetooth 5.4 • ANC • Intra-auriculaire avec ailettes de maintien"
+      }
+    ]
+  }
+}

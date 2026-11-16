@@ -1,0 +1,40 @@
+{
+  "id": "P-0088",
+  "name": "Foneng CP100 Car Phone Holder",
+  "slug": "foneng-cp100-car-holder",
+  "shortDescription": "حامل سيارة • تثبيت على فتحات التهوية حسب النسخة",
+  "description": "Foneng CP100 Car Phone Holder (CP100). حامل سيارة • تثبيت على فتحات التهوية حسب النسخة • ضبط زاوية الرؤية.",
+  "price": 75,
+  "currency": "MAD",
+  "category": "cat-phone-holders",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "CP100"
+    },
+    {
+      "key": "المواصفات",
+      "value": "حامل سيارة • تثبيت على فتحات التهوية حسب النسخة • ضبط زاوية الرؤية"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "foneng support voiture حامل سيارة هاتف",
+  "fr": {
+    "name": "Foneng CP100 Car Phone Holder",
+    "shortDescription": "Support voiture • Fixation sur grille d’aération selon la version",
+    "description": "Foneng CP100 Car Phone Holder (CP100). Support voiture • Fixation sur grille d’aération selon la version • Angle de vue réglable.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "CP100"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "Support voiture • Fixation sur grille d’aération selon la version • Angle de vue réglable"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "P-0086",
+  "name": "Ugreen Support Smartphone Pliable en Aluminium",
+  "slug": "ugreen-foldable-aluminium-stand-80708",
+  "shortDescription": "حامل مكتبي معدني قابل للطي • مناسب للهاتف",
+  "description": "Ugreen Support Smartphone Pliable en Aluminium (80708). حامل مكتبي معدني قابل للطي • مناسب للهاتف.",
+  "price": 199,
+  "currency": "MAD",
+  "category": "cat-phone-holders",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "80708"
+    },
+    {
+      "key": "المواصفات",
+      "value": "حامل مكتبي معدني قابل للطي • مناسب للهاتف"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ugreen support aluminium حامل مكتبي هاتف",
+  "fr": {
+    "name": "Ugreen Support Smartphone Pliable en Aluminium",
+    "shortDescription": "Support de bureau métallique pliable • Adapté au téléphone",
+    "description": "Ugreen Support Smartphone Pliable en Aluminium (80708). Support de bureau métallique pliable • Adapté au téléphone.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "80708"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "Support de bureau métallique pliable • Adapté au téléphone"
+      }
+    ]
+  }
+}

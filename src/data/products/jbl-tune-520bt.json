@@ -1,0 +1,32 @@
+{
+  "id": "P-0065",
+  "name": "JBL Tune 520BT",
+  "slug": "jbl-tune-520bt",
+  "shortDescription": "Bluetooth 5.3 • حتى 57 ساعة تشغيل",
+  "description": "JBL Tune 520BT. Bluetooth 5.3 • حتى 57 ساعة تشغيل • شحن USB-C. المدة القصوى للبطارية تختلف حسب مستوى الصوت.",
+  "price": 485,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "Bluetooth 5.3 • حتى 57 ساعة تشغيل • شحن USB-C"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "jbl casque سماعة رأس بلوتوث",
+  "fr": {
+    "name": "JBL Tune 520BT",
+    "shortDescription": "Bluetooth 5.3 • Jusqu’à 57 h d’autonomie",
+    "description": "JBL Tune 520BT. Bluetooth 5.3 • Jusqu’à 57 h d’autonomie • Charge USB-C. L’autonomie maximale varie selon le volume.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Bluetooth 5.3 • Jusqu’à 57 h d’autonomie • Charge USB-C"
+      }
+    ]
+  }
+}

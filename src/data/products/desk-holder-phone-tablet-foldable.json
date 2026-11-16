@@ -1,0 +1,32 @@
+{
+  "id": "P-0094",
+  "name": "Support Holder Bureau Téléphone & Tablette",
+  "slug": "desk-holder-phone-tablet-foldable",
+  "shortDescription": "حامل مكتبي للهاتف والتابلت • زاوية مشاهدة مرتفعة",
+  "description": "Support Holder Bureau Téléphone & Tablette. حامل مكتبي للهاتف والتابلت • زاوية مشاهدة مرتفعة • قابل للطي حسب النسخة.",
+  "price": 54.15,
+  "currency": "MAD",
+  "category": "cat-phone-holders",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "حامل مكتبي للهاتف والتابلت • زاوية مشاهدة مرتفعة • قابل للطي حسب النسخة"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "support bureau حامل مكتبي هاتف تابلت",
+  "fr": {
+    "name": "Support Holder Bureau Téléphone & Tablette",
+    "shortDescription": "Support de bureau pour téléphone et tablette • Angle de vue élevé",
+    "description": "Support Holder Bureau Téléphone & Tablette. Support de bureau pour téléphone et tablette • Angle de vue élevé • Pliable selon la version.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Support de bureau pour téléphone et tablette • Angle de vue élevé • Pliable selon la version"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "P-0091",
+  "name": "Flexible Desk Phone and Tablet Stand",
+  "slug": "flexible-desk-phone-tablet-stand",
+  "shortDescription": "حامل مكتبي مرن للهاتف واللوحي • عنق قابل للتعديل",
+  "description": "Flexible Desk Phone and Tablet Stand. حامل مكتبي مرن للهاتف واللوحي • عنق قابل للتعديل. للمكتب: اختر قاعدة ثقيلة قابلة لتعديل الزاوية.",
+  "price": 65,
+  "currency": "MAD",
+  "category": "cat-phone-holders",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "حامل مكتبي مرن للهاتف واللوحي • عنق قابل للتعديل"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "support flexible حامل مكتبي هاتف تابلت",
+  "fr": {
+    "name": "Flexible Desk Phone and Tablet Stand",
+    "shortDescription": "Support de bureau flexible pour téléphone et tablette • Col réglable",
+    "description": "Flexible Desk Phone and Tablet Stand. Support de bureau flexible pour téléphone et tablette • Col réglable. Pour le bureau : choisissez une base lourde avec angle réglable.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Support de bureau flexible pour téléphone et tablette • Col réglable"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "P-0075",
+  "name": "Oraimo PowerNova L11",
+  "slug": "oraimo-powernova-l11",
+  "shortDescription": "10,000 mAh • حتى 22.5 واط",
+  "description": "Oraimo PowerNova L11. 10,000 mAh • حتى 22.5 واط • كابل USB-C مدمج. السعة المكتوبة لا تعني أن الهاتف سيستقبل كامل mAh بسبب خسائر التحويل.",
+  "price": 279,
+  "currency": "MAD",
+  "category": "cat-power-banks",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "10,000 mAh • حتى 22.5 واط • كابل USB-C مدمج"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "oraimo power bank powerbank باوربانك batterie externe",
+  "fr": {
+    "name": "Oraimo PowerNova L11",
+    "shortDescription": "10 000 mAh • Jusqu’à 22,5 W",
+    "description": "Oraimo PowerNova L11. 10 000 mAh • Jusqu’à 22,5 W • Câble USB-C intégré. La capacité indiquée n’est pas entièrement transférée au téléphone (pertes de conversion).",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "10 000 mAh • Jusqu’à 22,5 W • Câble USB-C intégré"
+      }
+    ]
+  }
+}

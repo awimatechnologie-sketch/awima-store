@@ -1,0 +1,40 @@
+{
+  "id": "P-0035",
+  "name": "Samsung 25W USB-C Super Fast Charger",
+  "slug": "samsung-25w-fast-charger",
+  "shortDescription": "25 واط • USB-C",
+  "description": "Samsung 25W USB-C Super Fast Charger (EP-TA800). 25 واط • USB-C • PD 3.0 / PPS. تحقق من النسخة الأوروبية ومن الأصالة قبل الشراء.",
+  "price": 89,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "EP-TA800"
+    },
+    {
+      "key": "المواصفات",
+      "value": "25 واط • USB-C • PD 3.0 / PPS"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "samsung chargeur شاحن سامسونج",
+  "fr": {
+    "name": "Samsung 25W USB-C Super Fast Charger",
+    "shortDescription": "25 W • USB-C",
+    "description": "Samsung 25W USB-C Super Fast Charger (EP-TA800). 25 W • USB-C • PD 3.0 / PPS. Vérifiez la version européenne et l’authenticité avant l’achat.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "EP-TA800"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "25 W • USB-C • PD 3.0 / PPS"
+      }
+    ]
+  }
+}

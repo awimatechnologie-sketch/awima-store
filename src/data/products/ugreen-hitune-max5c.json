@@ -1,0 +1,32 @@
+{
+  "id": "P-0072",
+  "name": "UGREEN HiTune Max5C",
+  "slug": "ugreen-hitune-max5c",
+  "shortDescription": "Bluetooth • ANC",
+  "description": "UGREEN HiTune Max5C. Bluetooth • ANC • حتى 75 ساعة تقريباً.",
+  "price": 339,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "Bluetooth • ANC • حتى 75 ساعة تقريباً"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ugreen hitune casque سماعة رأس anc",
+  "fr": {
+    "name": "UGREEN HiTune Max5C",
+    "shortDescription": "Bluetooth • ANC",
+    "description": "UGREEN HiTune Max5C. Bluetooth • ANC • Environ 75 h d’autonomie.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Bluetooth • ANC • Environ 75 h d’autonomie"
+      }
+    ]
+  }
+}

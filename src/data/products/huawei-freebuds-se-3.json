@@ -1,0 +1,40 @@
+{
+  "id": "P-0059",
+  "name": "Huawei FreeBuds SE 3",
+  "slug": "huawei-freebuds-se-3",
+  "shortDescription": "Bluetooth 5.4 • حتى 9 ساعات بالشحنة",
+  "description": "Huawei FreeBuds SE 3 (FreeBuds SE 3). Bluetooth 5.4 • حتى 9 ساعات بالشحنة • حتى 42 ساعة مع العلبة • USB-C. تصميم خفيف وعلبة صغيرة؛ لا تتضمن هذه النسخة عزل ANC نشطاً.",
+  "price": 383,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "FreeBuds SE 3"
+    },
+    {
+      "key": "المواصفات",
+      "value": "Bluetooth 5.4 • حتى 9 ساعات بالشحنة • حتى 42 ساعة مع العلبة • USB-C"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "huawei freebuds tws ecouteurs سماعات",
+  "fr": {
+    "name": "Huawei FreeBuds SE 3",
+    "shortDescription": "Bluetooth 5.4 • Jusqu’à 9 h par charge",
+    "description": "Huawei FreeBuds SE 3 (FreeBuds SE 3). Bluetooth 5.4 • Jusqu’à 9 h par charge • Jusqu’à 42 h avec le boîtier • USB-C. Design léger et petit boîtier ; cette version n’a pas de réduction de bruit active.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "FreeBuds SE 3"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "Bluetooth 5.4 • Jusqu’à 9 h par charge • Jusqu’à 42 h avec le boîtier • USB-C"
+      }
+    ]
+  }
+}

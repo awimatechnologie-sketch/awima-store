@@ -1,0 +1,32 @@
+{
+  "id": "P-0069",
+  "name": "Oraimo BoomPop Lite",
+  "slug": "oraimo-boompop-lite",
+  "shortDescription": "Bluetooth 5.3 • تقليل ضوضاء المكالمات ENC",
+  "description": "Oraimo BoomPop Lite. Bluetooth 5.3 • تقليل ضوضاء المكالمات ENC • حتى 65 ساعة.",
+  "price": 195,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "Bluetooth 5.3 • تقليل ضوضاء المكالمات ENC • حتى 65 ساعة"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "oraimo boompop casque سماعة رأس",
+  "fr": {
+    "name": "Oraimo BoomPop Lite",
+    "shortDescription": "Bluetooth 5.3 • Réduction de bruit des appels ENC",
+    "description": "Oraimo BoomPop Lite. Bluetooth 5.3 • Réduction de bruit des appels ENC • Jusqu’à 65 h.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Bluetooth 5.3 • Réduction de bruit des appels ENC • Jusqu’à 65 h"
+      }
+    ]
+  }
+}

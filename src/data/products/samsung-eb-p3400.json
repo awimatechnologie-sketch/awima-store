@@ -1,0 +1,40 @@
+{
+  "id": "P-0078",
+  "name": "Samsung EB-P3400",
+  "slug": "samsung-eb-p3400",
+  "shortDescription": "10,000 mAh • شحن سلكي حتى 25 واط",
+  "description": "Samsung EB-P3400 (EB-P3400 / P3400XUEGWW). 10,000 mAh • شحن سلكي حتى 25 واط • USB-C.",
+  "price": 270,
+  "currency": "MAD",
+  "category": "cat-power-banks",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "EB-P3400 / P3400XUEGWW"
+    },
+    {
+      "key": "المواصفات",
+      "value": "10,000 mAh • شحن سلكي حتى 25 واط • USB-C"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "samsung power bank باوربانك batterie externe",
+  "fr": {
+    "name": "Samsung EB-P3400",
+    "shortDescription": "10 000 mAh • Charge filaire jusqu’à 25 W",
+    "description": "Samsung EB-P3400 (EB-P3400 / P3400XUEGWW). 10 000 mAh • Charge filaire jusqu’à 25 W • USB-C.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "EB-P3400 / P3400XUEGWW"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "10 000 mAh • Charge filaire jusqu’à 25 W • USB-C"
+      }
+    ]
+  }
+}

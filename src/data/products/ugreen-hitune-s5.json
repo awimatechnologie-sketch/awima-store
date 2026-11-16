@@ -1,0 +1,40 @@
+{
+  "id": "P-0060",
+  "name": "UGREEN HiTune S5",
+  "slug": "ugreen-hitune-s5",
+  "shortDescription": "Bluetooth 5.4 • تصميم Open-Ear",
+  "description": "UGREEN HiTune S5 (HiTune S5 Open-Ear). Bluetooth 5.4 • تصميم Open-Ear • مقاومة IPX5 • حتى 24 ساعة إجمالاً. تصميم مفتوح لا يسد قناة الأذن بالكامل لسماع المحيط أثناء الاستماع.",
+  "price": 299,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "HiTune S5 Open-Ear"
+    },
+    {
+      "key": "المواصفات",
+      "value": "Bluetooth 5.4 • تصميم Open-Ear • مقاومة IPX5 • حتى 24 ساعة إجمالاً"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ugreen hitune tws ecouteurs سماعات",
+  "fr": {
+    "name": "UGREEN HiTune S5",
+    "shortDescription": "Bluetooth 5.4 • Open-Ear",
+    "description": "UGREEN HiTune S5 (HiTune S5 Open-Ear). Bluetooth 5.4 • Open-Ear • Résistance IPX5 • Jusqu’à 24 h au total. Design ouvert qui n’obstrue pas le conduit auditif pour entendre l’environnement.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "HiTune S5 Open-Ear"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "Bluetooth 5.4 • Open-Ear • Résistance IPX5 • Jusqu’à 24 h au total"
+      }
+    ]
+  }
+}

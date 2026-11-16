@@ -1,0 +1,32 @@
+{
+  "id": "P-0074",
+  "name": "Marshall Major V",
+  "slug": "marshall-major-v",
+  "shortDescription": "Bluetooth 5.3 • أكثر من 100 ساعة تشغيل",
+  "description": "Marshall Major V. Bluetooth 5.3 • أكثر من 100 ساعة تشغيل • تصميم On-Ear.",
+  "price": 1153,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "Bluetooth 5.3 • أكثر من 100 ساعة تشغيل • تصميم On-Ear"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "marshall casque سماعة رأس بلوتوث",
+  "fr": {
+    "name": "Marshall Major V",
+    "shortDescription": "Bluetooth 5.3 • Plus de 100 h d’autonomie",
+    "description": "Marshall Major V. Bluetooth 5.3 • Plus de 100 h d’autonomie • Design supra-auriculaire (On-Ear).",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Bluetooth 5.3 • Plus de 100 h d’autonomie • Design supra-auriculaire (On-Ear)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "P-0093",
+  "name": "Tripod for Smartphone and Camera",
+  "slug": "tripod-smartphone-camera-basic",
+  "shortDescription": "حامل ثلاثي أساسي للهاتف والكاميرا • استخدام مكتبي أو تصوير",
+  "description": "Tripod for Smartphone and Camera. حامل ثلاثي أساسي للهاتف والكاميرا • استخدام مكتبي أو تصوير.",
+  "price": 35,
+  "currency": "MAD",
+  "category": "cat-camera-accessories",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "حامل ثلاثي أساسي للهاتف والكاميرا • استخدام مكتبي أو تصوير"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "tripod trépied حامل ثلاثي تصوير",
+  "fr": {
+    "name": "Tripod for Smartphone and Camera",
+    "shortDescription": "Trépied basique pour téléphone et appareil photo • Usage bureau ou photo",
+    "description": "Tripod for Smartphone and Camera. Trépied basique pour téléphone et appareil photo • Usage bureau ou photo.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Trépied basique pour téléphone et appareil photo • Usage bureau ou photo"
+      }
+    ]
+  }
+}

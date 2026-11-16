@@ -1,0 +1,43 @@
+{
+  "id": "P-0051",
+  "name": "Oraimo BraidLine 100W",
+  "slug": "oraimo-braidline-100w",
+  "shortDescription": "1 متر • USB-C إلى USB-C",
+  "description": "Oraimo BraidLine 100W (OCD-1525CC). 1 متر • USB-C إلى USB-C • 100 واط. نايلون مجدول؛ لشحن الهواتف والأجهزة اللوحية وبعض الحواسيب.",
+  "price": 79,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "OCD-1525CC"
+    },
+    {
+      "key": "المواصفات",
+      "value": "1 متر • USB-C إلى USB-C • 100 واط"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "oraimo câble كابل",
+  "ports": [
+    "usb-c"
+  ],
+  "fr": {
+    "name": "Oraimo BraidLine 100W",
+    "shortDescription": "1 m • USB-C vers USB-C",
+    "description": "Oraimo BraidLine 100W (OCD-1525CC). 1 m • USB-C vers USB-C • 100 W. Nylon tressé ; pour charger téléphones, tablettes et certains PC.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "OCD-1525CC"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "1 m • USB-C vers USB-C • 100 W"
+      }
+    ]
+  }
+}

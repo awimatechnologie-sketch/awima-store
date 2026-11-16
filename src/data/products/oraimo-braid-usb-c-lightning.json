@@ -1,0 +1,43 @@
+{
+  "id": "P-0054",
+  "name": "Oraimo Braid USB-C to Lightning",
+  "slug": "oraimo-braid-usb-c-lightning",
+  "shortDescription": "USB-C إلى Lightning • حتى 45 واط بحسب العرض",
+  "description": "Oraimo Braid USB-C to Lightning (OCD-152CL). USB-C إلى Lightning • حتى 45 واط بحسب العرض. مخصص لأجهزة Apple ذات منفذ Lightning؛ تحقق من اعتماد MFi إن كان مطلوباً.",
+  "price": 67,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "OCD-152CL"
+    },
+    {
+      "key": "المواصفات",
+      "value": "USB-C إلى Lightning • حتى 45 واط بحسب العرض"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "oraimo câble كابل lightning ايفون",
+  "ports": [
+    "lightning"
+  ],
+  "fr": {
+    "name": "Oraimo Braid USB-C to Lightning",
+    "shortDescription": "USB-C vers Lightning • Jusqu’à 45 W selon l’offre",
+    "description": "Oraimo Braid USB-C to Lightning (OCD-152CL). USB-C vers Lightning • Jusqu’à 45 W selon l’offre. Destiné aux appareils Apple à port Lightning ; vérifiez la certification MFi si nécessaire.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "OCD-152CL"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "USB-C vers Lightning • Jusqu’à 45 W selon l’offre"
+      }
+    ]
+  }
+}

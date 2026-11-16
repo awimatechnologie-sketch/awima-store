@@ -1,0 +1,40 @@
+{
+  "id": "P-0044",
+  "name": "Xiaomi 67W Charger",
+  "slug": "xiaomi-67w-charger",
+  "shortDescription": "67 واط • شحن Turbo",
+  "description": "Xiaomi 67W Charger (67W (إصدارات متعددة)). 67 واط • شحن Turbo • يعتمد الأداء الأقصى على توافق الهاتف والكابل. افحص رقم الطراز والنسخة والأصالة قبل الشراء.",
+  "price": 67,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "67W (إصدارات متعددة)"
+    },
+    {
+      "key": "المواصفات",
+      "value": "67 واط • شحن Turbo • يعتمد الأداء الأقصى على توافق الهاتف والكابل"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "xiaomi 67w turbo chargeur شاحن",
+  "fr": {
+    "name": "Xiaomi 67W Charger",
+    "shortDescription": "67 W • Charge Turbo",
+    "description": "Xiaomi 67W Charger (67W (إصدارات متعددة)). 67 W • Charge Turbo • Performance maximale selon la compatibilité du téléphone et du câble. Vérifiez le numéro de modèle, la version et l’authenticité avant l’achat.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "67W (إصدارات متعددة)"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "67 W • Charge Turbo • Performance maximale selon la compatibilité du téléphone et du câble"
+      }
+    ]
+  }
+}

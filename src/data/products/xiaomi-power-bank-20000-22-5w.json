@@ -1,0 +1,32 @@
+{
+  "id": "P-0084",
+  "name": "Xiaomi Power Bank 20,000mAh 22.5W",
+  "slug": "xiaomi-power-bank-20000-22-5w",
+  "shortDescription": "20,000 mAh • حتى 22.5 واط",
+  "description": "Xiaomi Power Bank 20,000mAh 22.5W. 20,000 mAh • حتى 22.5 واط • كابل USB-C مدمج.",
+  "price": 199,
+  "currency": "MAD",
+  "category": "cat-power-banks",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "20,000 mAh • حتى 22.5 واط • كابل USB-C مدمج"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "xiaomi power bank باوربانك batterie externe",
+  "fr": {
+    "name": "Xiaomi Power Bank 20,000mAh 22.5W",
+    "shortDescription": "20 000 mAh • Jusqu’à 22,5 W",
+    "description": "Xiaomi Power Bank 20,000mAh 22.5W. 20 000 mAh • Jusqu’à 22,5 W • Câble USB-C intégré.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "20 000 mAh • Jusqu’à 22,5 W • Câble USB-C intégré"
+      }
+    ]
+  }
+}

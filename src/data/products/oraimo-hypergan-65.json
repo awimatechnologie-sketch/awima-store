@@ -1,0 +1,40 @@
+{
+  "id": "P-0040",
+  "name": "Oraimo HyperGaN 65",
+  "slug": "oraimo-hypergan-65",
+  "shortDescription": "65 واط • منفذان USB-C",
+  "description": "Oraimo HyperGaN 65 (65W). 65 واط • منفذان USB-C • USB Power Delivery. مناسب لبعض الحواسيب المحمولة والهواتف؛ تتوزع الطاقة بين المنفذين عند استعمالهما معاً.",
+  "price": 297,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "65W"
+    },
+    {
+      "key": "المواصفات",
+      "value": "65 واط • منفذان USB-C • USB Power Delivery"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "oraimo gan 65w laptop chargeur",
+  "fr": {
+    "name": "Oraimo HyperGaN 65",
+    "shortDescription": "65 W • Deux ports USB-C",
+    "description": "Oraimo HyperGaN 65 (65W). 65 W • Deux ports USB-C • USB Power Delivery. Convient à certains PC portables et téléphones ; la puissance est répartie entre les deux ports en usage simultané.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "65W"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "65 W • Deux ports USB-C • USB Power Delivery"
+      }
+    ]
+  }
+}

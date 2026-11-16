@@ -1,0 +1,35 @@
+{
+  "id": "P-0045",
+  "name": "Apple USB-C Charge Cable 60W",
+  "slug": "apple-usb-c-cable-60w",
+  "shortDescription": "1 متر • USB-C إلى USB-C",
+  "description": "Apple USB-C Charge Cable 60W. 1 متر • USB-C إلى USB-C • قدرة تصل إلى 60 واط. كابل لأجهزة iPhone وiPad وMacBook المتوافقة مع USB-C؛ لا تخلطه بكابل USB-C إلى Lightning.",
+  "price": 200,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "1 متر • USB-C إلى USB-C • قدرة تصل إلى 60 واط"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "apple câble كابل ايفون",
+  "ports": [
+    "usb-c"
+  ],
+  "fr": {
+    "name": "Apple USB-C Charge Cable 60W",
+    "shortDescription": "1 m • USB-C vers USB-C",
+    "description": "Apple USB-C Charge Cable 60W. 1 m • USB-C vers USB-C • Puissance jusqu’à 60 W. Câble pour iPhone, iPad et MacBook compatibles USB-C ; ne le confondez pas avec un câble USB-C vers Lightning.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "1 m • USB-C vers USB-C • Puissance jusqu’à 60 W"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "P-0049",
+  "name": "Xiaomi 6A Braided USB-C",
+  "slug": "xiaomi-6a-braided-usb-c",
+  "shortDescription": "1 متر • USB-A إلى USB-C أو USB-C إلى USB-C حسب النسخة",
+  "description": "Xiaomi 6A Braided USB-C. 1 متر • USB-A إلى USB-C أو USB-C إلى USB-C حسب النسخة • 6 أمبير. توجد إصدارات مختلفة؛ طابق نوع الموصل مع الشاحن والهاتف.",
+  "price": 79,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "1 متر • USB-A إلى USB-C أو USB-C إلى USB-C حسب النسخة • 6 أمبير"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "xiaomi câble كابل 6a",
+  "ports": [
+    "usb-c"
+  ],
+  "fr": {
+    "name": "Xiaomi 6A Braided USB-C",
+    "shortDescription": "1 m • USB-A vers USB-C ou USB-C vers USB-C selon la version",
+    "description": "Xiaomi 6A Braided USB-C. 1 m • USB-A vers USB-C ou USB-C vers USB-C selon la version • 6 A. Plusieurs versions existent ; faites correspondre le connecteur au chargeur et au téléphone.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "1 m • USB-A vers USB-C ou USB-C vers USB-C selon la version • 6 A"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "P-0038",
+  "name": "Oraimo PowerCube 201",
+  "slug": "oraimo-powercube-201",
+  "shortDescription": "20 واط • USB-C",
+  "description": "Oraimo PowerCube 201 (OCW-5203E (حسب بعض العروض)). 20 واط • USB-C • PD 3.0. قد يختلف رقم الطراز بين النسخ؛ اسأل عن النسخة المتوفرة.",
+  "price": 85,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "OCW-5203E (حسب بعض العروض)"
+    },
+    {
+      "key": "المواصفات",
+      "value": "20 واط • USB-C • PD 3.0"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "oraimo chargeur شاحن اورايمو",
+  "fr": {
+    "name": "Oraimo PowerCube 201",
+    "shortDescription": "20 W • USB-C",
+    "description": "Oraimo PowerCube 201 (OCW-5203E (حسب بعض العروض)). 20 W • USB-C • PD 3.0. Le numéro de modèle peut varier selon la version ; renseignez-vous sur la version disponible.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "OCW-5203E (حسب بعض العروض)"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "20 W • USB-C • PD 3.0"
+      }
+    ]
+  }
+}

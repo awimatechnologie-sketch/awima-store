@@ -1,0 +1,40 @@
+{
+  "id": "P-0055",
+  "name": "Oraimo FreePods 4",
+  "slug": "oraimo-freepods-4",
+  "shortDescription": "Bluetooth 5.2 • عزل ضوضاء ANC حتى 30 dB",
+  "description": "Oraimo FreePods 4 (OEB-E105D). Bluetooth 5.2 • عزل ضوضاء ANC حتى 30 dB • حتى 35 ساعة مع العلبة • USB-C. وضع الشفافية و4 ميكروفونات للمكالمات وأوضاع EQ ووضع ألعاب بزمن تأخير منخفض.",
+  "price": 369,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "OEB-E105D"
+    },
+    {
+      "key": "المواصفات",
+      "value": "Bluetooth 5.2 • عزل ضوضاء ANC حتى 30 dB • حتى 35 ساعة مع العلبة • USB-C"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "oraimo tws ecouteurs سماعات بلوتوث anc",
+  "fr": {
+    "name": "Oraimo FreePods 4",
+    "shortDescription": "Bluetooth 5.2 • ANC jusqu’à 30 dB",
+    "description": "Oraimo FreePods 4 (OEB-E105D). Bluetooth 5.2 • ANC jusqu’à 30 dB • Jusqu’à 35 h avec le boîtier • USB-C. Mode transparence, 4 microphones pour les appels, modes EQ et mode jeu à faible latence.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "OEB-E105D"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "Bluetooth 5.2 • ANC jusqu’à 30 dB • Jusqu’à 35 h avec le boîtier • USB-C"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "id": "P-0053",
+  "name": "Oraimo MagCable 60W",
+  "slug": "oraimo-magcable-60w",
+  "shortDescription": "1 متر • USB-C إلى USB-C",
+  "description": "Oraimo MagCable 60W. 1 متر • USB-C إلى USB-C • 60 واط. تحقق من شكل التثبيت/المغناطيس في النسخة المعروضة.",
+  "price": 69,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "1 متر • USB-C إلى USB-C • 60 واط"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "oraimo câble كابل magcable",
+  "ports": [
+    "usb-c"
+  ],
+  "fr": {
+    "name": "Oraimo MagCable 60W",
+    "shortDescription": "1 m • USB-C vers USB-C",
+    "description": "Oraimo MagCable 60W. 1 m • USB-C vers USB-C • 60 W. Vérifiez le système de fixation/aimant de la version proposée.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "1 m • USB-C vers USB-C • 60 W"
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "P-0058",
+  "name": "Apple AirPods 4",
+  "slug": "apple-airpods-4",
+  "shortDescription": "Bluetooth • تصميم مفتوح دون رؤوس سيليكون",
+  "description": "Apple AirPods 4 (AirPods 4 (النسخة العادية)). Bluetooth • تصميم مفتوح دون رؤوس سيليكون • حتى 5 ساعات استماع بالشحنة. اقتران سلس مع أجهزة Apple وصوت مكاني؛ توجد نسخة ANC منفصلة بسعر أعلى.",
+  "price": 1199,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "AirPods 4 (النسخة العادية)"
+    },
+    {
+      "key": "المواصفات",
+      "value": "Bluetooth • تصميم مفتوح دون رؤوس سيليكون • حتى 5 ساعات استماع بالشحنة"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "apple airpods ايربودز tws ecouteurs",
+  "fr": {
+    "name": "Apple AirPods 4",
+    "shortDescription": "Bluetooth • Design ouvert sans embouts silicone",
+    "description": "Apple AirPods 4 (AirPods 4 (النسخة العادية)). Bluetooth • Design ouvert sans embouts silicone • Jusqu’à 5 h d’écoute par charge. Appairage fluide avec les appareils Apple et audio spatial ; une version ANC existe à un prix plus élevé.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "AirPods 4 (النسخة العادية)"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "Bluetooth • Design ouvert sans embouts silicone • Jusqu’à 5 h d’écoute par charge"
+      }
+    ]
+  }
+}

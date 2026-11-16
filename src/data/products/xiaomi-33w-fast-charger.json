@@ -1,0 +1,40 @@
+{
+  "id": "P-0037",
+  "name": "Xiaomi 33W Fast Charger",
+  "slug": "xiaomi-33w-fast-charger",
+  "shortDescription": "33 واط • شحن سريع",
+  "description": "Xiaomi 33W Fast Charger (33W / Nano USB-C). 33 واط • شحن سريع • توافق PD/QC/PPS حسب الإصدار. لا تخلط بين إصدار USB-A وإصدار Nano USB-C.",
+  "price": 149,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "33W / Nano USB-C"
+    },
+    {
+      "key": "المواصفات",
+      "value": "33 واط • شحن سريع • توافق PD/QC/PPS حسب الإصدار"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "xiaomi redmi شاومي chargeur شاحن",
+  "fr": {
+    "name": "Xiaomi 33W Fast Charger",
+    "shortDescription": "33 W • Charge rapide",
+    "description": "Xiaomi 33W Fast Charger (33W / Nano USB-C). 33 W • Charge rapide • Compatibilité PD/QC/PPS selon la version. Ne confondez pas la version USB-A et la version Nano USB-C.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "33W / Nano USB-C"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "33 W • Charge rapide • Compatibilité PD/QC/PPS selon la version"
+      }
+    ]
+  }
+}

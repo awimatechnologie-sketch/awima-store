@@ -1,0 +1,43 @@
+{
+  "id": "P-0052",
+  "name": "Oraimo DigiLine 100W",
+  "slug": "oraimo-digiline-100w",
+  "shortDescription": "1.2 متر • USB-C إلى USB-C",
+  "description": "Oraimo DigiLine 100W (OCD-175CC). 1.2 متر • USB-C إلى USB-C • 100 واط. تأكد من توافق الشاحن والجهاز مع القدرة العالية.",
+  "price": 119,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "الموديل",
+      "value": "OCD-175CC"
+    },
+    {
+      "key": "المواصفات",
+      "value": "1.2 متر • USB-C إلى USB-C • 100 واط"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "oraimo câble كابل digiline",
+  "ports": [
+    "usb-c"
+  ],
+  "fr": {
+    "name": "Oraimo DigiLine 100W",
+    "shortDescription": "1,2 m • USB-C vers USB-C",
+    "description": "Oraimo DigiLine 100W (OCD-175CC). 1,2 m • USB-C vers USB-C • 100 W. Assurez-vous que le chargeur et l’appareil prennent en charge cette puissance.",
+    "specs": [
+      {
+        "key": "Modèle",
+        "value": "OCD-175CC"
+      },
+      {
+        "key": "Caractéristiques",
+        "value": "1,2 m • USB-C vers USB-C • 100 W"
+      }
+    ]
+  }
+}
