@@ -8,6 +8,7 @@ export interface CommunityConfig {
   thresholds: Thresholds;
   crown: { enabled: boolean; minAvg: number; minPoints: number };
   turnstileSiteKey: string;
+  searchLog: boolean; // تسجيل عمليات البحث التي لا نتيجة لها
   likedSection: { enabled: boolean; count: number; minLikes: number }; // «الأكثر إعجاباً» في الرئيسية
 }
 
@@ -33,6 +34,7 @@ export function normalizeCommunity(raw: any): CommunityConfig {
       minAvg: num(cr.minAvg, 1, 5, 4.5),
       minPoints: num(cr.minPoints, 1, 1000, 10),
     },
+    searchLog: raw?.searchLog !== false,
     likedSection: { enabled: raw?.likedSection?.enabled !== false, count: Math.floor(num(raw?.likedSection?.count, 1, 12, 4)), minLikes: Math.floor(num(raw?.likedSection?.minLikes, 1, 1000, 3)) },
     turnstileSiteKey: /^[0-9A-Za-z_-]{8,80}$/.test(key) ? key : '',
   };
@@ -48,6 +50,14 @@ export function isTrusted(s: Pick<ReviewSummary, 'average' | 'points'>, manual: 
 export function starsHtml(avg: number): string {
   const pct = Math.max(0, Math.min(100, Math.round((avg / 5) * 100)));
   return `<span class="stars5" style="--fill:${pct}%" aria-hidden="true">★★★★★</span>`;
+}
+
+/** يوحّد عبارة البحث للتجميع (نفس توحيد البحث)، أو null إن كانت غير صالحة للتسجيل */
+export function cleanMissTerm(raw: unknown, normalize: (s: string) => string): string | null {
+  if (typeof raw !== 'string') return null;
+  const t = normalize(raw).slice(0, 40).trim();
+  if (t.length < 2 || /https?|www|\.com/i.test(raw)) return null;
+  return t;
 }
 
 // ---------- التحقق من مدخلات الزوار (يُستعمل في الخادم) ----------
@@ -79,4 +89,4 @@ export function checkReview(body: any): Checked<ReviewInput> {
 export const REVIEW_WEIGHT_SQL = `CASE buyer WHEN 'verified' THEN ${BUYER_WEIGHT.verified} ELSE ${BUYER_WEIGHT.new} END`;
 
 /** حدود إساءة الاستعمال لكل IP (مجزّأ) */
-export const LIMITS = { likesPerHour: 120, reviewsPerDay: 5 } as const;
+export const LIMITS = { likesPerHour: 120, reviewsPerDay: 5, missPerHour: 30, maxMissTerms: 2000 } as const;

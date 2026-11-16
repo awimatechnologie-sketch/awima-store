@@ -19,7 +19,7 @@ import { normalizeOffers, applyOffers, offerActive, offerCovers, badgeOffersFor 
 import { parseBlocks } from '../src/lib/richtext.ts';
 import { normalizeWarranty, warrantyDaysFor, warrantyUnit } from '../src/lib/warranty.ts';
 import { normalizeDevices, brandsOf, normalizePorts, productsForPort } from '../src/lib/compat.ts';
-import { normalizeCommunity, isTrusted, starsHtml, checkReview } from '../src/lib/community.ts';
+import { normalizeCommunity, isTrusted, starsHtml, checkReview, cleanMissTerm } from '../src/lib/community.ts';
 import { summaryFrom, DEFAULT_THRESHOLDS } from '../src/lib/reviews.ts';
 import { normalizeTrust, buildTrustItems } from '../src/lib/trust.ts';
 import { buildSrcset, variantPath } from '../src/lib/images.ts';
@@ -657,4 +657,14 @@ test('images: srcset من النسخ الموجودة فقط', () => {
   assert.equal(buildSrcset('/images/products/a.svg', () => true), undefined);
   assert.equal(buildSrcset('/images/products/a-w480.jpg', () => true), undefined);
   assert.equal(buildSrcset('https://x.com/a.jpg', () => true), undefined);
+});
+
+test('community: تنظيف عبارة البحث المسجّلة', () => {
+  assert.equal(cleanMissTerm('  Verre   Trempé ', normalize), 'verre trempe');
+  assert.equal(cleanMissTerm('a', normalize), null);
+  assert.equal(cleanMissTerm('www.x.com', normalize), null);
+  assert.equal(cleanMissTerm(5, normalize), null);
+  assert.equal(cleanMissTerm('ب'.repeat(100), normalize).length, 40);
+  assert.equal(normalizeCommunity(undefined).searchLog, true);
+  assert.equal(normalizeCommunity({ searchLog: false }).searchLog, false);
 });
