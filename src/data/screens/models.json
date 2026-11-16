@@ -1,0 +1,8629 @@
+{
+ "models": [
+  {
+   "id": "alcatel-1s-2020-hd",
+   "brand": "alcatel",
+   "name": "1S 2020 HD+",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "alcatel-1s-2021-hd",
+   "brand": "alcatel",
+   "name": "1S 2021 HD+",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "alcatel-1se-2020",
+   "brand": "alcatel",
+   "name": "1SE 2020",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "alcatel-1v-2021",
+   "brand": "alcatel",
+   "name": "1V 2021",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "alcatel-3h",
+   "brand": "alcatel",
+   "name": "3H",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "alcatel-3l-2021",
+   "brand": "alcatel",
+   "name": "3L 2021",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "alcatel-3x-2019",
+   "brand": "alcatel",
+   "name": "3X 2019",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "alcatel-3x-2020-hd",
+   "brand": "alcatel",
+   "name": "3X 2020 HD+",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "alcatel-5h",
+   "brand": "alcatel",
+   "name": "5H",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "google-pixel",
+   "brand": "google",
+   "name": "PIXEL",
+   "price": 400,
+   "available": true
+  },
+  {
+   "id": "google-pixel6-oled",
+   "brand": "google",
+   "name": "PIXEL6",
+   "price": 950,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "google-pixel6-tft",
+   "brand": "google",
+   "name": "PIXEL6",
+   "price": 400,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "google-pixel6-pro-oled",
+   "brand": "google",
+   "name": "PIXEL6 PRO",
+   "price": 600,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "google-pixel6-pro-tft",
+   "brand": "google",
+   "name": "PIXEL6 PRO",
+   "price": 450,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "google-pixel7-oled",
+   "brand": "google",
+   "name": "PIXEL7",
+   "price": 600,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "google-pixel7-tft",
+   "brand": "google",
+   "name": "PIXEL7",
+   "price": 370,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "google-pixel7-pro-oled",
+   "brand": "google",
+   "name": "PIXEL7 PRO",
+   "price": 600,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "google-pixel7-pro-tft",
+   "brand": "google",
+   "name": "PIXEL7 PRO",
+   "price": 350,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "google-pixel7a",
+   "brand": "google",
+   "name": "PIXEL7A",
+   "price": 650,
+   "available": true
+  },
+  {
+   "id": "google-pixel8-oled",
+   "brand": "google",
+   "name": "PIXEL8",
+   "price": 750,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "google-pixel8-tft",
+   "brand": "google",
+   "name": "PIXEL8",
+   "price": 450,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "google-pixel8-pro-oled",
+   "brand": "google",
+   "name": "PIXEL8 PRO",
+   "price": 650,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "google-pixel8-pro-tft",
+   "brand": "google",
+   "name": "PIXEL8 PRO",
+   "price": 450,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "google-pixel8a-oled",
+   "brand": "google",
+   "name": "PIXEL8A",
+   "price": 830,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "google-pixel9-oled",
+   "brand": "google",
+   "name": "PIXEL9",
+   "price": 1050,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "google-pixel9-pro",
+   "brand": "google",
+   "name": "PIXEL9 PRO",
+   "price": 1350,
+   "available": true
+  },
+  {
+   "id": "honor-7a",
+   "brand": "honor",
+   "name": "7A",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "honor-8",
+   "brand": "honor",
+   "name": "8",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "honor-8x-hd",
+   "brand": "honor",
+   "name": "8X HD+",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "honor-8x-max",
+   "brand": "honor",
+   "name": "8X MAX",
+   "price": 350,
+   "available": true
+  },
+  {
+   "id": "honor-9",
+   "brand": "honor",
+   "name": "9",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "honor-9-lite",
+   "brand": "honor",
+   "name": "9 LITE",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "honor-10",
+   "brand": "honor",
+   "name": "10",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "honor-10-lite",
+   "brand": "honor",
+   "name": "10 LITE",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "honor-20-lite",
+   "brand": "honor",
+   "name": "20 LITE",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "honor-50",
+   "brand": "honor",
+   "name": "50",
+   "price": 330,
+   "available": true
+  },
+  {
+   "id": "honor-50-lite",
+   "brand": "honor",
+   "name": "50 LITE",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "honor-70",
+   "brand": "honor",
+   "name": "70",
+   "price": 450,
+   "available": true
+  },
+  {
+   "id": "honor-90",
+   "brand": "honor",
+   "name": "90",
+   "price": 380,
+   "available": true
+  },
+  {
+   "id": "honor-90-lite-5g-copy-hd",
+   "brand": "honor",
+   "name": "90 LITE 5G COPY HD+",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "honor-200",
+   "brand": "honor",
+   "name": "200",
+   "price": 385,
+   "available": true
+  },
+  {
+   "id": "honor-magic-4-lite",
+   "brand": "honor",
+   "name": "MAGIC 4 LITE",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "honor-magic-5-lite-oled",
+   "brand": "honor",
+   "name": "MAGIC 5 LITE",
+   "price": 450,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "honor-play",
+   "brand": "honor",
+   "name": "PLAY",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "honor-play-10",
+   "brand": "honor",
+   "name": "PLAY 10",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "honor-view10",
+   "brand": "honor",
+   "name": "VIEW10",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "honor-view20-cof",
+   "brand": "honor",
+   "name": "VIEW20 (COF)",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "honor-x5-hd",
+   "brand": "honor",
+   "name": "X5 HD+",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "honor-x5c-x5c-plus-org",
+   "brand": "honor",
+   "name": "X5C / X5C PLUS",
+   "price": 275,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "honor-x6a-x5-plus-hd",
+   "brand": "honor",
+   "name": "X6A/X5 PLUS HD+",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "honor-x6b-hd",
+   "brand": "honor",
+   "name": "X6B HD+",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "honor-x6c-5g-hd",
+   "brand": "honor",
+   "name": "X6C 5G HD+",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "honor-x7",
+   "brand": "honor",
+   "name": "X7",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "honor-x7a-org",
+   "brand": "honor",
+   "name": "X7A",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "honor-x7b-org",
+   "brand": "honor",
+   "name": "X7B",
+   "price": 275,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "honor-x7c-hd",
+   "brand": "honor",
+   "name": "X7C HD+",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "honor-x7d-org",
+   "brand": "honor",
+   "name": "X7D",
+   "price": 275,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "honor-x7e",
+   "brand": "honor",
+   "name": "X7E",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "honor-x8-4g-hd",
+   "brand": "honor",
+   "name": "X8 4G HD+",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "honor-x8-5g-x6-org",
+   "brand": "honor",
+   "name": "X8 5G/X6",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "honor-x8a-hd",
+   "brand": "honor",
+   "name": "X8A HD+",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "honor-x8b-x8c-oled",
+   "brand": "honor",
+   "name": "X8B/X8C",
+   "price": 430,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "honor-x8b-x8c-tft",
+   "brand": "honor",
+   "name": "X8B/X8C",
+   "price": 370,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "honor-x9",
+   "brand": "honor",
+   "name": "X9",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "honor-x9a-org",
+   "brand": "honor",
+   "name": "X9A",
+   "price": 430,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "honor-x9b-incell-frame",
+   "brand": "honor",
+   "name": "X9B",
+   "price": 450,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "honor-x9b-oled",
+   "brand": "honor",
+   "name": "X9B",
+   "price": 500,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "honor-x9c-5g-incell",
+   "brand": "honor",
+   "name": "X9C 5G",
+   "price": 380,
+   "type": "INCELL",
+   "available": true
+  },
+  {
+   "id": "honor-x9c-5g-oled",
+   "brand": "honor",
+   "name": "X9C 5G",
+   "price": 530,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "honor-x9c-smart-5g-qhd",
+   "brand": "honor",
+   "name": "X9C SMART 5G QHD",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "honor-x30i",
+   "brand": "honor",
+   "name": "X30I",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "honor-x60-5g-qhd",
+   "brand": "honor",
+   "name": "X60 5G QHD",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "honor-x60-pro-tft",
+   "brand": "honor",
+   "name": "X60 PRO",
+   "price": 360,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "honor-x70-5g-org",
+   "brand": "honor",
+   "name": "X70 5G",
+   "price": 450,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "honor-y60",
+   "brand": "honor",
+   "name": "Y60",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "huawei-g7",
+   "brand": "huawei",
+   "name": "G7",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "huawei-g8",
+   "brand": "huawei",
+   "name": "G8",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "huawei-mate-8",
+   "brand": "huawei",
+   "name": "MATE 8",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "huawei-mate-9-org",
+   "brand": "huawei",
+   "name": "MATE 9",
+   "price": 295,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "huawei-mate-10-black",
+   "brand": "huawei",
+   "name": "MATE 10",
+   "price": 325,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-mate-10-lite-black",
+   "brand": "huawei",
+   "name": "MATE 10 LITE",
+   "price": 260,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-mate-10-lite-white",
+   "brand": "huawei",
+   "name": "MATE 10 LITE",
+   "price": 265,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "huawei-mate-10-pro-incell",
+   "brand": "huawei",
+   "name": "MATE 10 PRO",
+   "price": 290,
+   "type": "INCELL",
+   "available": true
+  },
+  {
+   "id": "huawei-mate-10-pro-oled",
+   "brand": "huawei",
+   "name": "MATE 10 PRO",
+   "price": 480,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "huawei-mate-20-hd",
+   "brand": "huawei",
+   "name": "MATE 20 HD+",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "huawei-mate-20-lite",
+   "brand": "huawei",
+   "name": "MATE 20 LITE",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "huawei-mate-20-pro-frame-org",
+   "brand": "huawei",
+   "name": "MATE 20 PRO",
+   "price": 900,
+   "frame": true,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "huawei-mate-20x",
+   "brand": "huawei",
+   "name": "MATE 20X",
+   "price": 430,
+   "available": true
+  },
+  {
+   "id": "huawei-mate-30-pro-frame-org",
+   "brand": "huawei",
+   "name": "MATE 30 PRO",
+   "price": 1150,
+   "frame": true,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "huawei-mate-pad-m5-lite-10-1-b",
+   "brand": "huawei",
+   "name": "MATE PAD M5 LITE-10.1 B",
+   "price": 450,
+   "available": true
+  },
+  {
+   "id": "huawei-mate-pad-t8",
+   "brand": "huawei",
+   "name": "MATE PAD T8",
+   "price": 330,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-2",
+   "brand": "huawei",
+   "name": "NOVA 2",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-2-2",
+   "brand": "huawei",
+   "name": "NOVA 2+",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-3i",
+   "brand": "huawei",
+   "name": "NOVA 3I",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-4",
+   "brand": "huawei",
+   "name": "NOVA 4",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-5t-hd",
+   "brand": "huawei",
+   "name": "NOVA 5T HD+",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-6-5g",
+   "brand": "huawei",
+   "name": "NOVA 6 5G",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-7-5g-qhd-tft",
+   "brand": "huawei",
+   "name": "NOVA 7 5G QHD",
+   "price": 285,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "huawei-nova-7i-hd",
+   "brand": "huawei",
+   "name": "NOVA 7I HD+",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-8i-org",
+   "brand": "huawei",
+   "name": "NOVA 8I",
+   "price": 330,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-8i-hd",
+   "brand": "huawei",
+   "name": "NOVA 8I HD+",
+   "price": 285,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-9-se-hd",
+   "brand": "huawei",
+   "name": "NOVA 9 SE HD+",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-12-ultra-hd",
+   "brand": "huawei",
+   "name": "NOVA 12 ULTRA HD+",
+   "price": 410,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-12i-hd",
+   "brand": "huawei",
+   "name": "NOVA 12I HD+",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-12s-hd",
+   "brand": "huawei",
+   "name": "NOVA 12S HD+",
+   "price": 400,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-12se-hd",
+   "brand": "huawei",
+   "name": "NOVA 12SE HD+",
+   "price": 370,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-13-5g-copy-hd",
+   "brand": "huawei",
+   "name": "NOVA 13 5G COPY HD+",
+   "price": 400,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-13-pro-5g",
+   "brand": "huawei",
+   "name": "NOVA 13 PRO 5G",
+   "price": 410,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-13i",
+   "brand": "huawei",
+   "name": "NOVA 13I",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-14-5g-oled",
+   "brand": "huawei",
+   "name": "NOVA 14 5G",
+   "price": 550,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "huawei-nova-14-pro-5g",
+   "brand": "huawei",
+   "name": "NOVA 14 PRO 5G",
+   "price": 1500,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-14-ultra",
+   "brand": "huawei",
+   "name": "NOVA 14 ULTRA",
+   "price": 0,
+   "available": false
+  },
+  {
+   "id": "huawei-nova-y60",
+   "brand": "huawei",
+   "name": "NOVA Y60",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-y61",
+   "brand": "huawei",
+   "name": "NOVA Y61",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-y62",
+   "brand": "huawei",
+   "name": "NOVA Y62",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-y63",
+   "brand": "huawei",
+   "name": "NOVA Y63",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-y70-hd",
+   "brand": "huawei",
+   "name": "NOVA Y70 HD+",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-y72",
+   "brand": "huawei",
+   "name": "NOVA Y72",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-y72s",
+   "brand": "huawei",
+   "name": "NOVA Y72S",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-y73",
+   "brand": "huawei",
+   "name": "NOVA Y73",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "huawei-nova-y90",
+   "brand": "huawei",
+   "name": "NOVA Y90",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "huawei-nova",
+   "brand": "huawei",
+   "name": "NOVA+",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "huawei-p8",
+   "brand": "huawei",
+   "name": "P8",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "huawei-p8-lite",
+   "brand": "huawei",
+   "name": "P8 LITE",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "huawei-p8-lite-2017-black",
+   "brand": "huawei",
+   "name": "P8 LITE 2017",
+   "price": 260,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-p8-lite-2017-white",
+   "brand": "huawei",
+   "name": "P8 LITE 2017",
+   "price": 250,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "huawei-p9",
+   "brand": "huawei",
+   "name": "P9",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "huawei-p9-lite-black",
+   "brand": "huawei",
+   "name": "P9 LITE",
+   "price": 270,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-p9-lite-gold",
+   "brand": "huawei",
+   "name": "P9 LITE",
+   "price": 270,
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "huawei-p9-lite-white",
+   "brand": "huawei",
+   "name": "P9 LITE",
+   "price": 270,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "huawei-p9-plus-frame",
+   "brand": "huawei",
+   "name": "P9 PLUS",
+   "price": 400,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "huawei-p10-black",
+   "brand": "huawei",
+   "name": "P10",
+   "price": 285,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-p10-white",
+   "brand": "huawei",
+   "name": "P10",
+   "price": 285,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "huawei-p10-lite-black",
+   "brand": "huawei",
+   "name": "P10 LITE",
+   "price": 270,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-p10-lite-white",
+   "brand": "huawei",
+   "name": "P10 LITE",
+   "price": 275,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "huawei-p10-black-2",
+   "brand": "huawei",
+   "name": "P10+",
+   "price": 290,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-p10-white-2",
+   "brand": "huawei",
+   "name": "P10+",
+   "price": 290,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "huawei-p20",
+   "brand": "huawei",
+   "name": "P20",
+   "price": 320,
+   "available": true
+  },
+  {
+   "id": "huawei-p20-lite-org",
+   "brand": "huawei",
+   "name": "P20 LITE",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "huawei-p20-pro-frame-org",
+   "brand": "huawei",
+   "name": "P20 PRO",
+   "price": 600,
+   "frame": true,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "huawei-p20-pro-copy-frame",
+   "brand": "huawei",
+   "name": "P20 PRO COPY",
+   "price": 390,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "huawei-p30-oled-frame",
+   "brand": "huawei",
+   "name": "P30",
+   "price": 450,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "huawei-p30-hd-tft",
+   "brand": "huawei",
+   "name": "P30 HD+",
+   "price": 280,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "huawei-p30-lite-hd",
+   "brand": "huawei",
+   "name": "P30 LITE HD+",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "huawei-p30-pro-oled-frame",
+   "brand": "huawei",
+   "name": "P30 PRO",
+   "price": 650,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "huawei-p40-copy",
+   "brand": "huawei",
+   "name": "P40 COPY",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "huawei-p40-lite-5g-nova7-se",
+   "brand": "huawei",
+   "name": "P40 LITE 5G/NOVA7 SE",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "huawei-p40-pro-frame-org",
+   "brand": "huawei",
+   "name": "P40 PRO",
+   "price": 1150,
+   "frame": true,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "huawei-psmart-2018-big-black",
+   "brand": "huawei",
+   "name": "PSMART 2018 BIG",
+   "price": 260,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-psmart-2019-hd",
+   "brand": "huawei",
+   "name": "PSMART 2019 HD+",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "huawei-psmart-2021",
+   "brand": "huawei",
+   "name": "PSMART 2021",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "huawei-t1-t701-black",
+   "brand": "huawei",
+   "name": "T1 T701",
+   "price": 270,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-t1-t701-white",
+   "brand": "huawei",
+   "name": "T1 T701",
+   "price": 270,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "huawei-t3-3g",
+   "brand": "huawei",
+   "name": "T3-3G",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "huawei-t3-8",
+   "brand": "huawei",
+   "name": "T3-8",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "huawei-t3-10-black",
+   "brand": "huawei",
+   "name": "T3-10",
+   "price": 440,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-t3-10-white",
+   "brand": "huawei",
+   "name": "T3-10",
+   "price": 400,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "huawei-t5-10-black",
+   "brand": "huawei",
+   "name": "T5-10",
+   "price": 390,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-t5-10-white",
+   "brand": "huawei",
+   "name": "T5-10",
+   "price": 390,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "huawei-t10s-black",
+   "brand": "huawei",
+   "name": "T10S",
+   "price": 400,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-y5-2018-black",
+   "brand": "huawei",
+   "name": "Y5-2018",
+   "price": 250,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-y5-2018-white",
+   "brand": "huawei",
+   "name": "Y5-2018",
+   "price": 250,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "huawei-y5-2019",
+   "brand": "huawei",
+   "name": "Y5-2019",
+   "price": 255,
+   "available": true
+  },
+  {
+   "id": "huawei-y5p-2020",
+   "brand": "huawei",
+   "name": "Y5P 2020",
+   "price": 240,
+   "available": true
+  },
+  {
+   "id": "huawei-y6-2018-black",
+   "brand": "huawei",
+   "name": "Y6-2018",
+   "price": 250,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-y6-2018-white",
+   "brand": "huawei",
+   "name": "Y6-2018",
+   "price": 250,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "huawei-y6-2019",
+   "brand": "huawei",
+   "name": "Y6-2019",
+   "price": 255,
+   "available": true
+  },
+  {
+   "id": "huawei-y6-2019-frame",
+   "brand": "huawei",
+   "name": "Y6-2019",
+   "price": 270,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "huawei-y6p-2020-org",
+   "brand": "huawei",
+   "name": "Y6P 2020",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "huawei-y7-pro-2019",
+   "brand": "huawei",
+   "name": "Y7 PRO 2019",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "huawei-y7-2018-black",
+   "brand": "huawei",
+   "name": "Y7-2018",
+   "price": 255,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "huawei-y7-2018-white",
+   "brand": "huawei",
+   "name": "Y7-2018",
+   "price": 255,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "huawei-y7-2019-org",
+   "brand": "huawei",
+   "name": "Y7-2019",
+   "price": 245,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "huawei-y7a",
+   "brand": "huawei",
+   "name": "Y7A",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "huawei-y7p-2020",
+   "brand": "huawei",
+   "name": "Y7P 2020",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "huawei-y8p-oled",
+   "brand": "huawei",
+   "name": "Y8P",
+   "price": 430,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "huawei-y8p-tft",
+   "brand": "huawei",
+   "name": "Y8P",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "huawei-y8s-org",
+   "brand": "huawei",
+   "name": "Y8S",
+   "price": 290,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "huawei-y9-2019-frame-org",
+   "brand": "huawei",
+   "name": "Y9 2019",
+   "price": 300,
+   "frame": true,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "huawei-y9-prime-2019-frame-org",
+   "brand": "huawei",
+   "name": "Y9 PRIME 2019",
+   "price": 300,
+   "frame": true,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "huawei-y9-prime-2019-hd",
+   "brand": "huawei",
+   "name": "Y9 PRIME 2019 HD+",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "huawei-y9-2018-org",
+   "brand": "huawei",
+   "name": "Y9-2018",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "huawei-y9-2019-hd",
+   "brand": "huawei",
+   "name": "Y9-2019 HD+",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "huawei-y9a-hd",
+   "brand": "huawei",
+   "name": "Y9A HD+",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "huawei-y9s-hd",
+   "brand": "huawei",
+   "name": "Y9S HD+",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "infinix-x557-org",
+   "brand": "infinix",
+   "name": "X557",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x559",
+   "brand": "infinix",
+   "name": "X559",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "infinix-x571",
+   "brand": "infinix",
+   "name": "X571",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "infinix-x572-black",
+   "brand": "infinix",
+   "name": "X572",
+   "price": 270,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "infinix-x572-white",
+   "brand": "infinix",
+   "name": "X572",
+   "price": 270,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "infinix-x573-org",
+   "brand": "infinix",
+   "name": "X573",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x604",
+   "brand": "infinix",
+   "name": "X604",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "infinix-x605",
+   "brand": "infinix",
+   "name": "X605",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "infinix-x606",
+   "brand": "infinix",
+   "name": "X606",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "infinix-x608-org",
+   "brand": "infinix",
+   "name": "X608",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x609",
+   "brand": "infinix",
+   "name": "X609",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "infinix-x612",
+   "brand": "infinix",
+   "name": "X612",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "infinix-x622-x623",
+   "brand": "infinix",
+   "name": "X622/X623",
+   "price": 255,
+   "available": true
+  },
+  {
+   "id": "infinix-x624",
+   "brand": "infinix",
+   "name": "X624",
+   "price": 245,
+   "available": true
+  },
+  {
+   "id": "infinix-x625-org",
+   "brand": "infinix",
+   "name": "X625",
+   "price": 245,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x626-x627-org",
+   "brand": "infinix",
+   "name": "X626/X627",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x650-org",
+   "brand": "infinix",
+   "name": "X650",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x650-frame",
+   "brand": "infinix",
+   "name": "X650",
+   "price": 255,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x652",
+   "brand": "infinix",
+   "name": "X652",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "infinix-x653-org",
+   "brand": "infinix",
+   "name": "X653",
+   "price": 245,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x653-frame",
+   "brand": "infinix",
+   "name": "X653",
+   "price": 255,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x655-x656",
+   "brand": "infinix",
+   "name": "X655/X656",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "infinix-x657-org",
+   "brand": "infinix",
+   "name": "X657",
+   "price": 255,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x657-frame",
+   "brand": "infinix",
+   "name": "X657",
+   "price": 280,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x658-x659",
+   "brand": "infinix",
+   "name": "X658/X659",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "infinix-x660",
+   "brand": "infinix",
+   "name": "X660",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "infinix-x662",
+   "brand": "infinix",
+   "name": "X662",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "infinix-x663-x670",
+   "brand": "infinix",
+   "name": "X663/X670",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "infinix-x669-hot-30i",
+   "brand": "infinix",
+   "name": "X669 (HOT 30I)",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "infinix-x675-hot11-2022",
+   "brand": "infinix",
+   "name": "X675 (HOT11-2022)",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "infinix-x677",
+   "brand": "infinix",
+   "name": "X677",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "infinix-x678",
+   "brand": "infinix",
+   "name": "X678",
+   "price": 310,
+   "available": true
+  },
+  {
+   "id": "infinix-x680",
+   "brand": "infinix",
+   "name": "X680",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "infinix-x680-frame",
+   "brand": "infinix",
+   "name": "X680",
+   "price": 285,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x682-org",
+   "brand": "infinix",
+   "name": "X682",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x687",
+   "brand": "infinix",
+   "name": "X687",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "infinix-x688-org",
+   "brand": "infinix",
+   "name": "X688",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x689-org",
+   "brand": "infinix",
+   "name": "X689",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x690-org",
+   "brand": "infinix",
+   "name": "X690",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x692-org",
+   "brand": "infinix",
+   "name": "X692",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x693",
+   "brand": "infinix",
+   "name": "X693",
+   "price": 295,
+   "available": true
+  },
+  {
+   "id": "infinix-x695",
+   "brand": "infinix",
+   "name": "X695",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "infinix-x697",
+   "brand": "infinix",
+   "name": "X697",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "infinix-x698",
+   "brand": "infinix",
+   "name": "X698",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "infinix-x5010-org",
+   "brand": "infinix",
+   "name": "X5010",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x5514-org",
+   "brand": "infinix",
+   "name": "X5514",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x5515",
+   "brand": "infinix",
+   "name": "X5515",
+   "price": 255,
+   "available": true
+  },
+  {
+   "id": "infinix-x5516-org",
+   "brand": "infinix",
+   "name": "X5516",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x6511-org",
+   "brand": "infinix",
+   "name": "X6511",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x6511-frame",
+   "brand": "infinix",
+   "name": "X6511",
+   "price": 280,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x6512-x665-org",
+   "brand": "infinix",
+   "name": "X6512/X665",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x6515-smart-7-org",
+   "brand": "infinix",
+   "name": "X6515 (SMART 7)",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x6525-smart-8-org",
+   "brand": "infinix",
+   "name": "X6525 (SMART 8)",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x6526",
+   "brand": "infinix",
+   "name": "X6526",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "infinix-x6528b-hot-40i-org",
+   "brand": "infinix",
+   "name": "X6528B (HOT 40I)",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x6531-hot-50i",
+   "brand": "infinix",
+   "name": "X6531 (HOT 50I)",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "infinix-x6532-smart-9",
+   "brand": "infinix",
+   "name": "X6532 (SMART 9)",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "infinix-x6725-smart-10",
+   "brand": "infinix",
+   "name": "X6725 (SMART 10)",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "infinix-x6728-hot-60i",
+   "brand": "infinix",
+   "name": "X6728 (HOT 60I)",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "infinix-x6810",
+   "brand": "infinix",
+   "name": "X6810",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "infinix-x6811-oled",
+   "brand": "infinix",
+   "name": "X6811",
+   "price": 480,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "infinix-x6811-tft",
+   "brand": "infinix",
+   "name": "X6811",
+   "price": 300,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "infinix-x6812",
+   "brand": "infinix",
+   "name": "X6812",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "infinix-x6816",
+   "brand": "infinix",
+   "name": "X6816",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "infinix-x6817-hot12",
+   "brand": "infinix",
+   "name": "X6817 (HOT12)",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "infinix-x6823",
+   "brand": "infinix",
+   "name": "X6823",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "infinix-x6827",
+   "brand": "infinix",
+   "name": "X6827",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "infinix-x6831",
+   "brand": "infinix",
+   "name": "X6831",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "infinix-x6833",
+   "brand": "infinix",
+   "name": "X6833",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "infinix-x6836-org",
+   "brand": "infinix",
+   "name": "X6836",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x6837-org",
+   "brand": "infinix",
+   "name": "X6837",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x6840-smart-20",
+   "brand": "infinix",
+   "name": "X6840 (SMART 20)",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "infinix-x6882-hot-50-4g-org",
+   "brand": "infinix",
+   "name": "X6882 (HOT 50 4G)",
+   "price": 275,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "infinix-x6895b-hot-70-4g",
+   "brand": "infinix",
+   "name": "X6895B (HOT 70 4G)",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "ipad-5-org",
+   "brand": "ipad",
+   "name": "5",
+   "price": 530,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "ipad-10-2-org",
+   "brand": "ipad",
+   "name": "10.2",
+   "price": 750,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "ipad-10-5",
+   "brand": "ipad",
+   "name": "10.5",
+   "price": 800,
+   "available": true
+  },
+  {
+   "id": "ipad-10-9-ipad-10",
+   "brand": "ipad",
+   "name": "10.9/IPAD 10",
+   "price": 1100,
+   "available": true
+  },
+  {
+   "id": "iphone-5s-black",
+   "brand": "iphone",
+   "name": "5S",
+   "price": 245,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "iphone-5s-white",
+   "brand": "iphone",
+   "name": "5S",
+   "price": 245,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "iphone-6g-black",
+   "brand": "iphone",
+   "name": "6G",
+   "price": 245,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "iphone-6g-white",
+   "brand": "iphone",
+   "name": "6G",
+   "price": 245,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "iphone-6p-black",
+   "brand": "iphone",
+   "name": "6P",
+   "price": 255,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "iphone-6p-white",
+   "brand": "iphone",
+   "name": "6P",
+   "price": 255,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "iphone-6s-black",
+   "brand": "iphone",
+   "name": "6S",
+   "price": 250,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "iphone-6s-white",
+   "brand": "iphone",
+   "name": "6S",
+   "price": 250,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "iphone-6sp-black",
+   "brand": "iphone",
+   "name": "6SP",
+   "price": 255,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "iphone-6sp-white",
+   "brand": "iphone",
+   "name": "6SP",
+   "price": 245,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "iphone-7g-black",
+   "brand": "iphone",
+   "name": "7G",
+   "price": 250,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "iphone-7g-white",
+   "brand": "iphone",
+   "name": "7G",
+   "price": 245,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "iphone-7p-black",
+   "brand": "iphone",
+   "name": "7P",
+   "price": 250,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "iphone-7p-white",
+   "brand": "iphone",
+   "name": "7P",
+   "price": 250,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "iphone-8g-black",
+   "brand": "iphone",
+   "name": "8G",
+   "price": 250,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "iphone-8g-white",
+   "brand": "iphone",
+   "name": "8G",
+   "price": 250,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "iphone-8p-black",
+   "brand": "iphone",
+   "name": "8P",
+   "price": 250,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "iphone-8p-white",
+   "brand": "iphone",
+   "name": "8P",
+   "price": 250,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "iphone-gx-xs-hard-oled",
+   "brand": "iphone",
+   "name": "GX-XS",
+   "price": 370,
+   "type": "HARD OLED",
+   "available": true
+  },
+  {
+   "id": "iphone-jk-11-pro",
+   "brand": "iphone",
+   "name": "JK-11 PRO",
+   "price": 350,
+   "available": true
+  },
+  {
+   "id": "iphone-jk-11-pro-max",
+   "brand": "iphone",
+   "name": "JK-11 PRO MAX",
+   "price": 370,
+   "available": true
+  },
+  {
+   "id": "iphone-jk-12-pro-max",
+   "brand": "iphone",
+   "name": "JK-12 PRO MAX",
+   "price": 400,
+   "available": true
+  },
+  {
+   "id": "iphone-jk-12-pro-max-soft-oled",
+   "brand": "iphone",
+   "name": "JK-12 PRO MAX",
+   "price": 600,
+   "type": "SOFT OLED",
+   "available": true
+  },
+  {
+   "id": "iphone-jk-12-12-pro",
+   "brand": "iphone",
+   "name": "JK-12/12 PRO",
+   "price": 370,
+   "available": true
+  },
+  {
+   "id": "iphone-jk-13",
+   "brand": "iphone",
+   "name": "JK-13",
+   "price": 380,
+   "available": true
+  },
+  {
+   "id": "iphone-jk-13-pro",
+   "brand": "iphone",
+   "name": "JK-13 PRO",
+   "price": 390,
+   "available": true
+  },
+  {
+   "id": "iphone-jk-13-pro-max",
+   "brand": "iphone",
+   "name": "JK-13 PRO MAX",
+   "price": 400,
+   "available": true
+  },
+  {
+   "id": "iphone-jk-14",
+   "brand": "iphone",
+   "name": "JK-14",
+   "price": 370,
+   "available": true
+  },
+  {
+   "id": "iphone-jk-15-pro",
+   "brand": "iphone",
+   "name": "JK-15 PRO",
+   "price": 450,
+   "available": true
+  },
+  {
+   "id": "iphone-jk-xs",
+   "brand": "iphone",
+   "name": "JK-XS",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "itel-a05s-itel-org",
+   "brand": "itel",
+   "name": "A05S ITEL",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "itel-a06-itel",
+   "brand": "itel",
+   "name": "A06 ITEL",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "itel-a16-a16-a33",
+   "brand": "itel",
+   "name": "A16/A16+/A33",
+   "price": 180,
+   "available": true
+  },
+  {
+   "id": "itel-a18-itel",
+   "brand": "itel",
+   "name": "A18 ITEL",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "itel-a36",
+   "brand": "itel",
+   "name": "A36",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "itel-a37-itel-org",
+   "brand": "itel",
+   "name": "A37 ITEL",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "itel-a48",
+   "brand": "itel",
+   "name": "A48",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "itel-a49",
+   "brand": "itel",
+   "name": "A49",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "itel-a50-itel",
+   "brand": "itel",
+   "name": "A50 ITEL",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "itel-a50c-itel",
+   "brand": "itel",
+   "name": "A50C ITEL",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "itel-a56-org",
+   "brand": "itel",
+   "name": "A56",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "itel-a58-itel",
+   "brand": "itel",
+   "name": "A58 ITEL",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "itel-a58-lite",
+   "brand": "itel",
+   "name": "A58 LITE",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "itel-a70-itel-org",
+   "brand": "itel",
+   "name": "A70 ITEL",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "itel-a80-itel",
+   "brand": "itel",
+   "name": "A80 ITEL",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "itel-a100c-itel",
+   "brand": "itel",
+   "name": "A100C ITEL",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "itel-p36-play-vision1-org",
+   "brand": "itel",
+   "name": "P36 PLAY (VISION1)",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "itel-p37pro-vision2",
+   "brand": "itel",
+   "name": "P37PRO (VISION2+)",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "itel-p38",
+   "brand": "itel",
+   "name": "P38",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "itel-p38-pro",
+   "brand": "itel",
+   "name": "P38 PRO",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "itel-p40-itel-org",
+   "brand": "itel",
+   "name": "P40 ITEL",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "itel-p40-itel",
+   "brand": "itel",
+   "name": "P40+ ITEL",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "itel-p55-org",
+   "brand": "itel",
+   "name": "P55+",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "itel-s15-s15pro",
+   "brand": "itel",
+   "name": "S15/S15PRO",
+   "price": 230,
+   "available": true
+  },
+  {
+   "id": "itel-s18",
+   "brand": "itel",
+   "name": "S18",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "itel-s23-itel",
+   "brand": "itel",
+   "name": "S23 ITEL",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "itel-s23-plus-edge",
+   "brand": "itel",
+   "name": "S23 PLUS (EDGE)",
+   "price": 650,
+   "available": true
+  },
+  {
+   "id": "itel-s24-itel",
+   "brand": "itel",
+   "name": "S24 ITEL",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "itel-s25-itel-org",
+   "brand": "itel",
+   "name": "S25 ITEL",
+   "price": 500,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "itel-s25-itel-tft",
+   "brand": "itel",
+   "name": "S25 ITEL",
+   "price": 315,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "itel-vision-1-pro",
+   "brand": "itel",
+   "name": "VISION 1 PRO",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "itel-vision-2-s16-pro-org",
+   "brand": "itel",
+   "name": "VISION 2 (S16 PRO)",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "lenovo-m7-b",
+   "brand": "lenovo",
+   "name": "M7 B",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "lenovo-m8-b",
+   "brand": "lenovo",
+   "name": "M8 B",
+   "price": 315,
+   "available": true
+  },
+  {
+   "id": "lenovo-m9-b-org",
+   "brand": "lenovo",
+   "name": "M9 B",
+   "price": 340,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "lenovo-m10-hd-b",
+   "brand": "lenovo",
+   "name": "M10 HD B",
+   "price": 350,
+   "available": true
+  },
+  {
+   "id": "lenovo-m10-plus-b",
+   "brand": "lenovo",
+   "name": "M10 PLUS B",
+   "price": 400,
+   "available": true
+  },
+  {
+   "id": "lenovo-m11-tb330",
+   "brand": "lenovo",
+   "name": "M11 TB330",
+   "price": 430,
+   "available": true
+  },
+  {
+   "id": "lenovo-tab-p11-b",
+   "brand": "lenovo",
+   "name": "TAB P11 B",
+   "price": 435,
+   "available": true
+  },
+  {
+   "id": "lg-k22",
+   "brand": "lg",
+   "name": "K22",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "lg-k30",
+   "brand": "lg",
+   "name": "K30",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "lg-k31",
+   "brand": "lg",
+   "name": "K31",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "lg-k40",
+   "brand": "lg",
+   "name": "K40",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "lg-k41s",
+   "brand": "lg",
+   "name": "K41S",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "lg-k42",
+   "brand": "lg",
+   "name": "K42",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "lg-k50",
+   "brand": "lg",
+   "name": "K50",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "lg-k51",
+   "brand": "lg",
+   "name": "K51",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "lg-k52",
+   "brand": "lg",
+   "name": "K52",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "lg-k61-q61",
+   "brand": "lg",
+   "name": "K61/Q61",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "lg-k62",
+   "brand": "lg",
+   "name": "K62",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "lg-q51",
+   "brand": "lg",
+   "name": "Q51",
+   "price": 285,
+   "available": true
+  },
+  {
+   "id": "lg-q60",
+   "brand": "lg",
+   "name": "Q60",
+   "price": 285,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-e6-plus",
+   "brand": "motorola",
+   "name": "MOTO E6 PLUS",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-e6i",
+   "brand": "motorola",
+   "name": "MOTO E6I",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-e7",
+   "brand": "motorola",
+   "name": "MOTO E7",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-e7i",
+   "brand": "motorola",
+   "name": "MOTO E7I",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-e13-org",
+   "brand": "motorola",
+   "name": "MOTO E13",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-e14",
+   "brand": "motorola",
+   "name": "MOTO E14",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-e15",
+   "brand": "motorola",
+   "name": "MOTO E15",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-e20",
+   "brand": "motorola",
+   "name": "MOTO E20",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-e22",
+   "brand": "motorola",
+   "name": "MOTO E22",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-e30",
+   "brand": "motorola",
+   "name": "MOTO E30",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-e32s-org",
+   "brand": "motorola",
+   "name": "MOTO E32S",
+   "price": 275,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-e40-org",
+   "brand": "motorola",
+   "name": "MOTO E40",
+   "price": 275,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-edge-20-20-pro-x30-org",
+   "brand": "motorola",
+   "name": "MOTO EDGE 20 / 20 PRO / X30",
+   "price": 500,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-edge-20-fusion-org",
+   "brand": "motorola",
+   "name": "MOTO EDGE 20 FUSION",
+   "price": 500,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-edge-20-lite-org",
+   "brand": "motorola",
+   "name": "MOTO EDGE 20 LITE",
+   "price": 500,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-edge-2021-org",
+   "brand": "motorola",
+   "name": "MOTO EDGE 2021",
+   "price": 330,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-edge-g52-org",
+   "brand": "motorola",
+   "name": "MOTO EDGE G52",
+   "price": 500,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-edge-g52-oled",
+   "brand": "motorola",
+   "name": "MOTO EDGE G52",
+   "price": 410,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "motorola-moto-edge-g82-org",
+   "brand": "motorola",
+   "name": "MOTO EDGE G82",
+   "price": 490,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-edge-g82-oled",
+   "brand": "motorola",
+   "name": "MOTO EDGE G82",
+   "price": 410,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "motorola-moto-edge-plus-2022-org",
+   "brand": "motorola",
+   "name": "MOTO EDGE PLUS 2022",
+   "price": 500,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-edge-s-org",
+   "brand": "motorola",
+   "name": "MOTO EDGE S",
+   "price": 330,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-edge-s30-org",
+   "brand": "motorola",
+   "name": "MOTO EDGE S30",
+   "price": 330,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-edge-x30-pro-org",
+   "brand": "motorola",
+   "name": "MOTO EDGE X30 PRO",
+   "price": 400,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-edge-xt2063-org",
+   "brand": "motorola",
+   "name": "MOTO EDGE XT2063",
+   "price": 750,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g5",
+   "brand": "motorola",
+   "name": "MOTO G5",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g05",
+   "brand": "motorola",
+   "name": "MOTO G05",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g5g",
+   "brand": "motorola",
+   "name": "MOTO G5G",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g5g-plus-org",
+   "brand": "motorola",
+   "name": "MOTO G5G PLUS",
+   "price": 285,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g5s-plus",
+   "brand": "motorola",
+   "name": "MOTO G5S PLUS",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g6-play",
+   "brand": "motorola",
+   "name": "MOTO G6 PLAY",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g7-org",
+   "brand": "motorola",
+   "name": "MOTO G7",
+   "price": 280,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g7-play",
+   "brand": "motorola",
+   "name": "MOTO G7 PLAY",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g7-power",
+   "brand": "motorola",
+   "name": "MOTO G7 POWER",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g8-play",
+   "brand": "motorola",
+   "name": "MOTO G8 PLAY",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g8-plus",
+   "brand": "motorola",
+   "name": "MOTO G8 PLUS",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g8-power-lite",
+   "brand": "motorola",
+   "name": "MOTO G8 POWER LITE",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g9",
+   "brand": "motorola",
+   "name": "MOTO G9",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g9-play",
+   "brand": "motorola",
+   "name": "MOTO G9 PLAY",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g9-plus",
+   "brand": "motorola",
+   "name": "MOTO G9 PLUS",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g9-power",
+   "brand": "motorola",
+   "name": "MOTO G9 POWER",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g10",
+   "brand": "motorola",
+   "name": "MOTO G10",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g10-power",
+   "brand": "motorola",
+   "name": "MOTO G10 POWER",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g13",
+   "brand": "motorola",
+   "name": "MOTO G13",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g14",
+   "brand": "motorola",
+   "name": "MOTO G14",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g15",
+   "brand": "motorola",
+   "name": "MOTO G15",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g23",
+   "brand": "motorola",
+   "name": "MOTO G23",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g24",
+   "brand": "motorola",
+   "name": "MOTO G24",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g30",
+   "brand": "motorola",
+   "name": "MOTO G30",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g31-org",
+   "brand": "motorola",
+   "name": "MOTO G31",
+   "price": 430,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g31-oled",
+   "brand": "motorola",
+   "name": "MOTO G31",
+   "price": 400,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g34-5g",
+   "brand": "motorola",
+   "name": "MOTO G34 5G",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g41-org",
+   "brand": "motorola",
+   "name": "MOTO G41",
+   "price": 300,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g41-oled",
+   "brand": "motorola",
+   "name": "MOTO G41",
+   "price": 350,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g50-4g",
+   "brand": "motorola",
+   "name": "MOTO G50 4G",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g50-5g",
+   "brand": "motorola",
+   "name": "MOTO G50 5G",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g51",
+   "brand": "motorola",
+   "name": "MOTO G51",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g53",
+   "brand": "motorola",
+   "name": "MOTO G53",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g60",
+   "brand": "motorola",
+   "name": "MOTO G60",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g60s",
+   "brand": "motorola",
+   "name": "MOTO G60S",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g71-org",
+   "brand": "motorola",
+   "name": "MOTO G71",
+   "price": 430,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g71-oled",
+   "brand": "motorola",
+   "name": "MOTO G71",
+   "price": 275,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g73-org",
+   "brand": "motorola",
+   "name": "MOTO G73",
+   "price": 275,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g100",
+   "brand": "motorola",
+   "name": "MOTO G100",
+   "price": 330,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g200-5g",
+   "brand": "motorola",
+   "name": "MOTO G200 5G",
+   "price": 315,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g-play-2021",
+   "brand": "motorola",
+   "name": "MOTO G PLAY 2021",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g-power-2020-org",
+   "brand": "motorola",
+   "name": "MOTO G POWER 2020",
+   "price": 295,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g-power-2021",
+   "brand": "motorola",
+   "name": "MOTO G POWER 2021",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g-power-2022",
+   "brand": "motorola",
+   "name": "MOTO G POWER 2022",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g-pure",
+   "brand": "motorola",
+   "name": "MOTO G PURE",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g-stylus-org",
+   "brand": "motorola",
+   "name": "MOTO G STYLUS",
+   "price": 295,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g-stylus-5g-org",
+   "brand": "motorola",
+   "name": "MOTO G STYLUS 5G",
+   "price": 295,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-g-stylus-2021-org",
+   "brand": "motorola",
+   "name": "MOTO G STYLUS 2021",
+   "price": 295,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-one-5g-org",
+   "brand": "motorola",
+   "name": "MOTO ONE 5G",
+   "price": 280,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-one-5g-ace",
+   "brand": "motorola",
+   "name": "MOTO ONE 5G ACE",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-one-action-org",
+   "brand": "motorola",
+   "name": "MOTO ONE ACTION",
+   "price": 470,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-one-fusion",
+   "brand": "motorola",
+   "name": "MOTO ONE FUSION",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-one-hyper",
+   "brand": "motorola",
+   "name": "MOTO ONE HYPER",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-one-macro",
+   "brand": "motorola",
+   "name": "MOTO ONE MACRO",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-one-vision-org",
+   "brand": "motorola",
+   "name": "MOTO ONE VISION",
+   "price": 470,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-one-zoom-org",
+   "brand": "motorola",
+   "name": "MOTO ONE ZOOM",
+   "price": 430,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-one-zoom-small-oled",
+   "brand": "motorola",
+   "name": "MOTO ONE ZOOM SMALL",
+   "price": 420,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "motorola-moto-one-p30-play",
+   "brand": "motorola",
+   "name": "MOTO ONE/P30 PLAY",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-x30-org",
+   "brand": "motorola",
+   "name": "MOTO X30",
+   "price": 350,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "motorola-moto-z4",
+   "brand": "motorola",
+   "name": "MOTO Z4",
+   "price": 420,
+   "available": true
+  },
+  {
+   "id": "nokia-1-4",
+   "brand": "nokia",
+   "name": "1.4",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "nokia-2-1",
+   "brand": "nokia",
+   "name": "2.1",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "nokia-2-2",
+   "brand": "nokia",
+   "name": "2.2",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-2-3",
+   "brand": "nokia",
+   "name": "2.3",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-2-4",
+   "brand": "nokia",
+   "name": "2.4",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-3-1",
+   "brand": "nokia",
+   "name": "3.1",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-3-1-plus",
+   "brand": "nokia",
+   "name": "3.1 PLUS",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "nokia-3-2",
+   "brand": "nokia",
+   "name": "3.2",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-4-2",
+   "brand": "nokia",
+   "name": "4.2",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-5",
+   "brand": "nokia",
+   "name": "5",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "nokia-5-1plus",
+   "brand": "nokia",
+   "name": "5.1PLUS",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-6",
+   "brand": "nokia",
+   "name": "6",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "nokia-6-1",
+   "brand": "nokia",
+   "name": "6.1",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "nokia-7-2",
+   "brand": "nokia",
+   "name": "7.2",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-7plus",
+   "brand": "nokia",
+   "name": "7PLUS",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-8",
+   "brand": "nokia",
+   "name": "8",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "nokia-8-1",
+   "brand": "nokia",
+   "name": "8.1",
+   "price": 285,
+   "available": true
+  },
+  {
+   "id": "nokia-8-3-5g",
+   "brand": "nokia",
+   "name": "8.3 5G",
+   "price": 330,
+   "available": true
+  },
+  {
+   "id": "nokia-105-2017",
+   "brand": "nokia",
+   "name": "105-2017",
+   "price": 165,
+   "available": true
+  },
+  {
+   "id": "nokia-c1-2020",
+   "brand": "nokia",
+   "name": "C1 2020",
+   "price": 240,
+   "available": true
+  },
+  {
+   "id": "nokia-c01-plus",
+   "brand": "nokia",
+   "name": "C01 PLUS",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-c1-small",
+   "brand": "nokia",
+   "name": "C1 SMALL",
+   "price": 165,
+   "available": true
+  },
+  {
+   "id": "nokia-c2",
+   "brand": "nokia",
+   "name": "C2",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "nokia-c3",
+   "brand": "nokia",
+   "name": "C3",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "nokia-c10-c20",
+   "brand": "nokia",
+   "name": "C10/C20",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "nokia-c20-plus",
+   "brand": "nokia",
+   "name": "C20 PLUS",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-c21",
+   "brand": "nokia",
+   "name": "C21",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "nokia-c21-plus",
+   "brand": "nokia",
+   "name": "C21 PLUS",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-c30",
+   "brand": "nokia",
+   "name": "C30",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-c31",
+   "brand": "nokia",
+   "name": "C31",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-g10",
+   "brand": "nokia",
+   "name": "G10",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-g11",
+   "brand": "nokia",
+   "name": "G11",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "nokia-g11-plus",
+   "brand": "nokia",
+   "name": "G11 PLUS",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-g20",
+   "brand": "nokia",
+   "name": "G20",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "nokia-g21",
+   "brand": "nokia",
+   "name": "G21",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "nokia-g22",
+   "brand": "nokia",
+   "name": "G22",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "nokia-g50",
+   "brand": "nokia",
+   "name": "G50",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "nokia-g60",
+   "brand": "nokia",
+   "name": "G60",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "nokia-n150",
+   "brand": "nokia",
+   "name": "N150",
+   "price": 165,
+   "available": true
+  },
+  {
+   "id": "nokia-n5310-2020",
+   "brand": "nokia",
+   "name": "N5310 2020",
+   "price": 168,
+   "available": true
+  },
+  {
+   "id": "nokia-x20",
+   "brand": "nokia",
+   "name": "X20",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "oneplus-one-3-3t-tft-frame",
+   "brand": "oneplus",
+   "name": "ONE+ 3/3T",
+   "price": 290,
+   "type": "TFT",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "oneplus-one-5-frame",
+   "brand": "oneplus",
+   "name": "ONE+ 5",
+   "price": 295,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "oneplus-one-5t-frame",
+   "brand": "oneplus",
+   "name": "ONE+ 5T",
+   "price": 295,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "oneplus-one-6",
+   "brand": "oneplus",
+   "name": "ONE+ 6",
+   "price": 285,
+   "available": true
+  },
+  {
+   "id": "oneplus-one-6t",
+   "brand": "oneplus",
+   "name": "ONE+ 6T",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "oneplus-one-7-tft",
+   "brand": "oneplus",
+   "name": "ONE+ 7",
+   "price": 285,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oneplus-one-7t",
+   "brand": "oneplus",
+   "name": "ONE+ 7T",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "oneplus-one-8",
+   "brand": "oneplus",
+   "name": "ONE+ 8",
+   "price": 310,
+   "available": true
+  },
+  {
+   "id": "oneplus-one-8t",
+   "brand": "oneplus",
+   "name": "ONE+ 8T",
+   "price": 285,
+   "available": true
+  },
+  {
+   "id": "oneplus-one-nord-n10-5g-org",
+   "brand": "oneplus",
+   "name": "ONE+ NORD N10 5G",
+   "price": 295,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oneplus-one-nord-n100",
+   "brand": "oneplus",
+   "name": "ONE+ NORD N100",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "oneplus-one-nord-n200-5g",
+   "brand": "oneplus",
+   "name": "ONE+ NORD N200 5G",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "oppo-a1k-org",
+   "brand": "oppo",
+   "name": "A1K",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-a1k-frame",
+   "brand": "oppo",
+   "name": "A1K",
+   "price": 275,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "oppo-a3-a3x-2024",
+   "brand": "oppo",
+   "name": "A3/A3X 2024",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "oppo-a3s-org",
+   "brand": "oppo",
+   "name": "A3S",
+   "price": 255,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-a5-4g-2025-oppo",
+   "brand": "oppo",
+   "name": "A5 4G 2025 OPPO",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "oppo-a5-2020-a9-2020-a31-2020-org",
+   "brand": "oppo",
+   "name": "A5 2020/A9 2020/A31 2020",
+   "price": 255,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-a5-pro-a5x-oppo",
+   "brand": "oppo",
+   "name": "A5 PRO / A5X OPPO",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "oppo-a5s-org",
+   "brand": "oppo",
+   "name": "A5S",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-a15-c11-org",
+   "brand": "oppo",
+   "name": "A15/C11",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-a16-org",
+   "brand": "oppo",
+   "name": "A16",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-a16k",
+   "brand": "oppo",
+   "name": "A16K",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "oppo-a17-a17-s-a77-s-org",
+   "brand": "oppo",
+   "name": "A17/A17 S/A77 S",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-a18-oppo",
+   "brand": "oppo",
+   "name": "A18 OPPO",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "oppo-a37-black",
+   "brand": "oppo",
+   "name": "A37",
+   "price": 255,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "oppo-a37-white",
+   "brand": "oppo",
+   "name": "A37",
+   "price": 250,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "oppo-a52-a72-a92-org",
+   "brand": "oppo",
+   "name": "A52/A72/A92",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-a53-4g",
+   "brand": "oppo",
+   "name": "A53 4G",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "oppo-a53s-4g",
+   "brand": "oppo",
+   "name": "A53S 4G",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "oppo-a53s-5g",
+   "brand": "oppo",
+   "name": "A53S 5G",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "oppo-a54-4g-org",
+   "brand": "oppo",
+   "name": "A54 4G",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-a54-5g-a74-5g-a93-5g",
+   "brand": "oppo",
+   "name": "A54 5G/A74 5G/A93 5G",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "oppo-a55-4g-org",
+   "brand": "oppo",
+   "name": "A55 4G",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-a55-5g",
+   "brand": "oppo",
+   "name": "A55 5G",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "oppo-a57-4g-a57s-org",
+   "brand": "oppo",
+   "name": "A57 4G/A57S",
+   "price": 265,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-a58-4g-oppo",
+   "brand": "oppo",
+   "name": "A58 4G OPPO",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "oppo-a73-2020-4g-oled",
+   "brand": "oppo",
+   "name": "A73 2020 (4G)",
+   "price": 400,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "oppo-a73-2020-4g-hd-tft",
+   "brand": "oppo",
+   "name": "A73 2020 (4G) HD+",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-a73-2020-5g",
+   "brand": "oppo",
+   "name": "A73 2020 (5G)",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "oppo-a74-4g-tft",
+   "brand": "oppo",
+   "name": "A74 4G",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-a76-org",
+   "brand": "oppo",
+   "name": "A76",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-a78-4g-hd-tft",
+   "brand": "oppo",
+   "name": "A78 4G HD+",
+   "price": 275,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-a78-5g",
+   "brand": "oppo",
+   "name": "A78 5G",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "oppo-a83-black",
+   "brand": "oppo",
+   "name": "A83",
+   "price": 260,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "oppo-a83-white",
+   "brand": "oppo",
+   "name": "A83",
+   "price": 260,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "oppo-a91-oled",
+   "brand": "oppo",
+   "name": "A91",
+   "price": 390,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "oppo-a91-hd-tft",
+   "brand": "oppo",
+   "name": "A91 HD+",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-a93-4g-tft",
+   "brand": "oppo",
+   "name": "A93 4G",
+   "price": 275,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-a94-4g-hd-tft",
+   "brand": "oppo",
+   "name": "A94 4G HD+",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-a95-4g-tft",
+   "brand": "oppo",
+   "name": "A95 4G",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-a96",
+   "brand": "oppo",
+   "name": "A96",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "oppo-f1s-black",
+   "brand": "oppo",
+   "name": "F1S",
+   "price": 240,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "oppo-f1s-white",
+   "brand": "oppo",
+   "name": "F1S",
+   "price": 250,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "oppo-f3-black",
+   "brand": "oppo",
+   "name": "F3",
+   "price": 270,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "oppo-f3-white",
+   "brand": "oppo",
+   "name": "F3",
+   "price": 265,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "oppo-f5-black-org",
+   "brand": "oppo",
+   "name": "F5",
+   "price": 255,
+   "color": "Black",
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-f5-white-org",
+   "brand": "oppo",
+   "name": "F5",
+   "price": 255,
+   "color": "White",
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-f7-org",
+   "brand": "oppo",
+   "name": "F7",
+   "price": 255,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-f9-org",
+   "brand": "oppo",
+   "name": "F9",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-f11-org",
+   "brand": "oppo",
+   "name": "F11",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-f11-pro-org",
+   "brand": "oppo",
+   "name": "F11 PRO",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "oppo-find-x2-lite-oled",
+   "brand": "oppo",
+   "name": "FIND X2 LITE",
+   "price": 390,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "oppo-find-x2-lite-tft",
+   "brand": "oppo",
+   "name": "FIND X2 LITE",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-find-x2-neo",
+   "brand": "oppo",
+   "name": "FIND X2 NEO",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "oppo-find-x3-lite",
+   "brand": "oppo",
+   "name": "FIND X3 LITE",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "oppo-reno-2-tft",
+   "brand": "oppo",
+   "name": "RENO 2",
+   "price": 280,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-2f-oled",
+   "brand": "oppo",
+   "name": "RENO 2F",
+   "price": 530,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-2f-hd-tft",
+   "brand": "oppo",
+   "name": "RENO 2F HD+",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-4-4g-oled",
+   "brand": "oppo",
+   "name": "RENO 4 4G",
+   "price": 480,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-4-4g-tft",
+   "brand": "oppo",
+   "name": "RENO 4 4G",
+   "price": 280,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-4z",
+   "brand": "oppo",
+   "name": "RENO 4Z",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "oppo-reno-5-4g-hd-tft",
+   "brand": "oppo",
+   "name": "RENO 5 4G HD+",
+   "price": 280,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-6-oled",
+   "brand": "oppo",
+   "name": "RENO 6",
+   "price": 515,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-6-tft",
+   "brand": "oppo",
+   "name": "RENO 6",
+   "price": 275,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-6z-oled",
+   "brand": "oppo",
+   "name": "RENO 6Z",
+   "price": 525,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-6z-f19-reno4-se-tft",
+   "brand": "oppo",
+   "name": "RENO 6Z/F19/RENO4 SE",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-7-4g-oled",
+   "brand": "oppo",
+   "name": "RENO 7 4G",
+   "price": 580,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-7-4g-tft",
+   "brand": "oppo",
+   "name": "RENO 7 4G",
+   "price": 275,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-8t-4g-oled",
+   "brand": "oppo",
+   "name": "RENO 8T 4G",
+   "price": 580,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-8t-4g-hd-tft",
+   "brand": "oppo",
+   "name": "RENO 8T 4G HD+",
+   "price": 275,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-11f-5g-oled",
+   "brand": "oppo",
+   "name": "RENO 11F 5G",
+   "price": 480,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "oppo-reno-11f-5g-hd-tft",
+   "brand": "oppo",
+   "name": "RENO 11F 5G HD+",
+   "price": 280,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "realme-5-pro",
+   "brand": "realme",
+   "name": "5 PRO",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "realme-7",
+   "brand": "realme",
+   "name": "7",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "realme-7i-org",
+   "brand": "realme",
+   "name": "7I",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "realme-8-5g-org",
+   "brand": "realme",
+   "name": "8 5G",
+   "price": 275,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "realme-8-4g-hd-tft",
+   "brand": "realme",
+   "name": "8 (4G) HD+",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "realme-8i-9i",
+   "brand": "realme",
+   "name": "8I/9I",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "realme-c2",
+   "brand": "realme",
+   "name": "C2",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "realme-c3-org",
+   "brand": "realme",
+   "name": "C3",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "realme-c11-2021-c20-c21-org",
+   "brand": "realme",
+   "name": "C11-2021/C20/C21",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "realme-c21y-org",
+   "brand": "realme",
+   "name": "C21Y",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "realme-c25-org",
+   "brand": "realme",
+   "name": "C25",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "realme-c25y-org",
+   "brand": "realme",
+   "name": "C25Y",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "realme-c30-org",
+   "brand": "realme",
+   "name": "C30",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "realme-c30s",
+   "brand": "realme",
+   "name": "C30S",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "realme-c35",
+   "brand": "realme",
+   "name": "C35",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "realme-c53-note-50",
+   "brand": "realme",
+   "name": "C53 / NOTE 50",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "realme-c55-org",
+   "brand": "realme",
+   "name": "C55",
+   "price": 265,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "realme-c61-c63-note-60",
+   "brand": "realme",
+   "name": "C61/C63/NOTE 60",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "realme-c65",
+   "brand": "realme",
+   "name": "C65",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "realme-c71",
+   "brand": "realme",
+   "name": "C71",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "realme-c75",
+   "brand": "realme",
+   "name": "C75",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "realme-gt-oled",
+   "brand": "realme",
+   "name": "GT",
+   "price": 500,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "realme-gt-tft",
+   "brand": "realme",
+   "name": "GT",
+   "price": 275,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "realme-note-70",
+   "brand": "realme",
+   "name": "NOTE 70",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "realme-x2-hd-tft",
+   "brand": "realme",
+   "name": "X2 HD+",
+   "price": 280,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "realme-x3",
+   "brand": "realme",
+   "name": "X3",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "samsung-a01-big",
+   "brand": "samsung",
+   "name": "A01 BIG",
+   "price": 255,
+   "available": true
+  },
+  {
+   "id": "samsung-a01-core-org",
+   "brand": "samsung",
+   "name": "A01 CORE",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a01-small",
+   "brand": "samsung",
+   "name": "A01 SMALL",
+   "price": 245,
+   "available": true
+  },
+  {
+   "id": "samsung-a02s-a03-a03s-org",
+   "brand": "samsung",
+   "name": "A02S/A03/A03S",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a02s-a03s-5g-big",
+   "brand": "samsung",
+   "name": "A02S/A03S 5G BIG",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "samsung-a03-core",
+   "brand": "samsung",
+   "name": "A03 CORE",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "samsung-a04-org",
+   "brand": "samsung",
+   "name": "A04",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a04e-org",
+   "brand": "samsung",
+   "name": "A04E",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a04s",
+   "brand": "samsung",
+   "name": "A04S",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "samsung-a05-org",
+   "brand": "samsung",
+   "name": "A05",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a05s-org",
+   "brand": "samsung",
+   "name": "A05S",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a06-5g",
+   "brand": "samsung",
+   "name": "A06 5G",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "samsung-a06-a065",
+   "brand": "samsung",
+   "name": "A06/A065",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "samsung-a07",
+   "brand": "samsung",
+   "name": "A07",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "samsung-a7-t500-t505",
+   "brand": "samsung",
+   "name": "A7/T500/T505",
+   "price": 380,
+   "available": true
+  },
+  {
+   "id": "samsung-a9-x210",
+   "brand": "samsung",
+   "name": "A9+/X210",
+   "price": 380,
+   "available": true
+  },
+  {
+   "id": "samsung-a10-org",
+   "brand": "samsung",
+   "name": "A10",
+   "price": 255,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a10-frame",
+   "brand": "samsung",
+   "name": "A10",
+   "price": 265,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a10s-org",
+   "brand": "samsung",
+   "name": "A10S",
+   "price": 240,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a10s-frame",
+   "brand": "samsung",
+   "name": "A10S",
+   "price": 265,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a11-frame-org",
+   "brand": "samsung",
+   "name": "A11",
+   "price": 270,
+   "frame": true,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a11-m11-org",
+   "brand": "samsung",
+   "name": "A11/M11",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a12-a02-a127",
+   "brand": "samsung",
+   "name": "A12/A02/A127",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "samsung-a13-4g-org",
+   "brand": "samsung",
+   "name": "A13 4G",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a14-4g",
+   "brand": "samsung",
+   "name": "A14 4G",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "samsung-a14-5g-a146b-org",
+   "brand": "samsung",
+   "name": "A14 5G (A146B)",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a14-5g-a146p-org",
+   "brand": "samsung",
+   "name": "A14 5G (A146P)",
+   "price": 265,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a15-incell-frame",
+   "brand": "samsung",
+   "name": "A15",
+   "price": 280,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a15-big-oled-frame",
+   "brand": "samsung",
+   "name": "A15 BIG",
+   "price": 510,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a15-small-oled-frame",
+   "brand": "samsung",
+   "name": "A15 SMALL",
+   "price": 415,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a16-4g-incell-frame",
+   "brand": "samsung",
+   "name": "A16 4G",
+   "price": 285,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a16-4g-big-oled-frame",
+   "brand": "samsung",
+   "name": "A16 4G BIG",
+   "price": 480,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a16-5g-incell-frame",
+   "brand": "samsung",
+   "name": "A16 5G",
+   "price": 500,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a16-5g-big-oled-frame",
+   "brand": "samsung",
+   "name": "A16 5G BIG",
+   "price": 290,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a17-incell-frame",
+   "brand": "samsung",
+   "name": "A17",
+   "price": 285,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a17-big-oled-frame",
+   "brand": "samsung",
+   "name": "A17 BIG",
+   "price": 450,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a20-incell-frame",
+   "brand": "samsung",
+   "name": "A20",
+   "price": 275,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a20-oled-frame",
+   "brand": "samsung",
+   "name": "A20",
+   "price": 370,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a20e-org",
+   "brand": "samsung",
+   "name": "A20E",
+   "price": 255,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a20s-org",
+   "brand": "samsung",
+   "name": "A20S",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a21s",
+   "brand": "samsung",
+   "name": "A21S",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "samsung-a21s-frame-org",
+   "brand": "samsung",
+   "name": "A21S",
+   "price": 275,
+   "frame": true,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a22-4g-incell-frame",
+   "brand": "samsung",
+   "name": "A22 4G",
+   "price": 275,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a22-4g-big-oled-frame",
+   "brand": "samsung",
+   "name": "A22 4G BIG",
+   "price": 390,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a22-5g-org",
+   "brand": "samsung",
+   "name": "A22 5G",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a23-4g",
+   "brand": "samsung",
+   "name": "A23 4G",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "samsung-a23-5g-m23-m33-5g",
+   "brand": "samsung",
+   "name": "A23 5G/M23/M33 5G",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "samsung-a24-incell-frame",
+   "brand": "samsung",
+   "name": "A24",
+   "price": 280,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a24-big-oled-frame",
+   "brand": "samsung",
+   "name": "A24 BIG",
+   "price": 450,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a24-small-oled-frame",
+   "brand": "samsung",
+   "name": "A24 SMALL",
+   "price": 400,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a25-incell-frame",
+   "brand": "samsung",
+   "name": "A25",
+   "price": 285,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a25-big-oled-frame",
+   "brand": "samsung",
+   "name": "A25 BIG",
+   "price": 510,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a26-5g-incell-frame",
+   "brand": "samsung",
+   "name": "A26 5G",
+   "price": 310,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a26-5g-big-oled-frame",
+   "brand": "samsung",
+   "name": "A26 5G BIG",
+   "price": 480,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a27-5g-incell-frame",
+   "brand": "samsung",
+   "name": "A27 5G",
+   "price": 320,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a27-5g-big-oled-frame",
+   "brand": "samsung",
+   "name": "A27 5G BIG",
+   "price": 0,
+   "type": "OLED",
+   "frame": true,
+   "available": false
+  },
+  {
+   "id": "samsung-a30-a50-a50s-incell-frame",
+   "brand": "samsung",
+   "name": "A30/A50/A50S",
+   "price": 280,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a30-a50-a50s-big-oled-frame",
+   "brand": "samsung",
+   "name": "A30/A50/A50S BIG",
+   "price": 450,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a30s-incell-frame",
+   "brand": "samsung",
+   "name": "A30S",
+   "price": 280,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a30s-big-oled-frame",
+   "brand": "samsung",
+   "name": "A30S BIG",
+   "price": 400,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a31-incell-frame",
+   "brand": "samsung",
+   "name": "A31",
+   "price": 280,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a31-big-oled-frame",
+   "brand": "samsung",
+   "name": "A31 BIG",
+   "price": 450,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a32-4g-big-incell-frame",
+   "brand": "samsung",
+   "name": "A32 4G BIG",
+   "price": 285,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a32-4g-big-oled-frame",
+   "brand": "samsung",
+   "name": "A32 4G BIG",
+   "price": 480,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a32-5g",
+   "brand": "samsung",
+   "name": "A32 5G",
+   "price": 245,
+   "available": true
+  },
+  {
+   "id": "samsung-a33-5g-incell-frame",
+   "brand": "samsung",
+   "name": "A33 5G",
+   "price": 305,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a33-5g-big-oled-frame",
+   "brand": "samsung",
+   "name": "A33 5G BIG",
+   "price": 430,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a34-incell-frame",
+   "brand": "samsung",
+   "name": "A34",
+   "price": 300,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a34-big-oled-frame",
+   "brand": "samsung",
+   "name": "A34 BIG",
+   "price": 550,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a34-small-oled-frame",
+   "brand": "samsung",
+   "name": "A34 SMALL",
+   "price": 400,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a35-incell-frame",
+   "brand": "samsung",
+   "name": "A35",
+   "price": 310,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a35-big-oled-frame",
+   "brand": "samsung",
+   "name": "A35 BIG",
+   "price": 435,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a36-5g-incell-frame",
+   "brand": "samsung",
+   "name": "A36 5G",
+   "price": 310,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a36-5g-big-oled-frame",
+   "brand": "samsung",
+   "name": "A36 5G BIG",
+   "price": 430,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a40-incell-frame",
+   "brand": "samsung",
+   "name": "A40",
+   "price": 300,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a40-oncell-frame",
+   "brand": "samsung",
+   "name": "A40 ONCELL",
+   "price": 310,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a41-4g-incell-frame",
+   "brand": "samsung",
+   "name": "A41 4G",
+   "price": 330,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a41-4g-oled-frame",
+   "brand": "samsung",
+   "name": "A41 4G",
+   "price": 500,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a41-5g-oled-frame",
+   "brand": "samsung",
+   "name": "A41 5G",
+   "price": 530,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a42-incell-frame",
+   "brand": "samsung",
+   "name": "A42",
+   "price": 295,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a42-oled-frame",
+   "brand": "samsung",
+   "name": "A42",
+   "price": 470,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a51-incell-frame",
+   "brand": "samsung",
+   "name": "A51",
+   "price": 300,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a51-5g-big-oled",
+   "brand": "samsung",
+   "name": "A51 5G BIG",
+   "price": 500,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "samsung-a51-big-oled-frame",
+   "brand": "samsung",
+   "name": "A51 BIG",
+   "price": 470,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a51-small-oled-frame",
+   "brand": "samsung",
+   "name": "A51 SMALL",
+   "price": 380,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a52-incell-frame",
+   "brand": "samsung",
+   "name": "A52",
+   "price": 310,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a52-big-oled-frame",
+   "brand": "samsung",
+   "name": "A52 BIG",
+   "price": 420,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a53-incell-frame",
+   "brand": "samsung",
+   "name": "A53",
+   "price": 300,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a53-big-oled-frame",
+   "brand": "samsung",
+   "name": "A53 BIG",
+   "price": 450,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a54-incell-frame",
+   "brand": "samsung",
+   "name": "A54",
+   "price": 320,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a54-big-oled-frame",
+   "brand": "samsung",
+   "name": "A54 BIG",
+   "price": 450,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a55-incell-frame",
+   "brand": "samsung",
+   "name": "A55",
+   "price": 330,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a55-big-oled-frame",
+   "brand": "samsung",
+   "name": "A55 BIG",
+   "price": 520,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a56-5g-incell-frame",
+   "brand": "samsung",
+   "name": "A56 5G",
+   "price": 350,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a56-5g-big-oled-frame",
+   "brand": "samsung",
+   "name": "A56 5G BIG",
+   "price": 530,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a70-incell-frame",
+   "brand": "samsung",
+   "name": "A70",
+   "price": 285,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a70-big-oled-frame",
+   "brand": "samsung",
+   "name": "A70 BIG",
+   "price": 490,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a70-small-oled-frame",
+   "brand": "samsung",
+   "name": "A70 SMALL",
+   "price": 370,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a71-incell-frame",
+   "brand": "samsung",
+   "name": "A71",
+   "price": 285,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a71-big-oled-frame",
+   "brand": "samsung",
+   "name": "A71 BIG",
+   "price": 420,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a72-incell-frame",
+   "brand": "samsung",
+   "name": "A72",
+   "price": 295,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a72-big-oled-frame",
+   "brand": "samsung",
+   "name": "A72 BIG",
+   "price": 500,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a72-small-oled-frame",
+   "brand": "samsung",
+   "name": "A72 SMALL",
+   "price": 450,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a127-a12-nacho",
+   "brand": "samsung",
+   "name": "A127 (A12 NACHO)",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "samsung-a260-org",
+   "brand": "samsung",
+   "name": "A260",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a310",
+   "brand": "samsung",
+   "name": "A310",
+   "price": 350,
+   "available": true
+  },
+  {
+   "id": "samsung-a500",
+   "brand": "samsung",
+   "name": "A500",
+   "price": 350,
+   "available": true
+  },
+  {
+   "id": "samsung-a510-oled-black",
+   "brand": "samsung",
+   "name": "A510",
+   "price": 290,
+   "type": "OLED",
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-a510-oled-white",
+   "brand": "samsung",
+   "name": "A510",
+   "price": 290,
+   "type": "OLED",
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "samsung-a520-black",
+   "brand": "samsung",
+   "name": "A520",
+   "price": 290,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-a520-gold",
+   "brand": "samsung",
+   "name": "A520",
+   "price": 290,
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-a530-incell",
+   "brand": "samsung",
+   "name": "A530",
+   "price": 275,
+   "type": "INCELL",
+   "available": true
+  },
+  {
+   "id": "samsung-a530-oled",
+   "brand": "samsung",
+   "name": "A530",
+   "price": 460,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "samsung-a605-incell",
+   "brand": "samsung",
+   "name": "A605",
+   "price": 270,
+   "type": "INCELL",
+   "available": true
+  },
+  {
+   "id": "samsung-a605-oled",
+   "brand": "samsung",
+   "name": "A605",
+   "price": 410,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "samsung-a710-oled",
+   "brand": "samsung",
+   "name": "A710",
+   "price": 350,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "samsung-a720-incell-black",
+   "brand": "samsung",
+   "name": "A720",
+   "price": 285,
+   "type": "INCELL",
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-a720-incell-gold",
+   "brand": "samsung",
+   "name": "A720",
+   "price": 285,
+   "type": "INCELL",
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-a730-incell",
+   "brand": "samsung",
+   "name": "A730",
+   "price": 270,
+   "type": "INCELL",
+   "available": true
+  },
+  {
+   "id": "samsung-a730-oled",
+   "brand": "samsung",
+   "name": "A730",
+   "price": 450,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "samsung-a750-incell-frame",
+   "brand": "samsung",
+   "name": "A750",
+   "price": 280,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-a750-big-oled",
+   "brand": "samsung",
+   "name": "A750 BIG",
+   "price": 430,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "samsung-a750-big-oled-frame",
+   "brand": "samsung",
+   "name": "A750 BIG",
+   "price": 445,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-b310",
+   "brand": "samsung",
+   "name": "B310",
+   "price": 165,
+   "available": true
+  },
+  {
+   "id": "samsung-g360",
+   "brand": "samsung",
+   "name": "G360",
+   "price": 170,
+   "available": true
+  },
+  {
+   "id": "samsung-g532-org",
+   "brand": "samsung",
+   "name": "G532",
+   "price": 170,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-g7102",
+   "brand": "samsung",
+   "name": "G7102",
+   "price": 170,
+   "available": true
+  },
+  {
+   "id": "samsung-j4-j6-org",
+   "brand": "samsung",
+   "name": "J4+/J6+",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-j5-prime-black",
+   "brand": "samsung",
+   "name": "J5 PRIME",
+   "price": 260,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j5-prime-gold",
+   "brand": "samsung",
+   "name": "J5 PRIME",
+   "price": 250,
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j6-incell",
+   "brand": "samsung",
+   "name": "J6",
+   "price": 250,
+   "type": "INCELL",
+   "available": true
+  },
+  {
+   "id": "samsung-j6-big-oled",
+   "brand": "samsung",
+   "name": "J6 BIG",
+   "price": 400,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "samsung-j7-prime-black",
+   "brand": "samsung",
+   "name": "J7 PRIME",
+   "price": 250,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j7-prime-gold",
+   "brand": "samsung",
+   "name": "J7 PRIME",
+   "price": 250,
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j7-prime-white",
+   "brand": "samsung",
+   "name": "J7 PRIME",
+   "price": 250,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "samsung-j8-j8-incell",
+   "brand": "samsung",
+   "name": "J8/J8+",
+   "price": 250,
+   "type": "INCELL",
+   "available": true
+  },
+  {
+   "id": "samsung-j8-j8-big-oled",
+   "brand": "samsung",
+   "name": "J8/J8+ BIG",
+   "price": 435,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "samsung-j100-org",
+   "brand": "samsung",
+   "name": "J100",
+   "price": 160,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-j105-org",
+   "brand": "samsung",
+   "name": "J105",
+   "price": 160,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-j110",
+   "brand": "samsung",
+   "name": "J110",
+   "price": 350,
+   "available": true
+  },
+  {
+   "id": "samsung-j120-white",
+   "brand": "samsung",
+   "name": "J120",
+   "price": 300,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "samsung-j120-incell-black",
+   "brand": "samsung",
+   "name": "J120",
+   "price": 260,
+   "type": "INCELL",
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j120-incell-gold",
+   "brand": "samsung",
+   "name": "J120",
+   "price": 260,
+   "type": "INCELL",
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j200-tft",
+   "brand": "samsung",
+   "name": "J200",
+   "price": 300,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "samsung-j250-silver",
+   "brand": "samsung",
+   "name": "J250",
+   "price": 350,
+   "color": "Silver",
+   "available": true
+  },
+  {
+   "id": "samsung-j250-incell-black",
+   "brand": "samsung",
+   "name": "J250",
+   "price": 260,
+   "type": "INCELL",
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j250-incell-gold",
+   "brand": "samsung",
+   "name": "J250",
+   "price": 260,
+   "type": "INCELL",
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j260",
+   "brand": "samsung",
+   "name": "J260",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "samsung-j320-oled-black",
+   "brand": "samsung",
+   "name": "J320",
+   "price": 340,
+   "type": "OLED",
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j320-oled-gold",
+   "brand": "samsung",
+   "name": "J320",
+   "price": 340,
+   "type": "OLED",
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j320-oled-white",
+   "brand": "samsung",
+   "name": "J320",
+   "price": 340,
+   "type": "OLED",
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "samsung-j330-black",
+   "brand": "samsung",
+   "name": "J330",
+   "price": 250,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j330-gold",
+   "brand": "samsung",
+   "name": "J330",
+   "price": 250,
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j330-silver",
+   "brand": "samsung",
+   "name": "J330",
+   "price": 250,
+   "color": "Silver",
+   "available": true
+  },
+  {
+   "id": "samsung-j400-incell-black",
+   "brand": "samsung",
+   "name": "J400",
+   "price": 260,
+   "type": "INCELL",
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j400-incell-gold",
+   "brand": "samsung",
+   "name": "J400",
+   "price": 260,
+   "type": "INCELL",
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j400-oled-silver",
+   "brand": "samsung",
+   "name": "J400",
+   "price": 350,
+   "type": "OLED",
+   "color": "Silver",
+   "available": true
+  },
+  {
+   "id": "samsung-j500-oled-black",
+   "brand": "samsung",
+   "name": "J500",
+   "price": 350,
+   "type": "OLED",
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j500-oled-gold",
+   "brand": "samsung",
+   "name": "J500",
+   "price": 350,
+   "type": "OLED",
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j500-oled-white",
+   "brand": "samsung",
+   "name": "J500",
+   "price": 350,
+   "type": "OLED",
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "samsung-j510-incell-black",
+   "brand": "samsung",
+   "name": "J510",
+   "price": 260,
+   "type": "INCELL",
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j510-oled-black",
+   "brand": "samsung",
+   "name": "J510",
+   "price": 350,
+   "type": "OLED",
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j510-oled-gold",
+   "brand": "samsung",
+   "name": "J510",
+   "price": 330,
+   "type": "OLED",
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j510-oled-white",
+   "brand": "samsung",
+   "name": "J510",
+   "price": 360,
+   "type": "OLED",
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "samsung-j510-icnell-white",
+   "brand": "samsung",
+   "name": "J510 ICNELL",
+   "price": 260,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "samsung-j530-incell-black",
+   "brand": "samsung",
+   "name": "J530",
+   "price": 270,
+   "type": "INCELL",
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j530-incell-gold",
+   "brand": "samsung",
+   "name": "J530",
+   "price": 270,
+   "type": "INCELL",
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j530-oled-black",
+   "brand": "samsung",
+   "name": "J530",
+   "price": 320,
+   "type": "OLED",
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j530-oled-gold",
+   "brand": "samsung",
+   "name": "J530",
+   "price": 320,
+   "type": "OLED",
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j530-oled-silver",
+   "brand": "samsung",
+   "name": "J530",
+   "price": 270,
+   "type": "OLED",
+   "color": "Silver",
+   "available": true
+  },
+  {
+   "id": "samsung-j700-black",
+   "brand": "samsung",
+   "name": "J700",
+   "price": 350,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j700-gold",
+   "brand": "samsung",
+   "name": "J700",
+   "price": 350,
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j700-oled-white",
+   "brand": "samsung",
+   "name": "J700",
+   "price": 350,
+   "type": "OLED",
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "samsung-j701-oled-black",
+   "brand": "samsung",
+   "name": "J701",
+   "price": 300,
+   "type": "OLED",
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j701-oled-gold",
+   "brand": "samsung",
+   "name": "J701",
+   "price": 300,
+   "type": "OLED",
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j701-oled-silver",
+   "brand": "samsung",
+   "name": "J701",
+   "price": 300,
+   "type": "OLED",
+   "color": "Silver",
+   "available": true
+  },
+  {
+   "id": "samsung-j710-incell-black",
+   "brand": "samsung",
+   "name": "J710",
+   "price": 250,
+   "type": "INCELL",
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j710-incell-gold",
+   "brand": "samsung",
+   "name": "J710",
+   "price": 250,
+   "type": "INCELL",
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j710-oled-white",
+   "brand": "samsung",
+   "name": "J710",
+   "price": 350,
+   "type": "OLED",
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "samsung-j720-black",
+   "brand": "samsung",
+   "name": "J720",
+   "price": 350,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j720-gold",
+   "brand": "samsung",
+   "name": "J720",
+   "price": 350,
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j730-incell-black",
+   "brand": "samsung",
+   "name": "J730",
+   "price": 270,
+   "type": "INCELL",
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-j730-incell-gold",
+   "brand": "samsung",
+   "name": "J730",
+   "price": 270,
+   "type": "INCELL",
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-j730-incell-silver",
+   "brand": "samsung",
+   "name": "J730",
+   "price": 270,
+   "type": "INCELL",
+   "color": "Silver",
+   "available": true
+  },
+  {
+   "id": "samsung-m20-org",
+   "brand": "samsung",
+   "name": "M20",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-m21-oled-frame",
+   "brand": "samsung",
+   "name": "M21",
+   "price": 400,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-m22-oled-frame",
+   "brand": "samsung",
+   "name": "M22",
+   "price": 400,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-m30-oled-frame",
+   "brand": "samsung",
+   "name": "M30",
+   "price": 400,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-m30s-incell-frame",
+   "brand": "samsung",
+   "name": "M30S",
+   "price": 280,
+   "type": "INCELL",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-m30s-oled",
+   "brand": "samsung",
+   "name": "M30S",
+   "price": 370,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "samsung-m30s-oled-frame",
+   "brand": "samsung",
+   "name": "M30S",
+   "price": 400,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-m32-oled-frame",
+   "brand": "samsung",
+   "name": "M32",
+   "price": 410,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-m51-big-oled-frame",
+   "brand": "samsung",
+   "name": "M51 BIG",
+   "price": 420,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-m52-5g-big-oled-frame",
+   "brand": "samsung",
+   "name": "M52 5G BIG",
+   "price": 420,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-m53-5g-big-oled-frame",
+   "brand": "samsung",
+   "name": "M53 5G BIG",
+   "price": 430,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-m54-5g-big-oled-frame",
+   "brand": "samsung",
+   "name": "M54 5G BIG",
+   "price": 430,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-note-8-incell-black-frame",
+   "brand": "samsung",
+   "name": "NOTE 8",
+   "price": 430,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-note-9-incell-black-frame",
+   "brand": "samsung",
+   "name": "NOTE 9",
+   "price": 430,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-note-10-incell-black-frame",
+   "brand": "samsung",
+   "name": "NOTE 10",
+   "price": 520,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-note-10-n970-oled-black-frame",
+   "brand": "samsung",
+   "name": "NOTE 10 N970",
+   "price": 750,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-note-20-ultra-incell-black-frame",
+   "brand": "samsung",
+   "name": "NOTE 20 ULTRA",
+   "price": 500,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s6lite-p610-p615",
+   "brand": "samsung",
+   "name": "S6LITE/P610/P615",
+   "price": 480,
+   "available": true
+  },
+  {
+   "id": "samsung-s8-incell-black-frame",
+   "brand": "samsung",
+   "name": "S8",
+   "price": 430,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s8-oled-black-frame",
+   "brand": "samsung",
+   "name": "S8",
+   "price": 750,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s8-incell-black-frame-2",
+   "brand": "samsung",
+   "name": "S8+",
+   "price": 430,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s9-incell-black-frame",
+   "brand": "samsung",
+   "name": "S9",
+   "price": 400,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s9-oled-black-frame",
+   "brand": "samsung",
+   "name": "S9",
+   "price": 750,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s9-incell-black-frame-2",
+   "brand": "samsung",
+   "name": "S9+",
+   "price": 400,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s9-oled-black-frame-2",
+   "brand": "samsung",
+   "name": "S9+",
+   "price": 800,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s10-oled-black-frame",
+   "brand": "samsung",
+   "name": "S10",
+   "price": 1000,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s10-oled-white-frame",
+   "brand": "samsung",
+   "name": "S10",
+   "price": 1000,
+   "type": "OLED",
+   "color": "White",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s10-lite-oled-black-frame",
+   "brand": "samsung",
+   "name": "S10 LITE",
+   "price": 770,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s10-incell-black-frame",
+   "brand": "samsung",
+   "name": "S10+",
+   "price": 400,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s10-oled-black-frame-2",
+   "brand": "samsung",
+   "name": "S10+",
+   "price": 1350,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s10fe-x510",
+   "brand": "samsung",
+   "name": "S10FE/X510",
+   "price": 440,
+   "available": true
+  },
+  {
+   "id": "samsung-s20-incell-black-frame",
+   "brand": "samsung",
+   "name": "S20",
+   "price": 430,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s20-fe-oled-black-frame",
+   "brand": "samsung",
+   "name": "S20 FE",
+   "price": 480,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s20-ultra-oled-black-frame",
+   "brand": "samsung",
+   "name": "S20 ULTRA",
+   "price": 750,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s20-oled-black-frame",
+   "brand": "samsung",
+   "name": "S20+",
+   "price": 700,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s21-incell-black-frame",
+   "brand": "samsung",
+   "name": "S21",
+   "price": 430,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s21-5g-oled-black-frame",
+   "brand": "samsung",
+   "name": "S21 5G",
+   "price": 850,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s21-fe-oled-black-frame",
+   "brand": "samsung",
+   "name": "S21 FE",
+   "price": 530,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s21-ultra-incell-black-frame",
+   "brand": "samsung",
+   "name": "S21 ULTRA",
+   "price": 530,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s21-ultra-oled-black-frame",
+   "brand": "samsung",
+   "name": "S21 ULTRA",
+   "price": 850,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s21-incell-black-frame-2",
+   "brand": "samsung",
+   "name": "S21+",
+   "price": 450,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s22-oled-black-frame",
+   "brand": "samsung",
+   "name": "S22",
+   "price": 1050,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s22-ultra-incell-black-frame",
+   "brand": "samsung",
+   "name": "S22 ULTRA",
+   "price": 550,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s22-ultra-oled-black-frame",
+   "brand": "samsung",
+   "name": "S22 ULTRA",
+   "price": 850,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s22-oled-black-frame-2",
+   "brand": "samsung",
+   "name": "S22+",
+   "price": 800,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s23-ultra-incell-black-frame",
+   "brand": "samsung",
+   "name": "S23 ULTRA",
+   "price": 550,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s23-ultra-oled-black-frame",
+   "brand": "samsung",
+   "name": "S23 ULTRA",
+   "price": 900,
+   "type": "OLED",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-s24-ultra-incell-black-frame",
+   "brand": "samsung",
+   "name": "S24 ULTRA",
+   "price": 570,
+   "type": "INCELL",
+   "color": "Black",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "samsung-t110-t111-t113-t116",
+   "brand": "samsung",
+   "name": "T110/T111/T113/T116",
+   "price": 200,
+   "available": true
+  },
+  {
+   "id": "samsung-t225-a7-lite-black",
+   "brand": "samsung",
+   "name": "T225/A7 LITE",
+   "price": 300,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-t225-a7-lite-white",
+   "brand": "samsung",
+   "name": "T225/A7 LITE",
+   "price": 300,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "samsung-t285-black",
+   "brand": "samsung",
+   "name": "T285",
+   "price": 270,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-t285-gold",
+   "brand": "samsung",
+   "name": "T285",
+   "price": 270,
+   "color": "Gold",
+   "available": true
+  },
+  {
+   "id": "samsung-t285-silver",
+   "brand": "samsung",
+   "name": "T285",
+   "price": 270,
+   "color": "Silver",
+   "available": true
+  },
+  {
+   "id": "samsung-t285-white",
+   "brand": "samsung",
+   "name": "T285",
+   "price": 270,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "samsung-t295-black",
+   "brand": "samsung",
+   "name": "T295",
+   "price": 280,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-t295-white",
+   "brand": "samsung",
+   "name": "T295",
+   "price": 280,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "samsung-t510-t515",
+   "brand": "samsung",
+   "name": "T510/T515",
+   "price": 380,
+   "available": true
+  },
+  {
+   "id": "samsung-t561",
+   "brand": "samsung",
+   "name": "T561",
+   "price": 400,
+   "available": true
+  },
+  {
+   "id": "samsung-t595-black",
+   "brand": "samsung",
+   "name": "T595",
+   "price": 480,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "samsung-tab-a8-x200",
+   "brand": "samsung",
+   "name": "TAB A8/X200",
+   "price": 390,
+   "available": true
+  },
+  {
+   "id": "samsung-tab-a9-x115-org",
+   "brand": "samsung",
+   "name": "TAB A9 X115",
+   "price": 320,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "samsung-tab-s1-t700",
+   "brand": "samsung",
+   "name": "TAB S1 T700",
+   "price": 480,
+   "available": true
+  },
+  {
+   "id": "samsung-tab-s1-t800",
+   "brand": "samsung",
+   "name": "TAB S1 T800",
+   "price": 510,
+   "available": true
+  },
+  {
+   "id": "samsung-tab-s2-t710",
+   "brand": "samsung",
+   "name": "TAB S2 T710",
+   "price": 600,
+   "available": true
+  },
+  {
+   "id": "samsung-tab-s2-t810",
+   "brand": "samsung",
+   "name": "TAB S2 T810",
+   "price": 750,
+   "available": true
+  },
+  {
+   "id": "samsung-tab-t820",
+   "brand": "samsung",
+   "name": "TAB T820",
+   "price": 750,
+   "available": true
+  },
+  {
+   "id": "samsung-tab-t830",
+   "brand": "samsung",
+   "name": "TAB T830",
+   "price": 1550,
+   "available": true
+  },
+  {
+   "id": "sony-l1-org",
+   "brand": "sony",
+   "name": "L1",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "sony-l2-org",
+   "brand": "sony",
+   "name": "L2",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "sony-l3-org",
+   "brand": "sony",
+   "name": "L3",
+   "price": 300,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "sony-x-org",
+   "brand": "sony",
+   "name": "X",
+   "price": 330,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "sony-xa1-black",
+   "brand": "sony",
+   "name": "XA1",
+   "price": 250,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "sony-xa1-ultra-black",
+   "brand": "sony",
+   "name": "XA1 ULTRA",
+   "price": 350,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "sony-xa2-ultra-org",
+   "brand": "sony",
+   "name": "XA2 ULTRA",
+   "price": 390,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "sony-xperia-5-ii-frame-org",
+   "brand": "sony",
+   "name": "XPERIA 5 II",
+   "price": 1650,
+   "frame": true,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "sony-xperia-10-org",
+   "brand": "sony",
+   "name": "XPERIA 10",
+   "price": 300,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "sony-xperia-10-plus-org",
+   "brand": "sony",
+   "name": "XPERIA 10 PLUS",
+   "price": 320,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "sony-xperia-pro-i-org",
+   "brand": "sony",
+   "name": "XPERIA PRO I",
+   "price": 1850,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "sony-xz-org",
+   "brand": "sony",
+   "name": "XZ",
+   "price": 330,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "sony-xz1-org",
+   "brand": "sony",
+   "name": "XZ1",
+   "price": 380,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "sony-xz2-org",
+   "brand": "sony",
+   "name": "XZ2",
+   "price": 330,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "sony-xz3-org",
+   "brand": "sony",
+   "name": "XZ3",
+   "price": 650,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "sony-xzs",
+   "brand": "sony",
+   "name": "XZS",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "tcl-10-lite",
+   "brand": "tcl",
+   "name": "10 LITE",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "tcl-10l",
+   "brand": "tcl",
+   "name": "10L",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-10plus",
+   "brand": "tcl",
+   "name": "10PLUS",
+   "price": 620,
+   "available": true
+  },
+  {
+   "id": "tcl-10pro",
+   "brand": "tcl",
+   "name": "10PRO",
+   "price": 620,
+   "available": true
+  },
+  {
+   "id": "tcl-10se",
+   "brand": "tcl",
+   "name": "10SE",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-20-5g",
+   "brand": "tcl",
+   "name": "20 5G",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "tcl-20-l-plus-hd",
+   "brand": "tcl",
+   "name": "20 L PLUS HD+",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-20-pro-5g-org",
+   "brand": "tcl",
+   "name": "20 PRO 5G",
+   "price": 700,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "tcl-20e",
+   "brand": "tcl",
+   "name": "20E",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-20se",
+   "brand": "tcl",
+   "name": "20SE",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-20xe-5g",
+   "brand": "tcl",
+   "name": "20XE 5G",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-30se",
+   "brand": "tcl",
+   "name": "30SE",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-30xe-5g-hd",
+   "brand": "tcl",
+   "name": "30XE 5G HD+",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "tcl-40r",
+   "brand": "tcl",
+   "name": "40R",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "tcl-40se",
+   "brand": "tcl",
+   "name": "40SE",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-50-5g",
+   "brand": "tcl",
+   "name": "50 5G",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-50se",
+   "brand": "tcl",
+   "name": "50SE",
+   "price": 295,
+   "available": true
+  },
+  {
+   "id": "tcl-306",
+   "brand": "tcl",
+   "name": "306",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-405",
+   "brand": "tcl",
+   "name": "405",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-406",
+   "brand": "tcl",
+   "name": "406",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "tcl-408",
+   "brand": "tcl",
+   "name": "408",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "tcl-505",
+   "brand": "tcl",
+   "name": "505",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-t305",
+   "brand": "tcl",
+   "name": "T305",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-t610",
+   "brand": "tcl",
+   "name": "T610",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-t671-h",
+   "brand": "tcl",
+   "name": "T671 H",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "tcl-t766h",
+   "brand": "tcl",
+   "name": "T766H",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "tcl-t767",
+   "brand": "tcl",
+   "name": "T767",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "tcl-t770",
+   "brand": "tcl",
+   "name": "T770",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tcl-t774-20l",
+   "brand": "tcl",
+   "name": "T774/20L",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "tcl-t780",
+   "brand": "tcl",
+   "name": "T780",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "tecno-camon-12-pro",
+   "brand": "tecno",
+   "name": "CAMON 12 PRO",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tecno-cf7-camon-11",
+   "brand": "tecno",
+   "name": "CF7 CAMON 11",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "tecno-k7-k8",
+   "brand": "tecno",
+   "name": "K7/K8",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "tecno-ka6",
+   "brand": "tecno",
+   "name": "KA6",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "tecno-ka7",
+   "brand": "tecno",
+   "name": "KA7",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-2-b1p-org",
+   "brand": "tecno",
+   "name": "POP 2 (B1P)",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-2-ba2-org",
+   "brand": "tecno",
+   "name": "POP 2+ (BA2)",
+   "price": 255,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-2f-b1f",
+   "brand": "tecno",
+   "name": "POP 2F (B1F)",
+   "price": 255,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-3-org",
+   "brand": "tecno",
+   "name": "POP 3",
+   "price": 250,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-4-bc2-org",
+   "brand": "tecno",
+   "name": "POP 4 (BC2)",
+   "price": 255,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-4-air-bc1-org",
+   "brand": "tecno",
+   "name": "POP 4 AIR (BC1)",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-4-pro",
+   "brand": "tecno",
+   "name": "POP 4 PRO",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-5-org",
+   "brand": "tecno",
+   "name": "POP 5",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-5-go",
+   "brand": "tecno",
+   "name": "POP 5 GO",
+   "price": 255,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-5-pro",
+   "brand": "tecno",
+   "name": "POP 5 PRO",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-6-pro",
+   "brand": "tecno",
+   "name": "POP 6 PRO",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-7-bf6",
+   "brand": "tecno",
+   "name": "POP 7 BF6",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-7-bf7",
+   "brand": "tecno",
+   "name": "POP 7 BF7",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-7-pro",
+   "brand": "tecno",
+   "name": "POP 7 PRO",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-pop-8",
+   "brand": "tecno",
+   "name": "POP 8",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-pouvoir-4",
+   "brand": "tecno",
+   "name": "POUVOIR 4",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "tecno-pova-2",
+   "brand": "tecno",
+   "name": "POVA 2",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "tecno-pova-neo",
+   "brand": "tecno",
+   "name": "POVA NEO",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-3",
+   "brand": "tecno",
+   "name": "SPARK 3",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-4-kc8",
+   "brand": "tecno",
+   "name": "SPARK 4 (KC8)",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-4-air-kc6",
+   "brand": "tecno",
+   "name": "SPARK 4 AIR (KC6)",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-4-lite",
+   "brand": "tecno",
+   "name": "SPARK 4 LITE",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-5-air-kd6",
+   "brand": "tecno",
+   "name": "SPARK 5 AIR (KD6)",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-5-5-pro",
+   "brand": "tecno",
+   "name": "SPARK 5/5 PRO",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-6-ke7",
+   "brand": "tecno",
+   "name": "SPARK 6 (KE7)",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-6-air",
+   "brand": "tecno",
+   "name": "SPARK 6 AIR",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-6-go-ke5",
+   "brand": "tecno",
+   "name": "SPARK 6 GO (KE5)",
+   "price": 250,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-7",
+   "brand": "tecno",
+   "name": "SPARK 7",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-7-pro",
+   "brand": "tecno",
+   "name": "SPARK 7 PRO",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-7p",
+   "brand": "tecno",
+   "name": "SPARK 7P",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-8",
+   "brand": "tecno",
+   "name": "SPARK 8",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-8c-org",
+   "brand": "tecno",
+   "name": "SPARK 8C",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-8p-org",
+   "brand": "tecno",
+   "name": "SPARK 8P",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-9",
+   "brand": "tecno",
+   "name": "SPARK 9",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-9-pro",
+   "brand": "tecno",
+   "name": "SPARK 9 PRO",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-10",
+   "brand": "tecno",
+   "name": "SPARK 10",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-10-pro",
+   "brand": "tecno",
+   "name": "SPARK 10 PRO",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-10c",
+   "brand": "tecno",
+   "name": "SPARK 10C",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-20-org",
+   "brand": "tecno",
+   "name": "SPARK 20",
+   "price": 265,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-20-pro-org",
+   "brand": "tecno",
+   "name": "SPARK 20 PRO",
+   "price": 275,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-30c",
+   "brand": "tecno",
+   "name": "SPARK 30C",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-40c",
+   "brand": "tecno",
+   "name": "SPARK 40C",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-go-1",
+   "brand": "tecno",
+   "name": "SPARK GO 1",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-go-2",
+   "brand": "tecno",
+   "name": "SPARK GO 2",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-go-3",
+   "brand": "tecno",
+   "name": "SPARK GO 3",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-go-2020",
+   "brand": "tecno",
+   "name": "SPARK GO 2020",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-go-2022",
+   "brand": "tecno",
+   "name": "SPARK GO 2022",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-go-2023",
+   "brand": "tecno",
+   "name": "SPARK GO 2023",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "tecno-spark-go-2024",
+   "brand": "tecno",
+   "name": "SPARK GO 2024",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "vivo-s1-tft",
+   "brand": "vivo",
+   "name": "S1",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "vivo-v17-pro-tft",
+   "brand": "vivo",
+   "name": "V17 PRO",
+   "price": 285,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "vivo-v20-oled",
+   "brand": "vivo",
+   "name": "V20",
+   "price": 450,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "vivo-v20-tft",
+   "brand": "vivo",
+   "name": "V20",
+   "price": 275,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "vivo-v21-tft",
+   "brand": "vivo",
+   "name": "V21",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "vivo-v25-5g-oled",
+   "brand": "vivo",
+   "name": "V25 5G",
+   "price": 410,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "vivo-v30-lite",
+   "brand": "vivo",
+   "name": "V30 LITE",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "vivo-v50-lite",
+   "brand": "vivo",
+   "name": "V50 LITE",
+   "price": 310,
+   "available": true
+  },
+  {
+   "id": "vivo-y01",
+   "brand": "vivo",
+   "name": "Y01",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "vivo-y1s",
+   "brand": "vivo",
+   "name": "Y1S",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "vivo-y02",
+   "brand": "vivo",
+   "name": "Y02",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "vivo-y02s-org",
+   "brand": "vivo",
+   "name": "Y02S",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "vivo-y03",
+   "brand": "vivo",
+   "name": "Y03",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "vivo-y04",
+   "brand": "vivo",
+   "name": "Y04",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "vivo-y05",
+   "brand": "vivo",
+   "name": "Y05",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "vivo-y12-org",
+   "brand": "vivo",
+   "name": "Y12",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "vivo-y12s-y15s-y20",
+   "brand": "vivo",
+   "name": "Y12S/Y15S/Y20",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "vivo-y16",
+   "brand": "vivo",
+   "name": "Y16",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "vivo-y17s",
+   "brand": "vivo",
+   "name": "Y17S",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "vivo-y18",
+   "brand": "vivo",
+   "name": "Y18",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "vivo-y19-org",
+   "brand": "vivo",
+   "name": "Y19",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "vivo-y19s-y28-4g",
+   "brand": "vivo",
+   "name": "Y19S/Y28 4G",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "vivo-y21-y21s",
+   "brand": "vivo",
+   "name": "Y21/Y21S",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "vivo-y22",
+   "brand": "vivo",
+   "name": "Y22",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "vivo-y27s",
+   "brand": "vivo",
+   "name": "Y27S",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "vivo-y29-5g",
+   "brand": "vivo",
+   "name": "Y29 5G",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "vivo-y30",
+   "brand": "vivo",
+   "name": "Y30",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "vivo-y33s",
+   "brand": "vivo",
+   "name": "Y33S",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "vivo-y35",
+   "brand": "vivo",
+   "name": "Y35",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "vivo-y36",
+   "brand": "vivo",
+   "name": "Y36",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "vivo-y50",
+   "brand": "vivo",
+   "name": "Y50",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "vivo-y71",
+   "brand": "vivo",
+   "name": "Y71",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "vivo-y72",
+   "brand": "vivo",
+   "name": "Y72",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "vivo-y73",
+   "brand": "vivo",
+   "name": "Y73",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "vivo-y83-org",
+   "brand": "vivo",
+   "name": "Y83",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "vivo-y85-org",
+   "brand": "vivo",
+   "name": "Y85",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "vivo-y91-org",
+   "brand": "vivo",
+   "name": "Y91",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "vivo-y97",
+   "brand": "vivo",
+   "name": "Y97",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "wiko-power-u10-u20",
+   "brand": "wiko",
+   "name": "POWER U10/U20",
+   "price": 285,
+   "available": true
+  },
+  {
+   "id": "wiko-view-3-pro",
+   "brand": "wiko",
+   "name": "VIEW 3 PRO",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "wiko-view-4",
+   "brand": "wiko",
+   "name": "VIEW 4",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "wiko-view-4-lite",
+   "brand": "wiko",
+   "name": "VIEW 4 LITE",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "wiko-view-5",
+   "brand": "wiko",
+   "name": "VIEW 5",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "wiko-view-5-plus",
+   "brand": "wiko",
+   "name": "VIEW 5 PLUS",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "wiko-y50",
+   "brand": "wiko",
+   "name": "Y50",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "wiko-y60",
+   "brand": "wiko",
+   "name": "Y60",
+   "price": 285,
+   "available": true
+  },
+  {
+   "id": "wiko-y62",
+   "brand": "wiko",
+   "name": "Y62",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "wiko-y81",
+   "brand": "wiko",
+   "name": "Y81",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-8-oled",
+   "brand": "xiaomi",
+   "name": "MI 8",
+   "price": 370,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-8-lite",
+   "brand": "xiaomi",
+   "name": "MI 8 LITE",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-8-pro",
+   "brand": "xiaomi",
+   "name": "MI 8 PRO",
+   "price": 400,
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-9-oled",
+   "brand": "xiaomi",
+   "name": "MI 9",
+   "price": 370,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-9-lite-oled",
+   "brand": "xiaomi",
+   "name": "MI 9 LITE",
+   "price": 390,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-9-se-copy",
+   "brand": "xiaomi",
+   "name": "MI 9 SE COPY",
+   "price": 310,
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-9t-tft",
+   "brand": "xiaomi",
+   "name": "MI 9T",
+   "price": 275,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-9t-mi9t-pro-oled",
+   "brand": "xiaomi",
+   "name": "MI 9T/MI9T PRO",
+   "price": 480,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-10-5g-c-version-edge-oled",
+   "brand": "xiaomi",
+   "name": "MI 10 5G (C VERSION) EDGE",
+   "price": 650,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-10-5g-edge-incell",
+   "brand": "xiaomi",
+   "name": "MI 10 5G (EDGE)",
+   "price": 390,
+   "type": "INCELL",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-10-5g-s-version-edge-oled",
+   "brand": "xiaomi",
+   "name": "MI 10 5G (S VERSION) EDGE",
+   "price": 850,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-10-lite-org",
+   "brand": "xiaomi",
+   "name": "MI 10 LITE",
+   "price": 420,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-10t",
+   "brand": "xiaomi",
+   "name": "MI 10T",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-10t-lite-hd",
+   "brand": "xiaomi",
+   "name": "MI 10T LITE HD+",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-11-lite-oled",
+   "brand": "xiaomi",
+   "name": "MI 11 LITE",
+   "price": 500,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-11-lite-hd-tft",
+   "brand": "xiaomi",
+   "name": "MI 11 LITE HD+",
+   "price": 280,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-11i-incell",
+   "brand": "xiaomi",
+   "name": "MI 11I",
+   "price": 290,
+   "type": "INCELL",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-11i-big-oled",
+   "brand": "xiaomi",
+   "name": "MI 11I BIG",
+   "price": 450,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-11t-oled",
+   "brand": "xiaomi",
+   "name": "MI 11T",
+   "price": 510,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-11t-tft",
+   "brand": "xiaomi",
+   "name": "MI 11T",
+   "price": 290,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-11t-pro-tft",
+   "brand": "xiaomi",
+   "name": "MI 11T PRO",
+   "price": 280,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-12",
+   "brand": "xiaomi",
+   "name": "MI 12",
+   "price": 400,
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-12-lite-incell",
+   "brand": "xiaomi",
+   "name": "MI 12 LITE",
+   "price": 290,
+   "type": "INCELL",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-12-lite-oled",
+   "brand": "xiaomi",
+   "name": "MI 12 LITE",
+   "price": 430,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-12-lite-ne-oled",
+   "brand": "xiaomi",
+   "name": "MI 12 LITE NE",
+   "price": 530,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-12t",
+   "brand": "xiaomi",
+   "name": "MI 12T",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-13-lite",
+   "brand": "xiaomi",
+   "name": "MI 13 LITE",
+   "price": 530,
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-13t-oled",
+   "brand": "xiaomi",
+   "name": "MI 13T",
+   "price": 500,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-13t-tft",
+   "brand": "xiaomi",
+   "name": "MI 13T",
+   "price": 285,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-a1-black",
+   "brand": "xiaomi",
+   "name": "MI A1",
+   "price": 255,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-a1-white",
+   "brand": "xiaomi",
+   "name": "MI A1",
+   "price": 250,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-a2-black",
+   "brand": "xiaomi",
+   "name": "MI A2",
+   "price": 265,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-a2-white",
+   "brand": "xiaomi",
+   "name": "MI A2",
+   "price": 265,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-a2-lite",
+   "brand": "xiaomi",
+   "name": "MI A2 LITE",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-a3-tft",
+   "brand": "xiaomi",
+   "name": "MI A3",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-mi-note10-10-pro-edge-oled",
+   "brand": "xiaomi",
+   "name": "MI NOTE10/10 PRO (EDGE)",
+   "price": 530,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-5-5pro-black",
+   "brand": "xiaomi",
+   "name": "NOTE 5/5PRO",
+   "price": 265,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-5-5pro-white",
+   "brand": "xiaomi",
+   "name": "NOTE 5/5PRO",
+   "price": 260,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-5a",
+   "brand": "xiaomi",
+   "name": "NOTE 5A",
+   "price": 255,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-6-6pro-org",
+   "brand": "xiaomi",
+   "name": "NOTE 6/6PRO",
+   "price": 265,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-7",
+   "brand": "xiaomi",
+   "name": "NOTE 7",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-8-org",
+   "brand": "xiaomi",
+   "name": "NOTE 8",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-8-pro-hd",
+   "brand": "xiaomi",
+   "name": "NOTE 8 PRO HD+",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-8t",
+   "brand": "xiaomi",
+   "name": "NOTE 8T",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-9-org",
+   "brand": "xiaomi",
+   "name": "NOTE 9",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-9pro-9s-org",
+   "brand": "xiaomi",
+   "name": "NOTE 9PRO/9S",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-10-4g-oled-frame",
+   "brand": "xiaomi",
+   "name": "NOTE 10 4G",
+   "price": 430,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-10-4g-tft",
+   "brand": "xiaomi",
+   "name": "NOTE 10 4G",
+   "price": 265,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-10-5g",
+   "brand": "xiaomi",
+   "name": "NOTE 10 5G",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-10-pro-tft",
+   "brand": "xiaomi",
+   "name": "NOTE 10 PRO",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-10-pro-big-oled-frame",
+   "brand": "xiaomi",
+   "name": "NOTE 10 PRO BIG",
+   "price": 480,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-11-4g-oled-frame",
+   "brand": "xiaomi",
+   "name": "NOTE 11 4G",
+   "price": 480,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-11-4g-hd-tft",
+   "brand": "xiaomi",
+   "name": "NOTE 11 4G HD+",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-11-5g",
+   "brand": "xiaomi",
+   "name": "NOTE 11 5G",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-11-pro-hd-tft",
+   "brand": "xiaomi",
+   "name": "NOTE 11 PRO HD+",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-12-tft",
+   "brand": "xiaomi",
+   "name": "NOTE 12",
+   "price": 275,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-12-big-oled-frame",
+   "brand": "xiaomi",
+   "name": "NOTE 12 BIG",
+   "price": 470,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-12-pro-4g-tft",
+   "brand": "xiaomi",
+   "name": "NOTE 12 PRO 4G",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-12-pro-big-oled",
+   "brand": "xiaomi",
+   "name": "NOTE 12 PRO BIG",
+   "price": 480,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-12-pro-plus-5g-tft",
+   "brand": "xiaomi",
+   "name": "NOTE 12 PRO PLUS 5G",
+   "price": 290,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-12-pro-plus-5g-big-oled",
+   "brand": "xiaomi",
+   "name": "NOTE 12 PRO PLUS 5G BIG",
+   "price": 490,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-13-4g-tft",
+   "brand": "xiaomi",
+   "name": "NOTE 13 4G",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-13-4g-big-oled-frame",
+   "brand": "xiaomi",
+   "name": "NOTE 13 4G BIG",
+   "price": 480,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-13-pro-4g-oled",
+   "brand": "xiaomi",
+   "name": "NOTE 13 PRO 4G",
+   "price": 450,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-13-pro-4g-hd-tft",
+   "brand": "xiaomi",
+   "name": "NOTE 13 PRO 4G HD+",
+   "price": 285,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-14-oled-frame",
+   "brand": "xiaomi",
+   "name": "NOTE 14",
+   "price": 480,
+   "type": "OLED",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-14-tft",
+   "brand": "xiaomi",
+   "name": "NOTE 14",
+   "price": 280,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-14-pro-4g-tft-frame",
+   "brand": "xiaomi",
+   "name": "NOTE 14 PRO 4G",
+   "price": 350,
+   "type": "TFT",
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-14-pro-5g-oled",
+   "brand": "xiaomi",
+   "name": "NOTE 14 PRO 5G",
+   "price": 500,
+   "type": "OLED",
+   "available": true
+  },
+  {
+   "id": "xiaomi-note-14-pro-5g-tft",
+   "brand": "xiaomi",
+   "name": "NOTE 14 PRO 5G",
+   "price": 310,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-poco-f1",
+   "brand": "xiaomi",
+   "name": "POCO F1",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "xiaomi-poco-f2-org",
+   "brand": "xiaomi",
+   "name": "POCO F2",
+   "price": 290,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-poco-f2-pro",
+   "brand": "xiaomi",
+   "name": "POCO F2 PRO",
+   "price": 295,
+   "available": true
+  },
+  {
+   "id": "xiaomi-poco-f3-tft",
+   "brand": "xiaomi",
+   "name": "POCO F3",
+   "price": 285,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-poco-f4",
+   "brand": "xiaomi",
+   "name": "POCO F4",
+   "price": 295,
+   "available": true
+  },
+  {
+   "id": "xiaomi-poco-f4-gt",
+   "brand": "xiaomi",
+   "name": "POCO F4 GT",
+   "price": 320,
+   "available": true
+  },
+  {
+   "id": "xiaomi-poco-f5",
+   "brand": "xiaomi",
+   "name": "POCO F5",
+   "price": 295,
+   "available": true
+  },
+  {
+   "id": "xiaomi-poco-m3",
+   "brand": "xiaomi",
+   "name": "POCO M3",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "xiaomi-poco-m5s-tft",
+   "brand": "xiaomi",
+   "name": "POCO M5S",
+   "price": 270,
+   "type": "TFT",
+   "available": true
+  },
+  {
+   "id": "xiaomi-poco-x3-gt",
+   "brand": "xiaomi",
+   "name": "POCO X3 GT",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "xiaomi-poco-x3-x3-pro-hd",
+   "brand": "xiaomi",
+   "name": "POCO X3/X3 PRO HD+",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "xiaomi-poco-x6-pro-5g-org",
+   "brand": "xiaomi",
+   "name": "POCO X6 PRO 5G",
+   "price": 610,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-poco-x6-pro-5g-copy",
+   "brand": "xiaomi",
+   "name": "POCO X6 PRO 5G COPY",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-5-plus-black",
+   "brand": "xiaomi",
+   "name": "REDMI 5 PLUS",
+   "price": 255,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-5-plus-white",
+   "brand": "xiaomi",
+   "name": "REDMI 5 PLUS",
+   "price": 255,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-6-6a-org",
+   "brand": "xiaomi",
+   "name": "REDMI 6/6A",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-7",
+   "brand": "xiaomi",
+   "name": "REDMI 7",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-7a-org",
+   "brand": "xiaomi",
+   "name": "REDMI 7A",
+   "price": 265,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-8-8a",
+   "brand": "xiaomi",
+   "name": "REDMI 8/8A",
+   "price": 255,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-9-org",
+   "brand": "xiaomi",
+   "name": "REDMI 9",
+   "price": 255,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-9-frame",
+   "brand": "xiaomi",
+   "name": "REDMI 9",
+   "price": 280,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-9a-frame",
+   "brand": "xiaomi",
+   "name": "REDMI 9A",
+   "price": 275,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-9a-c",
+   "brand": "xiaomi",
+   "name": "REDMI 9A/C",
+   "price": 255,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-9c-frame",
+   "brand": "xiaomi",
+   "name": "REDMI 9C",
+   "price": 270,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-9t",
+   "brand": "xiaomi",
+   "name": "REDMI 9T",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-9t-frame",
+   "brand": "xiaomi",
+   "name": "REDMI 9T",
+   "price": 280,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-10-frame",
+   "brand": "xiaomi",
+   "name": "REDMI 10",
+   "price": 285,
+   "frame": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-10-4g-org",
+   "brand": "xiaomi",
+   "name": "REDMI 10 4G",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-10-5g",
+   "brand": "xiaomi",
+   "name": "REDMI 10 5G",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-10a-org",
+   "brand": "xiaomi",
+   "name": "REDMI 10A",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-10c-org",
+   "brand": "xiaomi",
+   "name": "REDMI 10C",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-12-org",
+   "brand": "xiaomi",
+   "name": "REDMI 12",
+   "price": 270,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-12c",
+   "brand": "xiaomi",
+   "name": "REDMI 12C",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-13-4g",
+   "brand": "xiaomi",
+   "name": "REDMI 13 4G",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-13c-org",
+   "brand": "xiaomi",
+   "name": "REDMI 13C",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-14c-org",
+   "brand": "xiaomi",
+   "name": "REDMI 14C",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-15",
+   "brand": "xiaomi",
+   "name": "REDMI 15",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-15c",
+   "brand": "xiaomi",
+   "name": "REDMI 15C",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-15c-european-version",
+   "brand": "xiaomi",
+   "name": "REDMI 15C (EUROPEAN VERSION)",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-17",
+   "brand": "xiaomi",
+   "name": "REDMI 17",
+   "price": 335,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-a1-a1-a2-a2",
+   "brand": "xiaomi",
+   "name": "REDMI A1/A1+/A2/A2+",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-a3-2024-org",
+   "brand": "xiaomi",
+   "name": "REDMI A3 2024",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-a3-pro-org",
+   "brand": "xiaomi",
+   "name": "REDMI A3 PRO",
+   "price": 260,
+   "original": true,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-a3x",
+   "brand": "xiaomi",
+   "name": "REDMI A3X",
+   "price": 260,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-a5-european-version",
+   "brand": "xiaomi",
+   "name": "REDMI A5 (EUROPEAN VERSION)",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-a5-a5",
+   "brand": "xiaomi",
+   "name": "REDMI A5/A5+",
+   "price": 265,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-a7-pro",
+   "brand": "xiaomi",
+   "name": "REDMI A7 PRO",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-pad-2",
+   "brand": "xiaomi",
+   "name": "REDMI PAD 2",
+   "price": 430,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-pad-pro-12-1",
+   "brand": "xiaomi",
+   "name": "REDMI PAD PRO 12.1",
+   "price": 450,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-pad-se-8-7",
+   "brand": "xiaomi",
+   "name": "REDMI PAD SE 8.7",
+   "price": 320,
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-s2-black",
+   "brand": "xiaomi",
+   "name": "REDMI S2",
+   "price": 250,
+   "color": "Black",
+   "available": true
+  },
+  {
+   "id": "xiaomi-redmi-s2-white",
+   "brand": "xiaomi",
+   "name": "REDMI S2",
+   "price": 250,
+   "color": "White",
+   "available": true
+  },
+  {
+   "id": "xiaomi-tablette-7-pouces-30-pin",
+   "brand": "xiaomi",
+   "name": "TABLETTE 7 POUCES 30 PIN",
+   "price": 200,
+   "available": true
+  },
+  {
+   "id": "zte-a5-2020",
+   "brand": "zte",
+   "name": "A5 2020",
+   "price": 285,
+   "available": true
+  },
+  {
+   "id": "zte-a7-2019",
+   "brand": "zte",
+   "name": "A7 2019",
+   "price": 285,
+   "available": true
+  },
+  {
+   "id": "zte-a7-2020",
+   "brand": "zte",
+   "name": "A7 2020",
+   "price": 300,
+   "available": true
+  },
+  {
+   "id": "zte-a51-2021",
+   "brand": "zte",
+   "name": "A51 2021",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "zte-a52-lite",
+   "brand": "zte",
+   "name": "A52 LITE",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "zte-a7040",
+   "brand": "zte",
+   "name": "A7040",
+   "price": 285,
+   "available": true
+  },
+  {
+   "id": "zte-blade-a34",
+   "brand": "zte",
+   "name": "BLADE A34",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "zte-blade-a35",
+   "brand": "zte",
+   "name": "BLADE A35",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "zte-blade-a51",
+   "brand": "zte",
+   "name": "BLADE A51",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "zte-blade-a52",
+   "brand": "zte",
+   "name": "BLADE A52",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "zte-blade-a54",
+   "brand": "zte",
+   "name": "BLADE A54",
+   "price": 270,
+   "available": true
+  },
+  {
+   "id": "zte-blade-a55",
+   "brand": "zte",
+   "name": "BLADE A55",
+   "price": 275,
+   "available": true
+  },
+  {
+   "id": "zte-blade-a71",
+   "brand": "zte",
+   "name": "BLADE A71",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "zte-blade-v30-vita",
+   "brand": "zte",
+   "name": "BLADE V30 VITA",
+   "price": 290,
+   "available": true
+  },
+  {
+   "id": "zte-blade-v40-vita",
+   "brand": "zte",
+   "name": "BLADE V40 VITA",
+   "price": 280,
+   "available": true
+  },
+  {
+   "id": "zte-blade-v50-vita",
+   "brand": "zte",
+   "name": "BLADE V50 VITA",
+   "price": 280,
+   "available": true
+  }
+ ]
+}

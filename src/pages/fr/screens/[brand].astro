@@ -1,0 +1,9 @@
+---
+import Page from '../../screens/[brand].astro';
+import { getBrandIds } from '../../../services/screens';
+
+export function getStaticPaths() {
+  return getBrandIds().map((brand) => ({ params: { brand } }));
+}
+---
+<Page lang="fr" />

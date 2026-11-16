@@ -1,0 +1,130 @@
+---
+// صفحة علامة في AWIMA Screens: كل موديلاتها بأسعار واضحة وزر استفسار واتساب لكل موديل
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getBrands, getBrandIds, getScreensText, screensPhone, screensWhatsapp, modelBadges, modelLink, brandLink } from '../../services/screens';
+import { formatPrice } from '../../lib/format';
+import { t, langOf, localePath, type Lang } from '../../i18n';
+
+export function getStaticPaths() {
+  return getBrandIds().map((brand) => ({ params: { brand } }));
+}
+
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
+const { brand: brandId } = Astro.params;
+const brand = getBrands(lang).find((b) => b.id === brandId)!;
+const txt = getScreensText(lang);
+const phone = screensPhone();
+const has = (k: string) => brand.models.some((m) => (k === 'original' ? m.original : k === 'frame' ? m.frame : m.type === k));
+const filters = ['original', 'OLED', 'INCELL', 'TFT', 'frame'].filter(has);
+const title = `${t(lang, 'screens.crumb')} ${brand.name}`;
+const description = `${brand.description} (${t(lang, 'screens.modelsCount', { n: brand.models.length })} · ${phone})`;
+---
+<BaseLayout lang={lang} title={title} description={description} image={brand.image}>
+  <section class="section">
+    <div class="container">
+      <nav class="crumbs" aria-label={t(lang, 'nav.breadcrumb')}>
+        <a href={localePath(lang, '/')}>{t(lang, 'nav.home')}</a> ›
+        <a href={localePath(lang, '/screens')}>AWIMA Screens</a> ›
+        <span>{brand.name}</span>
+      </nav>
+
+      <header class="head">
+        <img src={brand.image} alt="" width="800" height="600" fetchpriority="high" decoding="async" />
+        <div>
+          <h1>{title}</h1>
+          <p class="n">{t(lang, 'screens.modelsCount', { n: brand.models.length })}</p>
+          <p class="desc">{brand.description}</p>
+          <div class="cta-row">
+            <a class="btn btn-wa" href={brandLink(brand.name, lang)} target="_blank" rel="noopener">{t(lang, 'screens.askBrand', { name: brand.name })}</a>
+            <a class="num" href={`tel:+${screensWhatsapp()}`} dir="ltr">{phone}</a>
+          </div>
+          <a class="back" href={localePath(lang, '/screens')}>{t(lang, 'screens.back')}</a>
+        </div>
+      </header>
+
+      <div class="tools">
+        <input id="q" type="search" inputmode="search" autocomplete="off" placeholder={t(lang, 'screens.search')} aria-label={t(lang, 'screens.search')} />
+        {filters.length > 0 && (
+          <div class="chips" id="chips" role="group">
+            <button type="button" class="chip" data-f="" aria-pressed="true">{t(lang, 'screens.filter.all')}</button>
+            {filters.map((f) => <button type="button" class="chip" data-f={f} aria-pressed="false">{t(lang, `screens.filter.${f}`)}</button>)}
+          </div>
+        )}
+      </div>
+
+      <ul class="models" id="list">
+        {brand.models.map((m) => (
+          <li id={`m-${m.id}`} data-q={`${m.name} ${modelBadges(m, lang).join(' ')}`.toLowerCase()} data-t={m.type ?? ''} data-o={m.original ? '1' : ''} data-fr={m.frame ? '1' : ''}>
+            <div class="mi">
+              <b>{m.name}</b>
+              {modelBadges(m, lang).length > 0 && <span class="bd">{modelBadges(m, lang).map((x) => <i>{x}</i>)}</span>}
+            </div>
+            <span class="p">{formatPrice(m.price, lang)}</span>
+            <a class="btn btn-wa ask" href={modelLink(brand.name, m, lang)} target="_blank" rel="noopener" aria-label={`${t(lang, 'screens.askModel')} ${brand.name} ${m.name}`}>{t(lang, 'screens.askModel')}</a>
+          </li>
+        ))}
+      </ul>
+      <p class="card none" id="none" hidden>{t(lang, 'screens.noResults')}</p>
+
+      {txt.note && <p class="note">{txt.note}</p>}
+    </div>
+  </section>
+</BaseLayout>
+<script>
+  const input = document.getElementById('q') as HTMLInputElement | null;
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('#chips .chip'));
+  const items = Array.from(document.querySelectorAll<HTMLElement>('#list > li'));
+  const none = document.getElementById('none');
+  let f = '';
+  const apply = () => {
+    const words = (input?.value || '').toLowerCase().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    for (const li of items) {
+      const okF = !f || (f === 'original' ? !!li.dataset.o : f === 'frame' ? !!li.dataset.fr : li.dataset.t === f);
+      const q = li.dataset.q || '';
+      const ok = okF && words.every((w) => q.includes(w));
+      li.hidden = !ok;
+      if (ok) shown++;
+    }
+    if (none) none.hidden = shown > 0;
+  };
+  input?.addEventListener('input', apply);
+  chips.forEach((c) => c.addEventListener('click', () => {
+    f = c.dataset.f ?? '';
+    chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+    apply();
+  }));
+  // فتح موديل من نتيجة البحث: نبرزه
+  if (location.hash.startsWith('#m-')) document.getElementById(location.hash.slice(1))?.classList.add('hit');
+</script>
+<style>
+  .crumbs { font-size: 0.9rem; color: var(--c-muted); margin-bottom: 12px; }
+  .crumbs a { color: var(--c-primary); text-decoration: none; }
+  .head { display: grid; gap: 16px; margin-bottom: 20px; align-items: center; }
+  .head img { width: 100%; max-height: 320px; object-fit: contain; background: #fff; border: 1px solid var(--c-border); border-radius: 16px; }
+  .head h1 { margin: 0 0 4px; }
+  .n { margin: 0 0 8px; color: var(--c-muted); font-weight: 700; }
+  .desc { margin: 0 0 14px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 8px; }
+  .num { font-weight: 800; color: var(--c-primary); text-decoration: none; border: 1px solid var(--c-primary); padding: 8px 16px; border-radius: 999px; min-height: 44px; display: inline-flex; align-items: center; }
+  .back { color: var(--c-primary); font-weight: 700; }
+  .tools { display: grid; gap: 10px; margin-bottom: 14px; }
+  .tools input { width: 100%; font: inherit; padding: 12px 14px; border: 2px solid var(--c-border); border-radius: 12px; min-height: 48px; }
+  .tools input:focus { border-color: var(--c-accent); outline: none; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font: inherit; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--c-border); background: #fff; cursor: pointer; min-height: 44px; }
+  .chip[aria-pressed='true'] { background: var(--c-accent); color: #fff; border-color: var(--c-accent); }
+  .models { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .models li { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; background: #fff; border: 1px solid var(--c-border); border-radius: 12px; padding: 10px 14px; }
+  .models li[hidden] { display: none; }
+  .models li.hit, .models li:target { border-color: var(--c-accent); box-shadow: 0 0 0 3px rgba(10, 108, 255, 0.2); }
+  .mi { flex: 1 1 220px; display: grid; gap: 4px; }
+  .bd { display: flex; flex-wrap: wrap; gap: 4px; }
+  .bd i { font-style: normal; font-size: 0.78rem; background: var(--c-surface); border: 1px solid var(--c-border); border-radius: 999px; padding: 2px 10px; color: var(--c-muted); }
+  .p { font-weight: 800; color: var(--c-primary); white-space: nowrap; }
+  .ask { padding: 8px 16px; }
+  .none { padding: 16px; text-align: center; font-weight: 700; }
+  .note { color: var(--c-muted); font-size: 0.9rem; margin-top: 16px; }
+  @media (min-width: 800px) { .head { grid-template-columns: 340px 1fr; gap: 28px; } }
+</style>

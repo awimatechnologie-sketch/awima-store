@@ -1,0 +1,154 @@
+---
+// AWIMA Screens: واجهة شاشات الهواتف — العلامات، البحث، التطمين، والتواصل المباشر عبر واتساب
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getBrands, getScreensText, countModels, screensPhone, generalLink, modelBadges, screensWhatsapp } from '../../services/screens';
+import { t, langOf, localePath, type Lang } from '../../i18n';
+
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
+const brands = getBrands(lang);
+const txt = getScreensText(lang);
+const total = countModels();
+const phone = screensPhone();
+const wa = generalLink(lang);
+const description = t(lang, 'screens.metaDesc', { n: total, b: brands.length, phone });
+// فهرس البحث: [معرّف العلامة، اسمها، اسم الموديل، السعر، معرّف الموديل، الشارات]
+const index = brands.flatMap((b) => b.models.map((m) => [b.id, b.name, m.name, m.price, m.id, modelBadges(m, lang).join(lang === 'fr' ? ', ' : '، ')]));
+const types = ['original', 'OLED', 'INCELL', 'TFT', 'frame'];
+---
+<BaseLayout lang={lang} title={txt.title} description={description} image={brands[0]?.image}>
+  <section class="hero">
+    <div class="container hero-in">
+      <div>
+        <p class="eyebrow">AWIMA Screens</p>
+        <h1>{txt.title}</h1>
+        <p class="lead">{txt.intro}</p>
+        <div class="cta-row">
+          <a class="btn btn-wa" href={wa} target="_blank" rel="noopener">{t(lang, 'screens.ctaBtn')}</a>
+          <a class="num" href={`tel:+${screensWhatsapp()}`} dir="ltr"><small>{t(lang, 'screens.numberLabel')}</small> {phone}</a>
+        </div>
+      </div>
+      <div class="stats" aria-label="AWIMA Screens">
+        <div><b>{total}+</b><span>{t(lang, 'screens.modelsCount', { n: '' }).trim()}</span></div>
+        <div><b>{brands.length}</b><span>{t(lang, 'screens.allBrands')}</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="search">
+        <input id="q" type="search" inputmode="search" autocomplete="off" placeholder={t(lang, 'screens.search')} aria-label={t(lang, 'screens.search')} />
+        <p class="hint" id="hint">{t(lang, 'screens.searchHint')}</p>
+        <ul id="res" class="res" aria-live="polite"></ul>
+      </div>
+      <script is:inline type="application/json" id="idx" set:html={JSON.stringify(index).replace(/</g, '\\u003c')}></script>
+      <div id="cfg" hidden data-wa={`https://wa.me/${screensWhatsapp()}?text=`} data-msg={t(lang, 'screens.wa.model')} data-cur={t(lang, 'currency')} data-base={localePath(lang, '/screens')} data-ask={t(lang, 'screens.askModel')} data-none={t(lang, 'screens.noResults')} data-hint={t(lang, 'screens.searchHint')}></div>
+
+      <h2 id="brands">{t(lang, 'screens.brandsTitle')}</h2>
+      <div class="grid-b">
+        {brands.map((b) => (
+          <a class="card brand" href={localePath(lang, `/screens/${b.id}`)}>
+            <img src={b.image} alt="" width="400" height="400" loading="lazy" decoding="async" />
+            <span class="bn">{b.name}</span>
+            <span class="bc">{t(lang, 'screens.modelsCount', { n: b.models.length })}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  {txt.trust.length > 0 && (
+    <section class="section section-alt">
+      <div class="container trust">
+        {txt.trust.map((x) => (
+          <div class="card ti"><h3>{x.title}</h3><p>{x.text}</p></div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="container">
+      <h2>{t(lang, 'screens.typesTitle')}</h2>
+      <ul class="types">
+        {types.map((k) => <li>{t(lang, `screens.type.${k}`)}</li>)}
+      </ul>
+      {txt.note && <p class="note">{txt.note}</p>}
+      <div class="card cta">
+        <h2>{t(lang, 'screens.ctaTitle')}</h2>
+        <p>{t(lang, 'screens.ctaText')}</p>
+        <a class="btn btn-wa" href={wa} target="_blank" rel="noopener">{t(lang, 'screens.ctaBtn')} · <span dir="ltr">{phone}</span></a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<script>
+  const cfgEl = document.getElementById('cfg') as HTMLElement | null;
+  const input = document.getElementById('q') as HTMLInputElement | null;
+  const out = document.getElementById('res') as HTMLUListElement | null;
+  const hint = document.getElementById('hint');
+  const idxEl = document.getElementById('idx');
+  if (cfgEl && input && out && idxEl) {
+    const d = cfgEl.dataset;
+    const rows = JSON.parse(idxEl.textContent || '[]') as [string, string, string, number, string, string][];
+    const hay = rows.map((r) => (r[1] + ' ' + r[2] + ' ' + r[5]).toLowerCase().replace(/[^a-z0-9\u0600-\u06ff+]+/g, ' '));
+    const nf = new Intl.NumberFormat('fr-FR');
+    const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] as string));
+    const render = () => {
+      const q = input.value.toLowerCase().replace(/[^a-z0-9\u0600-\u06ff+]+/g, ' ').trim();
+      out.innerHTML = '';
+      if (q.length < 2) { if (hint) hint.textContent = d.hint || ''; return; }
+      const words = q.split(' ');
+      const found: number[] = [];
+      for (let i = 0; i < rows.length && found.length < 30; i++) if (words.every((w) => hay[i].includes(w))) found.push(i);
+      if (hint) hint.textContent = found.length ? '' : d.none || '';
+      out.innerHTML = found.map((i) => {
+        const [b, bn, n, p, id, ex] = rows[i];
+        const price = nf.format(p) + ' ' + d.cur;
+        const msg = (d.msg || '').replace('{brand}', bn).replace('{name}', n).replace('{extra}', ex ? ' (' + ex + ')' : '').replace('{price}', price);
+        return `<li><a class="r-main" href="${esc((d.base || '') + '/' + b + '#m-' + id)}"><b>${esc(bn)} ${esc(n)}</b>${ex ? `<small>${esc(ex)}</small>` : ''}</a><span class="r-p">${esc(price)}</span><a class="btn btn-wa r-b" target="_blank" rel="noopener" href="${esc((d.wa || '') + encodeURIComponent(msg))}">${esc(d.ask || '')}</a></li>`;
+      }).join('');
+    };
+    input.addEventListener('input', render);
+  }
+</script>
+<style>
+  .hero { background: linear-gradient(135deg, var(--c-primary), #123a8f); color: #fff; padding: 40px 0; }
+  .hero h1 { color: #fff; margin: 0 0 8px; }
+  .hero-in { display: grid; gap: 24px; align-items: center; }
+  .eyebrow { margin: 0 0 6px; font-weight: 700; letter-spacing: 0.08em; opacity: 0.8; }
+  .lead { margin: 0 0 18px; max-width: 60ch; opacity: 0.95; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .num { color: #fff; font-weight: 800; font-size: 1.25rem; text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.5); padding: 8px 16px; border-radius: 999px; min-height: 44px; display: inline-flex; gap: 8px; align-items: center; }
+  .num small { font-weight: 600; opacity: 0.85; font-size: 0.8rem; }
+  .stats { display: flex; gap: 12px; }
+  .stats div { background: rgba(255, 255, 255, 0.12); border-radius: 14px; padding: 14px 20px; text-align: center; min-width: 110px; }
+  .stats b { display: block; font-size: 1.6rem; }
+  .stats span { font-size: 0.85rem; opacity: 0.9; }
+  .search { margin-bottom: 28px; }
+  .search input { width: 100%; font: inherit; padding: 14px 16px; border-radius: 12px; border: 2px solid var(--c-border); min-height: 52px; }
+  .search input:focus { border-color: var(--c-accent); outline: none; }
+  .hint { color: var(--c-muted); margin: 8px 4px 0; font-size: 0.9rem; min-height: 1.2em; }
+  .res { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 8px; }
+  .res li { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; background: #fff; border: 1px solid var(--c-border); border-radius: 12px; padding: 10px 12px; }
+  :global(.res .r-main) { flex: 1 1 200px; color: var(--c-text); text-decoration: none; display: grid; }
+  :global(.res .r-main small) { color: var(--c-muted); }
+  :global(.res .r-p) { font-weight: 800; color: var(--c-primary); }
+  :global(.res .r-b) { padding: 8px 14px; }
+  .grid-b { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .brand { display: grid; gap: 4px; padding: 12px; text-align: center; text-decoration: none; color: var(--c-text); transition: transform 0.15s; }
+  .brand:hover { transform: translateY(-3px); }
+  .brand img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: #fff; border-radius: 10px; }
+  .bn { font-weight: 800; color: var(--c-primary); font-size: 1.1rem; }
+  .bc { color: var(--c-muted); font-size: 0.9rem; }
+  .trust { display: grid; gap: 12px; }
+  .ti { padding: 16px; }
+  .ti h3 { margin: 0 0 4px; }
+  .ti p { margin: 0; color: var(--c-muted); }
+  .types { padding-inline-start: 20px; display: grid; gap: 8px; }
+  .note { color: var(--c-muted); font-size: 0.9rem; margin: 16px 0; }
+  .cta { padding: 20px; text-align: center; display: grid; gap: 10px; justify-items: center; }
+  @media (min-width: 700px) { .grid-b { grid-template-columns: repeat(3, 1fr); } .trust { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .grid-b { grid-template-columns: repeat(4, 1fr); } .trust { grid-template-columns: repeat(4, 1fr); } .hero-in { grid-template-columns: 1fr auto; } }
+</style>

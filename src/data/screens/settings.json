@@ -1,0 +1,223 @@
+{
+ "enabled": true,
+ "whatsapp": "212610680508",
+ "phoneDisplay": "0610680508",
+ "title": "AWIMA Screens — شاشات الهواتف",
+ "title_fr": "AWIMA Screens — Écrans de téléphones",
+ "intro": "كل شاشات الهواتف في مكان واحد: اختر علامة هاتفك، ثم موديلك، وراسلنا مباشرة على واتساب لتأكيد التوفر والسعر.",
+ "intro_fr": "Tous les écrans de téléphones au même endroit : choisissez la marque, puis le modèle, et écrivez-nous directement sur WhatsApp pour confirmer la disponibilité et le prix.",
+ "trust": [
+  {
+   "title": "كل الأنواع وكل الموديلات",
+   "title_fr": "Tous les types, tous les modèles",
+   "text": "نوفّر لكل علامة جميع أنواع الشاشات (أصلية، OLED، Incell، TFT) وكل الموديلات التابعة لها.",
+   "text_fr": "Pour chaque marque, nous proposons tous les types d'écrans (originaux, OLED, Incell, TFT) et tous les modèles."
+  },
+  {
+   "title": "أسعار واضحة",
+   "title_fr": "Prix clairs",
+   "text": "السعر ظاهر أمام كل موديل، وتُؤكَّد معك التفاصيل والتوفر قبل أي التزام.",
+   "text_fr": "Le prix est affiché pour chaque modèle ; détails et disponibilité confirmés avec vous avant tout engagement."
+  },
+  {
+   "title": "رد مباشر من فريقنا",
+   "title_fr": "Réponse directe de notre équipe",
+   "text": "تتواصل مباشرة مع فريق مغربي على واتساب لأي سؤال عن موديل أو جودة أو توفر.",
+   "text_fr": "Vous échangez directement avec une équipe marocaine sur WhatsApp pour toute question."
+  },
+  {
+   "title": "نصيحة تناسب هاتفك",
+   "title_fr": "Un conseil adapté à votre téléphone",
+   "text": "نرشدك إلى النوع الأنسب لهاتفك وميزانيتك قبل الشراء.",
+   "text_fr": "Nous vous orientons vers le type le mieux adapté à votre téléphone et à votre budget."
+  }
+ ],
+ "note": "الصور رمزية لتوضيح شكل الشاشة وقد تختلف عن الموديل المطلوب. الأسعار بالدرهم المغربي وقد تتغير حسب التوفر، فيُرجى تأكيد الموديل والسعر على واتساب قبل الطلب.",
+ "note_fr": "Les images sont illustratives et peuvent différer du modèle demandé. Les prix sont en dirhams et peuvent varier selon la disponibilité : confirmez le modèle et le prix sur WhatsApp avant de commander.",
+ "brands": [
+  {
+   "id": "samsung",
+   "name": "Samsung",
+   "image": "/images/screens/samsung.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "xiaomi",
+   "name": "Xiaomi",
+   "image": "/images/screens/xiaomi.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "huawei",
+   "name": "Huawei",
+   "image": "/images/screens/huawei.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "motorola",
+   "name": "Motorola",
+   "image": "/images/screens/generic-1.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "infinix",
+   "name": "Infinix",
+   "image": "/images/screens/generic-2.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "oppo",
+   "name": "OPPO",
+   "image": "/images/screens/oppo.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "tecno",
+   "name": "Tecno",
+   "image": "/images/screens/generic-3.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "honor",
+   "name": "Honor",
+   "image": "/images/screens/honor.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "nokia",
+   "name": "Nokia",
+   "image": "/images/screens/generic-1.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "vivo",
+   "name": "vivo",
+   "image": "/images/screens/vivo.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "itel",
+   "name": "itel",
+   "image": "/images/screens/generic-2.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "iphone",
+   "name": "iPhone",
+   "image": "/images/screens/iphone.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "tcl",
+   "name": "TCL",
+   "image": "/images/screens/generic-3.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "realme",
+   "name": "realme",
+   "image": "/images/screens/generic-1.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "google",
+   "name": "Google",
+   "image": "/images/screens/generic-2.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "sony",
+   "name": "Sony",
+   "image": "/images/screens/generic-3.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "zte",
+   "name": "ZTE",
+   "image": "/images/screens/generic-1.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "lg",
+   "name": "LG",
+   "image": "/images/screens/generic-2.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "oneplus",
+   "name": "OnePlus",
+   "image": "/images/screens/generic-3.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "wiko",
+   "name": "Wiko",
+   "image": "/images/screens/generic-1.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "alcatel",
+   "name": "Alcatel",
+   "image": "/images/screens/generic-2.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "lenovo",
+   "name": "Lenovo",
+   "image": "/images/screens/generic-3.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  },
+  {
+   "id": "ipad",
+   "name": "iPad",
+   "image": "/images/screens/generic-1.jpg",
+   "description": "",
+   "description_fr": "",
+   "active": true
+  }
+ ]
+}

@@ -425,6 +425,65 @@ collections:
           - { label: العنوان, name: title, widget: string }
           - { label: مقدمة, name: intro, widget: text }
           - { label: ملاحظة أسفل الصفحة, name: devicesNote, widget: text, required: false }
+  # ---------------- AWIMA Screens (شاشات الهواتف) ----------------
+  - name: screens
+    label: AWIMA Screens (الشاشات)
+    files:
+      - label: إعدادات الصفحة والعلامات
+        name: screens_settings
+        file: src/data/screens/settings.json
+        format: json
+        media_folder: /public/images/screens
+        public_folder: /images/screens
+        fields:
+          - { label: تفعيل صفحة الشاشات, name: enabled, widget: boolean, default: true }
+          - { label: 'واتساب الشاشات (دولي بلا + ولا 0، مثل 212610680508)', name: whatsapp, widget: string, pattern: ['^\d{8,15}$', 'أرقام فقط بالصيغة الدولية'] }
+          - { label: الرقم للعرض, name: phoneDisplay, widget: string }
+          - { label: العنوان, name: title, widget: string }
+          - { label: العنوان بالفرنسية, name: title_fr, widget: string, required: false }
+          - { label: المقدمة, name: intro, widget: text }
+          - { label: المقدمة بالفرنسية, name: intro_fr, widget: text, required: false }
+          - label: نقاط الاطمئنان (تظهر بطاقات تحت العلامات)
+            name: trust
+            widget: list
+            fields:
+              - { label: العنوان, name: title, widget: string }
+              - { label: العنوان بالفرنسية, name: title_fr, widget: string, required: false }
+              - { label: النص, name: text, widget: text }
+              - { label: النص بالفرنسية, name: text_fr, widget: text, required: false }
+          - { label: ملاحظة أسفل الصفحة (الصور رمزية، الأسعار...), name: note, widget: text, required: false }
+          - { label: الملاحظة بالفرنسية, name: note_fr, widget: text, required: false }
+          - label: العلامات (الشركات)
+            name: brands
+            widget: list
+            hint: 'العلامة بلا موديلات معروضة لا تظهر. الصورة رمزية لشكل الشاشة.'
+            fields:
+              - { label: المعرّف (إنجليزي صغير، يطابق حقل العلامة في الموديلات), name: id, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'حروف إنجليزية صغيرة وأرقام وشرطات'] }
+              - { label: الاسم, name: name, widget: string }
+              - { label: الصورة الرمزية, name: image, widget: image }
+              - { label: وصف مخصص (اختياري؛ إن تُرك فارغاً يظهر وصف جاهز), name: description, widget: text, required: false }
+              - { label: الوصف بالفرنسية, name: description_fr, widget: text, required: false }
+              - { label: ظاهرة, name: active, widget: boolean, default: true }
+      - label: موديلات الشاشات وأسعارها
+        name: screens_models
+        file: src/data/screens/models.json
+        format: json
+        fields:
+          - label: الموديلات
+            name: models
+            widget: list
+            summary: '{{fields.brand}} · {{fields.name}} · {{fields.price}}'
+            hint: 'السعر هو سعر البيع النهائي الظاهر للزبون. أوقف «متوفرة» لإخفاء موديل.'
+            fields:
+              - { label: المعرّف (فريد, لا يتغير), name: id, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'حروف إنجليزية صغيرة وأرقام وشرطات'] }
+              - { label: العلامة (معرّف العلامة), name: brand, widget: string }
+              - { label: اسم الموديل, name: name, widget: string }
+              - { label: السعر (درهم), name: price, widget: number, value_type: int, min: 0 }
+              - { label: النوع, name: type, widget: select, required: false, options: ['OLED', 'INCELL', 'TFT', 'HARD OLED', 'SOFT OLED'] }
+              - { label: اللون, name: color, widget: select, required: false, options: ['Black', 'White', 'Gold', 'Silver'] }
+              - { label: مع إطار, name: frame, widget: boolean, required: false }
+              - { label: أصلية, name: original, widget: boolean, required: false }
+              - { label: متوفرة (ظاهرة), name: available, widget: boolean, default: true }
   # ---------------- إعدادات الموقع ----------------
   - name: settings
     label: إعدادات الموقع

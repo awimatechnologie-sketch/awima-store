@@ -401,6 +401,41 @@ if (existsSync(REV_DIR)) {
   }
 }
 
+
+// ---------- AWIMA Screens ----------
+{
+  const SD = join(DATA, 'screens');
+  const st = readJson(join(SD, 'settings.json'), 'screens/settings.json');
+  const md = readJson(join(SD, 'models.json'), 'screens/models.json');
+  if (st && md) {
+    if (!/^\d{8,15}$/.test(String(st.whatsapp ?? ''))) err('screens/settings.json', `رقم واتساب غير صالح: ${st.whatsapp}`);
+    const bids = new Set();
+    for (const [i, b] of (st.brands ?? []).entries()) {
+      const w = `screens/settings.json (علامة ${i + 1})`;
+      if (!b?.id || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(b.id)) err(w, `معرّف العلامة غير صالح: ${JSON.stringify(b?.id)}`);
+      else if (bids.has(b.id)) err(w, `معرّف علامة مكرر: ${b.id}`);
+      else bids.add(b.id);
+      if (!b?.name) err(w, 'اسم العلامة مطلوب');
+      if (b?.image && !publicFileExists(b.image)) err(w, `صورة العلامة غير موجودة: ${b.image}`);
+    }
+    const mids = new Set();
+    let shown = 0;
+    for (const [i, m] of (md.models ?? []).entries()) {
+      const w = `screens/models.json (${m?.id ?? i + 1})`;
+      if (!m?.id || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(m.id)) { err(w, 'معرّف الموديل غير صالح'); continue; }
+      if (mids.has(m.id)) err(w, 'معرّف موديل مكرر');
+      mids.add(m.id);
+      if (!bids.has(m.brand)) err(w, `علامة غير موجودة: ${m.brand}`);
+      if (!m.name || !String(m.name).trim()) err(w, 'اسم الموديل مطلوب');
+      if (m.available !== false) {
+        if (!Number.isFinite(m.price) || m.price <= 0) warn(w, 'موديل ظاهر بلا سعر: لن يُعرض');
+        else shown++;
+      }
+    }
+    console.log(`[check] AWIMA Screens: ${shown} موديل ظاهر في ${bids.size} علامة`);
+  }
+}
+
 // ---------- النتيجة ----------
 console.log(`[check] ${productCount} منتج (${visibleCount} ظاهر) · ${catIds.size} قسم`);
 for (const w of warnings) console.warn(`  ⚠ ${w}`);

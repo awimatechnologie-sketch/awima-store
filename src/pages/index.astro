@@ -6,6 +6,7 @@ import { buildContactLink } from '../lib/whatsapp';
 import { buildStoreLd } from '../lib/seo';
 import { getCategories, getFeaturedProducts, getAllProducts } from '../services/products';
 import { getSections } from '../services/sections';
+import { countModels, screensEnabled } from '../services/screens';
 import { buildTrustItems } from '../lib/trust';
 import { hoursLabel } from '../lib/hours';
 import { formatPrice } from '../lib/format';
@@ -60,6 +61,17 @@ const reasons = [1, 2, 3, 4].map((n) => ({ t: t(lang, `home.r${n}.t`), d: t(lang
           <li>{i.href ? <a href={i.href}><span aria-hidden="true">{i.icon}</span> {i.text}</a> : <span><span aria-hidden="true">{i.icon}</span> {i.text}</span>}</li>
         ))}
       </ul>
+    </section>
+  )}
+
+  {screensEnabled() && (
+    <section class="section" aria-labelledby="scr">
+      <div class="container">
+        <a class="card scr" href={localePath(lang, '/screens')}>
+          <div><h2 id="scr">{t(lang, 'screens.homeTitle')}</h2><p>{t(lang, 'screens.homeText', { n: countModels() })}</p></div>
+          <span class="btn btn-primary">{t(lang, 'screens.homeBtn')}</span>
+        </a>
+      </div>
     </section>
   )}
 
@@ -175,6 +187,9 @@ const reasons = [1, 2, 3, 4].map((n) => ({ t: t(lang, `home.r${n}.t`), d: t(lang
   }
 </script>
 <style>
+  .scr { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding: 20px; text-decoration: none; color: var(--c-text); background: linear-gradient(135deg, #f0f5ff, #fff); }
+  .scr h2 { margin: 0 0 4px; }
+  .scr p { margin: 0; color: var(--c-muted); }
   .hero { background: linear-gradient(180deg, var(--c-surface), #fff); padding-block: 32px; }
   .hero-grid { display: grid; gap: 24px; align-items: center; }
   .lead { color: var(--c-muted); font-size: 1.1rem; }
