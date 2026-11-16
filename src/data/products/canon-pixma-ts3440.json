@@ -1,0 +1,34 @@
+{
+  "id": "P-0256",
+  "name": "Canon PIXMA TS3440",
+  "slug": "canon-pixma-ts3440",
+  "shortDescription": "طابعة ألوان • Wi-Fi • نسخ ومسح",
+  "description": "Canon PIXMA TS3440 — طابعة ألوان • Wi-Fi • نسخ ومسح. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 899,
+  "currency": "MAD",
+  "category": "cat-printers",
+  "images": [
+    "/images/products/canon-pixma-ts3440-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "طابعة ألوان • Wi-Fi • نسخ ومسح"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "canon imprimante طابعة canon pixma ts3440",
+  "fr": {
+    "name": "Canon PIXMA TS3440",
+    "shortDescription": "Imprimante couleur • Wi-Fi • Copie et scan",
+    "description": "Canon PIXMA TS3440 — Imprimante couleur • Wi-Fi • Copie et scan. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Imprimante couleur • Wi-Fi • Copie et scan"
+      }
+    ]
+  }
+}

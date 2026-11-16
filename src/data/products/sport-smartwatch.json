@@ -1,0 +1,34 @@
+{
+  "id": "P-0248",
+  "name": "ساعة ذكية رياضية",
+  "slug": "sport-smartwatch",
+  "shortDescription": "شاشة ملونة • متابعة الصحة والرياضة • مكالمات بلوتوث",
+  "description": "ساعة ذكية رياضية — شاشة ملونة • متابعة الصحة والرياضة • مكالمات بلوتوث. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 249,
+  "currency": "MAD",
+  "category": "cat-smartwatches",
+  "images": [
+    "/images/products/sport-smartwatch-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "شاشة ملونة • متابعة الصحة والرياضة • مكالمات بلوتوث"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ساعة ذكية montre connectée montre connectée sport",
+  "fr": {
+    "name": "Montre connectée sport",
+    "shortDescription": "Écran couleur • Suivi santé et sport • Appels Bluetooth",
+    "description": "Montre connectée sport — Écran couleur • Suivi santé et sport • Appels Bluetooth. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Écran couleur • Suivi santé et sport • Appels Bluetooth"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "P-0242",
+  "name": "سماعة رأس بلوتوث لاسلكية",
+  "slug": "bluetooth-headphones-wireless",
+  "shortDescription": "بلوتوث • قابلة للطي • ميكروفون",
+  "description": "سماعة رأس بلوتوث لاسلكية — بلوتوث • قابلة للطي • ميكروفون. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 149,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [
+    "/images/products/bluetooth-headphones-wireless-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "بلوتوث • قابلة للطي • ميكروفون"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "سماعة casque casque bluetooth sans fil",
+  "fr": {
+    "name": "Casque Bluetooth sans fil",
+    "shortDescription": "Bluetooth • Pliable • Micro intégré",
+    "description": "Casque Bluetooth sans fil — Bluetooth • Pliable • Micro intégré. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Bluetooth • Pliable • Micro intégré"
+      }
+    ]
+  }
+}

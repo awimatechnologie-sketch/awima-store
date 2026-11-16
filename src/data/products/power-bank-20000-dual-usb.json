@@ -1,0 +1,34 @@
+{
+  "id": "P-0233",
+  "name": "باوربانك 20000 مللي أمبير منفذان USB",
+  "slug": "power-bank-20000-dual-usb",
+  "shortDescription": "20000 mAh • منفذان USB • شحن سريع",
+  "description": "باوربانك 20000 مللي أمبير منفذان USB — 20000 mAh • منفذان USB • شحن سريع. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 149,
+  "currency": "MAD",
+  "category": "cat-power-banks",
+  "images": [
+    "/images/products/power-bank-20000-dual-usb-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "20000 mAh • منفذان USB • شحن سريع"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "باوربانك power bank batterie externe power bank 20000 mah double usb",
+  "fr": {
+    "name": "Power Bank 20000 mAh double USB",
+    "shortDescription": "20 000 mAh • 2 ports USB • Charge rapide",
+    "description": "Power Bank 20000 mAh double USB — 20 000 mAh • 2 ports USB • Charge rapide. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "20 000 mAh • 2 ports USB • Charge rapide"
+      }
+    ]
+  }
+}

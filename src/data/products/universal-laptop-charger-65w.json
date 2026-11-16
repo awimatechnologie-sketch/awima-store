@@ -1,0 +1,34 @@
+{
+  "id": "P-0232",
+  "name": "شاحن لابتوب عام 65 واط",
+  "slug": "universal-laptop-charger-65w",
+  "shortDescription": "65 واط • رؤوس متعددة • سلك طويل",
+  "description": "شاحن لابتوب عام 65 واط — 65 واط • رؤوس متعددة • سلك طويل. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 199,
+  "currency": "MAD",
+  "category": "cat-laptop-chargers",
+  "images": [
+    "/images/products/universal-laptop-charger-65w-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "65 واط • رؤوس متعددة • سلك طويل"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "شاحن لابتوب chargeur pc portable chargeur pc portable universel 65 w",
+  "fr": {
+    "name": "Chargeur PC portable universel 65 W",
+    "shortDescription": "65 W • Embouts multiples • Câble long",
+    "description": "Chargeur PC portable universel 65 W — 65 W • Embouts multiples • Câble long. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "65 W • Embouts multiples • Câble long"
+      }
+    ]
+  }
+}

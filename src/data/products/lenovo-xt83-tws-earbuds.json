@@ -1,0 +1,34 @@
+{
+  "id": "P-0237",
+  "name": "Lenovo XT83 TWS Earbuds",
+  "slug": "lenovo-xt83-tws-earbuds",
+  "shortDescription": "Bluetooth 5.3 • 250 ساعة تشغيل مع العلبة",
+  "description": "Lenovo XT83 TWS Earbuds — Bluetooth 5.3 • 250 ساعة تشغيل مع العلبة. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 119,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [
+    "/images/products/lenovo-xt83-tws-earbuds-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "Bluetooth 5.3 • 250 ساعة تشغيل مع العلبة"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "lenovo سماعات écouteurs lenovo xt83 écouteurs tws",
+  "fr": {
+    "name": "Lenovo XT83 Écouteurs TWS",
+    "shortDescription": "Bluetooth 5.3 • Longue autonomie avec boîtier",
+    "description": "Lenovo XT83 Écouteurs TWS — Bluetooth 5.3 • Longue autonomie avec boîtier. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Bluetooth 5.3 • Longue autonomie avec boîtier"
+      }
+    ]
+  }
+}

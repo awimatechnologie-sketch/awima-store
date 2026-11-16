@@ -1,0 +1,34 @@
+{
+  "id": "P-0251",
+  "name": "فلاش USB 32 جيجا",
+  "slug": "usb-flash-drive-32gb",
+  "shortDescription": "32 جيجا • USB 2.0 • غطاء حماية",
+  "description": "فلاش USB 32 جيجا — 32 جيجا • USB 2.0 • غطاء حماية. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 39,
+  "currency": "MAD",
+  "category": "cat-storage",
+  "images": [
+    "/images/products/usb-flash-drive-32gb-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "32 جيجا • USB 2.0 • غطاء حماية"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "فلاش clé usb flash clé usb 32 go",
+  "fr": {
+    "name": "Clé USB 32 Go",
+    "shortDescription": "32 Go • USB 2.0 • Capuchon",
+    "description": "Clé USB 32 Go — 32 Go • USB 2.0 • Capuchon. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "32 Go • USB 2.0 • Capuchon"
+      }
+    ]
+  }
+}

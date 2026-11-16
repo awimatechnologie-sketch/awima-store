@@ -1,0 +1,34 @@
+{
+  "id": "P-0240",
+  "name": "مكبر صوت بلوتوث محمول",
+  "slug": "bluetooth-speaker-portable",
+  "shortDescription": "بلوتوث • صوت قوي • بطارية طويلة",
+  "description": "مكبر صوت بلوتوث محمول — بلوتوث • صوت قوي • بطارية طويلة. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 199,
+  "currency": "MAD",
+  "category": "cat-speakers",
+  "images": [
+    "/images/products/bluetooth-speaker-portable-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "بلوتوث • صوت قوي • بطارية طويلة"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "مكبر صوت haut-parleur speaker haut-parleur bluetooth portable",
+  "fr": {
+    "name": "Haut-parleur Bluetooth portable",
+    "shortDescription": "Bluetooth • Son puissant • Longue autonomie",
+    "description": "Haut-parleur Bluetooth portable — Bluetooth • Son puissant • Longue autonomie. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Bluetooth • Son puissant • Longue autonomie"
+      }
+    ]
+  }
+}

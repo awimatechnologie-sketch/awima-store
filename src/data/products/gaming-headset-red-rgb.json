@@ -1,0 +1,34 @@
+{
+  "id": "P-0257",
+  "name": "سماعة ألعاب مع ميكروفون",
+  "slug": "gaming-headset-red-rgb",
+  "shortDescription": "ميكروفون • إضاءة • سماعات مريحة",
+  "description": "سماعة ألعاب مع ميكروفون — ميكروفون • إضاءة • سماعات مريحة. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 229,
+  "currency": "MAD",
+  "category": "cat-gaming",
+  "images": [
+    "/images/products/gaming-headset-red-rgb-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "ميكروفون • إضاءة • سماعات مريحة"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "سماعة ألعاب casque gaming casque gaming avec micro",
+  "fr": {
+    "name": "Casque gaming avec micro",
+    "shortDescription": "Micro • Éclairage • Confortable",
+    "description": "Casque gaming avec micro — Micro • Éclairage • Confortable. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Micro • Éclairage • Confortable"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "P-0229",
+  "name": "UGREEN USB-C Hub 4 Ports",
+  "slug": "ugreen-usb-c-hub-4-port",
+  "shortDescription": "4 منافذ USB 3.0 • ألمنيوم • نحيف",
+  "description": "UGREEN USB-C Hub 4 Ports — 4 منافذ USB 3.0 • ألمنيوم • نحيف. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 149,
+  "currency": "MAD",
+  "category": "cat-adapters",
+  "images": [
+    "/images/products/ugreen-usb-c-hub-4-port-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "4 منافذ USB 3.0 • ألمنيوم • نحيف"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ugreen hub هاب ugreen usb-c hub 4 ports",
+  "fr": {
+    "name": "UGREEN USB-C Hub 4 Ports",
+    "shortDescription": "4 ports USB 3.0 • Aluminium • Slim",
+    "description": "UGREEN USB-C Hub 4 Ports — 4 ports USB 3.0 • Aluminium • Slim. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "4 ports USB 3.0 • Aluminium • Slim"
+      }
+    ]
+  }
+}

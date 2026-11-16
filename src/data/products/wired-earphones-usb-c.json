@@ -1,0 +1,34 @@
+{
+  "id": "P-0228",
+  "name": "سماعات سلكية USB-C مع ميكروفون",
+  "slug": "wired-earphones-usb-c",
+  "shortDescription": "USB-C • ميكروفون • أزرار تحكم",
+  "description": "سماعات سلكية USB-C مع ميكروفون — USB-C • ميكروفون • أزرار تحكم. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 49,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [
+    "/images/products/wired-earphones-usb-c-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "USB-C • ميكروفون • أزرار تحكم"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "سماعات écouteurs filaires écouteurs filaires usb-c avec micro",
+  "fr": {
+    "name": "Écouteurs filaires USB-C avec micro",
+    "shortDescription": "USB-C • Micro • Boutons de contrôle",
+    "description": "Écouteurs filaires USB-C avec micro — USB-C • Micro • Boutons de contrôle. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "USB-C • Micro • Boutons de contrôle"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "P-0258",
+  "name": "كاميرا ويب 1080p مع ميكروفون",
+  "slug": "webcam-1080p-full-hd",
+  "shortDescription": "1080p • ميكروفون مدمج • USB",
+  "description": "كاميرا ويب 1080p مع ميكروفون — 1080p • ميكروفون مدمج • USB. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 199,
+  "currency": "MAD",
+  "category": "cat-webcams-headsets",
+  "images": [
+    "/images/products/webcam-1080p-full-hd-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "1080p • ميكروفون مدمج • USB"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "كاميرا ويب webcam webcam full hd 1080p avec micro",
+  "fr": {
+    "name": "Webcam Full HD 1080p avec micro",
+    "shortDescription": "1080p • Micro intégré • USB",
+    "description": "Webcam Full HD 1080p avec micro — 1080p • Micro intégré • USB. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "1080p • Micro intégré • USB"
+      }
+    ]
+  }
+}

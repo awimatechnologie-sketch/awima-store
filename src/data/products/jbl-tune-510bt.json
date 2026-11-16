@@ -1,0 +1,34 @@
+{
+  "id": "P-0243",
+  "name": "JBL Tune 510BT",
+  "slug": "jbl-tune-510bt",
+  "shortDescription": "40 ساعة • JBL Pure Bass • Bluetooth 5.0",
+  "description": "JBL Tune 510BT — 40 ساعة • JBL Pure Bass • Bluetooth 5.0. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 349,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [
+    "/images/products/jbl-tune-510bt-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "40 ساعة • JBL Pure Bass • Bluetooth 5.0"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "jbl سماعة casque jbl tune 510bt",
+  "fr": {
+    "name": "JBL Tune 510BT",
+    "shortDescription": "40 h • JBL Pure Bass • Bluetooth 5.0",
+    "description": "JBL Tune 510BT — 40 h • JBL Pure Bass • Bluetooth 5.0. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "40 h • JBL Pure Bass • Bluetooth 5.0"
+      }
+    ]
+  }
+}

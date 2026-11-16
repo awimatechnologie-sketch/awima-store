@@ -1,0 +1,34 @@
+{
+  "id": "P-0253",
+  "name": "حقيبة ظهر سفر للابتوب 17 بوصة",
+  "slug": "travel-laptop-backpack-17",
+  "shortDescription": "17 بوصة • عدة جيوب • مقاومة للماء",
+  "description": "حقيبة ظهر سفر للابتوب 17 بوصة — 17 بوصة • عدة جيوب • مقاومة للماء. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 249,
+  "currency": "MAD",
+  "category": "cat-laptop-bags",
+  "images": [
+    "/images/products/travel-laptop-backpack-17-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "17 بوصة • عدة جيوب • مقاومة للماء"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "حقيبة ظهر sac à dos voyage sac à dos voyage laptop 17\"",
+  "fr": {
+    "name": "Sac à dos voyage laptop 17\"",
+    "shortDescription": "17\" • Plusieurs poches • Imperméable",
+    "description": "Sac à dos voyage laptop 17\" — 17\" • Plusieurs poches • Imperméable. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "17\" • Plusieurs poches • Imperméable"
+      }
+    ]
+  }
+}

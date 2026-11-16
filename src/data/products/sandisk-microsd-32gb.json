@@ -1,0 +1,34 @@
+{
+  "id": "P-0249",
+  "name": "SanDisk microSD 32GB",
+  "slug": "sandisk-microsd-32gb",
+  "shortDescription": "32 جيجا • microSDHC",
+  "description": "SanDisk microSD 32GB — 32 جيجا • microSDHC. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 49,
+  "currency": "MAD",
+  "category": "cat-storage",
+  "images": [
+    "/images/products/sandisk-microsd-32gb-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "32 جيجا • microSDHC"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "sandisk ذاكرة carte mémoire microsd sandisk microsd 32 go",
+  "fr": {
+    "name": "SanDisk microSD 32 Go",
+    "shortDescription": "32 Go • microSDHC",
+    "description": "SanDisk microSD 32 Go — 32 Go • microSDHC. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "32 Go • microSDHC"
+      }
+    ]
+  }
+}

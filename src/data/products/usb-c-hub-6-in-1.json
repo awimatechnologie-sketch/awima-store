@@ -1,0 +1,34 @@
+{
+  "id": "P-0255",
+  "name": "موزع USB-C 6 في 1",
+  "slug": "usb-c-hub-6-in-1",
+  "shortDescription": "منافذ USB 3.0 + USB-C • ألمنيوم",
+  "description": "موزع USB-C 6 في 1 — منافذ USB 3.0 + USB-C • ألمنيوم. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 119,
+  "currency": "MAD",
+  "category": "cat-adapters",
+  "images": [
+    "/images/products/usb-c-hub-6-in-1-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "منافذ USB 3.0 + USB-C • ألمنيوم"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "هاب hub usb hub usb-c 6-en-1",
+  "fr": {
+    "name": "Hub USB-C 6-en-1",
+    "shortDescription": "Ports USB 3.0 + USB-C • Aluminium",
+    "description": "Hub USB-C 6-en-1 — Ports USB 3.0 + USB-C • Aluminium. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Ports USB 3.0 + USB-C • Aluminium"
+      }
+    ]
+  }
+}

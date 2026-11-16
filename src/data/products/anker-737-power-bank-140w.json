@@ -1,0 +1,34 @@
+{
+  "id": "P-0226",
+  "name": "Anker 737 Power Bank 24000mAh 140W",
+  "slug": "anker-737-power-bank-140w",
+  "shortDescription": "24000 mAh • 140 واط • شاشة ذكية",
+  "description": "Anker 737 Power Bank 24000mAh 140W — 24000 mAh • 140 واط • شاشة ذكية. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 999,
+  "currency": "MAD",
+  "category": "cat-power-banks",
+  "images": [
+    "/images/products/anker-737-power-bank-140w-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "24000 mAh • 140 واط • شاشة ذكية"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "anker power bank باوربانك anker 737 power bank 24000mah 140w",
+  "fr": {
+    "name": "Anker 737 Power Bank 24000mAh 140W",
+    "shortDescription": "24 000 mAh • 140 W • Écran smart",
+    "description": "Anker 737 Power Bank 24000mAh 140W — 24 000 mAh • 140 W • Écran smart. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "24 000 mAh • 140 W • Écran smart"
+      }
+    ]
+  }
+}

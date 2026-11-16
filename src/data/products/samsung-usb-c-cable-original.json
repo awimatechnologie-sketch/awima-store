@@ -1,0 +1,34 @@
+{
+  "id": "P-0234",
+  "name": "Samsung USB-C Cable Original",
+  "slug": "samsung-usb-c-cable-original",
+  "shortDescription": "USB-A إلى USB-C • أصلي • 1 متر",
+  "description": "Samsung USB-C Cable Original — USB-A إلى USB-C • أصلي • 1 متر. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 59,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [
+    "/images/products/samsung-usb-c-cable-original-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "USB-A إلى USB-C • أصلي • 1 متر"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "samsung cable كابل samsung câble usb-c original",
+  "fr": {
+    "name": "Samsung Câble USB-C original",
+    "shortDescription": "USB-A vers USB-C • Original • 1 m",
+    "description": "Samsung Câble USB-C original — USB-A vers USB-C • Original • 1 m. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "USB-A vers USB-C • Original • 1 m"
+      }
+    ]
+  }
+}

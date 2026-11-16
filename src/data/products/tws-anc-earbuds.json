@@ -1,0 +1,34 @@
+{
+  "id": "P-0241",
+  "name": "سماعات بلوتوث TWS بعزل ضوضاء",
+  "slug": "tws-anc-earbuds",
+  "shortDescription": "ANC • Bluetooth 5.3 • علبة شحن",
+  "description": "سماعات بلوتوث TWS بعزل ضوضاء — ANC • Bluetooth 5.3 • علبة شحن. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 179,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [
+    "/images/products/tws-anc-earbuds-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "ANC • Bluetooth 5.3 • علبة شحن"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "سماعات écouteurs tws anc écouteurs bluetooth tws anc",
+  "fr": {
+    "name": "Écouteurs Bluetooth TWS ANC",
+    "shortDescription": "ANC • Bluetooth 5.3 • Boîtier de charge",
+    "description": "Écouteurs Bluetooth TWS ANC — ANC • Bluetooth 5.3 • Boîtier de charge. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "ANC • Bluetooth 5.3 • Boîtier de charge"
+      }
+    ]
+  }
+}

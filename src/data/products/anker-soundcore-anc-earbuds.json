@@ -1,0 +1,34 @@
+{
+  "id": "P-0238",
+  "name": "Anker Soundcore ANC Earbuds",
+  "slug": "anker-soundcore-anc-earbuds",
+  "shortDescription": "عزل ضوضاء ANC • صوت Hi-Res • علبة شحن",
+  "description": "Anker Soundcore ANC Earbuds — عزل ضوضاء ANC • صوت Hi-Res • علبة شحن. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 549,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [
+    "/images/products/anker-soundcore-anc-earbuds-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "عزل ضوضاء ANC • صوت Hi-Res • علبة شحن"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "soundcore anker سماعات anker soundcore écouteurs anc",
+  "fr": {
+    "name": "Anker Soundcore Écouteurs ANC",
+    "shortDescription": "ANC • Hi-Res • Boîtier de charge",
+    "description": "Anker Soundcore Écouteurs ANC — ANC • Hi-Res • Boîtier de charge. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "ANC • Hi-Res • Boîtier de charge"
+      }
+    ]
+  }
+}

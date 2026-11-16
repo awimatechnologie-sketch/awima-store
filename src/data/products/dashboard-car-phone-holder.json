@@ -1,0 +1,34 @@
+{
+  "id": "P-0260",
+  "name": "حامل هاتف لسطح السيارة",
+  "slug": "dashboard-car-phone-holder",
+  "shortDescription": "تثبيت على التابلو • قابل للتعديل",
+  "description": "حامل هاتف لسطح السيارة — تثبيت على التابلو • قابل للتعديل. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 99,
+  "currency": "MAD",
+  "category": "cat-phone-holders",
+  "images": [
+    "/images/products/dashboard-car-phone-holder-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "تثبيت على التابلو • قابل للتعديل"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "حامل سيارة support voiture support voiture tableau de bord",
+  "fr": {
+    "name": "Support voiture tableau de bord",
+    "shortDescription": "Fixation tableau de bord • Réglable",
+    "description": "Support voiture tableau de bord — Fixation tableau de bord • Réglable. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Fixation tableau de bord • Réglable"
+      }
+    ]
+  }
+}

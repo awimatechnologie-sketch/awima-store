@@ -1,0 +1,34 @@
+{
+  "id": "P-0246",
+  "name": "غلاف MagSafe مع حماية الكاميرا",
+  "slug": "magsafe-case-camera-protection",
+  "shortDescription": "MagSafe • حماية العدسات • مقاوم للصدمات",
+  "description": "غلاف MagSafe مع حماية الكاميرا — MagSafe • حماية العدسات • مقاوم للصدمات. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 99,
+  "currency": "MAD",
+  "category": "cat-phone-cases",
+  "images": [
+    "/images/products/magsafe-case-camera-protection-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "MagSafe • حماية العدسات • مقاوم للصدمات"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "غلاف coque magsafe coque magsafe avec protection caméra",
+  "fr": {
+    "name": "Coque MagSafe avec protection caméra",
+    "shortDescription": "MagSafe • Protection objectifs • Antichoc",
+    "description": "Coque MagSafe avec protection caméra — MagSafe • Protection objectifs • Antichoc. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "MagSafe • Protection objectifs • Antichoc"
+      }
+    ]
+  }
+}
