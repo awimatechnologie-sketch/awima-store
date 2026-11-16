@@ -2,8 +2,11 @@
 // الخادم (Pages Functions) لا يقرأ الملفات وقت التشغيل، فنُضمّن لقطة البيانات وقت البناء.
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const DATA = new URL('../src/data/', import.meta.url).pathname;
+// fileURLToPath (وليس .pathname) كي يعمل على Windows مع المسافات في اسم المجلد
+const DATA = fileURLToPath(new URL('../src/data/', import.meta.url));
+const OUT = fileURLToPath(new URL('../server/flow-catalog.generated.js', import.meta.url));
 const readDir = (d) => readdirSync(join(DATA, d)).filter((f) => f.endsWith('.json')).sort().map((f) => JSON.parse(readFileSync(join(DATA, d, f), 'utf8')));
 const settings = JSON.parse(readFileSync(join(DATA, 'settings.json'), 'utf8'));
 const dep = JSON.parse(readFileSync(join(DATA, 'departments.json'), 'utf8'));
@@ -22,5 +25,5 @@ const catalog = {
   botPhone: settings.contact?.whatsapp ?? '',
   cities: (settings.cities ?? []).filter((c) => c?.name).map((c) => ({ name: c.name, name_fr: c.name_fr ?? null, open: c.open === true })),
 };
-writeFileSync(new URL('../server/flow-catalog.generated.js', import.meta.url), `// ملف مولَّد — لا تعدّله يدوياً (node scripts/gen-flow-catalog.mjs)\nexport default ${JSON.stringify(catalog)};\n`);
+writeFileSync(OUT, `// ملف مولَّد — لا تعدّله يدوياً (node scripts/gen-flow-catalog.mjs)\nexport default ${JSON.stringify(catalog)};\n`);
 console.log(`flow-catalog: ${Object.keys(products).length} منتج، ${Object.keys(categories).length} قسم، ${catalog.departments.length} أقسام إدارية`);
