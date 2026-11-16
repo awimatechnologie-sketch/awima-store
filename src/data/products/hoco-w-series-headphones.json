@@ -1,0 +1,34 @@
+{
+  "id": "P-0130",
+  "name": "Hoco W-Series Headphones",
+  "slug": "hoco-w-series-headphones",
+  "shortDescription": "40 ساعة • Bluetooth 5.3",
+  "description": "Hoco W-Series Headphones — 40 ساعة • Bluetooth 5.3. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 199,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [
+    "/images/products/hoco-w-series-headphones-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "40 ساعة • Bluetooth 5.3"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "سماعة رأس بلوتوث casque hoco w-series headphones",
+  "fr": {
+    "name": "Hoco W-Series Headphones",
+    "shortDescription": "40 h • Bluetooth 5.3",
+    "description": "Hoco W-Series Headphones — 40 h • Bluetooth 5.3. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "40 h • Bluetooth 5.3"
+      }
+    ]
+  }
+}

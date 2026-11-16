@@ -1,0 +1,34 @@
+{
+  "id": "P-0156",
+  "name": "Baseus Laptop Stand",
+  "slug": "baseus-laptop-stand",
+  "shortDescription": "ألمنيوم • قابل للطي والتدوير",
+  "description": "Baseus Laptop Stand — ألمنيوم • قابل للطي والتدوير. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 199,
+  "currency": "MAD",
+  "category": "cat-laptop-stands",
+  "images": [
+    "/images/products/baseus-laptop-stand-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": true,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "ألمنيوم • قابل للطي والتدوير"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "حامل سيارة هاتف support voiture baseus laptop stand",
+  "fr": {
+    "name": "Baseus Laptop Stand",
+    "shortDescription": "Aluminium • Pliable",
+    "description": "Baseus Laptop Stand — Aluminium • Pliable. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Aluminium • Pliable"
+      }
+    ]
+  }
+}

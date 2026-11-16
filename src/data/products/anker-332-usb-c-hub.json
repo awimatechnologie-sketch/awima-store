@@ -1,0 +1,34 @@
+{
+  "id": "P-0173",
+  "name": "Anker 332 USB-C Hub",
+  "slug": "anker-332-usb-c-hub",
+  "shortDescription": "5 في 1 • HDMI 4K",
+  "description": "Anker 332 USB-C Hub — 5 في 1 • HDMI 4K. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 329,
+  "currency": "MAD",
+  "category": "cat-adapters",
+  "images": [
+    "/images/products/anker-332-usb-c-hub-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "5 في 1 • HDMI 4K"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "هاب محول موزع hub adaptateur anker 332 usb-c hub",
+  "fr": {
+    "name": "Anker 332 USB-C Hub",
+    "shortDescription": "5-en-1 • HDMI 4K",
+    "description": "Anker 332 USB-C Hub — 5-en-1 • HDMI 4K. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "5-en-1 • HDMI 4K"
+      }
+    ]
+  }
+}

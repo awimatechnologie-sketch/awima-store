@@ -1,0 +1,34 @@
+{
+  "id": "P-0170",
+  "name": "SanDisk Extreme microSD 256GB",
+  "slug": "sandisk-extreme-microsd-256gb",
+  "shortDescription": "256 جيجا • سرعة 190 MB/s • فيديو 4K",
+  "description": "SanDisk Extreme microSD 256GB — 256 جيجا • سرعة 190 MB/s • فيديو 4K. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 199,
+  "currency": "MAD",
+  "category": "cat-storage",
+  "images": [
+    "/images/products/sandisk-extreme-microsd-256gb-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "256 جيجا • سرعة 190 MB/s • فيديو 4K"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ذاكرة تخزين فلاش ديسك usb flash ssd carte mémoire sandisk extreme microsd 256gb",
+  "fr": {
+    "name": "SanDisk Extreme microSD 256GB",
+    "shortDescription": "256 Go • 190 MB/s • 4K",
+    "description": "SanDisk Extreme microSD 256GB — 256 Go • 190 MB/s • 4K. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "256 Go • 190 MB/s • 4K"
+      }
+    ]
+  }
+}

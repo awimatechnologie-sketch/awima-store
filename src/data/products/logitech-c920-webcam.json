@@ -1,0 +1,34 @@
+{
+  "id": "P-0194",
+  "name": "Logitech C920 Webcam",
+  "slug": "logitech-c920-webcam",
+  "shortDescription": "1080p • تركيز تلقائي",
+  "description": "Logitech C920 Webcam — 1080p • تركيز تلقائي. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 699,
+  "currency": "MAD",
+  "category": "cat-webcams-headsets",
+  "images": [
+    "/images/products/logitech-c920-webcam-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "1080p • تركيز تلقائي"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "كاميرا ويب webcam logitech c920 webcam",
+  "fr": {
+    "name": "Logitech C920 Webcam",
+    "shortDescription": "1080p • Autofocus",
+    "description": "Logitech C920 Webcam — 1080p • Autofocus. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "1080p • Autofocus"
+      }
+    ]
+  }
+}

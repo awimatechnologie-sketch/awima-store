@@ -1,0 +1,34 @@
+{
+  "id": "P-0174",
+  "name": "Baseus Metal Gleam 6-in-1 Hub",
+  "slug": "baseus-metal-gleam-6-in-1-hub",
+  "shortDescription": "HDMI 4K • شحن PD 100 واط",
+  "description": "Baseus Metal Gleam 6-in-1 Hub — HDMI 4K • شحن PD 100 واط. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 349,
+  "currency": "MAD",
+  "category": "cat-adapters",
+  "images": [
+    "/images/products/baseus-metal-gleam-6-in-1-hub-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "HDMI 4K • شحن PD 100 واط"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "هاب محول موزع hub adaptateur baseus metal gleam 6-in-1 hub",
+  "fr": {
+    "name": "Baseus Metal Gleam 6-in-1 Hub",
+    "shortDescription": "HDMI 4K • PD 100 W",
+    "description": "Baseus Metal Gleam 6-in-1 Hub — HDMI 4K • PD 100 W. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "HDMI 4K • PD 100 W"
+      }
+    ]
+  }
+}

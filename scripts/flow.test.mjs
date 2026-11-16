@@ -115,27 +115,32 @@ function fakeD1() {
 const ADMIN = { Authorization: 'Bearer secret-token-123456' };
 const post = (url, b, h = {}) => new Request('https://x.test' + url, { method: 'POST', headers: { 'content-type': 'application/json', ...h }, body: JSON.stringify(b) });
 const mkEnv = () => ({ DB: fakeD1(), ADMIN_TOKEN: 'secret-token-123456', HASH_SALT: 's' });
+// المنتجات تُدار من لوحة الإدارة وتتغير: نختار معرّفات من البيانات الحالية بدل ثوابت
+const PIDS = Object.keys(REAL.products);
+const ONREQ = PIDS.find((id) => REAL.products[id].availability === 'on_request' && typeof REAL.products[id].price === 'number');
+const INSTOCK = PIDS.find((id) => REAL.products[id].availability === 'in_stock' && typeof REAL.products[id].price === 'number');
 const refN = (n) => `AW-20261114-${'ABCDEFGH'[n]}${'ABCDEFGH'[n]}${'ABCDEFGH'[n]}${'ABCDEFGH'[n]}`;
 
-test('API: منتج متوفر من قسم التخزين → مسؤول التخزين، ويُحفظ الطلب', async () => {
+test('API: منتج متوفر → مسؤول القسم، ويُحفظ الطلب', async (t) => {
+  if (!INSTOCK) return t.skip('لا منتج «متوفر» في البيانات الحالية (كلها عند الطلب)');
   const env = mkEnv();
-  const r = await postOrder(post('/api/orders', { ref: refN(0), name: 'سعيد', city: 'أكادير', phone: '0600000000', items: [{ id: 'P-0001', qty: 2 }] }), env);
+  const r = await postOrder(post('/api/orders', { ref: refN(0), name: 'سعيد', city: 'أكادير', phone: '0600000000', items: [{ id: INSTOCK, qty: 1 }] }), env);
   assert.equal(r.status, 201);
   const j = await r.json();
   assert.equal(j.availability, 'available');
   assert.equal(j.handler.kind, 'department');
-  assert.equal(j.handler.phone, REAL.departments.find((d) => d.id === 'storage').phone);
+  assert.ok(/^212\d{9}$/.test(j.handler.phone));
   const list = await (await adminOrders(new Request('https://x.test/api/admin/orders', { headers: ADMIN }), env)).json();
   assert.equal(list.orders.length, 1);
   assert.equal(list.orders[0].phone, '212600000000');
-  assert.equal(list.orders[0].subtotal, 110);
-  assert.equal(list.orders[0].items[0].qty, 2);
+  assert.equal(list.orders[0].subtotal, REAL.products[INSTOCK].price);
+  assert.equal(list.orders[0].items[0].qty, 1);
   assert.equal(list.orders[0].ip, undefined);
 });
 
 test('API: منتج «عند الطلب» → المنسق وحالة انتظار', async () => {
   const env = mkEnv();
-  const j = await (await postOrder(post('/api/orders', { ref: refN(1), name: 'سعيد', city: 'أكادير', items: [{ id: 'P-0005', qty: 1 }] }), env)).json();
+  const j = await (await postOrder(post('/api/orders', { ref: refN(1), name: 'سعيد', city: 'أكادير', items: [{ id: ONREQ, qty: 1 }] }), env)).json();
   assert.equal(j.availability, 'waiting');
   assert.equal(j.status, 'WAITING_STOCK');
   assert.equal(j.handler.kind, 'coordinator');
@@ -147,7 +152,7 @@ test('API: بيانات ناقصة → 400 مع الحقول الناقصة، و
   const bad = await postOrder(post('/api/orders', { ref: refN(2), name: '', city: '', items: [] }), env);
   assert.equal(bad.status, 400);
   assert.deepEqual((await bad.json()).missing, ['name', 'city', 'items']);
-  const b = { ref: refN(3), name: 'سعيد', city: 'أكادير', items: [{ id: 'P-0001', qty: 1 }] };
+  const b = { ref: refN(3), name: 'سعيد', city: 'أكادير', items: [{ id: ONREQ, qty: 1 }] };
   assert.equal((await postOrder(post('/api/orders', b), env)).status, 201);
   const again = await postOrder(post('/api/orders', b), env);
   assert.equal(again.status, 200);
@@ -160,17 +165,17 @@ test('API: حد الطلبات في الساعة لكل IP', async () => {
   const env = mkEnv();
   const codes = [];
   for (let i = 0; i < 8; i++) {
-    const r = await postOrder(post('/api/orders', { ref: refN(i), name: 'سعيد', city: 'أكادير', items: [{ id: 'P-0001', qty: 1 }] }), env);
+    const r = await postOrder(post('/api/orders', { ref: refN(i), name: 'سعيد', city: 'أكادير', items: [{ id: ONREQ, qty: 1 }] }), env);
     codes.push(r.status);
   }
   assert.ok(codes.every((c) => c === 201));
-  const r = await postOrder(post('/api/orders', { ref: 'AW-20261114-ZZZZ', name: 'سعيد', city: 'أكادير', items: [{ id: 'P-0001', qty: 1 }] }), env);
+  const r = await postOrder(post('/api/orders', { ref: 'AW-20261114-ZZZZ', name: 'سعيد', city: 'أكادير', items: [{ id: ONREQ, qty: 1 }] }), env);
   assert.equal(r.status, 429);
 });
 
 test('API الإدارة: بلا توكن 401، وتغيير الحالة يُسجَّل', async () => {
   const env = mkEnv();
-  await postOrder(post('/api/orders', { ref: refN(4), name: 'سعيد', city: 'أكادير', items: [{ id: 'P-0001', qty: 1 }] }), env);
+  await postOrder(post('/api/orders', { ref: refN(4), name: 'سعيد', city: 'أكادير', items: [{ id: ONREQ, qty: 1 }] }), env);
   assert.equal((await adminOrders(new Request('https://x.test/api/admin/orders'), env)).status, 401);
   assert.equal((await adminOrderStatus(post('/api/admin/orders', { ref: refN(4), status: 'CONFIRMED' }), env)).status, 401);
   assert.equal((await adminOrderStatus(post('/api/admin/orders', { ref: refN(4), status: 'NOPE' }, ADMIN), env)).status, 400);

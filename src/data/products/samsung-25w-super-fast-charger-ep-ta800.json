@@ -1,0 +1,34 @@
+{
+  "id": "P-0100",
+  "name": "Samsung 25W Super Fast Charger EP-TA800",
+  "slug": "samsung-25w-super-fast-charger-ep-ta800",
+  "shortDescription": "25 واط • USB-C • PD • شحن سريع",
+  "description": "Samsung 25W Super Fast Charger EP-TA800 — 25 واط • USB-C • PD • شحن سريع. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 149,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [
+    "/images/products/samsung-25w-super-fast-charger-ep-ta800-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "25 واط • USB-C • PD • شحن سريع"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "شاحن شارجور رأس شحن chargeur samsung 25w super fast charger ep-ta800",
+  "fr": {
+    "name": "Samsung 25W Super Fast Charger EP-TA800",
+    "shortDescription": "25 W • USB-C • PD • Charge rapide",
+    "description": "Samsung 25W Super Fast Charger EP-TA800 — 25 W • USB-C • PD • Charge rapide. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "25 W • USB-C • PD • Charge rapide"
+      }
+    ]
+  }
+}

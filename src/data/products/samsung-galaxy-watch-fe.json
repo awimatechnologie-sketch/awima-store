@@ -1,0 +1,34 @@
+{
+  "id": "P-0189",
+  "name": "Samsung Galaxy Watch FE",
+  "slug": "samsung-galaxy-watch-fe",
+  "shortDescription": "AMOLED • Wear OS",
+  "description": "Samsung Galaxy Watch FE — AMOLED • Wear OS. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 1499,
+  "currency": "MAD",
+  "category": "cat-smartwatches",
+  "images": [
+    "/images/products/samsung-galaxy-watch-fe-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "AMOLED • Wear OS"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ساعة ذكية montre connectée smartwatch samsung galaxy watch fe",
+  "fr": {
+    "name": "Samsung Galaxy Watch FE",
+    "shortDescription": "AMOLED • Wear OS",
+    "description": "Samsung Galaxy Watch FE — AMOLED • Wear OS. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "AMOLED • Wear OS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "P-0161",
+  "name": "Logitech G102 LightSync Mouse",
+  "slug": "logitech-g102-lightsync-mouse",
+  "shortDescription": "فأرة ألعاب • RGB • 8000 DPI",
+  "description": "Logitech G102 LightSync Mouse — فأرة ألعاب • RGB • 8000 DPI. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 249,
+  "currency": "MAD",
+  "category": "cat-keyboards-mice",
+  "images": [
+    "/images/products/logitech-g102-lightsync-mouse-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "فأرة ألعاب • RGB • 8000 DPI"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "كلافيي لوحة مفاتيح فأرة ماوس clavier souris logitech g102 lightsync mouse",
+  "fr": {
+    "name": "Logitech G102 LightSync Mouse",
+    "shortDescription": "Souris gaming • RGB • 8000 DPI",
+    "description": "Logitech G102 LightSync Mouse — Souris gaming • RGB • 8000 DPI. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Souris gaming • RGB • 8000 DPI"
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "id": "cat-speakers",
+  "name": "مكبرات الصوت",
+  "slug": "speakers",
+  "order": 77,
+  "name_fr": "Haut-parleurs Bluetooth",
+  "parent": "cat-phone-accessories"
+}

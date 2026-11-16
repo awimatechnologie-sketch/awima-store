@@ -1,0 +1,34 @@
+{
+  "id": "P-0105",
+  "name": "UGREEN Nexode Pro 100W Charger",
+  "slug": "ugreen-nexode-pro-100w-charger",
+  "shortDescription": "100 واط GaN • 3 منافذ",
+  "description": "UGREEN Nexode Pro 100W Charger — 100 واط GaN • 3 منافذ. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 349,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [
+    "/images/products/ugreen-nexode-pro-100w-charger-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": true,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "100 واط GaN • 3 منافذ"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "شاحن شارجور رأس شحن chargeur ugreen nexode pro 100w charger",
+  "fr": {
+    "name": "UGREEN Nexode Pro 100W Charger",
+    "shortDescription": "100 W GaN • 3 ports",
+    "description": "UGREEN Nexode Pro 100W Charger — 100 W GaN • 3 ports. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "100 W GaN • 3 ports"
+      }
+    ]
+  }
+}

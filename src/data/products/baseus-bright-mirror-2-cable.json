@@ -1,0 +1,37 @@
+{
+  "id": "P-0139",
+  "name": "Baseus Bright Mirror 2 Cable",
+  "slug": "baseus-bright-mirror-2-cable",
+  "shortDescription": "100 واط • شاشة LED",
+  "description": "Baseus Bright Mirror 2 Cable — 100 واط • شاشة LED. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 119,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [
+    "/images/products/baseus-bright-mirror-2-cable-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "100 واط • شاشة LED"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "كابل سلك câble baseus bright mirror 2 cable",
+  "ports": [
+    "usb-c"
+  ],
+  "fr": {
+    "name": "Baseus Bright Mirror 2 Cable",
+    "shortDescription": "100 W • Affichage LED",
+    "description": "Baseus Bright Mirror 2 Cable — 100 W • Affichage LED. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "100 W • Affichage LED"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "P-0164",
+  "name": "Samsung T7 Portable SSD 1TB",
+  "slug": "samsung-t7-portable-ssd-1tb",
+  "shortDescription": "1 تيرابايت • سرعة 1050 MB/s • USB-C",
+  "description": "Samsung T7 Portable SSD 1TB — 1 تيرابايت • سرعة 1050 MB/s • USB-C. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 899,
+  "currency": "MAD",
+  "category": "cat-storage",
+  "images": [
+    "/images/products/samsung-t7-portable-ssd-1tb-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": true,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "1 تيرابايت • سرعة 1050 MB/s • USB-C"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ذاكرة تخزين فلاش ديسك usb flash ssd carte mémoire samsung t7 portable ssd 1tb",
+  "fr": {
+    "name": "Samsung T7 Portable SSD 1TB",
+    "shortDescription": "1 To • 1050 MB/s • USB-C",
+    "description": "Samsung T7 Portable SSD 1TB — 1 To • 1050 MB/s • USB-C. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "1 To • 1050 MB/s • USB-C"
+      }
+    ]
+  }
+}

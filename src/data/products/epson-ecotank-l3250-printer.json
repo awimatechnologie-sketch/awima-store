@@ -1,0 +1,34 @@
+{
+  "id": "P-0197",
+  "name": "Epson EcoTank L3250 Printer",
+  "slug": "epson-ecotank-l3250-printer",
+  "shortDescription": "EcoTank • WiFi • 3 في 1",
+  "description": "Epson EcoTank L3250 Printer — EcoTank • WiFi • 3 في 1. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 2499,
+  "currency": "MAD",
+  "category": "cat-printers",
+  "images": [
+    "/images/products/epson-ecotank-l3250-printer-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "EcoTank • WiFi • 3 في 1"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "طابعة imprimante epson ecotank l3250 printer",
+  "fr": {
+    "name": "Epson EcoTank L3250 Printer",
+    "shortDescription": "EcoTank • WiFi • 3-en-1",
+    "description": "Epson EcoTank L3250 Printer — EcoTank • WiFi • 3-en-1. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "EcoTank • WiFi • 3-en-1"
+      }
+    ]
+  }
+}

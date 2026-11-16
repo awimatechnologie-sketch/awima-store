@@ -1,39 +1,33 @@
 {
-  "id": "P-0058",
+  "id": "P-0117",
   "name": "Apple AirPods 4",
   "slug": "apple-airpods-4",
-  "shortDescription": "Bluetooth • تصميم مفتوح دون رؤوس سيليكون",
-  "description": "Apple AirPods 4 (AirPods 4 (النسخة العادية)). Bluetooth • تصميم مفتوح دون رؤوس سيليكون • حتى 5 ساعات استماع بالشحنة. اقتران سلس مع أجهزة Apple وصوت مكاني؛ توجد نسخة ANC منفصلة بسعر أعلى.",
-  "price": 1199,
+  "shortDescription": "عزل ضوضاء ANC • USB-C • صوت مكاني",
+  "description": "Apple AirPods 4 — عزل ضوضاء ANC • USB-C • صوت مكاني. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 1499,
   "currency": "MAD",
   "category": "cat-audio",
-  "images": [],
+  "images": [
+    "/images/products/apple-airpods-4-1.jpg"
+  ],
   "availability": "on_request",
-  "featured": false,
+  "featured": true,
   "specs": [
     {
-      "key": "الموديل",
-      "value": "AirPods 4 (النسخة العادية)"
-    },
-    {
       "key": "المواصفات",
-      "value": "Bluetooth • تصميم مفتوح دون رؤوس سيليكون • حتى 5 ساعات استماع بالشحنة"
+      "value": "عزل ضوضاء ANC • USB-C • صوت مكاني"
     }
   ],
   "whatsappOrder": true,
-  "keywords": "apple airpods ايربودز tws ecouteurs",
+  "keywords": "سماعات بلوتوث ايربودز اذن écouteurs sans fil tws apple airpods 4",
   "fr": {
     "name": "Apple AirPods 4",
-    "shortDescription": "Bluetooth • Design ouvert sans embouts silicone",
-    "description": "Apple AirPods 4 (AirPods 4 (النسخة العادية)). Bluetooth • Design ouvert sans embouts silicone • Jusqu’à 5 h d’écoute par charge. Appairage fluide avec les appareils Apple et audio spatial ; une version ANC existe à un prix plus élevé.",
+    "shortDescription": "ANC • USB-C • Audio spatial",
+    "description": "Apple AirPods 4 — ANC • USB-C • Audio spatial. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
     "specs": [
       {
-        "key": "Modèle",
-        "value": "AirPods 4 (النسخة العادية)"
-      },
-      {
         "key": "Caractéristiques",
-        "value": "Bluetooth • Design ouvert sans embouts silicone • Jusqu’à 5 h d’écoute par charge"
+        "value": "ANC • USB-C • Audio spatial"
       }
     ]
   }

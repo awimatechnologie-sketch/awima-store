@@ -1,31 +1,33 @@
 {
-  "id": "P-0072",
-  "name": "UGREEN HiTune Max5C",
+  "id": "P-0129",
+  "name": "UGREEN HiTune Max5c",
   "slug": "ugreen-hitune-max5c",
-  "shortDescription": "Bluetooth • ANC",
-  "description": "UGREEN HiTune Max5C. Bluetooth • ANC • حتى 75 ساعة تقريباً.",
-  "price": 339,
+  "shortDescription": "عزل ضوضاء ANC • 75 ساعة • صوت Hi-Res",
+  "description": "UGREEN HiTune Max5c — عزل ضوضاء ANC • 75 ساعة • صوت Hi-Res. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 499,
   "currency": "MAD",
   "category": "cat-audio",
-  "images": [],
+  "images": [
+    "/images/products/ugreen-hitune-max5c-1.jpg"
+  ],
   "availability": "on_request",
   "featured": false,
   "specs": [
     {
       "key": "المواصفات",
-      "value": "Bluetooth • ANC • حتى 75 ساعة تقريباً"
+      "value": "عزل ضوضاء ANC • 75 ساعة • صوت Hi-Res"
     }
   ],
   "whatsappOrder": true,
-  "keywords": "ugreen hitune casque سماعة رأس anc",
+  "keywords": "سماعة رأس بلوتوث casque ugreen hitune max5c",
   "fr": {
-    "name": "UGREEN HiTune Max5C",
-    "shortDescription": "Bluetooth • ANC",
-    "description": "UGREEN HiTune Max5C. Bluetooth • ANC • Environ 75 h d’autonomie.",
+    "name": "UGREEN HiTune Max5c",
+    "shortDescription": "ANC • 75 h • Hi-Res",
+    "description": "UGREEN HiTune Max5c — ANC • 75 h • Hi-Res. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
     "specs": [
       {
         "key": "Caractéristiques",
-        "value": "Bluetooth • ANC • Environ 75 h d’autonomie"
+        "value": "ANC • 75 h • Hi-Res"
       }
     ]
   }

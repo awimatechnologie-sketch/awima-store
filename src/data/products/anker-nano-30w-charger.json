@@ -1,0 +1,34 @@
+{
+  "id": "P-0103",
+  "name": "Anker Nano 30W Charger",
+  "slug": "anker-nano-30w-charger",
+  "shortDescription": "30 واط GaN • صغير الحجم جداً",
+  "description": "Anker Nano 30W Charger — 30 واط GaN • صغير الحجم جداً. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 179,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [
+    "/images/products/anker-nano-30w-charger-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": true,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "30 واط GaN • صغير الحجم جداً"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "شاحن شارجور رأس شحن chargeur anker nano 30w charger",
+  "fr": {
+    "name": "Anker Nano 30W Charger",
+    "shortDescription": "30 W GaN • Ultra compact",
+    "description": "Anker Nano 30W Charger — 30 W GaN • Ultra compact. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "30 W GaN • Ultra compact"
+      }
+    ]
+  }
+}

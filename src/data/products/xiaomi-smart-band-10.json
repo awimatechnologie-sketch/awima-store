@@ -1,0 +1,34 @@
+{
+  "id": "P-0186",
+  "name": "Xiaomi Smart Band 10",
+  "slug": "xiaomi-smart-band-10",
+  "shortDescription": "AMOLED 1.72 بوصة • 21 يوماً",
+  "description": "Xiaomi Smart Band 10 — AMOLED 1.72 بوصة • 21 يوماً. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 449,
+  "currency": "MAD",
+  "category": "cat-smartwatches",
+  "images": [
+    "/images/products/xiaomi-smart-band-10-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "AMOLED 1.72 بوصة • 21 يوماً"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ساعة ذكية montre connectée smartwatch xiaomi smart band 10",
+  "fr": {
+    "name": "Xiaomi Smart Band 10",
+    "shortDescription": "AMOLED 1,72\" • 21 jours",
+    "description": "Xiaomi Smart Band 10 — AMOLED 1,72\" • 21 jours. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "AMOLED 1,72\" • 21 jours"
+      }
+    ]
+  }
+}

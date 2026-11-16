@@ -1,0 +1,37 @@
+{
+  "id": "P-0135",
+  "name": "Anker PowerLine USB-C Cable",
+  "slug": "anker-powerline-usb-c-cable",
+  "shortDescription": "USB-C • 100 واط • 1.8 متر",
+  "description": "Anker PowerLine USB-C Cable — USB-C • 100 واط • 1.8 متر. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 99,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [
+    "/images/products/anker-powerline-usb-c-cable-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "USB-C • 100 واط • 1.8 متر"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "كابل سلك câble anker powerline usb-c cable",
+  "ports": [
+    "usb-c"
+  ],
+  "fr": {
+    "name": "Anker PowerLine USB-C Cable",
+    "shortDescription": "USB-C • 100 W • 1,8 m",
+    "description": "Anker PowerLine USB-C Cable — USB-C • 100 W • 1,8 m. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "USB-C • 100 W • 1,8 m"
+      }
+    ]
+  }
+}

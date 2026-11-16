@@ -1,9 +1,9 @@
 {
   "id": "P-0019",
-  "name": "Awima Box 45 — حقيبة تنظيم كبيرة مع 45 علبة",
+  "name": "AWIMA Box 45 — حقيبة تنظيم كبيرة مع 45 علبة",
   "slug": "awima-box-45",
   "shortDescription": "حقيبة حاملة كبيرة بمشبكين زرقاوين تضم 45 علبة صغيرة، لمحل صيانة منظّم بالكامل",
-  "description": "حقيبة حاملة كبيرة بمشبكين زرقاوين تضم 45 علبة صغيرة قابلة للإخراج. أكبر مجموعة في Awima Box: تكفي لتنظيم مخزون قطع الغيار الصغيرة لمحل كامل، وتُنقل بسهولة وتحفظ القطع من الغبار والضياع. رقّم كل علبة وسجّل موقعها في Awima Stock.",
+  "description": "حقيبة حاملة كبيرة بمشبكين زرقاوين تضم 45 علبة صغيرة قابلة للإخراج. أكبر مجموعة في AWIMA Box: تكفي لتنظيم مخزون قطع الغيار الصغيرة لمحل كامل، وتُنقل بسهولة وتحفظ القطع من الغبار والضياع. رقّم كل علبة وسجّل موقعها في Awima Stock.",
   "price": 189,
   "currency": "MAD",
   "category": "cat-awima-box",
@@ -34,9 +34,9 @@
   ],
   "whatsappOrder": true,
   "fr": {
-    "name": "Awima Box 45 — Grande mallette avec 45 boîtes",
+    "name": "AWIMA Box 45 — Grande mallette avec 45 boîtes",
     "shortDescription": "Grande mallette à deux fermoirs bleus avec 45 petites boîtes pour un atelier entièrement organisé",
-    "description": "Grande mallette à deux fermoirs bleus contenant 45 petites boîtes amovibles. Le plus grand ensemble Awima Box : de quoi organiser tout le stock de petites pièces d'un atelier, facile à transporter et à l'abri de la poussière. Numérotez chaque boîte et enregistrez son emplacement dans Awima Stock.",
+    "description": "Grande mallette à deux fermoirs bleus contenant 45 petites boîtes amovibles. Le plus grand ensemble AWIMA Box : de quoi organiser tout le stock de petites pièces d'un atelier, facile à transporter et à l'abri de la poussière. Numérotez chaque boîte et enregistrez son emplacement dans Awima Stock.",
     "specs": [
       {
         "key": "Nombre de boîtes",

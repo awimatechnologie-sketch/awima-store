@@ -1,39 +1,33 @@
 {
-  "id": "P-0057",
+  "id": "P-0118",
   "name": "Samsung Galaxy Buds Core",
   "slug": "samsung-galaxy-buds-core",
-  "shortDescription": "Bluetooth 5.4 • ANC",
-  "description": "Samsung Galaxy Buds Core (Galaxy Buds Core). Bluetooth 5.4 • ANC • تصميم داخل الأذن مع أطراف تثبيت. تحقق من توافق بعض خصائص النظام مع هاتفك.",
-  "price": 359,
+  "shortDescription": "عزل ضوضاء ANC • مقاومة IP54 • 35 ساعة",
+  "description": "Samsung Galaxy Buds Core — عزل ضوضاء ANC • مقاومة IP54 • 35 ساعة. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 449,
   "currency": "MAD",
   "category": "cat-audio",
-  "images": [],
+  "images": [
+    "/images/products/samsung-galaxy-buds-core-1.jpg"
+  ],
   "availability": "on_request",
   "featured": false,
   "specs": [
     {
-      "key": "الموديل",
-      "value": "Galaxy Buds Core"
-    },
-    {
       "key": "المواصفات",
-      "value": "Bluetooth 5.4 • ANC • تصميم داخل الأذن مع أطراف تثبيت"
+      "value": "عزل ضوضاء ANC • مقاومة IP54 • 35 ساعة"
     }
   ],
   "whatsappOrder": true,
-  "keywords": "samsung galaxy buds tws ecouteurs سماعات",
+  "keywords": "سماعات بلوتوث ايربودز اذن écouteurs sans fil tws samsung galaxy buds core",
   "fr": {
     "name": "Samsung Galaxy Buds Core",
-    "shortDescription": "Bluetooth 5.4 • ANC",
-    "description": "Samsung Galaxy Buds Core (Galaxy Buds Core). Bluetooth 5.4 • ANC • Intra-auriculaire avec ailettes de maintien. Vérifiez la compatibilité de certaines fonctions avec votre téléphone.",
+    "shortDescription": "ANC • IP54 • 35 h",
+    "description": "Samsung Galaxy Buds Core — ANC • IP54 • 35 h. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
     "specs": [
       {
-        "key": "Modèle",
-        "value": "Galaxy Buds Core"
-      },
-      {
         "key": "Caractéristiques",
-        "value": "Bluetooth 5.4 • ANC • Intra-auriculaire avec ailettes de maintien"
+        "value": "ANC • IP54 • 35 h"
       }
     ]
   }

@@ -1,0 +1,34 @@
+{
+  "id": "P-0123",
+  "name": "SoundPEATS Air6 HS",
+  "slug": "soundpeats-air6-hs",
+  "shortDescription": "عزل ضوضاء ANC • صوت Hi-Res • 33 ساعة",
+  "description": "SoundPEATS Air6 HS — عزل ضوضاء ANC • صوت Hi-Res • 33 ساعة. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 349,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [
+    "/images/products/soundpeats-air6-hs-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "عزل ضوضاء ANC • صوت Hi-Res • 33 ساعة"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "سماعات بلوتوث ايربودز اذن écouteurs sans fil tws soundpeats air6 hs",
+  "fr": {
+    "name": "SoundPEATS Air6 HS",
+    "shortDescription": "ANC • Hi-Res • 33 h",
+    "description": "SoundPEATS Air6 HS — ANC • Hi-Res • 33 h. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "ANC • Hi-Res • 33 h"
+      }
+    ]
+  }
+}

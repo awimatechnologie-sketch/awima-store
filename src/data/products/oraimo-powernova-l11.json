@@ -1,31 +1,33 @@
 {
-  "id": "P-0075",
+  "id": "P-0114",
   "name": "Oraimo PowerNova L11",
   "slug": "oraimo-powernova-l11",
-  "shortDescription": "10,000 mAh • حتى 22.5 واط",
-  "description": "Oraimo PowerNova L11. 10,000 mAh • حتى 22.5 واط • كابل USB-C مدمج. السعة المكتوبة لا تعني أن الهاتف سيستقبل كامل mAh بسبب خسائر التحويل.",
-  "price": 279,
+  "shortDescription": "20000 mAh • شاشة LED",
+  "description": "Oraimo PowerNova L11 — 20000 mAh • شاشة LED. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 199,
   "currency": "MAD",
   "category": "cat-power-banks",
-  "images": [],
+  "images": [
+    "/images/products/oraimo-powernova-l11-1.jpg"
+  ],
   "availability": "on_request",
   "featured": false,
   "specs": [
     {
       "key": "المواصفات",
-      "value": "10,000 mAh • حتى 22.5 واط • كابل USB-C مدمج"
+      "value": "20000 mAh • شاشة LED"
     }
   ],
   "whatsappOrder": true,
-  "keywords": "oraimo power bank powerbank باوربانك batterie externe",
+  "keywords": "باوربانك بطارية خارجية power bank batterie externe oraimo powernova l11",
   "fr": {
     "name": "Oraimo PowerNova L11",
-    "shortDescription": "10 000 mAh • Jusqu’à 22,5 W",
-    "description": "Oraimo PowerNova L11. 10 000 mAh • Jusqu’à 22,5 W • Câble USB-C intégré. La capacité indiquée n’est pas entièrement transférée au téléphone (pertes de conversion).",
+    "shortDescription": "20 000 mAh • Écran LED",
+    "description": "Oraimo PowerNova L11 — 20 000 mAh • Écran LED. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
     "specs": [
       {
         "key": "Caractéristiques",
-        "value": "10 000 mAh • Jusqu’à 22,5 W • Câble USB-C intégré"
+        "value": "20 000 mAh • Écran LED"
       }
     ]
   }

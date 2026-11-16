@@ -1,0 +1,34 @@
+{
+  "id": "P-0134",
+  "name": "Havit H2002d Gaming Headset",
+  "slug": "havit-h2002d-gaming-headset",
+  "shortDescription": "سماعة ألعاب • RGB • ميكروفون • صوت 7.1",
+  "description": "Havit H2002d Gaming Headset — سماعة ألعاب • RGB • ميكروفون • صوت 7.1. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 349,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [
+    "/images/products/havit-h2002d-gaming-headset-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "سماعة ألعاب • RGB • ميكروفون • صوت 7.1"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "سماعة رأس بلوتوث casque havit h2002d gaming headset",
+  "fr": {
+    "name": "Havit H2002d Gaming Headset",
+    "shortDescription": "Casque gaming • RGB • Micro • 7.1",
+    "description": "Havit H2002d Gaming Headset — Casque gaming • RGB • Micro • 7.1. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Casque gaming • RGB • Micro • 7.1"
+      }
+    ]
+  }
+}

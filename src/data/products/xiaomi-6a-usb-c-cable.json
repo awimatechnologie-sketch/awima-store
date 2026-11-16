@@ -1,0 +1,37 @@
+{
+  "id": "P-0138",
+  "name": "Xiaomi 6A USB-C Cable",
+  "slug": "xiaomi-6a-usb-c-cable",
+  "shortDescription": "6 أمبير • 120 واط • 1 متر",
+  "description": "Xiaomi 6A USB-C Cable — 6 أمبير • 120 واط • 1 متر. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 79,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [
+    "/images/products/xiaomi-6a-usb-c-cable-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "6 أمبير • 120 واط • 1 متر"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "كابل سلك câble xiaomi 6a usb-c cable",
+  "ports": [
+    "usb-c"
+  ],
+  "fr": {
+    "name": "Xiaomi 6A USB-C Cable",
+    "shortDescription": "6 A • 120 W • 1 m",
+    "description": "Xiaomi 6A USB-C Cable — 6 A • 120 W • 1 m. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "6 A • 120 W • 1 m"
+      }
+    ]
+  }
+}

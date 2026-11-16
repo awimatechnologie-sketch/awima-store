@@ -1,0 +1,34 @@
+{
+  "id": "P-0167",
+  "name": "Kingston DataTraveler Exodia USB 64GB",
+  "slug": "kingston-datatraveler-exodia-usb-64gb",
+  "shortDescription": "64 جيجا • USB 3.2",
+  "description": "Kingston DataTraveler Exodia USB 64GB — 64 جيجا • USB 3.2. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 79,
+  "currency": "MAD",
+  "category": "cat-storage",
+  "images": [
+    "/images/products/kingston-datatraveler-exodia-usb-64gb-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "64 جيجا • USB 3.2"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ذاكرة تخزين فلاش ديسك usb flash ssd carte mémoire kingston datatraveler exodia usb 64gb",
+  "fr": {
+    "name": "Kingston DataTraveler Exodia USB 64GB",
+    "shortDescription": "64 Go • USB 3.2",
+    "description": "Kingston DataTraveler Exodia USB 64GB — 64 Go • USB 3.2. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "64 Go • USB 3.2"
+      }
+    ]
+  }
+}

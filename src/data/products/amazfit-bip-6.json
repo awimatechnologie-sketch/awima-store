@@ -1,0 +1,34 @@
+{
+  "id": "P-0185",
+  "name": "Amazfit Bip 6",
+  "slug": "amazfit-bip-6",
+  "shortDescription": "AMOLED 1.97 بوصة • GPS • 14 يوماً",
+  "description": "Amazfit Bip 6 — AMOLED 1.97 بوصة • GPS • 14 يوماً. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 999,
+  "currency": "MAD",
+  "category": "cat-smartwatches",
+  "images": [
+    "/images/products/amazfit-bip-6-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": true,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "AMOLED 1.97 بوصة • GPS • 14 يوماً"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ساعة ذكية montre connectée smartwatch amazfit bip 6",
+  "fr": {
+    "name": "Amazfit Bip 6",
+    "shortDescription": "AMOLED 1,97\" • GPS • 14 jours",
+    "description": "Amazfit Bip 6 — AMOLED 1,97\" • GPS • 14 jours. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "AMOLED 1,97\" • GPS • 14 jours"
+      }
+    ]
+  }
+}

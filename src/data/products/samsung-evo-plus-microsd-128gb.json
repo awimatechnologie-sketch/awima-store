@@ -1,0 +1,34 @@
+{
+  "id": "P-0169",
+  "name": "Samsung EVO Plus microSD 128GB",
+  "slug": "samsung-evo-plus-microsd-128gb",
+  "shortDescription": "128 جيجا • سرعة 160 MB/s • A2",
+  "description": "Samsung EVO Plus microSD 128GB — 128 جيجا • سرعة 160 MB/s • A2. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 129,
+  "currency": "MAD",
+  "category": "cat-storage",
+  "images": [
+    "/images/products/samsung-evo-plus-microsd-128gb-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": true,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "128 جيجا • سرعة 160 MB/s • A2"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ذاكرة تخزين فلاش ديسك usb flash ssd carte mémoire samsung evo plus microsd 128gb",
+  "fr": {
+    "name": "Samsung EVO Plus microSD 128GB",
+    "shortDescription": "128 Go • 160 MB/s • A2",
+    "description": "Samsung EVO Plus microSD 128GB — 128 Go • 160 MB/s • A2. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "128 Go • 160 MB/s • A2"
+      }
+    ]
+  }
+}

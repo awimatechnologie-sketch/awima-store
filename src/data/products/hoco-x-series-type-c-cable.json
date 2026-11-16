@@ -1,0 +1,37 @@
+{
+  "id": "P-0141",
+  "name": "Hoco X-Series Type-C Cable",
+  "slug": "hoco-x-series-type-c-cable",
+  "shortDescription": "100 واط • 1 متر",
+  "description": "Hoco X-Series Type-C Cable — 100 واط • 1 متر. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 69,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [
+    "/images/products/hoco-x-series-type-c-cable-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "100 واط • 1 متر"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "كابل سلك câble hoco x-series type-c cable",
+  "ports": [
+    "usb-c"
+  ],
+  "fr": {
+    "name": "Hoco X-Series Type-C Cable",
+    "shortDescription": "100 W • 1 m",
+    "description": "Hoco X-Series Type-C Cable — 100 W • 1 m. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "100 W • 1 m"
+      }
+    ]
+  }
+}

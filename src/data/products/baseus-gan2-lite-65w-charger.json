@@ -1,0 +1,34 @@
+{
+  "id": "P-0106",
+  "name": "Baseus GaN2 Lite 65W Charger",
+  "slug": "baseus-gan2-lite-65w-charger",
+  "shortDescription": "65 واط GaN • منفذان USB-C وUSB-A",
+  "description": "Baseus GaN2 Lite 65W Charger — 65 واط GaN • منفذان USB-C وUSB-A. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 249,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [
+    "/images/products/baseus-gan2-lite-65w-charger-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "65 واط GaN • منفذان USB-C وUSB-A"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "شاحن شارجور رأس شحن chargeur baseus gan2 lite 65w charger",
+  "fr": {
+    "name": "Baseus GaN2 Lite 65W Charger",
+    "shortDescription": "65 W GaN • Ports USB-C et USB-A",
+    "description": "Baseus GaN2 Lite 65W Charger — 65 W GaN • Ports USB-C et USB-A. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "65 W GaN • Ports USB-C et USB-A"
+      }
+    ]
+  }
+}

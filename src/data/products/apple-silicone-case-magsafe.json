@@ -1,0 +1,34 @@
+{
+  "id": "P-0146",
+  "name": "Apple Silicone Case MagSafe",
+  "slug": "apple-silicone-case-magsafe",
+  "shortDescription": "سيليكون • MagSafe • للآيفون",
+  "description": "Apple Silicone Case MagSafe — سيليكون • MagSafe • للآيفون. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 349,
+  "currency": "MAD",
+  "category": "cat-phone-cases",
+  "images": [
+    "/images/products/apple-silicone-case-magsafe-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "سيليكون • MagSafe • للآيفون"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "كوفر غلاف حافظة coque étui apple silicone case magsafe",
+  "fr": {
+    "name": "Apple Silicone Case MagSafe",
+    "shortDescription": "Silicone • MagSafe • Pour iPhone",
+    "description": "Apple Silicone Case MagSafe — Silicone • MagSafe • Pour iPhone. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Silicone • MagSafe • Pour iPhone"
+      }
+    ]
+  }
+}

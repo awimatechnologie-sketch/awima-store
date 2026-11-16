@@ -1,0 +1,34 @@
+{
+  "id": "P-0107",
+  "name": "Oraimo PowerGaN 25W Charger",
+  "slug": "oraimo-powergan-25w-charger",
+  "shortDescription": "25 واط • PD • صغير",
+  "description": "Oraimo PowerGaN 25W Charger — 25 واط • PD • صغير. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 119,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [
+    "/images/products/oraimo-powergan-25w-charger-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "25 واط • PD • صغير"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "شاحن شارجور رأس شحن chargeur oraimo powergan 25w charger",
+  "fr": {
+    "name": "Oraimo PowerGaN 25W Charger",
+    "shortDescription": "25 W • PD • Compact",
+    "description": "Oraimo PowerGaN 25W Charger — 25 W • PD • Compact. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "25 W • PD • Compact"
+      }
+    ]
+  }
+}

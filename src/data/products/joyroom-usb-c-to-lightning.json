@@ -1,0 +1,37 @@
+{
+  "id": "P-0142",
+  "name": "Joyroom USB-C to Lightning",
+  "slug": "joyroom-usb-c-to-lightning",
+  "shortDescription": "20 واط • MFi • 1.2 متر",
+  "description": "Joyroom USB-C to Lightning — 20 واط • MFi • 1.2 متر. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 99,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [
+    "/images/products/joyroom-usb-c-to-lightning-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "20 واط • MFi • 1.2 متر"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "كابل سلك câble joyroom usb-c to lightning",
+  "ports": [
+    "lightning"
+  ],
+  "fr": {
+    "name": "Joyroom USB-C to Lightning",
+    "shortDescription": "20 W • MFi • 1,2 m",
+    "description": "Joyroom USB-C to Lightning — 20 W • MFi • 1,2 m. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "20 W • MFi • 1,2 m"
+      }
+    ]
+  }
+}

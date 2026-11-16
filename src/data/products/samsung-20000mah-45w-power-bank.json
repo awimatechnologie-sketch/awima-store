@@ -1,0 +1,34 @@
+{
+  "id": "P-0112",
+  "name": "Samsung 20000mAh 45W Power Bank",
+  "slug": "samsung-20000mah-45w-power-bank",
+  "shortDescription": "20000 mAh • 45 واط شحن فائق السرعة",
+  "description": "Samsung 20000mAh 45W Power Bank — 20000 mAh • 45 واط شحن فائق السرعة. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 399,
+  "currency": "MAD",
+  "category": "cat-power-banks",
+  "images": [
+    "/images/products/samsung-20000mah-45w-power-bank-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "20000 mAh • 45 واط شحن فائق السرعة"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "باوربانك بطارية خارجية power bank batterie externe samsung 20000mah 45w power bank",
+  "fr": {
+    "name": "Samsung 20000mAh 45W Power Bank",
+    "shortDescription": "20 000 mAh • 45 W Super Fast",
+    "description": "Samsung 20000mAh 45W Power Bank — 20 000 mAh • 45 W Super Fast. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "20 000 mAh • 45 W Super Fast"
+      }
+    ]
+  }
+}

@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import AnnouncementBar from '../components/AnnouncementBar.astro';
+import MobileNav from '../components/MobileNav.astro';
 import Footer from '../components/Footer.astro';
 import { site, localizedSite } from '../config/site';
 import { langOf, dirOf, alternatePath, t, type Lang } from '../i18n';
@@ -27,7 +28,7 @@ const beacon = import.meta.env.PROD ? beaconAttr(site.analytics.cloudflareToken)
 const cm = site.community;
 const COMMUNITY_KEYS = ['community.crown','community.like','community.unlike','community.formTitle','community.yourRating','community.name','community.comment','community.send','community.sending','community.thanks','community.already','community.pickRating','community.tooMany','community.noLinks','community.error','community.captcha','community.pendingNote','community.verifiedNote','community.thanksVerified','community.tokenBad','community.tokenUsed','reviews.tier.green-dark','reviews.tier.green-light','reviews.tier.yellow','reviews.aria','reviews.summary','reviews.verified','reviews.customer','reviews.stars'];
 const communityJson = cm.likesEnabled || cm.reviewsEnabled
-  ? JSON.stringify({ lang, likes: cm.likesEnabled, reviews: cm.reviewsEnabled, minLikes: cm.minLikesToShow, th: cm.thresholds, crown: cm.crown, turnstile: cm.turnstileSiteKey, t: Object.fromEntries(COMMUNITY_KEYS.map((k) => [k, t(lang, k)])) })
+  ? JSON.stringify({ lang, likes: cm.likesEnabled, reviews: cm.reviewsEnabled, minLikes: cm.minLikesToShow, th: cm.thresholds, crown: cm.crown, turnstile: cm.turnstileSiteKey, searchLog: cm.searchLog, t: Object.fromEntries(COMMUNITY_KEYS.map((k) => [k, t(lang, k)])) })
   : undefined;
 const themeCss = `html:root{--c-primary:${site.colors.primary};--c-accent:${site.colors.accent};--c-alert:${site.colors.alert};}`;
 ---
@@ -66,6 +67,7 @@ const themeCss = `html:root{--c-primary:${site.colors.primary};--c-accent:${site
     <Header lang={lang} />
     <main><slot /></main>
     <Footer lang={lang} />
+    <MobileNav lang={lang} />
     <script>
       import '../scripts/site';
       import '../scripts/community';

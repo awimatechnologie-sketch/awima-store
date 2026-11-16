@@ -1,0 +1,34 @@
+{
+  "id": "P-0188",
+  "name": "Apple Watch SE 2 40mm",
+  "slug": "apple-watch-se-2-40mm",
+  "shortDescription": "40 مم • GPS • watchOS • IP6X",
+  "description": "Apple Watch SE 2 40mm — 40 مم • GPS • watchOS • IP6X. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 2499,
+  "currency": "MAD",
+  "category": "cat-smartwatches",
+  "images": [
+    "/images/products/apple-watch-se-2-40mm-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "40 مم • GPS • watchOS • IP6X"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ساعة ذكية montre connectée smartwatch apple watch se 2 40mm",
+  "fr": {
+    "name": "Apple Watch SE 2 40mm",
+    "shortDescription": "40 mm • GPS • watchOS • IP6X",
+    "description": "Apple Watch SE 2 40mm — 40 mm • GPS • watchOS • IP6X. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "40 mm • GPS • watchOS • IP6X"
+      }
+    ]
+  }
+}

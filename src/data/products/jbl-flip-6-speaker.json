@@ -1,0 +1,34 @@
+{
+  "id": "P-0178",
+  "name": "JBL Flip 6 Speaker",
+  "slug": "jbl-flip-6-speaker",
+  "shortDescription": "مقاومة IP67 • 12 ساعة • صوت JBL Pro",
+  "description": "JBL Flip 6 Speaker — مقاومة IP67 • 12 ساعة • صوت JBL Pro. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 899,
+  "currency": "MAD",
+  "category": "cat-speakers",
+  "images": [
+    "/images/products/jbl-flip-6-speaker-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": true,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "مقاومة IP67 • 12 ساعة • صوت JBL Pro"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "مكبر صوت سبيكر haut-parleur enceinte bluetooth jbl flip 6 speaker",
+  "fr": {
+    "name": "JBL Flip 6 Speaker",
+    "shortDescription": "IP67 • 12 h • JBL Pro",
+    "description": "JBL Flip 6 Speaker — IP67 • 12 h • JBL Pro. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "IP67 • 12 h • JBL Pro"
+      }
+    ]
+  }
+}

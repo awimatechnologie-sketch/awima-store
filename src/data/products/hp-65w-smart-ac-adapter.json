@@ -1,0 +1,34 @@
+{
+  "id": "P-0191",
+  "name": "HP 65W Smart AC Adapter",
+  "slug": "hp-65w-smart-ac-adapter",
+  "shortDescription": "65 واط • أصلي من HP",
+  "description": "HP 65W Smart AC Adapter — 65 واط • أصلي من HP. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 229,
+  "currency": "MAD",
+  "category": "cat-laptop-chargers",
+  "images": [
+    "/images/products/hp-65w-smart-ac-adapter-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "65 واط • أصلي من HP"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "شاحن لابتوب حاسوب chargeur pc portable hp 65w smart ac adapter",
+  "fr": {
+    "name": "HP 65W Smart AC Adapter",
+    "shortDescription": "65 W • HP original",
+    "description": "HP 65W Smart AC Adapter — 65 W • HP original. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "65 W • HP original"
+      }
+    ]
+  }
+}

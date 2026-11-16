@@ -1,0 +1,34 @@
+{
+  "id": "P-0116",
+  "name": "Goui Beast 65 Power Bank",
+  "slug": "goui-beast-65-power-bank",
+  "shortDescription": "20000 mAh • 65 واط",
+  "description": "Goui Beast 65 Power Bank — 20000 mAh • 65 واط. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 349,
+  "currency": "MAD",
+  "category": "cat-power-banks",
+  "images": [
+    "/images/products/goui-beast-65-power-bank-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "20000 mAh • 65 واط"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "باوربانك بطارية خارجية power bank batterie externe goui beast 65 power bank",
+  "fr": {
+    "name": "Goui Beast 65 Power Bank",
+    "shortDescription": "20 000 mAh • 65 W",
+    "description": "Goui Beast 65 Power Bank — 20 000 mAh • 65 W. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "20 000 mAh • 65 W"
+      }
+    ]
+  }
+}

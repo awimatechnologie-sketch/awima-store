@@ -1,0 +1,34 @@
+{
+  "id": "P-0157",
+  "name": "Logitech MK270 Wireless Combo",
+  "slug": "logitech-mk270-wireless-combo",
+  "shortDescription": "لوحة مفاتيح + فأرة • لاسلكي",
+  "description": "Logitech MK270 Wireless Combo — لوحة مفاتيح + فأرة • لاسلكي. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 299,
+  "currency": "MAD",
+  "category": "cat-keyboards-mice",
+  "images": [
+    "/images/products/logitech-mk270-wireless-combo-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": true,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "لوحة مفاتيح + فأرة • لاسلكي"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "كلافيي لوحة مفاتيح فأرة ماوس clavier souris logitech mk270 wireless combo",
+  "fr": {
+    "name": "Logitech MK270 Wireless Combo",
+    "shortDescription": "Clavier + souris • Sans fil",
+    "description": "Logitech MK270 Wireless Combo — Clavier + souris • Sans fil. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Clavier + souris • Sans fil"
+      }
+    ]
+  }
+}

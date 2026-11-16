@@ -1,0 +1,34 @@
+{
+  "id": "P-0166",
+  "name": "ADATA SU650 SSD 480GB",
+  "slug": "adata-su650-ssd-480gb",
+  "shortDescription": "480 جيجا • SATA • سرعة 520 MB/s",
+  "description": "ADATA SU650 SSD 480GB — 480 جيجا • SATA • سرعة 520 MB/s. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 349,
+  "currency": "MAD",
+  "category": "cat-storage",
+  "images": [
+    "/images/products/adata-su650-ssd-480gb-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "480 جيجا • SATA • سرعة 520 MB/s"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ذاكرة تخزين فلاش ديسك usb flash ssd carte mémoire adata su650 ssd 480gb",
+  "fr": {
+    "name": "ADATA SU650 SSD 480GB",
+    "shortDescription": "480 Go • SATA • 520 MB/s",
+    "description": "ADATA SU650 SSD 480GB — 480 Go • SATA • 520 MB/s. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "480 Go • SATA • 520 MB/s"
+      }
+    ]
+  }
+}

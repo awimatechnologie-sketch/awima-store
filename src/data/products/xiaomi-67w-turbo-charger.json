@@ -1,0 +1,34 @@
+{
+  "id": "P-0101",
+  "name": "Xiaomi 67W Turbo Charger",
+  "slug": "xiaomi-67w-turbo-charger",
+  "shortDescription": "67 واط GaN • USB-C + USB-A",
+  "description": "Xiaomi 67W Turbo Charger — 67 واط GaN • USB-C + USB-A. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 199,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [
+    "/images/products/xiaomi-67w-turbo-charger-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "67 واط GaN • USB-C + USB-A"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "شاحن شارجور رأس شحن chargeur xiaomi 67w turbo charger",
+  "fr": {
+    "name": "Xiaomi 67W Turbo Charger",
+    "shortDescription": "67 W GaN • USB-C + USB-A",
+    "description": "Xiaomi 67W Turbo Charger — 67 W GaN • USB-C + USB-A. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "67 W GaN • USB-C + USB-A"
+      }
+    ]
+  }
+}

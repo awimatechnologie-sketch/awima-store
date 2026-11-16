@@ -1,0 +1,8 @@
+{
+  "id": "cat-smartwatches",
+  "name": "ساعات ذكية",
+  "slug": "smartwatches",
+  "order": 78,
+  "name_fr": "Montres connectées",
+  "parent": "cat-phone-accessories"
+}

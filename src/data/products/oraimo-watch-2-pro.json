@@ -1,0 +1,34 @@
+{
+  "id": "P-0182",
+  "name": "Oraimo Watch 2 Pro",
+  "slug": "oraimo-watch-2-pro",
+  "shortDescription": "مكالمات Bluetooth • مؤشرات صحية • IP68",
+  "description": "Oraimo Watch 2 Pro — مكالمات Bluetooth • مؤشرات صحية • IP68. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 399,
+  "currency": "MAD",
+  "category": "cat-smartwatches",
+  "images": [
+    "/images/products/oraimo-watch-2-pro-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "مكالمات Bluetooth • مؤشرات صحية • IP68"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "ساعة ذكية montre connectée smartwatch oraimo watch 2 pro",
+  "fr": {
+    "name": "Oraimo Watch 2 Pro",
+    "shortDescription": "Appels Bluetooth • Santé • IP68",
+    "description": "Oraimo Watch 2 Pro — Appels Bluetooth • Santé • IP68. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Appels Bluetooth • Santé • IP68"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "P-0132",
+  "name": "P9 Bluetooth Headphones",
+  "slug": "p9-bluetooth-headphones",
+  "shortDescription": "إضاءة RGB • 40 ساعة • قارئ microSD",
+  "description": "P9 Bluetooth Headphones — إضاءة RGB • 40 ساعة • قارئ microSD. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 149,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [
+    "/images/products/p9-bluetooth-headphones-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "إضاءة RGB • 40 ساعة • قارئ microSD"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "سماعة رأس بلوتوث casque p9 bluetooth headphones",
+  "fr": {
+    "name": "P9 Bluetooth Headphones",
+    "shortDescription": "RGB • 40 h • Lecteur micro SD",
+    "description": "P9 Bluetooth Headphones — RGB • 40 h • Lecteur micro SD. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "RGB • 40 h • Lecteur micro SD"
+      }
+    ]
+  }
+}

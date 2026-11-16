@@ -1,39 +1,33 @@
 {
-  "id": "P-0056",
+  "id": "P-0121",
   "name": "Xiaomi Redmi Buds 8 Lite",
   "slug": "xiaomi-redmi-buds-8-lite",
-  "shortDescription": "Bluetooth 5.4 • ANC حتى 42 dB",
-  "description": "Xiaomi Redmi Buds 8 Lite (Redmi Buds 8 Lite). Bluetooth 5.4 • ANC حتى 42 dB • حتى 8 ساعات للسماعات و36 ساعة مع العلبة. خيار اقتصادي مع عزل ضوضاء نشط ومكالمات محسّنة.",
-  "price": 218,
+  "shortDescription": "عزل ضوضاء ANC • 36 ساعة • Bluetooth 5.4",
+  "description": "Xiaomi Redmi Buds 8 Lite — عزل ضوضاء ANC • 36 ساعة • Bluetooth 5.4. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 199,
   "currency": "MAD",
   "category": "cat-audio",
-  "images": [],
+  "images": [
+    "/images/products/xiaomi-redmi-buds-8-lite-1.jpg"
+  ],
   "availability": "on_request",
   "featured": false,
   "specs": [
     {
-      "key": "الموديل",
-      "value": "Redmi Buds 8 Lite"
-    },
-    {
       "key": "المواصفات",
-      "value": "Bluetooth 5.4 • ANC حتى 42 dB • حتى 8 ساعات للسماعات و36 ساعة مع العلبة"
+      "value": "عزل ضوضاء ANC • 36 ساعة • Bluetooth 5.4"
     }
   ],
   "whatsappOrder": true,
-  "keywords": "xiaomi redmi buds tws ecouteurs سماعات",
+  "keywords": "سماعات بلوتوث ايربودز اذن écouteurs sans fil tws xiaomi redmi buds 8 lite",
   "fr": {
     "name": "Xiaomi Redmi Buds 8 Lite",
-    "shortDescription": "Bluetooth 5.4 • ANC jusqu’à 42 dB",
-    "description": "Xiaomi Redmi Buds 8 Lite (Redmi Buds 8 Lite). Bluetooth 5.4 • ANC jusqu’à 42 dB • Jusqu’à 8 h par oreillette, 36 h avec le boîtier. Option économique avec réduction de bruit active et appels améliorés.",
+    "shortDescription": "ANC • 36 h • Bluetooth 5.4",
+    "description": "Xiaomi Redmi Buds 8 Lite — ANC • 36 h • Bluetooth 5.4. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
     "specs": [
       {
-        "key": "Modèle",
-        "value": "Redmi Buds 8 Lite"
-      },
-      {
         "key": "Caractéristiques",
-        "value": "Bluetooth 5.4 • ANC jusqu’à 42 dB • Jusqu’à 8 h par oreillette, 36 h avec le boîtier"
+        "value": "ANC • 36 h • Bluetooth 5.4"
       }
     ]
   }

@@ -1,0 +1,34 @@
+{
+  "id": "P-0153",
+  "name": "Remax Car Phone Holder",
+  "slug": "remax-car-phone-holder",
+  "shortDescription": "حامل سيارة • على لوحة القيادة",
+  "description": "Remax Car Phone Holder — حامل سيارة • على لوحة القيادة. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 79,
+  "currency": "MAD",
+  "category": "cat-phone-holders",
+  "images": [
+    "/images/products/remax-car-phone-holder-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "حامل سيارة • على لوحة القيادة"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "حامل سيارة هاتف support voiture remax car phone holder",
+  "fr": {
+    "name": "Remax Car Phone Holder",
+    "shortDescription": "Support voiture • Sur tableau de bord",
+    "description": "Remax Car Phone Holder — Support voiture • Sur tableau de bord. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Support voiture • Sur tableau de bord"
+      }
+    ]
+  }
+}

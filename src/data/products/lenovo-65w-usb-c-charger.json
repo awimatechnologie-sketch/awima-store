@@ -1,0 +1,34 @@
+{
+  "id": "P-0190",
+  "name": "Lenovo 65W USB-C Charger",
+  "slug": "lenovo-65w-usb-c-charger",
+  "shortDescription": "65 واط • USB-C • أصلي",
+  "description": "Lenovo 65W USB-C Charger — 65 واط • USB-C • أصلي. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 249,
+  "currency": "MAD",
+  "category": "cat-laptop-chargers",
+  "images": [
+    "/images/products/lenovo-65w-usb-c-charger-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "65 واط • USB-C • أصلي"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "شاحن لابتوب حاسوب chargeur pc portable lenovo 65w usb-c charger",
+  "fr": {
+    "name": "Lenovo 65W USB-C Charger",
+    "shortDescription": "65 W • USB-C • Original",
+    "description": "Lenovo 65W USB-C Charger — 65 W • USB-C • Original. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "65 W • USB-C • Original"
+      }
+    ]
+  }
+}

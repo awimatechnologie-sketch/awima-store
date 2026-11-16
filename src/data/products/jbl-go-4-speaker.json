@@ -1,0 +1,34 @@
+{
+  "id": "P-0177",
+  "name": "JBL Go 4 Speaker",
+  "slug": "jbl-go-4-speaker",
+  "shortDescription": "مقاومة IP67 • 7 ساعات • محمول",
+  "description": "JBL Go 4 Speaker — مقاومة IP67 • 7 ساعات • محمول. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 399,
+  "currency": "MAD",
+  "category": "cat-speakers",
+  "images": [
+    "/images/products/jbl-go-4-speaker-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "مقاومة IP67 • 7 ساعات • محمول"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "مكبر صوت سبيكر haut-parleur enceinte bluetooth jbl go 4 speaker",
+  "fr": {
+    "name": "JBL Go 4 Speaker",
+    "shortDescription": "IP67 • 7 h • Portable",
+    "description": "JBL Go 4 Speaker — IP67 • 7 h • Portable. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "IP67 • 7 h • Portable"
+      }
+    ]
+  }
+}

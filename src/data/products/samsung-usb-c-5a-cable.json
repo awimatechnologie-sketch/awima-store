@@ -1,0 +1,37 @@
+{
+  "id": "P-0137",
+  "name": "Samsung USB-C 5A Cable",
+  "slug": "samsung-usb-c-5a-cable",
+  "shortDescription": "5 أمبير • 45 واط • 1 متر",
+  "description": "Samsung USB-C 5A Cable — 5 أمبير • 45 واط • 1 متر. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 89,
+  "currency": "MAD",
+  "category": "cat-cables",
+  "images": [
+    "/images/products/samsung-usb-c-5a-cable-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "5 أمبير • 45 واط • 1 متر"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "كابل سلك câble samsung usb-c 5a cable",
+  "ports": [
+    "usb-c"
+  ],
+  "fr": {
+    "name": "Samsung USB-C 5A Cable",
+    "shortDescription": "5 A • 45 W • 1 m",
+    "description": "Samsung USB-C 5A Cable — 5 A • 45 W • 1 m. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "5 A • 45 W • 1 m"
+      }
+    ]
+  }
+}

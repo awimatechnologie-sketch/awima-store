@@ -1,0 +1,34 @@
+{
+  "id": "P-0160",
+  "name": "Logitech M185 Wireless Mouse",
+  "slug": "logitech-m185-wireless-mouse",
+  "shortDescription": "فأرة لاسلكية • بطارية 12 شهراً",
+  "description": "Logitech M185 Wireless Mouse — فأرة لاسلكية • بطارية 12 شهراً. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 99,
+  "currency": "MAD",
+  "category": "cat-keyboards-mice",
+  "images": [
+    "/images/products/logitech-m185-wireless-mouse-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "فأرة لاسلكية • بطارية 12 شهراً"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "كلافيي لوحة مفاتيح فأرة ماوس clavier souris logitech m185 wireless mouse",
+  "fr": {
+    "name": "Logitech M185 Wireless Mouse",
+    "shortDescription": "Souris sans fil • Pile 12 mois",
+    "description": "Logitech M185 Wireless Mouse — Souris sans fil • Pile 12 mois. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Souris sans fil • Pile 12 mois"
+      }
+    ]
+  }
+}

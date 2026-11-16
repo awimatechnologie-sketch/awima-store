@@ -1,40 +1,33 @@
 {
-  "id": "P-0064",
+  "id": "P-0122",
   "name": "Soundcore Life P2 Mini",
   "slug": "soundcore-life-p2-mini",
-  "shortDescription": "Bluetooth 5.2 • حتى 8 ساعات بالشحنة",
-  "description": "Soundcore Life P2 Mini (A3944). Bluetooth 5.2 • حتى 8 ساعات بالشحنة • علبة شحن لوقت إجمالي أطول. سماعات صغيرة وخفيفة مع EQ قابل للتخصيص عبر التطبيق. السعر المحلي غير مثبت بعد.",
-  "price": null,
+  "shortDescription": "32 ساعة • ENC • مقاومة IPX5",
+  "description": "Soundcore Life P2 Mini — 32 ساعة • ENC • مقاومة IPX5. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 299,
   "currency": "MAD",
   "category": "cat-audio",
-  "images": [],
+  "images": [
+    "/images/products/soundcore-life-p2-mini-1.jpg"
+  ],
   "availability": "on_request",
   "featured": false,
   "specs": [
     {
-      "key": "الموديل",
-      "value": "A3944"
-    },
-    {
       "key": "المواصفات",
-      "value": "Bluetooth 5.2 • حتى 8 ساعات بالشحنة • علبة شحن لوقت إجمالي أطول"
+      "value": "32 ساعة • ENC • مقاومة IPX5"
     }
   ],
   "whatsappOrder": true,
-  "keywords": "soundcore anker tws ecouteurs سماعات",
-  "hidden": true,
+  "keywords": "سماعات بلوتوث ايربودز اذن écouteurs sans fil tws soundcore life p2 mini",
   "fr": {
     "name": "Soundcore Life P2 Mini",
-    "shortDescription": "Bluetooth 5.2 • Jusqu’à 8 h par charge",
-    "description": "Soundcore Life P2 Mini (A3944). Bluetooth 5.2 • Jusqu’à 8 h par charge • Boîtier de charge pour une autonomie totale plus longue. Oreillettes petites et légères avec EQ personnalisable via l’application. Prix local non encore confirmé.",
+    "shortDescription": "32 h • ENC • IPX5",
+    "description": "Soundcore Life P2 Mini — 32 h • ENC • IPX5. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
     "specs": [
       {
-        "key": "Modèle",
-        "value": "A3944"
-      },
-      {
         "key": "Caractéristiques",
-        "value": "Bluetooth 5.2 • Jusqu’à 8 h par charge • Boîtier de charge pour une autonomie totale plus longue"
+        "value": "32 h • ENC • IPX5"
       }
     ]
   }

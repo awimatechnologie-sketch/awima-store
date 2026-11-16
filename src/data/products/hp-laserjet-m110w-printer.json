@@ -1,0 +1,34 @@
+{
+  "id": "P-0196",
+  "name": "HP LaserJet M110w Printer",
+  "slug": "hp-laserjet-m110w-printer",
+  "shortDescription": "طابعة ليزر أحادية اللون • WiFi",
+  "description": "HP LaserJet M110w Printer — طابعة ليزر أحادية اللون • WiFi. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 1299,
+  "currency": "MAD",
+  "category": "cat-printers",
+  "images": [
+    "/images/products/hp-laserjet-m110w-printer-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "طابعة ليزر أحادية اللون • WiFi"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "طابعة imprimante hp laserjet m110w printer",
+  "fr": {
+    "name": "HP LaserJet M110w Printer",
+    "shortDescription": "Laser monochrome • WiFi",
+    "description": "HP LaserJet M110w Printer — Laser monochrome • WiFi. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Laser monochrome • WiFi"
+      }
+    ]
+  }
+}

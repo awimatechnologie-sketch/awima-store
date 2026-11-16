@@ -1,0 +1,34 @@
+{
+  "id": "P-0172",
+  "name": "UGREEN USB-C Hub 5-in-1",
+  "slug": "ugreen-usb-c-hub-5-in-1",
+  "shortDescription": "HDMI + USB + قارئ SD",
+  "description": "UGREEN USB-C Hub 5-in-1 — HDMI + USB + قارئ SD. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 299,
+  "currency": "MAD",
+  "category": "cat-adapters",
+  "images": [
+    "/images/products/ugreen-usb-c-hub-5-in-1-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "HDMI + USB + قارئ SD"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "هاب محول موزع hub adaptateur ugreen usb-c hub 5-in-1",
+  "fr": {
+    "name": "UGREEN USB-C Hub 5-in-1",
+    "shortDescription": "HDMI + USB + SD",
+    "description": "UGREEN USB-C Hub 5-in-1 — HDMI + USB + SD. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "HDMI + USB + SD"
+      }
+    ]
+  }
+}

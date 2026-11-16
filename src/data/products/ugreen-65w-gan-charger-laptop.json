@@ -1,0 +1,34 @@
+{
+  "id": "P-0109",
+  "name": "UGREEN 65W GaN Charger Laptop",
+  "slug": "ugreen-65w-gan-charger-laptop",
+  "shortDescription": "65 واط GaN • للحاسوب والهاتف",
+  "description": "UGREEN 65W GaN Charger Laptop — 65 واط GaN • للحاسوب والهاتف. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 299,
+  "currency": "MAD",
+  "category": "cat-laptop-chargers",
+  "images": [
+    "/images/products/ugreen-65w-gan-charger-laptop-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "65 واط GaN • للحاسوب والهاتف"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "شاحن لابتوب حاسوب chargeur pc portable ugreen 65w gan charger laptop",
+  "fr": {
+    "name": "UGREEN 65W GaN Charger Laptop",
+    "shortDescription": "65 W GaN • Pour PC portable et téléphone",
+    "description": "UGREEN 65W GaN Charger Laptop — 65 W GaN • Pour PC portable et téléphone. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "65 W GaN • Pour PC portable et téléphone"
+      }
+    ]
+  }
+}

@@ -1,31 +1,33 @@
 {
-  "id": "P-0077",
+  "id": "P-0111",
   "name": "Anker PowerCore 10000",
   "slug": "anker-powercore-10000",
-  "shortDescription": "10,000 mAh • خرج USB-A حتى 12 واط",
-  "description": "Anker PowerCore 10000. 10,000 mAh • خرج USB-A حتى 12 واط.",
-  "price": 349,
+  "shortDescription": "10000 mAh • 22.5 واط",
+  "description": "Anker PowerCore 10000 — 10000 mAh • 22.5 واط. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 249,
   "currency": "MAD",
   "category": "cat-power-banks",
-  "images": [],
+  "images": [
+    "/images/products/anker-powercore-10000-1.jpg"
+  ],
   "availability": "on_request",
-  "featured": false,
+  "featured": true,
   "specs": [
     {
       "key": "المواصفات",
-      "value": "10,000 mAh • خرج USB-A حتى 12 واط"
+      "value": "10000 mAh • 22.5 واط"
     }
   ],
   "whatsappOrder": true,
-  "keywords": "anker powercore power bank باوربانك batterie externe",
+  "keywords": "باوربانك بطارية خارجية power bank batterie externe anker powercore 10000",
   "fr": {
     "name": "Anker PowerCore 10000",
-    "shortDescription": "10 000 mAh • Sortie USB-A jusqu’à 12 W",
-    "description": "Anker PowerCore 10000. 10 000 mAh • Sortie USB-A jusqu’à 12 W.",
+    "shortDescription": "10 000 mAh • 22,5 W",
+    "description": "Anker PowerCore 10000 — 10 000 mAh • 22,5 W. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
     "specs": [
       {
         "key": "Caractéristiques",
-        "value": "10 000 mAh • Sortie USB-A jusqu’à 12 W"
+        "value": "10 000 mAh • 22,5 W"
       }
     ]
   }

@@ -1,0 +1,8 @@
+{
+  "id": "cat-printers",
+  "name": "طابعات",
+  "slug": "printers",
+  "order": 79,
+  "name_fr": "Imprimantes",
+  "parent": "cat-computer-accessories"
+}

@@ -1,0 +1,34 @@
+{
+  "id": "P-0113",
+  "name": "Xiaomi Redmi 20000mAh Power Bank",
+  "slug": "xiaomi-redmi-20000mah-power-bank",
+  "shortDescription": "20000 mAh • 18 واط",
+  "description": "Xiaomi Redmi 20000mAh Power Bank — 20000 mAh • 18 واط. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 229,
+  "currency": "MAD",
+  "category": "cat-power-banks",
+  "images": [
+    "/images/products/xiaomi-redmi-20000mah-power-bank-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "20000 mAh • 18 واط"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "باوربانك بطارية خارجية power bank batterie externe xiaomi redmi 20000mah power bank",
+  "fr": {
+    "name": "Xiaomi Redmi 20000mAh Power Bank",
+    "shortDescription": "20 000 mAh • 18 W",
+    "description": "Xiaomi Redmi 20000mAh Power Bank — 20 000 mAh • 18 W. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "20 000 mAh • 18 W"
+      }
+    ]
+  }
+}

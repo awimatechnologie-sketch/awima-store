@@ -1,0 +1,34 @@
+{
+  "id": "P-0176",
+  "name": "Vention USB-C to HDMI Adapter",
+  "slug": "vention-usb-c-to-hdmi-adapter",
+  "shortDescription": "4K • ألمنيوم",
+  "description": "Vention USB-C to HDMI Adapter — 4K • ألمنيوم. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 129,
+  "currency": "MAD",
+  "category": "cat-adapters",
+  "images": [
+    "/images/products/vention-usb-c-to-hdmi-adapter-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "4K • ألمنيوم"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "هاب محول موزع hub adaptateur vention usb-c to hdmi adapter",
+  "fr": {
+    "name": "Vention USB-C to HDMI Adapter",
+    "shortDescription": "4K • Aluminium",
+    "description": "Vention USB-C to HDMI Adapter — 4K • Aluminium. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "4K • Aluminium"
+      }
+    ]
+  }
+}

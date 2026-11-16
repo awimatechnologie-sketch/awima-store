@@ -1,31 +1,33 @@
 {
-  "id": "P-0066",
+  "id": "P-0125",
   "name": "Sony WH-CH520",
   "slug": "sony-wh-ch520",
-  "shortDescription": "Bluetooth 5.2 • حتى 50 ساعة",
-  "description": "Sony WH-CH520. Bluetooth 5.2 • حتى 50 ساعة • شحن USB-C • مكالمات hands-free.",
+  "shortDescription": "40 ساعة • Bluetooth 5.2 • خفيفة",
+  "description": "Sony WH-CH520 — 40 ساعة • Bluetooth 5.2 • خفيفة. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
   "price": 449,
   "currency": "MAD",
   "category": "cat-audio",
-  "images": [],
+  "images": [
+    "/images/products/sony-wh-ch520-1.jpg"
+  ],
   "availability": "on_request",
   "featured": false,
   "specs": [
     {
       "key": "المواصفات",
-      "value": "Bluetooth 5.2 • حتى 50 ساعة • شحن USB-C • مكالمات hands-free"
+      "value": "40 ساعة • Bluetooth 5.2 • خفيفة"
     }
   ],
   "whatsappOrder": true,
-  "keywords": "sony casque سماعة رأس بلوتوث",
+  "keywords": "سماعة رأس بلوتوث casque sony wh-ch520",
   "fr": {
     "name": "Sony WH-CH520",
-    "shortDescription": "Bluetooth 5.2 • Jusqu’à 50 h",
-    "description": "Sony WH-CH520. Bluetooth 5.2 • Jusqu’à 50 h • Charge USB-C • Appels mains libres.",
+    "shortDescription": "40 h • Bluetooth 5.2 • Légère",
+    "description": "Sony WH-CH520 — 40 h • Bluetooth 5.2 • Légère. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
     "specs": [
       {
         "key": "Caractéristiques",
-        "value": "Bluetooth 5.2 • Jusqu’à 50 h • Charge USB-C • Appels mains libres"
+        "value": "40 h • Bluetooth 5.2 • Légère"
       }
     ]
   }

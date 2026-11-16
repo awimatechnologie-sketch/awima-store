@@ -1,0 +1,34 @@
+{
+  "id": "P-0193",
+  "name": "Logitech C270 Webcam",
+  "slug": "logitech-c270-webcam",
+  "shortDescription": "720p • ميكروفون مدمج",
+  "description": "Logitech C270 Webcam — 720p • ميكروفون مدمج. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 299,
+  "currency": "MAD",
+  "category": "cat-webcams-headsets",
+  "images": [
+    "/images/products/logitech-c270-webcam-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "720p • ميكروفون مدمج"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "كاميرا ويب webcam logitech c270 webcam",
+  "fr": {
+    "name": "Logitech C270 Webcam",
+    "shortDescription": "720p • Micro intégré",
+    "description": "Logitech C270 Webcam — 720p • Micro intégré. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "720p • Micro intégré"
+      }
+    ]
+  }
+}

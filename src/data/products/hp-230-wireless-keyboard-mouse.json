@@ -1,0 +1,34 @@
+{
+  "id": "P-0159",
+  "name": "HP 230 Wireless Keyboard Mouse",
+  "slug": "hp-230-wireless-keyboard-mouse",
+  "shortDescription": "لاسلكي • صغير الحجم",
+  "description": "HP 230 Wireless Keyboard Mouse — لاسلكي • صغير الحجم. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 249,
+  "currency": "MAD",
+  "category": "cat-keyboards-mice",
+  "images": [
+    "/images/products/hp-230-wireless-keyboard-mouse-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "لاسلكي • صغير الحجم"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "كلافيي لوحة مفاتيح فأرة ماوس clavier souris hp 230 wireless keyboard mouse",
+  "fr": {
+    "name": "HP 230 Wireless Keyboard Mouse",
+    "shortDescription": "Sans fil • Compact",
+    "description": "HP 230 Wireless Keyboard Mouse — Sans fil • Compact. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Sans fil • Compact"
+      }
+    ]
+  }
+}

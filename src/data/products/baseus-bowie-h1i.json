@@ -1,0 +1,34 @@
+{
+  "id": "P-0133",
+  "name": "Baseus Bowie H1i",
+  "slug": "baseus-bowie-h1i",
+  "shortDescription": "عزل ضوضاء ANC • 100 ساعة • صوت Hi-Res",
+  "description": "Baseus Bowie H1i — عزل ضوضاء ANC • 100 ساعة • صوت Hi-Res. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 549,
+  "currency": "MAD",
+  "category": "cat-audio",
+  "images": [
+    "/images/products/baseus-bowie-h1i-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": true,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "عزل ضوضاء ANC • 100 ساعة • صوت Hi-Res"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "سماعة رأس بلوتوث casque baseus bowie h1i",
+  "fr": {
+    "name": "Baseus Bowie H1i",
+    "shortDescription": "ANC • 100 h • Hi-Res",
+    "description": "Baseus Bowie H1i — ANC • 100 h • Hi-Res. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "ANC • 100 h • Hi-Res"
+      }
+    ]
+  }
+}

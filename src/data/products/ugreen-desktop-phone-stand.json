@@ -1,0 +1,34 @@
+{
+  "id": "P-0154",
+  "name": "UGREEN Desktop Phone Stand",
+  "slug": "ugreen-desktop-phone-stand",
+  "shortDescription": "حامل مكتبي • ألمنيوم • قابل للتعديل",
+  "description": "UGREEN Desktop Phone Stand — حامل مكتبي • ألمنيوم • قابل للتعديل. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 99,
+  "currency": "MAD",
+  "category": "cat-phone-holders",
+  "images": [
+    "/images/products/ugreen-desktop-phone-stand-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "حامل مكتبي • ألمنيوم • قابل للتعديل"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "حامل سيارة هاتف support voiture ugreen desktop phone stand",
+  "fr": {
+    "name": "UGREEN Desktop Phone Stand",
+    "shortDescription": "Support de bureau • Aluminium • Réglable",
+    "description": "UGREEN Desktop Phone Stand — Support de bureau • Aluminium • Réglable. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Support de bureau • Aluminium • Réglable"
+      }
+    ]
+  }
+}

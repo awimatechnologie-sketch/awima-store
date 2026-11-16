@@ -30,7 +30,8 @@
       "phone": "212782395722",
       "active": true,
       "categories": [
-        "cat-audio"
+        "cat-audio",
+        "cat-speakers"
       ]
     },
     {
@@ -58,7 +59,8 @@
       "phone": "212767666243",
       "active": true,
       "categories": [
-        "cat-adapters"
+        "cat-adapters",
+        "cat-smartwatches"
       ]
     },
     {
@@ -87,7 +89,8 @@
       "categories": [
         "cat-keyboards-mice",
         "cat-webcams-headsets",
-        "cat-cleaning-care"
+        "cat-cleaning-care",
+        "cat-printers"
       ]
     },
     {

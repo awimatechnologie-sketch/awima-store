@@ -1,0 +1,34 @@
+{
+  "id": "P-0104",
+  "name": "Oraimo HyperGaN 65W Charger",
+  "slug": "oraimo-hypergan-65w-charger",
+  "shortDescription": "65 واط GaN • 3 منافذ",
+  "description": "Oraimo HyperGaN 65W Charger — 65 واط GaN • 3 منافذ. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 249,
+  "currency": "MAD",
+  "category": "cat-chargers",
+  "images": [
+    "/images/products/oraimo-hypergan-65w-charger-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "65 واط GaN • 3 منافذ"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "شاحن شارجور رأس شحن chargeur oraimo hypergan 65w charger",
+  "fr": {
+    "name": "Oraimo HyperGaN 65W Charger",
+    "shortDescription": "65 W GaN • 3 ports",
+    "description": "Oraimo HyperGaN 65W Charger — 65 W GaN • 3 ports. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "65 W GaN • 3 ports"
+      }
+    ]
+  }
+}

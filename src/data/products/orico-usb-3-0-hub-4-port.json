@@ -1,0 +1,34 @@
+{
+  "id": "P-0175",
+  "name": "ORICO USB 3.0 Hub 4-Port",
+  "slug": "orico-usb-3-0-hub-4-port",
+  "shortDescription": "USB 3.0 • 4 منافذ",
+  "description": "ORICO USB 3.0 Hub 4-Port — USB 3.0 • 4 منافذ. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 119,
+  "currency": "MAD",
+  "category": "cat-disk",
+  "images": [
+    "/images/products/orico-usb-3-0-hub-4-port-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "USB 3.0 • 4 منافذ"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "هاب محول موزع hub adaptateur orico usb 3.0 hub 4-port",
+  "fr": {
+    "name": "ORICO USB 3.0 Hub 4-Port",
+    "shortDescription": "USB 3.0 • 4 ports",
+    "description": "ORICO USB 3.0 Hub 4-Port — USB 3.0 • 4 ports. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "USB 3.0 • 4 ports"
+      }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "P-0152",
+  "name": "Hoco CA Series Car Holder",
+  "slug": "hoco-ca-series-car-holder",
+  "shortDescription": "حامل سيارة • دوران 360°",
+  "description": "Hoco CA Series Car Holder — حامل سيارة • دوران 360°. اطلبه عبر واتساب وسنؤكد لك التوفر والسعر قبل الشراء.",
+  "price": 89,
+  "currency": "MAD",
+  "category": "cat-phone-holders",
+  "images": [
+    "/images/products/hoco-ca-series-car-holder-1.jpg"
+  ],
+  "availability": "on_request",
+  "featured": false,
+  "specs": [
+    {
+      "key": "المواصفات",
+      "value": "حامل سيارة • دوران 360°"
+    }
+  ],
+  "whatsappOrder": true,
+  "keywords": "حامل سيارة هاتف support voiture hoco ca series car holder",
+  "fr": {
+    "name": "Hoco CA Series Car Holder",
+    "shortDescription": "Support voiture • Rotation 360°",
+    "description": "Hoco CA Series Car Holder — Support voiture • Rotation 360°. Commandez sur WhatsApp : nous confirmons la disponibilité et le prix avant l’achat.",
+    "specs": [
+      {
+        "key": "Caractéristiques",
+        "value": "Support voiture • Rotation 360°"
+      }
+    ]
+  }
+}
