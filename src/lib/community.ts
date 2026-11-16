@@ -28,6 +28,8 @@ export function normalizeCommunity(raw: any): CommunityConfig {
       strongPoints: num(th.strongPoints, 1, 1000, DEFAULT_THRESHOLDS.strongPoints),
       greenDarkAvg: num(th.greenDarkAvg, 1, 5, DEFAULT_THRESHOLDS.greenDarkAvg),
       greenLightAvg: num(th.greenLightAvg, 1, 5, DEFAULT_THRESHOLDS.greenLightAvg),
+      likesBoost: Math.floor(num(th.likesBoost, 0, 100000, DEFAULT_THRESHOLDS.likesBoost)),
+      salesBoost: Math.floor(num(th.salesBoost, 0, 100000, DEFAULT_THRESHOLDS.salesBoost)),
     },
     crown: {
       enabled: cr.enabled !== false,

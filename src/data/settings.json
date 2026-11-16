@@ -114,7 +114,9 @@
       "minPoints": 5,
       "strongPoints": 10,
       "greenDarkAvg": 4.5,
-      "greenLightAvg": 4
+      "greenLightAvg": 4,
+      "likesBoost": 20,
+      "salesBoost": 10
     },
     "crown": {
       "enabled": true,
@@ -126,7 +128,8 @@
       "enabled": true,
       "count": 4,
       "minLikes": 3
-    }
+    },
+    "searchLog": true
   },
   "trustStrip": {
     "enabled": true,

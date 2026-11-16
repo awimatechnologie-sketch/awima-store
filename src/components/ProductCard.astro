@@ -3,6 +3,7 @@ import type { Product } from '../types/product';
 import { formatPrice, getSaving, availabilityFor } from '../lib/format';
 import { t, langOf, localePath, type Lang } from '../i18n';
 import { getReviewSummary } from '../services/reviews';
+import { frameTier } from '../lib/reviews';
 import { site } from '../config/site';
 import { badgeOffersFor, moroccoToday } from '../lib/offers';
 import { starsHtml, isTrusted } from '../lib/community';
@@ -15,9 +16,10 @@ const lang = langOf(Astro.props.lang);
 const av = availabilityFor(lang, product.availability);
 const saving = getSaving(product.price, product.oldPrice);
 const rv = getReviewSummary(product.id);
-const hasTier = rv.tier !== 'none';
+const frame = frameTier(rv.tier, rv.average, rv.points, site.community.thresholds, { sales: product.sales });
+const hasTier = frame !== 'none';
 const avgText = lang === 'fr' ? String(rv.average).replace('.', ',') : String(rv.average);
-const rvLabel = hasTier ? t(lang, `reviews.tier.${rv.tier}`) : '';
+const rvLabel = rv.tier !== 'none' ? t(lang, `reviews.tier.${rv.tier}`) : '';
 const imgSrc = product.images[0] ?? '/images/placeholder.svg';
 const srcset = buildSrcset(imgSrc, (p) => existsSync(`public${p}`));
 const canAdd = product.availability !== 'out_of_stock';
@@ -28,7 +30,7 @@ const today = moroccoToday();
 const offer = badgeOffersFor(site.autoOffers, product, today)[0];
 const offerValue = offer ? (offer.type === 'percent' ? `${offer.value}%` : formatPrice(offer.value, lang)) : '';
 ---
-<article class="card pc" data-pid={product.id} data-tier={hasTier ? rv.tier : undefined} data-rv-count={rv.count} data-rv-points={rv.points} data-rv-sum={rv.sum} data-trusted={product.trusted ? '1' : undefined}>
+<article class="card pc" data-pid={product.id} data-tier={hasTier ? frame : undefined} data-sales={product.sales || undefined} data-rv-count={rv.count} data-rv-points={rv.points} data-rv-sum={rv.sum} data-trusted={product.trusted ? '1' : undefined}>
   <a class="link" href={localePath(lang, `/products/${product.slug}`)}>
     <div class="media">
       <img src={imgSrc} srcset={srcset} sizes={srcset ? '(min-width: 1024px) 270px, (min-width: 640px) 33vw, 50vw' : undefined} alt={product.name} width="400" height="400" loading="lazy" decoding="async" />

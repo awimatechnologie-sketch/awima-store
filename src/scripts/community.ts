@@ -1,6 +1,6 @@
 // الإعجابات وتقييمات الزوار: تعمل فوق الصفحات الثابتة. إن لم تتوفر واجهة /api (لم تُفعَّل قاعدة D1 بعد)
 // يبقى الموقع كما هو تماماً: لا قلوب ولا نموذج، ولا خطأ يظهر للزائر.
-import { summaryFrom, type Thresholds } from '../lib/reviews';
+import { summaryFrom, frameTier, type Thresholds } from '../lib/reviews';
 import { starsHtml, isTrusted } from '../lib/community';
 
 interface Cfg {
@@ -58,7 +58,8 @@ function mergedSummary(el: HTMLElement, data: Data) {
 function paintRating(el: HTMLElement, data: Data) {
   const s = mergedSummary(el, data);
   const tierLabel = s.tier === 'none' ? '' : T(`reviews.tier.${s.tier}`);
-  if (s.tier === 'none') el.removeAttribute('data-tier'); else el.dataset.tier = s.tier;
+  const ft = frameTier(s.tier, s.average, s.points, cfg!.th, { likes: data.likes[el.dataset.pid!] ?? 0, sales: Number(el.dataset.sales || 0) });
+  if (ft === 'none') el.removeAttribute('data-tier'); else el.dataset.tier = ft;
   const trusted = isTrusted(s, el.dataset.trusted === '1', cfg!.crown);
   const rate = el.querySelector<HTMLElement>('.rate');
   if (rate) {

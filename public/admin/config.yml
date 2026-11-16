@@ -73,6 +73,7 @@ collections:
           - { label: صورة النوع (اختياري), name: image, widget: image, required: false }
           - { label: متوفر حالياً, name: available, widget: boolean, default: true }
       - { label: منتج مميز (يظهر في الرئيسية), name: featured, widget: boolean, default: false }
+      - { label: 'عدد المبيعات (يدوي)', name: sales, widget: number, value_type: int, min: 0, default: 0, required: false, hint: 'كم قطعة بعتَ منه. عند بلوغ حدّ «المبيعات» في الإعدادات ← مجتمع الموقع يرتفع لون الإطار درجة.' }
       - { label: 'اختيار Awima 👑 (تاج «منتج موثوق» يدوياً)', name: trusted, widget: boolean, default: false, required: false, hint: 'يمنح التاج مهما كانت التقييمات. بدونه ينال المنتج التاج تلقائياً عند بلوغ حدّ التاج في الإعدادات ← مجتمع الموقع.' }
       - { label: 'مدة الضمان بالأيام (فارغ = الافتراضية العامة، 0 = بلا ضمان لهذا المنتج)', name: warranty, widget: number, value_type: int, min: 0, required: false, hint: 'لا تظهر شارة الضمان إلا إذا فعّلت الضمان من الإعدادات ← الضمان. 30 = شهر، 365 = سنة.' }
       - { label: 'مدة التوفر بالأيام (للمنتج «عند الطلب» فقط)', name: leadDays, widget: number, value_type: int, min: 1, required: false, hint: 'تظهر للزائر «يتوفر خلال N يوم من تأكيد الطلب» عندما تكون الحالة «عند الطلب».' }
@@ -188,7 +189,7 @@ collections:
 
   # ---------------- الصفحات ----------------
   - name: pages
-    label: الصفحات (من نحن / Awima Box / اتصل بنا — عربي وفرنسي)
+    label: الصفحات (من نحن / AWIMA Box / اتصل بنا — عربي وفرنسي)
     files:
       - label: صفحة من نحن
         name: about_page
@@ -229,7 +230,7 @@ collections:
           - { label: العبارة الختامية الكبيرة, name: closing, widget: string, required: false }
           - { label: سطر تحت العبارة الختامية, name: closingSub, widget: string, required: false }
           - { label: عنوان قسم الزيارة (يظهر إن وُجد عنوان أو رابط خريطة في الإعدادات), name: visitTitle, widget: string, required: false }
-      - label: صفحة Awima Box
+      - label: صفحة AWIMA Box
         name: awima_box_page
         file: src/data/pages/awima-box.json
         format: json
@@ -316,7 +317,7 @@ collections:
           - { label: العبارة الختامية الكبيرة, name: closing, widget: string, required: false }
           - { label: سطر تحت العبارة الختامية, name: closingSub, widget: string, required: false }
           - { label: عنوان قسم الزيارة (يظهر إن وُجد عنوان أو رابط خريطة في الإعدادات), name: visitTitle, widget: string, required: false }
-      - label: صفحة Awima Box (الفرنسية)
+      - label: صفحة AWIMA Box (الفرنسية)
         name: awima_box_page_fr
         file: src/data/pages/awima-box.fr.json
         format: json
@@ -615,6 +616,8 @@ collections:
                   - { label: 'نقاط الأخضر الغامق', name: strongPoints, widget: number, value_type: int, min: 1, default: 10 }
                   - { label: 'أدنى متوسط للأخضر الغامق (من 5)', name: greenDarkAvg, widget: number, value_type: float, min: 1, max: 5, default: 4.5 }
                   - { label: 'أدنى متوسط للأخضر الفاتح (من 5)', name: greenLightAvg, widget: number, value_type: float, min: 1, max: 5, default: 4 }
+                  - { label: 'عدد الإعجابات الذي يرفع الإطار درجة واحدة (0 = معطّل)', name: likesBoost, widget: number, value_type: int, min: 0, default: 20 }
+                  - { label: 'عدد المبيعات الذي يرفع الإطار درجة واحدة (0 = معطّل؛ المبيعات تُدخل في المنتج)', name: salesBoost, widget: number, value_type: int, min: 0, default: 10 }
               - label: التاج 👑 (منتج موثوق)
                 name: crown
                 widget: object

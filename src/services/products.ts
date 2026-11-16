@@ -90,6 +90,7 @@ function normalizeProduct(file: string, r: any): Product {
     hidden: Boolean(r.hidden),
     warranty: typeof r.warranty === 'number' && Number.isInteger(r.warranty) && r.warranty >= 0 ? r.warranty : null,
     keywords: typeof r.keywords === 'string' ? r.keywords.trim() : '',
+    sales: Number.isFinite(Number(r.sales)) && Number(r.sales) > 0 ? Math.floor(Number(r.sales)) : 0,
     trusted: r.trusted === true,
     leadDays: typeof r.leadDays === 'number' && Number.isInteger(r.leadDays) && r.leadDays > 0 ? r.leadDays : null,
     variants: normalizeVariants(r.variants),

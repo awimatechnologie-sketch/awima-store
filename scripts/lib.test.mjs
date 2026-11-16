@@ -25,6 +25,7 @@ import { normalizeTrust, buildTrustItems } from '../src/lib/trust.ts';
 import { buildSrcset, variantPath } from '../src/lib/images.ts';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
+import { frameTier } from '../src/lib/reviews.ts';
 import { summarize, tierFor, normalizeReview, MIN_POINTS } from '../src/lib/reviews.ts';
 import { localizeProduct, localizeCategory } from '../src/lib/localize.ts';
 import { buildSitemap, buildRobots, buildStoreLd } from '../src/lib/seo.ts';
@@ -667,4 +668,15 @@ test('community: تنظيف عبارة البحث المسجّلة', () => {
   assert.equal(cleanMissTerm('ب'.repeat(100), normalize).length, 40);
   assert.equal(normalizeCommunity(undefined).searchLog, true);
   assert.equal(normalizeCommunity({ searchLog: false }).searchLog, false);
+});
+
+test('frameTier: الإعجابات والمبيعات ترفع الإطار درجة، والتقييمات السيئة لا يرفعها شيء', () => {
+  const th = DEFAULT_THRESHOLDS;
+  assert.equal(frameTier('none', 0, 0, th, {}), 'none');
+  assert.equal(frameTier('none', 0, 0, th, { sales: 10 }), 'yellow');
+  assert.equal(frameTier('none', 0, 0, th, { sales: 10, likes: 20 }), 'green-light');
+  assert.equal(frameTier('green-light', 4.2, 10, th, { likes: 20 }), 'green-dark');
+  assert.equal(frameTier('green-dark', 4.8, 20, th, { likes: 99, sales: 99 }), 'green-dark');
+  assert.equal(frameTier('yellow', 3, 10, th, { likes: 99, sales: 99 }), 'yellow'); // تقييمات سيئة
+  assert.equal(frameTier('none', 0, 0, { ...th, salesBoost: 0, likesBoost: 0 }, { sales: 999, likes: 999 }), 'none'); // معطّل
 });

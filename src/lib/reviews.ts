@@ -27,8 +27,8 @@ export interface Review {
 }
 
 /** عتبات الإطار اللوني (قابلة للتعديل من الإعدادات ← مجتمع الموقع) */
-export interface Thresholds { minPoints: number; strongPoints: number; greenDarkAvg: number; greenLightAvg: number }
-export const DEFAULT_THRESHOLDS: Thresholds = { minPoints: MIN_POINTS, strongPoints: STRONG_POINTS, greenDarkAvg: GREEN_DARK_AVG, greenLightAvg: GREEN_LIGHT_AVG };
+export interface Thresholds { minPoints: number; strongPoints: number; greenDarkAvg: number; greenLightAvg: number; likesBoost: number; salesBoost: number }
+export const DEFAULT_THRESHOLDS: Thresholds = { minPoints: MIN_POINTS, strongPoints: STRONG_POINTS, greenDarkAvg: GREEN_DARK_AVG, greenLightAvg: GREEN_LIGHT_AVG, likesBoost: 20, salesBoost: 10 };
 
 export interface ReviewSummary {
   count: number;
@@ -57,6 +57,20 @@ export function tierFor(average: number, points: number, th: Thresholds = DEFAUL
   if (average >= th.greenDarkAvg && points >= th.strongPoints) return 'green-dark';
   if (average >= th.greenLightAvg) return 'green-light';
   return 'yellow';
+}
+
+const LEVELS: Tier[] = ['none', 'yellow', 'green-light', 'green-dark'];
+/**
+ * إطار البطاقة النهائي = لون التقييمات + رفع درجة لكل من: بلوغ عدد الإعجابات (likesBoost) وعدد المبيعات (salesBoost).
+ * 0 يعطّل الرفع. التقييمات السيئة (متوسط دون الأخضر الفاتح بعد بلوغ الحد الأدنى للنقاط) لا يرفعها شيء.
+ */
+export function frameTier(base: Tier, average: number, points: number, th: Thresholds, extra: { likes?: number; sales?: number } = {}): Tier {
+  if (base === 'red') return base;
+  if (points >= th.minPoints && average < th.greenLightAvg) return base;
+  let bonus = 0;
+  if (th.salesBoost > 0 && (extra.sales ?? 0) >= th.salesBoost) bonus++;
+  if (th.likesBoost > 0 && (extra.likes ?? 0) >= th.likesBoost) bonus++;
+  return LEVELS[Math.min(3, Math.max(0, LEVELS.indexOf(base)) + bonus)];
 }
 
 /** يبني الملخص من العدد ومجموع الأوزان والمجموع المرجّح (يُستعمل للدمج مع تقييمات الزوار) */

@@ -33,15 +33,42 @@ const isActive = (href: string) => {
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.6 11.2a2 2 0 0 0 2 1.5h7.6a2 2 0 0 0 2-1.5L21 7H6"/></svg>
       <span class="count" data-cart-count hidden>0</span>
     </a>
-    <nav aria-label={t(lang, 'nav.main')}>
-      <ul>
-        {links.map((l) => (
-          <li><a href={localePath(lang, l.href)} aria-current={isActive(l.href) ? 'page' : undefined}>{t(lang, l.key)}</a></li>
-        ))}
-      </ul>
-    </nav>
+    <div class="navwrap" data-navwrap>
+      <button type="button" class="arr arr-l" data-dir="-1" aria-label="‹" hidden>‹</button>
+      <nav aria-label={t(lang, 'nav.main')} data-nav>
+        <ul>
+          {links.map((l) => (
+            <li><a href={localePath(lang, l.href)} aria-current={isActive(l.href) ? 'page' : undefined}>{t(lang, l.key)}</a></li>
+          ))}
+        </ul>
+      </nav>
+      <button type="button" class="arr arr-r" data-dir="1" aria-label="›" hidden>›</button>
+    </div>
   </div>
 </header>
+<script is:inline>
+  (function () {
+    var w = document.querySelector('[data-navwrap]'); if (!w) return;
+    var n = w.querySelector('[data-nav]'), L = w.querySelector('.arr-l'), R = w.querySelector('.arr-r');
+    function upd() {
+      var max = n.scrollWidth - n.clientWidth, pos = Math.abs(n.scrollLeft), rtl = getComputedStyle(n).direction === 'rtl';
+      var more = max > 4, atStart = pos < 4, atEnd = pos > max - 4;
+      var canLeft = more && (rtl ? !atEnd : !atStart), canRight = more && (rtl ? !atStart : !atEnd);
+      L.hidden = !canLeft; R.hidden = !canRight;
+      w.classList.toggle('fade-l', canLeft); w.classList.toggle('fade-r', canRight);
+    }
+    n.addEventListener('scroll', upd, { passive: true }); window.addEventListener('resize', upd); upd();
+    w.addEventListener('click', function (e) { var b = e.target.closest('.arr'); if (b) n.scrollBy({ left: Number(b.dataset.dir) * 160, behavior: 'smooth' }); });
+    // تلميح مرة واحدة لكل جلسة: يتحرك الشريط قليلاً ويعود ليفهم الزائر أنه قابل للتمرير
+    try {
+      if (n.scrollWidth - n.clientWidth > 4 && !sessionStorage.getItem('nav_hint')) {
+        sessionStorage.setItem('nav_hint', '1');
+        var s = getComputedStyle(n).direction === 'rtl' ? -1 : 1;
+        setTimeout(function () { n.scrollBy({ left: s * 70, behavior: 'smooth' }); setTimeout(function () { n.scrollBy({ left: -s * 70, behavior: 'smooth' }); }, 650); }, 700);
+      }
+    } catch (e) {}
+  })();
+</script>
 <style>
   .header { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid var(--c-border); }
   .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px; padding-block: 6px; }
@@ -51,11 +78,20 @@ const isActive = (href: string) => {
   .lang { order: 1; margin-inline-start: auto; display: inline-flex; align-items: center; min-height: 44px; padding: 5px 14px; border: 1px solid var(--c-border); border-radius: 999px; font-weight: 700; font-size: 0.85rem; color: var(--c-primary); text-decoration: none; }
   .lang:hover { background: var(--c-surface); }
   .count { position: absolute; top: 0; inset-inline-end: 0; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: var(--c-alert); color: #fff; font-size: 0.75rem; font-weight: 700; display: grid; place-items: center; }
-  nav { order: 2; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .navwrap { order: 2; width: 100%; position: relative; }
+  .navwrap::before, .navwrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 34px; z-index: 1; pointer-events: none; opacity: 0; transition: opacity 0.2s; }
+  .navwrap::before { left: 0; background: linear-gradient(90deg, #fff 30%, rgba(255, 255, 255, 0)); }
+  .navwrap::after { right: 0; background: linear-gradient(270deg, #fff 30%, rgba(255, 255, 255, 0)); }
+  .navwrap.fade-l::before, .navwrap.fade-r::after { opacity: 1; }
+  .arr { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 30px; height: 30px; border-radius: 50%; border: 0; background: var(--c-accent); color: #fff; font-size: 1.3rem; line-height: 1; cursor: pointer; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25); animation: nudge 1.4s ease-in-out infinite; }
+  .arr[hidden] { display: none; }
+  .arr-l { left: 2px; } .arr-r { right: 2px; }
+  @keyframes nudge { 50% { transform: translateY(-50%) scale(1.12); } }
+  nav { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   nav::-webkit-scrollbar { display: none; }
   ul { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
   nav a { display: block; padding: 12px 14px; border-radius: 8px; text-decoration: none; font-weight: 600; color: var(--c-primary); white-space: nowrap; }
   nav a:hover { background: var(--c-surface); }
   nav a[aria-current='page'] { background: var(--c-accent); color: #fff; }
-  @media (min-width: 720px) { nav { width: auto; order: 1; margin-inline-start: auto; } .lang { order: 2; margin-inline-start: 0; } .search { order: 3; } .cart { order: 4; } }
+  @media (min-width: 720px) { .navwrap { width: auto; order: 1; margin-inline-start: auto; } .arr, .navwrap::before, .navwrap::after { display: none; } nav { width: auto; } .lang { order: 2; margin-inline-start: 0; } .search { order: 3; } .cart { order: 4; } }
 </style>
