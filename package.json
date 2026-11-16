@@ -10,6 +10,7 @@
     "check": "node scripts/check-data.mjs",
     "test": "node scripts/gen-flow-catalog.mjs && node --import ./scripts/register-ts-resolver.mjs --test",
     "optimize": "node scripts/optimize-images.mjs",
+    "prune": "node scripts/prune-products.mjs",
     "build": "node scripts/gen-flow-catalog.mjs && node scripts/check-data.mjs && node scripts/optimize-images.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro"
