@@ -436,6 +436,40 @@ if (existsSync(REV_DIR)) {
   }
 }
 
+// ---------- AWIMA Parts ----------
+{
+  const PD = join(DATA, 'parts');
+  const st = readJson(join(PD, 'settings.json'), 'parts/settings.json');
+  const it = readJson(join(PD, 'items.json'), 'parts/items.json');
+  if (st && it) {
+    if (!/^\d{8,15}$/.test(String(st.whatsapp ?? ''))) err('parts/settings.json', `رقم واتساب غير صالح: ${st.whatsapp}`);
+    const cids = new Set();
+    for (const [i, c] of (st.categories ?? []).entries()) {
+      const w = `parts/settings.json (تصنيف ${i + 1})`;
+      if (!c?.id || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(c.id)) err(w, `معرّف التصنيف غير صالح: ${JSON.stringify(c?.id)}`);
+      else if (cids.has(c.id)) err(w, `معرّف مكرر: ${c.id}`);
+      else cids.add(c.id);
+      if (!c?.name) err(w, 'اسم التصنيف مطلوب');
+    }
+    const pids = new Set();
+    let shown = 0;
+    for (const [i, p] of (it.items ?? []).entries()) {
+      const w = `parts/items.json (${p?.id ?? i + 1})`;
+      if (!p?.id || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(p.id)) { err(w, 'معرّف القطعة غير صالح'); continue; }
+      if (pids.has(p.id)) err(w, 'معرّف مكرر');
+      pids.add(p.id);
+      if (!cids.has(p.cat)) err(w, `تصنيف غير موجود: ${p.cat}`);
+      if (!p.model || !p.part) err(w, 'الموديل واسم القطعة مطلوبان');
+      if (p.available !== false) {
+        if (!Number.isFinite(p.retail) || p.retail <= 0) warn(w, 'قطعة ظاهرة بلا سعر تقسيط: لن تُعرض');
+        else shown++;
+        if (Number.isFinite(p.wholesale) && p.wholesale > p.retail) warn(w, 'سعر الجملة أعلى من التقسيط');
+      }
+    }
+    console.log(`[check] AWIMA Parts: ${shown} قطعة ظاهرة في ${cids.size} تصنيف`);
+  }
+}
+
 // ---------- النتيجة ----------
 console.log(`[check] ${productCount} منتج (${visibleCount} ظاهر) · ${catIds.size} قسم`);
 for (const w of warnings) console.warn(`  ⚠ ${w}`);

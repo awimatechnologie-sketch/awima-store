@@ -1,0 +1,234 @@
+---
+// AWIMA Parts: قطع الغيار — بحث بالموديل، «طلب» متعدد القطع برسالة واتساب واحدة، ووضع التقني لأسعار الجملة
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getParts, getPartCats, getPartsText, partsPhone, partsWhatsapp, waBase, wholesaleToggle } from '../../services/parts';
+import { t, langOf, type Lang } from '../../i18n';
+
+interface Props { lang?: Lang }
+const lang = langOf(Astro.props.lang);
+const parts = getParts();
+const cats = getPartCats(lang);
+const txt = getPartsText(lang);
+const phone = partsPhone();
+const catName = Object.fromEntries(cats.map((c) => [c.id, c.name]));
+const description = t(lang, 'parts.metaDesc', { n: parts.length, phone });
+const norm = (v: string) => v.toLowerCase().replace(/[^a-z0-9؀-ۿ+]+/g, ' ');
+const label = (p: (typeof parts)[number]) => `${p.model} — ${p.part}${p.quality ? ` (${p.quality})` : ''}`;
+const generalWa = waBase() + encodeURIComponent(t(lang, 'parts.ctaText'));
+---
+<BaseLayout lang={lang} title={txt.title} description={description}>
+  <section class="hero">
+    <div class="container hero-in">
+      <div>
+        <p class="eyebrow">AWIMA Parts</p>
+        <h1>{txt.title}</h1>
+        <p class="lead">{txt.intro}</p>
+        <a class="btn btn-wa" href={`https://wa.me/${partsWhatsapp()}`} target="_blank" rel="noopener">{t(lang, 'parts.ctaBtn')} · <span dir="ltr">{phone}</span></a>
+      </div>
+      <div class="stats"><div><b>{parts.length}+</b><span>{t(lang, 'parts.shown', { n: '' }).trim()}</span></div><div><b>{cats.length}</b><span>{t(lang, 'parts.all')}</span></div></div>
+    </div>
+  </section>
+
+  {txt.steps.length > 0 && (
+    <section class="section section-alt">
+      <div class="container">
+        <h2>{t(lang, 'parts.stepsTitle')}</h2>
+        <ol class="steps">
+          {txt.steps.map((x, i) => <li class="card"><span class="no">{i + 1}</span><div><h3>{x.title}</h3><p>{x.text}</p></div></li>)}
+        </ol>
+      </div>
+    </section>
+  )}
+
+  <section class="section" id="finder">
+    <div class="container">
+      <div class="tools">
+        <input id="q" type="search" inputmode="search" autocomplete="off" placeholder={t(lang, 'parts.search')} aria-label={t(lang, 'parts.search')} />
+        <div class="chips" id="chips" role="group">
+          <button type="button" class="chip on" data-cat="">{t(lang, 'parts.all')}</button>
+          <button type="button" class="chip" data-cat="__pop">{t(lang, 'parts.popular')}</button>
+          {cats.map((c) => <button type="button" class="chip" data-cat={c.id}>{c.icon} {c.name} <small>{c.count}</small></button>)}
+        </div>
+        {wholesaleToggle() && <label class="tech"><input type="checkbox" id="tech" /> <span>{t(lang, 'parts.tech')}</span></label>}
+        <p class="hint" id="count" aria-live="polite"></p>
+      </div>
+
+      <div class="grid-p" id="list">
+        {parts.map((p) => (
+          <article class="card part" data-id={p.id} data-cat={p.cat} data-pop={p.popular ? '1' : undefined} data-hay={norm(`${p.model} ${p.part} ${p.code} ${p.compat} ${p.quality} ${catName[p.cat] ?? ''}`)} data-label={label(p)} data-ret={p.retail}>
+            <div class="top"><span class="cat">{catName[p.cat]}</span>{p.popular && <span class="star" title={t(lang, 'parts.popular')}>⭐</span>}</div>
+            <h3>{p.model}</h3>
+            <p class="pn">{p.part}</p>
+            <ul class="meta">
+              {p.quality && <li><b>{p.quality}</b></li>}
+              {p.form && <li>{p.form}</li>}
+              {p.code && <li>{t(lang, 'parts.code')}: <span dir="ltr">{p.code}</span></li>}
+              {p.compat && <li>{t(lang, 'parts.compat')}: <span dir="ltr">{p.compat}</span></li>}
+            </ul>
+            <p class="price"><b>{t(lang, 'parts.retail', { p: p.retail })}</b> <small>{t(lang, 'parts.retailNote')}</small></p>
+            <p class="ws">{t(lang, 'parts.wholesale', { p: p.wholesale })}</p>
+            <div class="acts">
+              <button type="button" class="btn add" data-add={p.id}>{t(lang, 'parts.add')}</button>
+              <a class="btn btn-wa ask" target="_blank" rel="noopener" data-ask={p.id} href={waBase() + encodeURIComponent(t(lang, 'parts.wa.item', { label: label(p) }))}>{t(lang, 'parts.ask')}</a>
+            </div>
+          </article>
+        ))}
+      </div>
+      <p class="none" id="none" hidden>{t(lang, 'parts.none')}</p>
+    </div>
+  </section>
+
+  {txt.quality.length > 0 && (
+    <section class="section section-alt">
+      <div class="container">
+        <h2>{t(lang, 'parts.qualityTitle')}</h2>
+        <div class="qgrid">
+          {txt.quality.map((x) => <div class="card q"><h3 dir="ltr">{x.title}</h3><p>{x.text}</p></div>)}
+        </div>
+        {txt.tips && <p class="tips"><b>{t(lang, 'parts.tipsTitle')}:</b> {txt.tips}</p>}
+      </div>
+    </section>
+  )}
+
+  <section class="section">
+    <div class="container">
+      {txt.note && <p class="note">{txt.note}</p>}
+      <div class="card cta">
+        <h2>{t(lang, 'parts.ctaTitle')}</h2>
+        <p>{t(lang, 'parts.ctaText')}</p>
+        <a class="btn btn-wa" href={generalWa} target="_blank" rel="noopener">{t(lang, 'parts.ctaBtn')} · <span dir="ltr">{phone}</span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="req" id="req" hidden>
+    <span class="rt" id="rt"></span>
+    <a class="btn btn-wa" id="rsend" target="_blank" rel="noopener" href="#">{t(lang, 'parts.send')}</a>
+    <button type="button" class="clr" id="rclr">{t(lang, 'parts.clear')}</button>
+  </div>
+  <div id="cfg" hidden data-wa={waBase()} data-head={t(lang, 'parts.wa.head')} data-foot={t(lang, 'parts.wa.foot')} data-req={t(lang, 'parts.reqTitle')} data-added={t(lang, 'parts.added')} data-add={t(lang, 'parts.add')} data-shown={t(lang, 'parts.shown')} data-hint={t(lang, 'parts.searchHint')} data-ret={t(lang, 'parts.retail')}></div>
+</BaseLayout>
+<script>
+  const cfg = (document.getElementById('cfg') as HTMLElement).dataset;
+  const q = document.getElementById('q') as HTMLInputElement;
+  const list = document.getElementById('list') as HTMLElement;
+  const cards = Array.from(list.querySelectorAll<HTMLElement>('.part'));
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('#chips .chip'));
+  const count = document.getElementById('count')!;
+  const none = document.getElementById('none')!;
+  const tech = document.getElementById('tech') as HTMLInputElement | null;
+  const bar = document.getElementById('req')!;
+  const KEY = 'awima_parts_req', TKEY = 'awima_parts_tech';
+  let cat = '';
+  const load = (): string[] => { try { const v = JSON.parse(localStorage.getItem(KEY) || '[]'); return Array.isArray(v) ? v.filter((x) => typeof x === 'string') : []; } catch { return []; } };
+  const save = (v: string[]) => { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch { /* ignore */ } };
+  let req = load().filter((id) => cards.some((c) => c.dataset.id === id));
+
+  function filter() {
+    const words = q.value.toLowerCase().replace(/[^a-z0-9؀-ۿ+]+/g, ' ').trim().split(' ').filter(Boolean);
+    let n = 0;
+    for (const c of cards) {
+      const okCat = !cat || (cat === '__pop' ? c.dataset.pop === '1' : c.dataset.cat === cat);
+      const ok = okCat && words.every((w) => (c.dataset.hay || '').includes(w));
+      c.hidden = !ok; if (ok) n++;
+    }
+    count.textContent = (cfg.shown || '').replace('{n}', String(n));
+    none.hidden = n > 0;
+  }
+  q.addEventListener('input', filter);
+  chips.forEach((b) => b.addEventListener('click', () => { cat = b.dataset.cat || ''; chips.forEach((x) => x.classList.toggle('on', x === b)); filter(); }));
+
+  function paint() {
+    for (const c of cards) {
+      const on = req.includes(c.dataset.id!);
+      const b = c.querySelector<HTMLButtonElement>('[data-add]')!;
+      b.textContent = on ? (cfg.added || '') : (cfg.add || '');
+      b.classList.toggle('done', on);
+      c.classList.toggle('inreq', on);
+    }
+    bar.hidden = req.length === 0;
+    if (req.length) {
+      document.getElementById('rt')!.textContent = (cfg.req || '').replace('{n}', String(req.length));
+      const nl = '\n';
+      const lines = req.map((id) => cards.find((c) => c.dataset.id === id)!).map((c, i) => `${i + 1}. ${c.dataset.label} — ${(cfg.ret || '').replace('{p}', c.dataset.ret || '')}`);
+      const msg = [cfg.head, ...lines, '', cfg.foot].join(nl);
+      (document.getElementById('rsend') as HTMLAnchorElement).href = (cfg.wa || '') + encodeURIComponent(msg);
+    }
+  }
+  list.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-add]');
+    if (!b) return;
+    const id = b.dataset.add!;
+    req = req.includes(id) ? req.filter((x) => x !== id) : [...req, id];
+    save(req); paint();
+  });
+  document.getElementById('rclr')!.addEventListener('click', () => { req = []; save(req); paint(); });
+
+  function setTech(on: boolean) { document.body.classList.toggle('tech-on', on); try { localStorage.setItem(TKEY, on ? '1' : '0'); } catch { /* ignore */ } }
+  if (tech) {
+    try { if (localStorage.getItem(TKEY) === '1') { tech.checked = true; document.body.classList.add('tech-on'); } } catch { /* ignore */ }
+    tech.addEventListener('change', () => setTech(tech.checked));
+  }
+  filter(); paint();
+</script>
+<style>
+  .hero { background: linear-gradient(135deg, var(--c-primary), #123a8f); color: #fff; padding: 40px 0; }
+  .hero h1 { color: #fff; margin: 0 0 8px; }
+  .hero-in { display: grid; gap: 24px; align-items: center; }
+  .eyebrow { margin: 0 0 6px; font-weight: 700; letter-spacing: 0.08em; opacity: 0.8; }
+  .lead { margin: 0 0 18px; max-width: 62ch; opacity: 0.95; }
+  .stats { display: flex; gap: 12px; }
+  .stats div { background: rgba(255, 255, 255, 0.12); border-radius: 14px; padding: 14px 20px; text-align: center; min-width: 110px; }
+  .stats b { display: block; font-size: 1.6rem; }
+  .stats span { font-size: 0.85rem; opacity: 0.9; }
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .steps li { display: flex; gap: 12px; padding: 14px; align-items: flex-start; }
+  .steps h3 { margin: 0 0 4px; }
+  .steps p { margin: 0; color: var(--c-muted); }
+  .no { flex: none; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; color: #fff; background: var(--air-red); }
+  .steps li:nth-child(2) .no { background: var(--air-orange); }
+  .steps li:nth-child(3) .no { background: var(--air-yellow); color: #3a2c00; }
+  .steps li:nth-child(4) .no { background: var(--air-green); }
+  .tools { display: grid; gap: 12px; margin-bottom: 18px; }
+  #q { width: 100%; font: inherit; padding: 14px 16px; border-radius: 12px; border: 2px solid var(--c-border); min-height: 52px; }
+  #q:focus { border-color: var(--c-accent); outline: none; }
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; font: inherit; font-weight: 700; white-space: nowrap; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--c-border); background: #fff; color: var(--c-primary); cursor: pointer; min-height: 44px; }
+  .chip small { opacity: 0.6; }
+  .chip.on { background: var(--c-primary); color: #fff; border-color: var(--c-primary); }
+  .tech { display: flex; gap: 10px; align-items: center; font-weight: 600; background: #fff; border: 1px dashed var(--c-border); border-radius: 12px; padding: 10px 12px; }
+  .tech input { width: 22px; height: 22px; }
+  .hint { color: var(--c-muted); margin: 0; font-size: 0.9rem; min-height: 1.2em; }
+  .grid-p { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  .part { padding: 14px; display: grid; gap: 4px; align-content: start; }
+  .part[hidden] { display: none; }
+  .part.inreq { outline: 3px solid var(--air-green); }
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .cat { font-size: 0.8rem; color: var(--c-muted); }
+  .part h3 { margin: 0; font-size: 1rem; color: var(--c-primary); }
+  .pn { margin: 0; font-weight: 700; }
+  .meta { list-style: none; margin: 4px 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 0.85rem; color: var(--c-muted); }
+  .meta b { color: var(--c-text); background: var(--c-surface); padding: 2px 8px; border-radius: 999px; }
+  .price { margin: 4px 0 0; color: var(--c-accent); font-size: 1.05rem; }
+  .price small { color: var(--c-muted); font-weight: 400; font-size: 0.8rem; }
+  .ws { display: none; margin: 0; font-weight: 700; color: var(--air-green); }
+  :global(body.tech-on) .ws { display: block; }
+  .acts { display: flex; gap: 8px; margin-top: 8px; }
+  .acts .btn { flex: 1; padding: 10px 8px; font-size: 0.9rem; text-align: center; }
+  .add.done { background: var(--air-green); color: #fff; }
+  .none { text-align: center; color: var(--c-muted); padding: 24px; }
+  .qgrid { display: grid; gap: 12px; }
+  .q { padding: 14px; }
+  .q h3 { margin: 0 0 4px; color: var(--c-primary); }
+  .q p { margin: 0; color: var(--c-muted); }
+  .tips { margin-top: 16px; padding: 12px 14px; border-inline-start: 4px solid var(--air-orange); background: #fff; border-radius: 8px; }
+  .note { color: var(--c-muted); font-size: 0.9rem; margin: 0 0 16px; }
+  .cta { padding: 20px; text-align: center; display: grid; gap: 10px; justify-items: center; }
+  .req { position: fixed; inset-inline: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 30; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; background: #fff; border: 2px solid var(--air-green); border-radius: 16px; padding: 10px 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); }
+  .req[hidden] { display: none; }
+  .rt { font-weight: 800; color: var(--c-primary); }
+  .clr { font: inherit; background: none; border: 0; color: var(--c-alert); text-decoration: underline; cursor: pointer; min-height: 44px; }
+  @media (min-width: 640px) { .grid-p { grid-template-columns: repeat(2, 1fr); } .steps, .qgrid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .grid-p { grid-template-columns: repeat(3, 1fr); } .steps { grid-template-columns: repeat(4, 1fr); } .qgrid { grid-template-columns: repeat(4, 1fr); } .hero-in { grid-template-columns: 1fr auto; } .req { inset-inline: auto 24px; max-width: 520px; } }
+</style>

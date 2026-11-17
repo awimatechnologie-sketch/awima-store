@@ -485,6 +485,74 @@ collections:
               - { label: مع إطار, name: frame, widget: boolean, required: false }
               - { label: أصلية, name: original, widget: boolean, required: false }
               - { label: متوفرة (ظاهرة), name: available, widget: boolean, default: true }
+  # ---------------- AWIMA Parts (قطع الغيار) ----------------
+  - name: parts
+    label: AWIMA Parts (قطع الغيار)
+    files:
+      - label: إعدادات الصفحة
+        name: parts_settings
+        file: src/data/parts/settings.json
+        format: json
+        fields:
+          - { label: تفعيل صفحة قطع الغيار, name: enabled, widget: boolean, default: true }
+          - { label: 'واتساب القطع (دولي بلا + ولا 0)', name: whatsapp, widget: string, pattern: ['^\d{8,15}$', 'أرقام فقط بالصيغة الدولية'] }
+          - { label: الرقم للعرض, name: phoneDisplay, widget: string }
+          - { label: العنوان, name: title, widget: string }
+          - { label: العنوان بالفرنسية, name: title_fr, widget: string, required: false }
+          - { label: المقدمة, name: intro, widget: text }
+          - { label: المقدمة بالفرنسية, name: intro_fr, widget: text, required: false }
+          - { label: 'خيار «أنا تقني» (إظهار أسعار الجملة لمن يفعّله)', name: showWholesaleToggle, widget: boolean, default: true }
+          - label: التصنيفات
+            name: categories
+            widget: list
+            summary: '{{fields.icon}} {{fields.name}}'
+            fields:
+              - { label: المعرّف (إنجليزي صغير), name: id, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'حروف إنجليزية صغيرة وأرقام وشرطات'] }
+              - { label: الاسم, name: name, widget: string }
+              - { label: الاسم بالفرنسية, name: name_fr, widget: string, required: false }
+              - { label: أيقونة (إيموجي), name: icon, widget: string, required: false }
+          - label: خطوات «كيف يعمل؟»
+            name: steps
+            widget: list
+            fields:
+              - { label: العنوان, name: title, widget: string }
+              - { label: العنوان بالفرنسية, name: title_fr, widget: string, required: false }
+              - { label: النص, name: text, widget: text }
+              - { label: النص بالفرنسية, name: text_fr, widget: text, required: false }
+          - label: دليل الجودات
+            name: quality
+            widget: list
+            fields:
+              - { label: الاسم (GX, OEM...), name: name, widget: string }
+              - { label: الشرح, name: text, widget: text }
+              - { label: الشرح بالفرنسية, name: text_fr, widget: text, required: false }
+          - { label: نصيحة قبل الشراء, name: tips, widget: text, required: false }
+          - { label: النصيحة بالفرنسية, name: tips_fr, widget: text, required: false }
+          - { label: ملاحظة أسفل الصفحة, name: note, widget: text, required: false }
+          - { label: الملاحظة بالفرنسية, name: note_fr, widget: text, required: false }
+      - label: القطع وأسعارها
+        name: parts_items
+        file: src/data/parts/items.json
+        format: json
+        fields:
+          - label: القطع
+            name: items
+            widget: list
+            summary: '{{fields.model}} · {{fields.part}} · {{fields.retail}}'
+            hint: 'التقسيط = السعر الظاهر للجميع. الجملة تظهر فقط لمن يفعّل «أنا تقني». أوقف «متوفرة» لإخفاء قطعة.'
+            fields:
+              - { label: المعرّف (فريد, لا يتغير), name: id, widget: string, pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', 'حروف إنجليزية صغيرة وأرقام وشرطات'] }
+              - { label: معرّف التصنيف, name: cat, widget: string }
+              - { label: الموديل / الماركة, name: model, widget: string }
+              - { label: القطعة, name: part, widget: string }
+              - { label: الكود, name: code, widget: string, required: false }
+              - { label: التوافق, name: compat, widget: string, required: false }
+              - { label: الجودة, name: quality, widget: string, required: false }
+              - { label: الشكل / الوصف, name: form, widget: string, required: false }
+              - { label: سعر الجملة (درهم), name: wholesale, widget: number, value_type: int, min: 0 }
+              - { label: سعر التقسيط (درهم), name: retail, widget: number, value_type: int, min: 0 }
+              - { label: الأكثر طلباً ⭐, name: popular, widget: boolean, default: false, required: false }
+              - { label: متوفرة (ظاهرة), name: available, widget: boolean, default: true }
   # ---------------- إعدادات الموقع ----------------
   - name: settings
     label: إعدادات الموقع

@@ -3,6 +3,7 @@ import { site } from '../config/site';
 import { getAllProducts } from '../services/products';
 import { getIndexableSectionSlugs } from '../services/sections';
 import { getBrandIds, screensEnabled } from '../services/screens';
+import { partsEnabled } from '../services/parts';
 import { buildSitemap } from '../lib/seo';
 import { localePath } from '../i18n';
 
@@ -10,7 +11,7 @@ import { localePath } from '../i18n';
 const stripFr = (p: string) => p.replace(/^\/fr(?=\/|$)/, '') || '/';
 
 export const GET: APIRoute = () => {
-  const arPaths = ['/', '/products', '/awima-box', ...(screensEnabled() ? ['/screens', ...getBrandIds().map((b) => `/screens/${b}`)] : []), '/about', '/compat', ...(site.warranty.enabled ? ['/policy'] : []), '/contact', ...getIndexableSectionSlugs().map((s) => `/sections/${s}`), ...getAllProducts().map((p) => `/products/${p.slug}`)];
+  const arPaths = ['/', '/products', '/awima-box', ...(partsEnabled() ? ['/parts'] : []), ...(screensEnabled() ? ['/screens', ...getBrandIds().map((b) => `/screens/${b}`)] : []), '/about', '/compat', ...(site.warranty.enabled ? ['/policy'] : []), '/contact', ...getIndexableSectionSlugs().map((s) => `/sections/${s}`), ...getAllProducts().map((p) => `/products/${p.slug}`)];
   const paths = [...arPaths, ...arPaths.map((p) => localePath('fr', p))];
   const xml = buildSitemap(site.url, paths, (p) => {
     const base = stripFr(p);

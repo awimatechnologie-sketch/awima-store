@@ -1,0 +1,132 @@
+{
+ "enabled": true,
+ "whatsapp": "212610680508",
+ "phoneDisplay": "0610680508",
+ "title": "AWIMA Parts — قطع الغيار",
+ "title_fr": "AWIMA Parts — Pièces détachées",
+ "intro": "قطع غيار الهواتف والحواسيب والطابعات في مكان واحد: ابحث عن موديلك، أضف القطع التي تحتاجها إلى «طلبك»، ثم أرسل الطلب كاملاً عبر واتساب برسالة جاهزة.",
+ "intro_fr": "Pièces détachées pour téléphones, ordinateurs et imprimantes au même endroit : cherchez votre modèle, ajoutez les pièces à « votre demande », puis envoyez tout sur WhatsApp en un message prêt.",
+ "showWholesaleToggle": true,
+ "categories": [
+  {
+   "id": "screens",
+   "name": "الشاشات",
+   "name_fr": "Écrans",
+   "icon": "📱"
+  },
+  {
+   "id": "batteries",
+   "name": "البطاريات",
+   "name_fr": "Batteries",
+   "icon": "🔋"
+  },
+  {
+   "id": "flex",
+   "name": "النابات والفلكسات",
+   "name_fr": "Nappes / Flex",
+   "icon": "🔌"
+  },
+  {
+   "id": "camera-audio",
+   "name": "الكاميرات والصوت والحساسات",
+   "name_fr": "Caméras, son, capteurs",
+   "icon": "📷"
+  },
+  {
+   "id": "housing",
+   "name": "الشاصي والكاش والأزرار",
+   "name_fr": "Châssis, caches, boutons",
+   "icon": "🧩"
+  },
+  {
+   "id": "boards",
+   "name": "الكارت مير والـ IC",
+   "name_fr": "Cartes mères et IC",
+   "icon": "🧠"
+  },
+  {
+   "id": "computers",
+   "name": "الحواسيب والطابعات",
+   "name_fr": "PC et imprimantes",
+   "icon": "💻"
+  },
+  {
+   "id": "tools",
+   "name": "أدوات ومستهلكات الإصلاح",
+   "name_fr": "Outils et consommables",
+   "icon": "🛠️"
+  }
+ ],
+ "steps": [
+  {
+   "title": "ابحث عن موديلك",
+   "title_fr": "Cherchez votre modèle",
+   "text": "اكتب اسم الهاتف أو رقمه (مثل A54 أو iPhone 12) أو اختر نوع القطعة.",
+   "text_fr": "Tapez le nom ou la référence (ex. A54 ou iPhone 12) ou choisissez le type de pièce."
+  },
+  {
+   "title": "أضف القطع إلى طلبك",
+   "title_fr": "Ajoutez les pièces à votre demande",
+   "text": "شاشة وبطارية ونابة؟ أضف كل ما تحتاجه في طلب واحد بدل رسائل متفرقة.",
+   "text_fr": "Écran, batterie, nappe ? Ajoutez tout en une seule demande au lieu de plusieurs messages."
+  },
+  {
+   "title": "أرسل الطلب عبر واتساب",
+   "title_fr": "Envoyez sur WhatsApp",
+   "text": "تصلنا رسالة مرتبة بالموديلات والجودات، ويمكنك إرفاق صورة القطعة القديمة للتأكد من المطابقة.",
+   "text_fr": "Nous recevons un message ordonné avec modèles et qualités ; joignez une photo de l’ancienne pièce pour confirmer la compatibilité."
+  },
+  {
+   "title": "نؤكد لك قبل الالتزام",
+   "title_fr": "Confirmation avant tout engagement",
+   "text": "نؤكد التوفر والجودة والسعر النهائي معك قبل أي شراء.",
+   "text_fr": "Nous confirmons disponibilité, qualité et prix final avec vous avant tout achat."
+  }
+ ],
+ "quality": [
+  {
+   "name": "GX / GX OLED",
+   "text": "جودة قريبة من الأصلية وألوان جيدة، وهي الأكثر طلباً في المغرب بسعر متوسط.",
+   "text_fr": "Qualité proche de l’original, bonnes couleurs ; la plus demandée au Maroc, à prix moyen."
+  },
+  {
+   "name": "DD / EK / EK Pro",
+   "text": "جودة جيدة وأرخص من GX، مناسبة لمن يريد سعراً اقتصادياً.",
+   "text_fr": "Bonne qualité, moins chère que GX ; idéale pour un petit budget."
+  },
+  {
+   "name": "Soft OLED",
+   "text": "الأقرب إلى شاشة iPhone الأصلية في المرونة والعرض، وسعرها أعلى.",
+   "text_fr": "La plus proche de l’écran iPhone d’origine (souplesse et affichage), à prix plus élevé."
+  },
+  {
+   "name": "Hard OLED",
+   "text": "أرخص من Soft وأكثر صلابة، وقد تتأثر بالصدمات.",
+   "text_fr": "Moins chère que Soft et plus rigide ; peut être sensible aux chocs."
+  },
+  {
+   "name": "In-Cell LCD",
+   "text": "شاشة LCD بلمس مدمج، شائعة في هواتف Samsung وXiaomi الاقتصادية بسعر منخفض.",
+   "text_fr": "Écran LCD à tactile intégré, courant sur les Samsung/Xiaomi d’entrée de gamme, à petit prix."
+  },
+  {
+   "name": "Original / Service Pack",
+   "text": "قطعة أصلية من الشركة، وهي الأعلى سعراً لمن يريد الأصلي.",
+   "text_fr": "Pièce d’origine du constructeur, au prix le plus élevé, pour qui veut l’original."
+  },
+  {
+   "name": "OEM",
+   "text": "من مصنع القطعة الأصلية دون علبة الشركة، جودة جيدة بسعر متوسط.",
+   "text_fr": "Issue de l’usine d’origine sans emballage constructeur ; bonne qualité, prix moyen."
+  },
+  {
+   "name": "Avec / Sans Châssis",
+   "text": "«مع إطار» جاهزة للتركيب، و«بدون إطار» تحتاج نقل إطارك القديم، والفرق في السعر نحو 50–150 درهماً.",
+   "text_fr": "« Avec châssis » est prête à poser ; « sans châssis » nécessite de reprendre l’ancien cadre (écart d’environ 50–150 DH)."
+  }
+ ],
+ "tips": "للقطع الدقيقة (مثل شاشات iPhone) يؤثر تبديل النابة أو الـ IC على ميزات كـ Face ID، لذلك راسلنا قبل الشراء لنرشدك.",
+ "tips_fr": "Pour les pièces sensibles (ex. écrans iPhone), le changement de nappe ou d’IC peut affecter des fonctions comme Face ID : écrivez-nous avant d’acheter pour être guidé.",
+ "note": "الأسعار تقريبية بالدرهم المغربي وتختلف حسب الجودة والتوفر؛ نؤكد السعر النهائي معك على واتساب قبل أي التزام. الصور الرمزية للتوضيح فقط.",
+ "note_fr": "Prix indicatifs en dirhams, variables selon la qualité et la disponibilité ; le prix final est confirmé avec vous sur WhatsApp avant tout engagement."
+}
